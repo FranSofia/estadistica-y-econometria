@@ -81,7 +81,7 @@
     "href": "recursos.html",
     "title": "🐒 Recursos",
     "section": "",
-    "text": "Hansen, B. E. (2022). Econometrics. Princeton University Press. — Tratamiento riguroso y moderno; disponible gratis en el sitio del autor.\nWickham, H. et al. (2023). R para Ciencia de Datos. — Referencia esencial para manejo de datos en R."
+    "text": "Hansen, B. E. (2021a). Introduction to Econometrics. University of Wisconsin.\nHansen, B. E. (2021b). Econometrics. University of Wisconsin.\nWooldridge, J.M (2010). Introducción a la econometría. Un enfoque moderno. Cengage Learning.\nCunningham, S. (2021). Causal Inference. The Mixtape. Yale University Press.\nAngrist, J. D. y Pischke, J-S. (2008). *Mostly Harmless Econometrics: An Empiricist s Companion*. Princeton University Press\nWickham, H. et al. (2023). R para Ciencia de Datos.\nFernández-Avilés, G. y Montero, J.M. (Eds.) (2024) Fundamentos de ciencia de datos con R. McGraw-Hill"
   },
   {
     "objectID": "recursos.html#libros-de-referencia-acceso-abierto",
@@ -116,7 +116,7 @@
     "href": "recursos.html#canales-de-apoyo",
     "title": "🐒 Recursos",
     "section": "Canales de apoyo",
-    "text": "Canales de apoyo\n\n\n\n\n\n\nTipContacto\n\n\n\nPara consultas sobre el curso: fransofia.nr@gmail.com"
+    "text": "Canales de apoyo\n\n\n\n\n\n\nTipContacto\n\n\n\nPara consultas sobre el curso: fnunezre@fen.uchile.cl"
   },
   {
     "objectID": "weeks/week01/page.html",
@@ -173,5 +173,19 @@
     "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
     "section": "📟 Dudas",
     "text": "📟 Dudas\nPara consultas: fransofia.nr@gmail.com"
+  },
+  {
+    "objectID": "recursos.html#libros-de-referencia",
+    "href": "recursos.html#libros-de-referencia",
+    "title": "🐒 Recursos",
+    "section": "",
+    "text": "Hansen, B. E. (2021a). Introduction to Econometrics. University of Wisconsin.\nHansen, B. E. (2021b). Econometrics. University of Wisconsin.\nWooldridge, J.M (2010). Introducción a la econometría. Un enfoque moderno. Cengage Learning.\nCunningham, S. (2021). Causal Inference. The Mixtape. Yale University Press.\nAngrist, J. D. y Pischke, J-S. (2008). *Mostly Harmless Econometrics: An Empiricist s Companion*. Princeton University Press\nWickham, H. et al. (2023). R para Ciencia de Datos.\nFernández-Avilés, G. y Montero, J.M. (Eds.) (2024) Fundamentos de ciencia de datos con R. McGraw-Hill"
+  },
+  {
+    "objectID": "recursos.html#canales-de-youtube",
+    "href": "recursos.html#canales-de-youtube",
+    "title": "🐒 Recursos",
+    "section": "Canales de Youtube",
+    "text": "Canales de Youtube\n\nClases del profesor Rómulo Chumacero."
   }
 ]

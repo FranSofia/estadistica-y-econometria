@@ -2,10 +2,19 @@
 title: "🐒 Recursos"
 ---
 
-## Libros de referencia (acceso abierto)
+## Libros de referencia
 
--   **Hansen, B. E.** (2022). [*Econometrics*](https://www.ssc.wisc.edu/~bhansen/econometrics/). Princeton University Press. — Tratamiento riguroso y moderno; disponible gratis en el sitio del autor.
--   **Wickham, H. et al.** (2023). [*R para Ciencia de Datos*](https://davidrsch.github.io/r4ds-es/). — Referencia esencial para manejo de datos en R.
+-   **Hansen, B. E.** (2021a). [*Introduction to Econometrics*](https://home.ustc.edu.cn/~matheming/Intro2Metrics.pdf). University of Wisconsin.
+- **Hansen, B. E.** (2021b). [*Econometrics*](http://home.ustc.edu.cn/~matheming/Econometrics.pdf). University of Wisconsin.
+- **Wooldridge, J.M** (2010). [*Introducción a la econometría. Un enfoque moderno*](https://econometriauca.wordpress.com/wp-content/uploads/2016/01/wooldridge-jeffrey-2010-introduccic3b3n-a-la-econometrc3ada-4ed.pdf). Cengage Learning.
+- **Cunningham, S.** (2021). [*Causal Inference. The Mixtape*](https://mixtape.scunning.com/). Yale University Press. 
+- **Angrist, J. D. y Pischke, J-S.** (2008). *[Mostly Harmless Econometrics: An Empiricist s Companion*](https://deepeconomics.in/wp-content/uploads/2026/01/2008-Angrist-Pischke-MostlyHarmlessEconometrics.pdf). Princeton University Press
+- **Wickham, H. et al.** (2023). [*R para Ciencia de Datos*](https://es.r4ds.hadley.nz/).
+- **Fernández-Avilés, G. y Montero, J.M.** (Eds.) (2024) [*Fundamentos de ciencia de datos con R*](https://cdr-book.github.io/index.html). McGraw-Hill 
+
+## Canales de Youtube 
+
+- Clases del profesor [Rómulo Chumacero](https://www.youtube.com/@rchumacero).  
 
 ## Software
 
@@ -43,5 +52,5 @@ Si no estás familiarizado/a con la notación matemática usada en las slides, e
 ::: callout-tip
 ## Contacto
 
-Para consultas sobre el curso: **fransofia.nr\@gmail.com**
+Para consultas sobre el curso: **fnunezre\@fen.uchile.cl**
 :::
