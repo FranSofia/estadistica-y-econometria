@@ -1,0 +1,246 @@
+---
+title: "Clase 02: Variables Aleatorias y Distribuciones"
+subtitle: "Estadística y Econometría"
+author: "[Fran Sofía Núñez Rebolledo](mailto:fransofia.nr@gmail.com)"
+institute: "Universidad de Chile / INE"
+date: today
+format:
+  revealjs:
+    theme: [default, ../../styles/slides-theme.scss]
+    slide-number: true
+    show-slide-number: all
+    hash-type: number
+    center: false
+    transition: fade
+    width: 1050
+    height: 700
+    margin: 0.1
+    highlight-style: github
+    code-line-numbers: false
+    fig-align: center
+    footer: "Estadística y Econometría — Clase 02"
+    logo: ../../figures/logos/logo-curso.png
+    chalkboard: true
+---
+
+## Contenidos de hoy
+
+1. [Variables aleatorias](#variables-aleatorias)
+2. [Función de distribución y densidad](#distribución-y-densidad)
+3. [Esperanza y varianza](#esperanza-y-varianza)
+4. [Covarianza y correlación](#covarianza-y-correlación)
+5. [Distribuciones fundamentales](#distribuciones-fundamentales)
+
+# Variables aleatorias {#variables-aleatorias}
+
+## Definición
+
+::: {.callout-note}
+## Definición: Variable aleatoria
+Una **variable aleatoria** $X$ es una función que asigna un número real a cada resultado del espacio muestral:
+
+$$X: \Omega \longrightarrow \mathbb{R}$$
+:::
+
+. . .
+
+**Tipos:**
+
+- **Discreta:** toma valores en un conjunto numerable. Ejemplo: $X$ = número de hijos.
+- **Continua:** toma valores en un intervalo de $\mathbb{R}$. Ejemplo: $X$ = ingreso mensual.
+
+. . .
+
+En econometría, las variables de interés ($Y_i$, $X_i$, $\varepsilon_i$) son todas variables aleatorias. Tratarlas como tales es lo que nos permite hacer inferencia.
+
+# Distribución y densidad {#distribución-y-densidad}
+
+## Función de distribución acumulada (CDF)
+
+::: {.callout-note}
+## Definición
+La **función de distribución acumulada** (CDF) de $X$ es:
+
+$$F_X(x) = P(X \leq x), \quad \forall x \in \mathbb{R}$$
+:::
+
+. . .
+
+**Propiedades:**
+
+- $0 \leq F_X(x) \leq 1$
+- $F_X$ es no decreciente
+- $\lim_{x \to -\infty} F_X(x) = 0$ y $\lim_{x \to +\infty} F_X(x) = 1$
+- $P(a < X \leq b) = F_X(b) - F_X(a)$
+
+## Función de densidad (PDF)
+
+Para variables continuas, la **función de densidad** $f_X(x)$ se define como:
+
+$$f_X(x) = \frac{dF_X(x)}{dx}$$
+
+. . .
+
+De modo que:
+
+$$P(a \leq X \leq b) = \int_a^b f_X(x) \, dx$$
+
+. . .
+
+::: {.callout-important}
+**Ojo:** $f_X(x)$ no es una probabilidad. Puede ser mayor que 1. Lo que sí se cumple es $f_X(x) \geq 0$ y $\int_{-\infty}^{+\infty} f_X(x) \, dx = 1$.
+:::
+
+# Esperanza y varianza {#esperanza-y-varianza}
+
+## Esperanza (valor esperado)
+
+::: {.callout-note}
+## Definición
+
+$$E[X] = \begin{cases} \sum_x x \cdot p(x) & \text{si } X \text{ es discreta} \\ \int_{-\infty}^{+\infty} x \cdot f_X(x) \, dx & \text{si } X \text{ es continua} \end{cases}$$
+:::
+
+. . .
+
+**Propiedades fundamentales:**
+
+- Linealidad: $E[aX + bY] = aE[X] + bE[Y]$
+- $E[c] = c$ para cualquier constante $c$
+- Si $X \geq 0$, entonces $E[X] \geq 0$
+
+. . .
+
+La esperanza es el operador más importante de la estadística. En econometría, la **esperanza condicional** $E[Y|X]$ es la función de regresión poblacional.
+
+## Varianza
+
+::: {.callout-note}
+## Definición
+
+$$\text{Var}(X) = E\left[(X - E[X])^2\right] = E[X^2] - (E[X])^2$$
+:::
+
+. . .
+
+**Propiedades:**
+
+- $\text{Var}(X) \geq 0$
+- $\text{Var}(aX + b) = a^2 \text{Var}(X)$
+- Si $X$ e $Y$ son independientes: $\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)$
+
+. . .
+
+La **desviación estándar** $\sigma_X = \sqrt{\text{Var}(X)}$ tiene las mismas unidades que $X$.
+
+# Covarianza y correlación {#covarianza-y-correlación}
+
+## Covarianza
+
+$$\text{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)] = E[XY] - E[X]E[Y]$$
+
+. . .
+
+**Propiedades:**
+
+- $\text{Cov}(X, X) = \text{Var}(X)$
+- $\text{Cov}(X, Y) = \text{Cov}(Y, X)$
+- $\text{Cov}(aX, bY) = ab \cdot \text{Cov}(X, Y)$
+- Si $X \perp Y$ (independientes), entonces $\text{Cov}(X, Y) = 0$
+
+. . .
+
+::: {.callout-important}
+**El recíproco no es cierto:** $\text{Cov}(X,Y) = 0$ no implica independencia. Solo implica ausencia de relación **lineal**.
+:::
+
+## Correlación
+
+El **coeficiente de correlación** de Pearson normaliza la covarianza:
+
+$$\rho_{XY} = \frac{\text{Cov}(X, Y)}{\sigma_X \cdot \sigma_Y}, \quad -1 \leq \rho \leq 1$$
+
+. . .
+
+| Valor de $\rho$ | Interpretación |
+|:---:|:---|
+| $\rho = 1$ | Relación lineal positiva perfecta |
+| $\rho = 0$ | Sin asociación lineal |
+| $\rho = -1$ | Relación lineal negativa perfecta |
+
+. . .
+
+En regresión simple, $R^2 = \rho_{XY}^2$. Esta conexión la formalizaremos más adelante.
+
+# Distribuciones fundamentales {#distribuciones-fundamentales}
+
+## La distribución Normal
+
+::: {.callout-note}
+## Distribución Normal
+Si $X \sim N(\mu, \sigma^2)$, su densidad es:
+
+$$f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left[-\frac{1}{2\sigma^2}(x - \mu)^2\right]$$
+:::
+
+. . .
+
+**¿Por qué es tan importante?**
+
+1. El **Teorema Central del Límite** garantiza que los promedios muestrales convergen a una Normal.
+2. Bajo normalidad de los errores, el estimador OLS es idéntico al de **máxima verosimilitud** (MLE).
+3. Los tests $t$ y $F$ se derivan de ella.
+
+## Distribuciones derivadas de la Normal
+
+Estas distribuciones aparecen constantemente en inferencia:
+
+. . .
+
+**Chi-cuadrado:** Si $Z_1, \ldots, Z_k \overset{iid}{\sim} N(0,1)$:
+$$\sum_{i=1}^{k} Z_i^2 \sim \chi^2_k$$
+
+. . .
+
+**t de Student:** Si $Z \sim N(0,1)$ y $V \sim \chi^2_k$ independientes:
+$$T = \frac{Z}{\sqrt{V/k}} \sim t_k$$
+
+. . .
+
+**F de Fisher:** Si $V_1 \sim \chi^2_{k_1}$ y $V_2 \sim \chi^2_{k_2}$ independientes:
+$$F = \frac{V_1/k_1}{V_2/k_2} \sim F_{k_1, k_2}$$
+
+## ¿Dónde aparecen estas distribuciones?
+
+| Distribución | Uso en econometría |
+|:---:|:---|
+| $N(\mu, \sigma^2)$ | Distribución de $\hat{\beta}$ bajo normalidad |
+| $\chi^2_k$ | Test de Wald, test de heterocedasticidad |
+| $t_k$ | Test de significancia individual de $\hat{\beta}_j$ |
+| $F_{k_1, k_2}$ | Test de significancia conjunta, test de restricciones |
+
+. . .
+
+En la próxima clase veremos cómo el **Teorema Central del Límite** justifica el uso de estas distribuciones incluso cuando los datos no son normales.
+
+## Resumen
+
+::: {.columns}
+::: {.column width="50%"}
+**Hoy cubrimos:**
+
+- Variables aleatorias
+- CDF y PDF
+- $E[X]$, $\text{Var}(X)$, $\text{Cov}(X,Y)$
+- Distribuciones $N$, $\chi^2$, $t$, $F$
+:::
+
+::: {.column width="50%"}
+**Próxima clase:**
+
+- Distribuciones muestrales
+- Ley de los Grandes Números
+- Teorema Central del Límite
+- Convergencia en probabilidad
+:::
+:::

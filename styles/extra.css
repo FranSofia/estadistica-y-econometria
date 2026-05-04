@@ -1,0 +1,13 @@
+/* Ajustes menores que no van en SCSS */
+
+/* Emoji en menú */
+.navbar .dropdown-item {
+  font-size: 0.95rem;
+}
+
+/* Responsive iframe */
+@media (max-width: 768px) {
+  .slide-embed {
+    height: 350px;
+  }
+}

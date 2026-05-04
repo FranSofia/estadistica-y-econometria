@@ -1,0 +1,47 @@
+---
+title: "🐒 Recursos"
+---
+
+## Libros de referencia (acceso abierto)
+
+-   **Hansen, B. E.** (2022). [*Econometrics*](https://www.ssc.wisc.edu/~bhansen/econometrics/). Princeton University Press. — Tratamiento riguroso y moderno; disponible gratis en el sitio del autor.
+-   **Wickham, H. et al.** (2023). [*R para Ciencia de Datos*](https://davidrsch.github.io/r4ds-es/). — Referencia esencial para manejo de datos en R.
+
+## Software
+
+Para las aplicaciones prácticas se utiliza **R** y **RStudio**:
+
+-   Descargar [R](https://cran.r-project.org/)
+-   Descargar [RStudio](https://posit.co/download/rstudio-desktop/)
+-   Instalar [Quarto](https://quarto.org/docs/get-started/) (para documentos reproducibles)
+
+## Paquetes de R recomendados
+
+``` r
+install.packages(c(
+  "tidyverse",    # Manipulación y visualización de datos
+  "estimatr",     # Regresión con errores robustos
+  "modelsummary", # Tablas de regresión
+  "fixest",       # Modelos de efectos fijos (eficiente)
+  "ivreg",        # Variables instrumentales
+  "car",          # Diagnóstico de regresión
+  "lmtest",       # Tests de especificación
+  "sandwich",     # Errores estándar robustos
+  "broom"         # Tidying de modelos
+))
+```
+
+## Recursos de $\LaTeX$ y notación
+
+Si no estás familiarizado/a con la notación matemática usada en las slides, estos recursos pueden ayudar:
+
+-   [Detexify](https://detexify.kirelabs.org/) — Dibuja un símbolo y encuentra su comando LaTeX.
+-   [LaTeX Cheat Sheet](https://wch.github.io/latexsheet/) — Referencia rápida de símbolos y comandos.
+
+## Canales de apoyo
+
+::: callout-tip
+## Contacto
+
+Para consultas sobre el curso: **fransofia.nr\@gmail.com**
+:::

@@ -1,0 +1,360 @@
+/*-- scss:defaults --*/
+
+// ============================================================
+// METROPOLIS THEME para Revealjs
+// Replica el estilo Beamer Metropolis con paleta burgundy
+// ============================================================
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Fira+Code:wght@400;500&family=Fira+Mono:wght@400;500&display=swap');
+
+// --- Paleta (desde tu custom.scss) ---
+$mDarkTeal:    #69000C;       // primary — barra de título, secciones
+$mLightBrown:  #5F6A72;       // secondary — texto secundario
+$mAccent:      #E0C5C6;       // highlight suave
+$mDarkText:    #212121;       // cuerpo de texto
+$mLightText:   #616161;       // texto muted
+$mBackground:  #FAFAFA;       // fondo de slides (Metropolis usa off-white)
+$mCodeBg:      #F5F5F5;       // fondo de código
+
+// --- Tipografía ---
+$font-family-sans-serif: "Fira Sans", sans-serif;
+$presentation-heading-font: "Fira Sans", sans-serif;
+$font-family-monospace: "Fira Code", "Fira Mono", monospace;
+
+// --- Variables Revealjs ---
+$body-bg: $mBackground;
+$body-color: $mDarkText;
+$link-color: $mDarkTeal;
+$presentation-heading-color: $mDarkTeal;
+
+$presentation-font-size-root: 34px;
+$presentation-h1-font-size: 1.4em;
+$presentation-h2-font-size: 1.15em;
+$presentation-h3-font-size: 1.0em;
+
+$code-block-font-size: 0.65em;
+
+/*-- scss:rules --*/
+
+// ============================================================
+// ESTRUCTURA GENERAL — Metropolis es ultra-limpio
+// ============================================================
+
+.reveal {
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.reveal .slides {
+  text-align: left;     // Metropolis alinea a la izquierda, no centra
+}
+
+// ============================================================
+// HEADINGS — El sello de Metropolis
+// ============================================================
+
+// h2: título de slide normal — barra oscura arriba con texto blanco
+.reveal h2 {
+  font-family: $presentation-heading-font;
+  font-weight: 700;
+  font-size: $presentation-h2-font-size;
+  color: $mDarkText;
+  background-color: $mDarkTeal;
+  color: white;
+  margin: -40px -60px 30px -60px;   // sangrado negativo para cubrir ancho
+  padding: 18px 60px;
+  letter-spacing: -0.02em;
+  border: none;
+  text-transform: none;
+}
+
+// h3: subtítulo dentro de slide — sin barra, solo color
+.reveal h3 {
+  font-family: $presentation-heading-font;
+  font-weight: 600;
+  font-size: $presentation-h3-font-size;
+  color: $mDarkTeal;
+  margin-top: 0.8em;
+  margin-bottom: 0.4em;
+  border: none;
+}
+
+// ============================================================
+// SLIDES DE SECCIÓN — fondo completo oscuro, texto blanco
+// h1 se usa para separadores de sección en Metropolis
+// ============================================================
+
+// Slide de sección: usa {background-color="#69000C"} en el .qmd
+// o simplemente un # Título (nivel 1) que Quarto pone en slide propio
+
+.reveal h1 {
+  font-family: $presentation-heading-font;
+  font-weight: 700;
+  font-size: $presentation-h1-font-size;
+  color: white;
+  text-transform: none;
+  letter-spacing: -0.02em;
+  border: none;
+}
+
+// Cuando h1 está en slide de sección con fondo oscuro
+.reveal section[data-background-color] h1,
+.reveal .slide-background[data-background-color] + .slide-content h1 {
+  color: white;
+}
+
+// Title slide
+.reveal .slides > section.title-slide {
+  background-color: $mDarkTeal;
+  
+  h1 {
+    color: white;
+    font-size: 1.6em;
+    font-weight: 700;
+    margin-bottom: 0.3em;
+  }
+  
+  .subtitle {
+    color: $mAccent;
+    font-size: 0.75em;
+    font-weight: 400;
+  }
+  
+  .author, .institute, .date {
+    color: rgba(white, 0.85);
+    font-size: 0.6em;
+    font-weight: 300;
+  }
+}
+
+// ============================================================
+// TEXTO Y LISTAS
+// ============================================================
+
+.reveal p {
+  font-size: 0.82em;
+  line-height: 1.55;
+  margin-bottom: 0.6em;
+}
+
+.reveal ul, .reveal ol {
+  font-size: 0.82em;
+  line-height: 1.55;
+  margin-left: 0.3em;
+}
+
+.reveal li {
+  margin-bottom: 0.35em;
+}
+
+.reveal li li {
+  font-size: 0.92em;
+  color: $mLightText;
+}
+
+// Negrita: en Metropolis no cambia de color, solo peso
+.reveal strong {
+  font-weight: 600;
+  color: inherit;
+}
+
+// Énfasis
+.reveal em {
+  font-style: italic;
+}
+
+// ============================================================
+// CÓDIGO — estilo limpio, borde izquierdo sutil
+// ============================================================
+
+.reveal pre {
+  background-color: $mCodeBg;
+  border: 1px solid #E0E0E0;
+  border-left: 3px solid $mDarkTeal;
+  border-radius: 2px;
+  padding: 0.6em 0.8em;
+  font-size: $code-block-font-size;
+  box-shadow: none;
+  width: 100%;
+}
+
+.reveal pre code {
+  font-family: $font-family-monospace;
+  font-weight: 400;
+  line-height: 1.4;
+  background: transparent;
+  padding: 0;
+}
+
+.reveal code {
+  font-family: $font-family-monospace;
+  font-size: 0.85em;
+  background-color: $mCodeBg;
+  color: $mDarkTeal;
+  padding: 0.15em 0.35em;
+  border-radius: 2px;
+}
+
+// ============================================================
+// TABLAS — header oscuro como Metropolis
+// ============================================================
+
+.reveal table {
+  font-size: 0.7em;
+  border-collapse: collapse;
+  width: auto;
+  margin: 0.8em 0;
+}
+
+.reveal thead {
+  background-color: $mDarkTeal;
+  color: white;
+  font-weight: 600;
+}
+
+.reveal th, .reveal td {
+  padding: 0.4em 0.8em;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.reveal tbody tr:nth-child(even) {
+  background-color: rgba($mDarkTeal, 0.04);
+}
+
+// ============================================================
+// ECUACIONES — tamaño y espaciado para legibilidad
+// ============================================================
+
+.reveal .MathJax {
+  font-size: 0.92em !important;
+}
+
+// Ecuaciones en bloque — un poco más de aire
+.reveal .math.display {
+  margin: 0.6em 0;
+}
+
+// ============================================================
+// CALLOUTS — simplificados para slides
+// ============================================================
+
+.reveal .callout {
+  font-size: 0.75em;
+  margin: 0.6em 0;
+  border-radius: 0;
+  background-color: white;
+  border-left: 3px solid;
+  padding: 0.5em 0.8em;
+}
+
+.reveal .callout-note   { border-left-color: $mLightBrown; }
+.reveal .callout-tip     { border-left-color: #2E7D32; }
+.reveal .callout-warning { border-left-color: #8C2028; }
+.reveal .callout-important { border-left-color: $mDarkTeal; }
+
+.reveal .callout .callout-title {
+  font-weight: 600;
+  font-size: 0.95em;
+}
+
+// ============================================================
+// BLOCKQUOTES
+// ============================================================
+
+.reveal blockquote {
+  border-left: 3px solid $mDarkTeal;
+  padding: 0.5em 1em;
+  margin: 0.5em 0;
+  font-style: italic;
+  color: $mLightText;
+  background: white;
+  font-size: 0.8em;
+  box-shadow: none;
+}
+
+// ============================================================
+// PROGRESS BAR — Metropolis tiene una barra fina
+// ============================================================
+
+.reveal .progress {
+  height: 3px;
+  color: $mDarkTeal;
+}
+
+.reveal .progress span {
+  background: $mDarkTeal;
+}
+
+// ============================================================
+// SLIDE NUMBER — discreto, abajo a la derecha
+// ============================================================
+
+.reveal .slide-number {
+  font-family: $font-family-sans-serif;
+  font-size: 0.55em;
+  font-weight: 400;
+  color: $mLightText;
+  background: transparent;
+  right: 15px;
+  bottom: 8px;
+}
+
+// ============================================================
+// FOOTER
+// ============================================================
+
+.reveal .footer {
+  font-size: 0.45em;
+  color: $mLightText;
+  font-weight: 300;
+}
+
+// ============================================================
+// IMÁGENES — sin sombras innecesarias (Metropolis es austero)
+// ============================================================
+
+.reveal img {
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+// ============================================================
+// FRAGMENTS — transiciones suaves
+// ============================================================
+
+.reveal .fragment {
+  transition: opacity 0.2s ease;
+}
+
+// ============================================================
+// COLUMNAS
+// ============================================================
+
+.reveal .columns {
+  gap: 1.5em;
+}
+
+// ============================================================
+// LINKS
+// ============================================================
+
+.reveal a {
+  color: $mDarkTeal;
+  text-decoration: none;
+}
+
+.reveal a:hover {
+  text-decoration: underline;
+}
+
+// ============================================================
+// CLASE AUXILIAR: .alert para resaltar términos (como en Beamer)
+// Uso en .qmd: [texto importante]{.alert}
+// ============================================================
+
+.alert {
+  color: $mDarkTeal;
+  font-weight: 600;
+}

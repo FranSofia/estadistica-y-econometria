@@ -1,0 +1,21 @@
+/.quarto/
+/_site/
+*.html
+!docs/**/*.html
+
+# R
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+*.swp
+*.swo
+*~
+
+**/*.quarto_ipynb

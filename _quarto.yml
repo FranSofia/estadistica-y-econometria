@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Estadística y Econometría"
+  favicon: figures/logos/favicon.png
+  navbar:
+    background: "#69000C"
+    foreground: "#ffffff"
+    logo: figures/logos/logo-curso.png
+    left:
+      - text: "🏠 Inicio"
+        href: index.qmd
+      - text: "📓 Programa"
+        href: syllabus.qmd
+      - text: "📚 Recursos"
+        href: recursos.qmd
+      - text: "🗓️ Clases"
+        menu:
+          - text: "Clase 01: Fundamentos de Probabilidad"
+            href: weeks/week01/page.qmd
+          - text: "Clase 02: Variables Aleatorias y Distribuciones"
+            href: weeks/week02/page.qmd
+          # Agregar más clases aquí
+  page-footer:
+    center: "© 2026 — Fran Sofía Núñez Rebolledo"
+    background: "#69000C"
+
+  search: true
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles/custom.scss
+    css: styles/extra.css
+    toc: true
+    toc-depth: 3
+    code-tools: true
+    highlight-style: github
+
+execute:
+  freeze: auto

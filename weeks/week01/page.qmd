@@ -1,0 +1,26 @@
+---
+title: "Clase 01: Fundamentos de Probabilidad"
+author: "Fran Sofía Núñez Rebolledo"
+---
+
+En esta primera clase se introducen los conceptos fundamentales de la teoría de probabilidades que serán la base de todo el curso. Revisaremos los axiomas de Kolmogorov, la probabilidad condicional, el Teorema de Bayes, y la noción de independencia estadística. Estos conceptos, que pueden parecer abstractos al principio, son el andamiaje sobre el cual se construyen los estimadores, las pruebas de hipótesis y los modelos de regresión que veremos más adelante.
+
+## 🦦 Presentación
+
+Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic [aquí](slides.html) para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar.
+
+```{=html}
+<iframe class="slide-embed" src="slides.html" title="Slides Clase 01"></iframe>
+```
+
+## 📚 Lecturas recomendadas
+
+Para acompañar los contenidos de esta clase:
+
+-   **Casella, G. & Berger, R. L.** (2002). *Statistical Inference*, Capítulo 1: Probability Theory.
+-   **Wooldridge, J. M.** (2015). *Introductory Econometrics*, Apéndice B: Fundamentos de Probabilidad.
+-   **Hansen, B. E.** (2022). [*Econometrics*](https://www.ssc.wisc.edu/~bhansen/econometrics/), Capítulo 2.
+
+## 📟 Dudas
+
+Si tienes preguntas sobre el material, no dudes en escribir a **fransofia.nr\@gmail.com**.

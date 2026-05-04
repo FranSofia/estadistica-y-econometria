@@ -1,0 +1,47 @@
+---
+title: "📓 Programa del Curso [PROVISORIO]"
+---
+
+## Descripción General
+
+Este curso proporciona una formación sistemática en los fundamentos de la estadística matemática y la econometría, con énfasis en la comprensión teórica de los métodos y su aplicación en ciencias sociales. El enfoque es acumulativo: cada clase construye sobre los conceptos de la anterior.
+
+## Contenidos por Unidad
+
+### Unidad I: Fundamentos Probabilísticos (Clases 1–3)
+
+La primera unidad sienta las bases matemáticas necesarias. Se revisan los axiomas de probabilidad, las variables aleatorias discretas y continuas, sus momentos (esperanza, varianza, covarianza), y las distribuciones más relevantes para la inferencia estadística. Se cierra con el Teorema Central del Límite y su importancia para la construcción de estimadores.
+
+**Temas clave:** espacios muestrales, probabilidad condicional y Bayes, funciones de densidad y distribución, distribuciones Normal, $t$, $\chi^2$ y $F$, convergencia en probabilidad y en distribución.
+
+### Unidad II: Teoría de la Estimación (Clases 4–6)
+
+La segunda unidad aborda el problema de la estimación de parámetros. Se estudian las propiedades deseables de un estimador (insesgadez, eficiencia, consistencia, suficiencia), y se introduce la estimación por máxima verosimilitud (MLE) como método general. Luego se desarrollan los intervalos de confianza y las pruebas de hipótesis dentro del marco de Neyman-Pearson.
+
+**Temas clave:** sesgo y error cuadrático medio, información de Fisher, cota de Cramér-Rao, función de verosimilitud, lema de Neyman-Pearson, errores tipo I y II, potencia de un test.
+
+### Unidad III: Modelos de Regresión (Clases 7–10)
+
+El corazón econométrico del curso. Se parte del modelo de regresión lineal simple, se deriva el estimador OLS por minimización de la suma de cuadrados de los residuos, y se demuestra que bajo los supuestos clásicos es BLUE (Teorema de Gauss-Markov). Se extiende a regresión múltiple y se desarrolla la inferencia sobre los coeficientes.
+
+**Temas clave:** supuestos del modelo clásico de regresión lineal, derivación matricial de OLS, $\hat{\beta} = (X'X)^{-1}X'Y$, propiedades en muestras finitas y asintóticas, coeficiente de determinación $R^2$, test $t$ individual, test $F$ conjunto, variables dummy.
+
+### Unidad IV: Diagnóstico y Extensiones (Clases 11–12)
+
+La última unidad problematiza los supuestos del modelo clásico. Se estudian las consecuencias de su violación —heterocedasticidad, multicolinealidad, endogeneidad— y se introducen soluciones como errores robustos, variables instrumentales y el estimador de mínimos cuadrados en dos etapas (2SLS).
+
+**Temas clave:** tests de White y Breusch-Pagan, errores estándar de Huber-White, factor de inflación de varianza (VIF), sesgo por variable omitida, instrumentos y condiciones de relevancia/exclusión.
+
+## Bibliografía Principal
+
+- **Wooldridge, J. M.** (2015). *Introductory Econometrics: A Modern Approach*. Cengage Learning.
+- **Stock, J. H. & Watson, M. W.** (2020). *Introduction to Econometrics*. Pearson.
+- **Hansen, B. E.** (2022). *Econometrics*. Princeton University Press. [Disponible en línea](https://www.ssc.wisc.edu/~bhansen/econometrics/).
+- **Casella, G. & Berger, R. L.** (2002). *Statistical Inference*. Duxbury.
+- **Angrist, J. D. & Pischke, J.-S.** (2009). *Mostly Harmless Econometrics*. Princeton University Press.
+
+## Bibliografía Complementaria
+
+- **Gujarati, D. & Porter, D.** (2009). *Econometría*. McGraw-Hill.
+- **Cameron, A. C. & Trivedi, P. K.** (2005). *Microeconometrics: Methods and Applications*. Cambridge.
+- **Wickham, H., Çetinkaya-Rundel, M. & Grolemund, G.** (2023). [*R para Ciencia de Datos*](https://davidrsch.github.io/r4ds-es/) (2ª ed.).

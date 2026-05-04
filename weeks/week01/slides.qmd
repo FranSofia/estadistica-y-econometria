@@ -1,0 +1,328 @@
+---
+title: "Clase 01: Fundamentos de Probabilidad"
+subtitle: "Estadística y Econometría"
+author: "[Fran Sofía Núñez Rebolledo](mailto:fransofia.nr@gmail.com)"
+institute: "Universidad de Chile / INE"
+date: today
+format:
+  revealjs:
+    theme: [default, ../../styles/slides-theme.scss]
+    slide-number: true
+    show-slide-number: all
+    hash-type: number
+    center: false
+    transition: fade
+    width: 1050
+    height: 700
+    margin: 0.1
+    highlight-style: github
+    code-line-numbers: false
+    fig-align: center
+    footer: "Estadística y Econometría — Clase 01"
+    logo: ../../figures/logos/logo-curso.png
+    chalkboard: true
+    multiplex: false
+---
+
+## Contenidos de hoy
+
+1. [¿Por qué probabilidad?](#por-qué-probabilidad)
+2. [Espacios muestrales y eventos](#espacios-muestrales)
+3. [Axiomas de probabilidad](#axiomas-de-probabilidad)
+4. [Probabilidad condicional](#probabilidad-condicional)
+5. [Teorema de Bayes](#teorema-de-bayes)
+6. [Independencia](#independencia)
+
+# ¿Por qué probabilidad?
+
+## La probabilidad como lenguaje de la incertidumbre
+
+La estadística y la econometría se ocupan de **extraer conclusiones a partir de datos imperfectos**. Los datos son imperfectos porque provienen de muestras finitas, contienen errores de medición, y reflejan procesos inherentemente aleatorios.
+
+. . .
+
+La teoría de probabilidades nos da el **lenguaje formal** para cuantificar esa incertidumbre. Sin ella, no podríamos definir qué significa que un estimador sea "bueno", ni construir intervalos de confianza, ni evaluar hipótesis.
+
+. . .
+
+> *"Probability is the very guide of life."*
+> — Cicerón (vía Joseph Butler)
+
+
+## De la probabilidad a la econometría
+
+El camino que recorreremos en este curso sigue una lógica acumulativa:
+
+$$
+\text{Probabilidad} \longrightarrow \text{Distribuciones} \longrightarrow \text{Estimación} \longrightarrow \text{Regresión}
+$$
+
+. . .
+
+Cada paso depende del anterior. No se puede entender por qué $\hat{\beta}_{OLS}$ es insesgado sin saber qué es una esperanza condicional. No se puede interpretar un $p$-valor sin entender distribuciones muestrales.
+
+# Espacios muestrales y eventos {#espacios-muestrales}
+
+## Definiciones fundamentales
+
+::: {.callout-note}
+## Definición: Experimento aleatorio
+Un **experimento aleatorio** es un proceso cuyo resultado no puede predecirse con certeza antes de realizarlo.
+:::
+
+. . .
+
+::: {.callout-note}
+## Definición: Espacio muestral
+El **espacio muestral** $\Omega$ es el conjunto de todos los resultados posibles de un experimento aleatorio.
+:::
+
+. . .
+
+**Ejemplos:**
+
+- Lanzar un dado: $\Omega = \{1, 2, 3, 4, 5, 6\}$
+- Ingreso de un hogar: $\Omega = [0, +\infty)$
+- Respuesta a encuesta (Likert 1–5): $\Omega = \{1, 2, 3, 4, 5\}$
+
+## Eventos
+
+Un **evento** $A$ es un subconjunto del espacio muestral: $A \subseteq \Omega$.
+
+. . .
+
+**Operaciones con eventos:**
+
+| Operación | Notación | Significado |
+|-----------|----------|-------------|
+| Unión | $A \cup B$ | Ocurre $A$ o $B$ (o ambos) |
+| Intersección | $A \cap B$ | Ocurren $A$ y $B$ simultáneamente |
+| Complemento | $A^c$ | No ocurre $A$ |
+| Diferencia | $A \setminus B$ | Ocurre $A$ pero no $B$ |
+
+. . .
+
+Dos eventos son **mutuamente excluyentes** si $A \cap B = \emptyset$.
+
+# Axiomas de probabilidad {#axiomas-de-probabilidad}
+
+## Los tres axiomas de Kolmogorov (1933)
+
+Una función de probabilidad $P$ asigna a cada evento $A$ un número real $P(A)$ que satisface:
+
+. . .
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Axioma 1** (No negatividad):
+$$P(A) \geq 0 \quad \forall A$$
+
+**Axioma 2** (Normalización):
+$$P(\Omega) = 1$$
+
+:::
+::: {.column width="50%"}
+
+**Axioma 3** (Aditividad numerable):
+
+Si $A_1, A_2, \ldots$ son mutuamente excluyentes:
+$$P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)$$
+
+:::
+:::
+
+. . .
+
+De estos tres axiomas se derivan **todas** las propiedades de la probabilidad que usaremos en el curso.
+
+## Consecuencias de los axiomas
+
+A partir de los axiomas se puede demostrar:
+
+$$P(A^c) = 1 - P(A)$$
+
+. . .
+
+$$P(\emptyset) = 0$$
+
+. . .
+
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+
+. . .
+
+$$\text{Si } A \subseteq B, \text{ entonces } P(A) \leq P(B)$$
+
+. . .
+
+::: {.callout-tip}
+## Ejercicio para pensar
+¿Puedes demostrar $P(A^c) = 1 - P(A)$ usando solo los tres axiomas?
+
+*Pista:* Note que $A$ y $A^c$ son mutuamente excluyentes, y que $A \cup A^c = \Omega$.
+:::
+
+# Probabilidad condicional {#probabilidad-condicional}
+
+## Definición
+
+::: {.callout-note}
+## Definición: Probabilidad condicional
+La probabilidad de $A$ **dado que** $B$ ha ocurrido se define como:
+
+$$P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad P(B) > 0$$
+:::
+
+. . .
+
+**Interpretación:** Condicionar en $B$ equivale a **restringir el espacio muestral** a $B$, y evaluar qué proporción de $B$ está ocupada por $A$.
+
+. . .
+
+**Ejemplo sociológico:** Sea $A$ = "tener educación universitaria" y $B$ = "pertenecer al quintil más rico".
+
+$$P(\text{universitario} \mid \text{quintil V}) \neq P(\text{universitario})$$
+
+Esta desigualdad es, en esencia, una medida de desigualdad educativa.
+
+## Regla de la multiplicación
+
+De la definición de probabilidad condicional se obtiene directamente:
+
+$$P(A \cap B) = P(A|B) \cdot P(B) = P(B|A) \cdot P(A)$$
+
+. . .
+
+Para tres eventos:
+$$P(A \cap B \cap C) = P(A) \cdot P(B|A) \cdot P(C|A \cap B)$$
+
+. . .
+
+Esta regla es la base de la **factorización de verosimilitudes** que veremos cuando estudiemos MLE.
+
+## Ley de probabilidad total
+
+Si $B_1, B_2, \ldots, B_k$ forman una **partición** de $\Omega$ (mutuamente excluyentes y exhaustivos):
+
+$$P(A) = \sum_{i=1}^{k} P(A|B_i) \cdot P(B_i)$$
+
+. . .
+
+**Ejemplo:** ¿Cuál es la probabilidad de estar desempleado?
+
+$$P(\text{desempleo}) = \sum_{j=1}^{J} P(\text{desempleo} \mid \text{región}_j) \cdot P(\text{región}_j)$$
+
+La probabilidad total "descompone" un evento complejo en piezas más manejables.
+
+# Teorema de Bayes {#teorema-de-bayes}
+
+## Formulación
+
+::: {.callout-important}
+## Teorema de Bayes
+
+$$P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^{k} P(A|B_j) \cdot P(B_j)}$$
+:::
+
+. . .
+
+El teorema permite **invertir condicionales**: si conocemos $P(A|B)$, podemos obtener $P(B|A)$.
+
+. . .
+
+**Terminología bayesiana:**
+
+| Término | Significado |
+|---------|-------------|
+| $P(B_i)$ | **Prior** — creencia antes de observar datos |
+| $P(A \mid B_i)$ | **Verosimilitud** — probabilidad de los datos dado el parámetro |
+| $P(B_i \mid A)$ | **Posterior** — creencia actualizada tras observar datos |
+
+## Ejemplo: Diagnóstico y falsos positivos
+
+Un test diagnóstico tiene sensibilidad del 95% y especificidad del 90%. La prevalencia de la enfermedad es del 1%.
+
+. . .
+
+$$P(\text{enfermo} \mid \text{test}+) = \frac{0.95 \times 0.01}{0.95 \times 0.01 + 0.10 \times 0.99}$$
+
+. . .
+
+$$= \frac{0.0095}{0.0095 + 0.099} = \frac{0.0095}{0.1085} \approx 0.088$$
+
+. . .
+
+::: {.callout-important}
+Aun con un test "bueno", un resultado positivo solo implica un **8.8%** de probabilidad de estar enfermo cuando la prevalencia es baja. Este resultado es contraintuitivo y tiene profundas implicancias para política pública.
+:::
+
+# Independencia {#independencia}
+
+## Definición formal
+
+::: {.callout-note}
+## Definición: Independencia
+Dos eventos $A$ y $B$ son **independientes** si y solo si:
+
+$$P(A \cap B) = P(A) \cdot P(B)$$
+
+Equivalentemente: $P(A|B) = P(A)$
+:::
+
+. . .
+
+**Ojo:** Independencia $\neq$ mutua exclusividad. Si $A$ y $B$ son mutuamente excluyentes y ambos tienen probabilidad positiva, entonces son **dependientes** (saber que ocurrió $A$ te dice con certeza que no ocurrió $B$).
+
+## ¿Por qué importa la independencia en econometría?
+
+El supuesto de independencia (o sus versiones más débiles) aparece en toda la econometría:
+
+. . .
+
+- **Muestreo aleatorio:** las observaciones $(X_i, Y_i)$ son i.i.d. (independientes e idénticamente distribuidas).
+
+. . .
+
+- **Exogeneidad:** $E[\varepsilon_i | X_i] = 0$, que es una forma de independencia condicional entre el error y los regresores.
+
+. . .
+
+- **Identificación causal:** la asignación al tratamiento es independiente de los resultados potenciales.
+
+. . .
+
+Cuando estos supuestos fallan, los estimadores estándar pierden sus buenas propiedades. Gran parte de la econometría avanzada consiste en **lidiar con la falta de independencia**.
+
+## Resumen de la clase
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Conceptos clave:**
+
+- Espacio muestral $\Omega$
+- Axiomas de Kolmogorov
+- Probabilidad condicional
+- Teorema de Bayes
+- Independencia estadística
+
+:::
+::: {.column width="50%"}
+
+**Para la próxima clase:**
+
+- Variables aleatorias (discretas y continuas)
+- Función de densidad y distribución
+- Esperanza, varianza, covarianza
+- Distribuciones Normal, $t$, $\chi^2$, $F$
+
+:::
+:::
+
+. . .
+
+::: {.callout-tip}
+## Lectura sugerida
+Casella & Berger (2002), Capítulo 1, secciones 1.1–1.3.
+:::
