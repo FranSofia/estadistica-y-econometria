@@ -51,9 +51,9 @@ El curso se organiza en clases semanales. Cada clase incluye una **presentación
 ::: {.callout-note}
 ## Detalles
 
-- **Docente:** Fran Sofía Núñez Rebolledo
+- **Autora:** Fran Sofía Núñez Rebolledo
 - **Contacto:** fnunezre@fen.uchile.cl
-- **Institución:** Universidad de Chile / INE
+- **Institución:** Universidad de Chile / Instituto Nacional de Estadísticas
 
 :::
 

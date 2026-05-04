@@ -4,7 +4,7 @@ Sitio web del curso "Estadística y Econometría", con presentaciones tipo slide
 
 Ante todo, este es un respositorio *personal* que busca entregar contenido y herramientas de estadística y econometría. A su vez, tratar de presentar/enseñar contenidos es una forma en la que también se aprende, por lo que el repositorio también tiene una función cognitiva individual.
 
-**Sitio web:** https://fransofia.github.io/estadistica-econometria/
+**Sitio web:** https://fransofia.github.io/estadistica-y-econometria/
 
 ## Descripción
 
@@ -30,7 +30,7 @@ Curso de fundamentos estadísticos y modelamiento econométrico, con énfasis en
 ## Estructura del proyecto
 
 ```
-estadistica-econometria/
+estadistica-y-econometria/
 ├── _quarto.yml              # Configuración del sitio
 ├── index.qmd                # Página principal
 ├── syllabus.qmd             # Programa del curso

@@ -1,5 +1,40 @@
 [
   {
+    "objectID": "syllabus.html",
+    "href": "syllabus.html",
+    "title": "📓 Programa del Curso [PROVISORIO]",
+    "section": "",
+    "text": "Este curso proporciona una formación sistemática en los fundamentos de la estadística matemática y la econometría, con énfasis en la comprensión teórica de los métodos y su aplicación en ciencias sociales. El enfoque es acumulativo: cada clase construye sobre los conceptos de la anterior."
+  },
+  {
+    "objectID": "syllabus.html#descripción-general",
+    "href": "syllabus.html#descripción-general",
+    "title": "📓 Programa del Curso [PROVISORIO]",
+    "section": "",
+    "text": "Este curso proporciona una formación sistemática en los fundamentos de la estadística matemática y la econometría, con énfasis en la comprensión teórica de los métodos y su aplicación en ciencias sociales. El enfoque es acumulativo: cada clase construye sobre los conceptos de la anterior."
+  },
+  {
+    "objectID": "syllabus.html#contenidos-por-unidad",
+    "href": "syllabus.html#contenidos-por-unidad",
+    "title": "📓 Programa del Curso [PROVISORIO]",
+    "section": "Contenidos por Unidad",
+    "text": "Contenidos por Unidad\n\nUnidad I: Fundamentos Probabilísticos (Clases 1–3)\nLa primera unidad sienta las bases matemáticas necesarias. Se revisan los axiomas de probabilidad, las variables aleatorias discretas y continuas, sus momentos (esperanza, varianza, covarianza), y las distribuciones más relevantes para la inferencia estadística. Se cierra con el Teorema Central del Límite y su importancia para la construcción de estimadores.\nTemas clave: espacios muestrales, probabilidad condicional y Bayes, funciones de densidad y distribución, distribuciones Normal, \\(t\\), \\(\\chi^2\\) y \\(F\\), convergencia en probabilidad y en distribución.\n\n\nUnidad II: Teoría de la Estimación (Clases 4–6)\nLa segunda unidad aborda el problema de la estimación de parámetros. Se estudian las propiedades deseables de un estimador (insesgadez, eficiencia, consistencia, suficiencia), y se introduce la estimación por máxima verosimilitud (MLE) como método general. Luego se desarrollan los intervalos de confianza y las pruebas de hipótesis dentro del marco de Neyman-Pearson.\nTemas clave: sesgo y error cuadrático medio, información de Fisher, cota de Cramér-Rao, función de verosimilitud, lema de Neyman-Pearson, errores tipo I y II, potencia de un test.\n\n\nUnidad III: Modelos de Regresión (Clases 7–10)\nEl corazón econométrico del curso. Se parte del modelo de regresión lineal simple, se deriva el estimador OLS por minimización de la suma de cuadrados de los residuos, y se demuestra que bajo los supuestos clásicos es BLUE (Teorema de Gauss-Markov). Se extiende a regresión múltiple y se desarrolla la inferencia sobre los coeficientes.\nTemas clave: supuestos del modelo clásico de regresión lineal, derivación matricial de OLS, \\(\\hat{\\beta} = (X'X)^{-1}X'Y\\), propiedades en muestras finitas y asintóticas, coeficiente de determinación \\(R^2\\), test \\(t\\) individual, test \\(F\\) conjunto, variables dummy.\n\n\nUnidad IV: Diagnóstico y Extensiones (Clases 11–12)\nLa última unidad problematiza los supuestos del modelo clásico. Se estudian las consecuencias de su violación —heterocedasticidad, multicolinealidad, endogeneidad— y se introducen soluciones como errores robustos, variables instrumentales y el estimador de mínimos cuadrados en dos etapas (2SLS).\nTemas clave: tests de White y Breusch-Pagan, errores estándar de Huber-White, factor de inflación de varianza (VIF), sesgo por variable omitida, instrumentos y condiciones de relevancia/exclusión."
+  },
+  {
+    "objectID": "syllabus.html#bibliografía-principal",
+    "href": "syllabus.html#bibliografía-principal",
+    "title": "📓 Programa del Curso [PROVISORIO]",
+    "section": "Bibliografía Principal",
+    "text": "Bibliografía Principal\n\nWooldridge, J. M. (2015). Introductory Econometrics: A Modern Approach. Cengage Learning.\nStock, J. H. & Watson, M. W. (2020). Introduction to Econometrics. Pearson.\nHansen, B. E. (2022). Econometrics. Princeton University Press. Disponible en línea.\nCasella, G. & Berger, R. L. (2002). Statistical Inference. Duxbury.\nAngrist, J. D. & Pischke, J.-S. (2009). Mostly Harmless Econometrics. Princeton University Press."
+  },
+  {
+    "objectID": "syllabus.html#bibliografía-complementaria",
+    "href": "syllabus.html#bibliografía-complementaria",
+    "title": "📓 Programa del Curso [PROVISORIO]",
+    "section": "Bibliografía Complementaria",
+    "text": "Bibliografía Complementaria\n\nGujarati, D. & Porter, D. (2009). Econometría. McGraw-Hill.\nCameron, A. C. & Trivedi, P. K. (2005). Microeconometrics: Methods and Applications. Cambridge.\nWickham, H., Çetinkaya-Rundel, M. & Grolemund, G. (2023). R para Ciencia de Datos (2ª ed.)."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Estadística y Econometría",
@@ -7,8 +42,8 @@
     "text": "Este es el sitio web del curso Estadística y Econometría, un espacio diseñado para ofrecer una formación rigurosa en los fundamentos del análisis estadístico y el modelamiento econométrico aplicado a las ciencias sociales. Aquí encontrarás las presentaciones de cada clase, materiales prácticos y recursos complementarios."
   },
   {
-    "objectID": "index.html#bienvenidoa",
-    "href": "index.html#bienvenidoa",
+    "objectID": "index.html#bienvenidaeo",
+    "href": "index.html#bienvenidaeo",
     "title": "Estadística y Econometría",
     "section": "",
     "text": "Este es el sitio web del curso Estadística y Econometría, un espacio diseñado para ofrecer una formación rigurosa en los fundamentos del análisis estadístico y el modelamiento econométrico aplicado a las ciencias sociales. Aquí encontrarás las presentaciones de cada clase, materiales prácticos y recursos complementarios."
@@ -21,18 +56,18 @@
     "text": "Descripción del curso\nEl curso aborda la estadística y la econometría como herramientas fundamentales para la investigación empírica. Se parte desde los cimientos —probabilidad, variables aleatorias y distribuciones— para construir progresivamente hacia técnicas de estimación, pruebas de hipótesis y modelos de regresión. El énfasis está puesto en la comprensión conceptual profunda, la derivación formal cuando es necesaria, y la interpretación sustantiva de los resultados.\nEste curso prioriza la teoría estadística: entender por qué los métodos funcionan, bajo qué supuestos operan, y cuáles son sus límites. No obstante, varios temas se ilustrarán con ejemplos empíricos, simulaciones y aplicaciones concretas; principalmente utilizando R como lenguaje de programación.\n\nObjetivos de aprendizaje\n\n\n\n\n\n\nNoteObjetivo general\n\n\n\nComprender los fundamentos teóricos de la estadística y la econometría, desarrollando la capacidad de seleccionar, aplicar e interpretar técnicas de estimación y modelamiento en el contexto de la investigación social.\n\n\nObjetivos específicos:\n\nComprender los conceptos de probabilidad, distribuciones y teoremas límite que sustentan la inferencia estadística.\nComprender las propiedades de los estimadores (insesgadez, eficiencia, consistencia) y sus implicancias prácticas.\nAbordar problemas como sesgo de selección, heterocedasticidad, multicolinealidad, endogeneidad y especificación incorrecta."
   },
   {
-    "objectID": "index.html#estructura-del-curso",
-    "href": "index.html#estructura-del-curso",
+    "objectID": "index.html#estructura-del-curso-provisorio",
+    "href": "index.html#estructura-del-curso-provisorio",
     "title": "Estadística y Econometría",
-    "section": "Estructura del curso",
-    "text": "Estructura del curso\nEl curso se organiza en clases semanales. Cada clase incluye una presentación teórica (tipo slides) y, cuando corresponde, un práctico aplicado.\n\n\n\nClase\nTema\n\n\n\n\n01\nFundamentos de Probabilidad\n\n\n02\nVariables Aleatorias y Distribuciones\n\n\n03\nDistribuciones Muestrales y Teorema Central del Límite\n\n\n04\nEstimación Puntual: Propiedades de los Estimadores\n\n\n05\nEstimación por Máxima Verosimilitud (MLE)\n\n\n06\nIntervalos de Confianza y Pruebas de Hipótesis\n\n\n07\nEl Modelo de Regresión Lineal Simple\n\n\n08\nMínimos Cuadrados Ordinarios: Derivación y Propiedades\n\n\n09\nRegresión Lineal Múltiple y Teorema de Gauss-Markov\n\n\n10\nInferencia en Regresión: Tests t, F y \\(R^2\\)\n\n\n11\nDiagnóstico de Modelos: Heterocedasticidad y Multicolinealidad\n\n\n12\nIntroducción a Variables Instrumentales y Endogeneidad"
+    "section": "Estructura del curso [PROVISORIO]",
+    "text": "Estructura del curso [PROVISORIO]\nEl curso se organiza en clases semanales. Cada clase incluye una presentación teórica (tipo slides) y, cuando corresponde, un práctico aplicado.\n\n\n\nClase\nTema\n\n\n\n\n01\nFundamentos de Probabilidad\n\n\n02\nVariables Aleatorias y Distribuciones\n\n\n03\nDistribuciones Muestrales y Teorema Central del Límite\n\n\n04\nEstimación Puntual: Propiedades de los Estimadores\n\n\n05\nEn evaluación (MLE o MCO)\n\n\n06\nIntervalos de Confianza y Pruebas de Hipótesis\n\n\n07\nEl Modelo de Regresión Lineal Simple\n\n\n08\nMínimos Cuadrados Ordinarios: Derivación y Propiedades\n\n\n09\nRegresión Lineal Múltiple y Teorema de Gauss-Markov\n\n\n10\nInferencia en Regresión: Tests t, F y \\(R^2\\)\n\n\n11\nDiagnóstico de Modelos: Heterocedasticidad y Multicolinealidad\n\n\n12\nIntroducción a Variables Instrumentales y Endogeneidad"
   },
   {
     "objectID": "index.html#información-del-curso",
     "href": "index.html#información-del-curso",
     "title": "Estadística y Econometría",
     "section": "Información del curso",
-    "text": "Información del curso\n\n\n\n\n\n\nNoteDetalles\n\n\n\n\nDocente: Fran Sofía Núñez Rebolledo\nContacto: fnunezre@fen.uchile.cl\nInstitución: Universidad de Chile / INE"
+    "text": "Información del curso\n\n\n\n\n\n\nNoteDetalles\n\n\n\n\nAutora: Fran Sofía Núñez Rebolledo\nContacto: fnunezre@fen.uchile.cl\nInstitución: Universidad de Chile / Instituto Nacional de Estadísticas"
   },
   {
     "objectID": "index.html#navegación",
@@ -42,310 +77,72 @@
     "text": "Navegación\nCada clase tiene su propia página con la presentación embebida. Puedes navegar las diapositivas directamente en el sitio o abrirlas en pantalla completa. Usa las flechas del teclado para avanzar entre slides.\n\n\n\n\n\n\nTipSobre las presentaciones\n\n\n\nLas slides están diseñadas para verse como presentaciones académicas (estilo Beamer) pero con la ventaja de ser interactivas y accesibles desde cualquier navegador. Incluyen fórmulas en \\(\\LaTeX\\), código en R, y gráficos embebidos."
   },
   {
-    "objectID": "weeks/week02/slides.html",
-    "href": "weeks/week02/slides.html",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "",
-    "text": "Variables aleatorias\nFunción de distribución y densidad\nEsperanza y varianza\nCovarianza y correlación\nDistribuciones fundamentales"
-  },
-  {
-    "objectID": "weeks/week02/slides.html#contenidos-de-hoy",
-    "href": "weeks/week02/slides.html#contenidos-de-hoy",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "",
-    "text": "Variables aleatorias\nFunción de distribución y densidad\nEsperanza y varianza\nCovarianza y correlación\nDistribuciones fundamentales"
-  },
-  {
-    "objectID": "weeks/week02/slides.html#definición",
-    "href": "weeks/week02/slides.html#definición",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Definición",
-    "text": "Definición\n\n\n\n\n\n\nNoteDefinición: Variable aleatoria\n\n\n\nUna variable aleatoria \\(X\\) es una función que asigna un número real a cada resultado del espacio muestral:\n\\[X: \\Omega \\longrightarrow \\mathbb{R}\\]\n\n\n. . .\nTipos:\n\nDiscreta: toma valores en un conjunto numerable. Ejemplo: \\(X\\) = número de hijos.\nContinua: toma valores en un intervalo de \\(\\mathbb{R}\\). Ejemplo: \\(X\\) = ingreso mensual.\n\n. . .\nEn econometría, las variables de interés (\\(Y_i\\), \\(X_i\\), \\(\\varepsilon_i\\)) son todas variables aleatorias. Tratarlas como tales es lo que nos permite hacer inferencia."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#función-de-distribución-acumulada-cdf",
-    "href": "weeks/week02/slides.html#función-de-distribución-acumulada-cdf",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Función de distribución acumulada (CDF)",
-    "text": "Función de distribución acumulada (CDF)\n\n\n\n\n\n\nNoteDefinición\n\n\n\nLa función de distribución acumulada (CDF) de \\(X\\) es:\n\\[F_X(x) = P(X \\leq x), \\quad \\forall x \\in \\mathbb{R}\\]\n\n\n. . .\nPropiedades:\n\n\\(0 \\leq F_X(x) \\leq 1\\)\n\\(F_X\\) es no decreciente\n\\(\\lim_{x \\to -\\infty} F_X(x) = 0\\) y \\(\\lim_{x \\to +\\infty} F_X(x) = 1\\)\n\\(P(a &lt; X \\leq b) = F_X(b) - F_X(a)\\)"
-  },
-  {
-    "objectID": "weeks/week02/slides.html#función-de-densidad-pdf",
-    "href": "weeks/week02/slides.html#función-de-densidad-pdf",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Función de densidad (PDF)",
-    "text": "Función de densidad (PDF)\nPara variables continuas, la función de densidad \\(f_X(x)\\) se define como:\n\\[f_X(x) = \\frac{dF_X(x)}{dx}\\]\n. . .\nDe modo que:\n\\[P(a \\leq X \\leq b) = \\int_a^b f_X(x) \\, dx\\]\n. . .\n\n\n\n\n\n\nImportant\n\n\n\nOjo: \\(f_X(x)\\) no es una probabilidad. Puede ser mayor que 1. Lo que sí se cumple es \\(f_X(x) \\geq 0\\) y \\(\\int_{-\\infty}^{+\\infty} f_X(x) \\, dx = 1\\)."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#esperanza-valor-esperado",
-    "href": "weeks/week02/slides.html#esperanza-valor-esperado",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Esperanza (valor esperado)",
-    "text": "Esperanza (valor esperado)\n\n\n\n\n\n\nNoteDefinición\n\n\n\n\\[E[X] = \\begin{cases} \\sum_x x \\cdot p(x) & \\text{si } X \\text{ es discreta} \\\\ \\int_{-\\infty}^{+\\infty} x \\cdot f_X(x) \\, dx & \\text{si } X \\text{ es continua} \\end{cases}\\]\n\n\n. . .\nPropiedades fundamentales:\n\nLinealidad: \\(E[aX + bY] = aE[X] + bE[Y]\\)\n\\(E[c] = c\\) para cualquier constante \\(c\\)\nSi \\(X \\geq 0\\), entonces \\(E[X] \\geq 0\\)\n\n. . .\nLa esperanza es el operador más importante de la estadística. En econometría, la esperanza condicional \\(E[Y|X]\\) es la función de regresión poblacional."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#varianza",
-    "href": "weeks/week02/slides.html#varianza",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Varianza",
-    "text": "Varianza\n\n\n\n\n\n\nNoteDefinición\n\n\n\n\\[\\text{Var}(X) = E\\left[(X - E[X])^2\\right] = E[X^2] - (E[X])^2\\]\n\n\n. . .\nPropiedades:\n\n\\(\\text{Var}(X) \\geq 0\\)\n\\(\\text{Var}(aX + b) = a^2 \\text{Var}(X)\\)\nSi \\(X\\) e \\(Y\\) son independientes: \\(\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\)\n\n. . .\nLa desviación estándar \\(\\sigma_X = \\sqrt{\\text{Var}(X)}\\) tiene las mismas unidades que \\(X\\)."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#covarianza",
-    "href": "weeks/week02/slides.html#covarianza",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Covarianza",
-    "text": "Covarianza\n\\[\\text{Cov}(X, Y) = E[(X - \\mu_X)(Y - \\mu_Y)] = E[XY] - E[X]E[Y]\\]\n. . .\nPropiedades:\n\n\\(\\text{Cov}(X, X) = \\text{Var}(X)\\)\n\\(\\text{Cov}(X, Y) = \\text{Cov}(Y, X)\\)\n\\(\\text{Cov}(aX, bY) = ab \\cdot \\text{Cov}(X, Y)\\)\nSi \\(X \\perp Y\\) (independientes), entonces \\(\\text{Cov}(X, Y) = 0\\)\n\n. . .\n\n\n\n\n\n\nImportant\n\n\n\nEl recíproco no es cierto: \\(\\text{Cov}(X,Y) = 0\\) no implica independencia. Solo implica ausencia de relación lineal."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#correlación",
-    "href": "weeks/week02/slides.html#correlación",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Correlación",
-    "text": "Correlación\nEl coeficiente de correlación de Pearson normaliza la covarianza:\n\\[\\rho_{XY} = \\frac{\\text{Cov}(X, Y)}{\\sigma_X \\cdot \\sigma_Y}, \\quad -1 \\leq \\rho \\leq 1\\]\n. . .\n\n\n\nValor de \\(\\rho\\)\nInterpretación\n\n\n\n\n\\(\\rho = 1\\)\nRelación lineal positiva perfecta\n\n\n\\(\\rho = 0\\)\nSin asociación lineal\n\n\n\\(\\rho = -1\\)\nRelación lineal negativa perfecta\n\n\n\n. . .\nEn regresión simple, \\(R^2 = \\rho_{XY}^2\\). Esta conexión la formalizaremos más adelante."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#la-distribución-normal",
-    "href": "weeks/week02/slides.html#la-distribución-normal",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "La distribución Normal",
-    "text": "La distribución Normal\n\n\n\n\n\n\nNoteDistribución Normal\n\n\n\nSi \\(X \\sim N(\\mu, \\sigma^2)\\), su densidad es:\n\\[f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}} \\exp\\left[-\\frac{1}{2\\sigma^2}(x - \\mu)^2\\right]\\]\n\n\n. . .\n¿Por qué es tan importante?\n\nEl Teorema Central del Límite garantiza que los promedios muestrales convergen a una Normal.\nBajo normalidad de los errores, el estimador OLS es idéntico al de máxima verosimilitud (MLE).\nLos tests \\(t\\) y \\(F\\) se derivan de ella."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#distribuciones-derivadas-de-la-normal",
-    "href": "weeks/week02/slides.html#distribuciones-derivadas-de-la-normal",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Distribuciones derivadas de la Normal",
-    "text": "Distribuciones derivadas de la Normal\nEstas distribuciones aparecen constantemente en inferencia:\n. . .\nChi-cuadrado: Si \\(Z_1, \\ldots, Z_k \\overset{iid}{\\sim} N(0,1)\\): \\[\\sum_{i=1}^{k} Z_i^2 \\sim \\chi^2_k\\]\n. . .\nt de Student: Si \\(Z \\sim N(0,1)\\) y \\(V \\sim \\chi^2_k\\) independientes: \\[T = \\frac{Z}{\\sqrt{V/k}} \\sim t_k\\]\n. . .\nF de Fisher: Si \\(V_1 \\sim \\chi^2_{k_1}\\) y \\(V_2 \\sim \\chi^2_{k_2}\\) independientes: \\[F = \\frac{V_1/k_1}{V_2/k_2} \\sim F_{k_1, k_2}\\]"
-  },
-  {
-    "objectID": "weeks/week02/slides.html#dónde-aparecen-estas-distribuciones",
-    "href": "weeks/week02/slides.html#dónde-aparecen-estas-distribuciones",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "¿Dónde aparecen estas distribuciones?",
-    "text": "¿Dónde aparecen estas distribuciones?\n\n\n\n\n\n\n\nDistribución\nUso en econometría\n\n\n\n\n\\(N(\\mu, \\sigma^2)\\)\nDistribución de \\(\\hat{\\beta}\\) bajo normalidad\n\n\n\\(\\chi^2_k\\)\nTest de Wald, test de heterocedasticidad\n\n\n\\(t_k\\)\nTest de significancia individual de \\(\\hat{\\beta}_j\\)\n\n\n\\(F_{k_1, k_2}\\)\nTest de significancia conjunta, test de restricciones\n\n\n\n. . .\nEn la próxima clase veremos cómo el Teorema Central del Límite justifica el uso de estas distribuciones incluso cuando los datos no son normales."
-  },
-  {
-    "objectID": "weeks/week02/slides.html#resumen",
-    "href": "weeks/week02/slides.html#resumen",
-    "title": "Clase 02: Variables Aleatorias y Distribuciones",
-    "section": "Resumen",
-    "text": "Resumen\n\n\nHoy cubrimos:\n\nVariables aleatorias\nCDF y PDF\n\\(E[X]\\), \\(\\text{Var}(X)\\), \\(\\text{Cov}(X,Y)\\)\nDistribuciones \\(N\\), \\(\\chi^2\\), \\(t\\), \\(F\\)\n\n\nPróxima clase:\n\nDistribuciones muestrales\nLey de los Grandes Números\nTeorema Central del Límite\nConvergencia en probabilidad"
-  },
-  {
-    "objectID": "weeks/week01/slides.html",
-    "href": "weeks/week01/slides.html",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "",
-    "text": "¿Por qué probabilidad?\nEspacios muestrales y eventos\nAxiomas de probabilidad\nProbabilidad condicional\nTeorema de Bayes\nIndependencia"
-  },
-  {
-    "objectID": "weeks/week01/slides.html#contenidos-de-hoy",
-    "href": "weeks/week01/slides.html#contenidos-de-hoy",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "",
-    "text": "¿Por qué probabilidad?\nEspacios muestrales y eventos\nAxiomas de probabilidad\nProbabilidad condicional\nTeorema de Bayes\nIndependencia"
-  },
-  {
-    "objectID": "weeks/week01/slides.html#la-probabilidad-como-lenguaje-de-la-incertidumbre",
-    "href": "weeks/week01/slides.html#la-probabilidad-como-lenguaje-de-la-incertidumbre",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "La probabilidad como lenguaje de la incertidumbre",
-    "text": "La probabilidad como lenguaje de la incertidumbre\nLa estadística y la econometría se ocupan de extraer conclusiones a partir de datos imperfectos. Los datos son imperfectos porque provienen de muestras finitas, contienen errores de medición, y reflejan procesos inherentemente aleatorios.\n. . .\nLa teoría de probabilidades nos da el lenguaje formal para cuantificar esa incertidumbre. Sin ella, no podríamos definir qué significa que un estimador sea “bueno”, ni construir intervalos de confianza, ni evaluar hipótesis.\n. . .\n\n“Probability is the very guide of life.” — Cicerón (vía Joseph Butler)"
-  },
-  {
-    "objectID": "weeks/week01/slides.html#de-la-probabilidad-a-la-econometría",
-    "href": "weeks/week01/slides.html#de-la-probabilidad-a-la-econometría",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "De la probabilidad a la econometría",
-    "text": "De la probabilidad a la econometría\nEl camino que recorreremos en este curso sigue una lógica acumulativa:\n\\[\n\\text{Probabilidad} \\longrightarrow \\text{Distribuciones} \\longrightarrow \\text{Estimación} \\longrightarrow \\text{Regresión}\n\\]\n. . .\nCada paso depende del anterior. No se puede entender por qué \\(\\hat{\\beta}_{OLS}\\) es insesgado sin saber qué es una esperanza condicional. No se puede interpretar un \\(p\\)-valor sin entender distribuciones muestrales."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#definiciones-fundamentales",
-    "href": "weeks/week01/slides.html#definiciones-fundamentales",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Definiciones fundamentales",
-    "text": "Definiciones fundamentales\n\n\n\n\n\n\nNoteDefinición: Experimento aleatorio\n\n\n\nUn experimento aleatorio es un proceso cuyo resultado no puede predecirse con certeza antes de realizarlo.\n\n\n. . .\n\n\n\n\n\n\nNoteDefinición: Espacio muestral\n\n\n\nEl espacio muestral \\(\\Omega\\) es el conjunto de todos los resultados posibles de un experimento aleatorio.\n\n\n. . .\nEjemplos:\n\nLanzar un dado: \\(\\Omega = \\{1, 2, 3, 4, 5, 6\\}\\)\nIngreso de un hogar: \\(\\Omega = [0, +\\infty)\\)\nRespuesta a encuesta (Likert 1–5): \\(\\Omega = \\{1, 2, 3, 4, 5\\}\\)"
-  },
-  {
-    "objectID": "weeks/week01/slides.html#eventos",
-    "href": "weeks/week01/slides.html#eventos",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Eventos",
-    "text": "Eventos\nUn evento \\(A\\) es un subconjunto del espacio muestral: \\(A \\subseteq \\Omega\\).\n. . .\nOperaciones con eventos:\n\n\n\nOperación\nNotación\nSignificado\n\n\n\n\nUnión\n\\(A \\cup B\\)\nOcurre \\(A\\) o \\(B\\) (o ambos)\n\n\nIntersección\n\\(A \\cap B\\)\nOcurren \\(A\\) y \\(B\\) simultáneamente\n\n\nComplemento\n\\(A^c\\)\nNo ocurre \\(A\\)\n\n\nDiferencia\n\\(A \\setminus B\\)\nOcurre \\(A\\) pero no \\(B\\)\n\n\n\n. . .\nDos eventos son mutuamente excluyentes si \\(A \\cap B = \\emptyset\\)."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#los-tres-axiomas-de-kolmogorov-1933",
-    "href": "weeks/week01/slides.html#los-tres-axiomas-de-kolmogorov-1933",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Los tres axiomas de Kolmogorov (1933)",
-    "text": "Los tres axiomas de Kolmogorov (1933)\nUna función de probabilidad \\(P\\) asigna a cada evento \\(A\\) un número real \\(P(A)\\) que satisface:\n. . .\n\n\nAxioma 1 (No negatividad): \\[P(A) \\geq 0 \\quad \\forall A\\]\nAxioma 2 (Normalización): \\[P(\\Omega) = 1\\]\n\nAxioma 3 (Aditividad numerable):\nSi \\(A_1, A_2, \\ldots\\) son mutuamente excluyentes: \\[P\\left(\\bigcup_{i=1}^{\\infty} A_i\\right) = \\sum_{i=1}^{\\infty} P(A_i)\\]\n\n\n. . .\nDe estos tres axiomas se derivan todas las propiedades de la probabilidad que usaremos en el curso."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#consecuencias-de-los-axiomas",
-    "href": "weeks/week01/slides.html#consecuencias-de-los-axiomas",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Consecuencias de los axiomas",
-    "text": "Consecuencias de los axiomas\nA partir de los axiomas se puede demostrar:\n\\[P(A^c) = 1 - P(A)\\]\n. . .\n\\[P(\\emptyset) = 0\\]\n. . .\n\\[P(A \\cup B) = P(A) + P(B) - P(A \\cap B)\\]\n. . .\n\\[\\text{Si } A \\subseteq B, \\text{ entonces } P(A) \\leq P(B)\\]\n. . .\n\n\n\n\n\n\nTipEjercicio para pensar\n\n\n\n¿Puedes demostrar \\(P(A^c) = 1 - P(A)\\) usando solo los tres axiomas?\nPista: Note que \\(A\\) y \\(A^c\\) son mutuamente excluyentes, y que \\(A \\cup A^c = \\Omega\\)."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#definición",
-    "href": "weeks/week01/slides.html#definición",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Definición",
-    "text": "Definición\n\n\n\n\n\n\nNoteDefinición: Probabilidad condicional\n\n\n\nLa probabilidad de \\(A\\) dado que \\(B\\) ha ocurrido se define como:\n\\[P(A|B) = \\frac{P(A \\cap B)}{P(B)}, \\quad P(B) &gt; 0\\]\n\n\n. . .\nInterpretación: Condicionar en \\(B\\) equivale a restringir el espacio muestral a \\(B\\), y evaluar qué proporción de \\(B\\) está ocupada por \\(A\\).\n. . .\nEjemplo sociológico: Sea \\(A\\) = “tener educación universitaria” y \\(B\\) = “pertenecer al quintil más rico”.\n\\[P(\\text{universitario} \\mid \\text{quintil V}) \\neq P(\\text{universitario})\\]\nEsta desigualdad es, en esencia, una medida de desigualdad educativa."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#regla-de-la-multiplicación",
-    "href": "weeks/week01/slides.html#regla-de-la-multiplicación",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Regla de la multiplicación",
-    "text": "Regla de la multiplicación\nDe la definición de probabilidad condicional se obtiene directamente:\n\\[P(A \\cap B) = P(A|B) \\cdot P(B) = P(B|A) \\cdot P(A)\\]\n. . .\nPara tres eventos: \\[P(A \\cap B \\cap C) = P(A) \\cdot P(B|A) \\cdot P(C|A \\cap B)\\]\n. . .\nEsta regla es la base de la factorización de verosimilitudes que veremos cuando estudiemos MLE."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#ley-de-probabilidad-total",
-    "href": "weeks/week01/slides.html#ley-de-probabilidad-total",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Ley de probabilidad total",
-    "text": "Ley de probabilidad total\nSi \\(B_1, B_2, \\ldots, B_k\\) forman una partición de \\(\\Omega\\) (mutuamente excluyentes y exhaustivos):\n\\[P(A) = \\sum_{i=1}^{k} P(A|B_i) \\cdot P(B_i)\\]\n. . .\nEjemplo: ¿Cuál es la probabilidad de estar desempleado?\n\\[P(\\text{desempleo}) = \\sum_{j=1}^{J} P(\\text{desempleo} \\mid \\text{región}_j) \\cdot P(\\text{región}_j)\\]\nLa probabilidad total “descompone” un evento complejo en piezas más manejables."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#formulación",
-    "href": "weeks/week01/slides.html#formulación",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Formulación",
-    "text": "Formulación\n\n\n\n\n\n\nImportantTeorema de Bayes\n\n\n\n\\[P(B_i|A) = \\frac{P(A|B_i) \\cdot P(B_i)}{\\sum_{j=1}^{k} P(A|B_j) \\cdot P(B_j)}\\]\n\n\n. . .\nEl teorema permite invertir condicionales: si conocemos \\(P(A|B)\\), podemos obtener \\(P(B|A)\\).\n. . .\nTerminología bayesiana:\n\n\n\n\n\n\n\nTérmino\nSignificado\n\n\n\n\n\\(P(B_i)\\)\nPrior — creencia antes de observar datos\n\n\n\\(P(A \\mid B_i)\\)\nVerosimilitud — probabilidad de los datos dado el parámetro\n\n\n\\(P(B_i \\mid A)\\)\nPosterior — creencia actualizada tras observar datos"
-  },
-  {
-    "objectID": "weeks/week01/slides.html#ejemplo-diagnóstico-y-falsos-positivos",
-    "href": "weeks/week01/slides.html#ejemplo-diagnóstico-y-falsos-positivos",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Ejemplo: Diagnóstico y falsos positivos",
-    "text": "Ejemplo: Diagnóstico y falsos positivos\nUn test diagnóstico tiene sensibilidad del 95% y especificidad del 90%. La prevalencia de la enfermedad es del 1%.\n. . .\n\\[P(\\text{enfermo} \\mid \\text{test}+) = \\frac{0.95 \\times 0.01}{0.95 \\times 0.01 + 0.10 \\times 0.99}\\]\n. . .\n\\[= \\frac{0.0095}{0.0095 + 0.099} = \\frac{0.0095}{0.1085} \\approx 0.088\\]\n. . .\n\n\n\n\n\n\nImportant\n\n\n\nAun con un test “bueno”, un resultado positivo solo implica un 8.8% de probabilidad de estar enfermo cuando la prevalencia es baja. Este resultado es contraintuitivo y tiene profundas implicancias para política pública."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#definición-formal",
-    "href": "weeks/week01/slides.html#definición-formal",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Definición formal",
-    "text": "Definición formal\n\n\n\n\n\n\nNoteDefinición: Independencia\n\n\n\nDos eventos \\(A\\) y \\(B\\) son independientes si y solo si:\n\\[P(A \\cap B) = P(A) \\cdot P(B)\\]\nEquivalentemente: \\(P(A|B) = P(A)\\)\n\n\n. . .\nOjo: Independencia \\(\\neq\\) mutua exclusividad. Si \\(A\\) y \\(B\\) son mutuamente excluyentes y ambos tienen probabilidad positiva, entonces son dependientes (saber que ocurrió \\(A\\) te dice con certeza que no ocurrió \\(B\\))."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#por-qué-importa-la-independencia-en-econometría",
-    "href": "weeks/week01/slides.html#por-qué-importa-la-independencia-en-econometría",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "¿Por qué importa la independencia en econometría?",
-    "text": "¿Por qué importa la independencia en econometría?\nEl supuesto de independencia (o sus versiones más débiles) aparece en toda la econometría:\n. . .\n\nMuestreo aleatorio: las observaciones \\((X_i, Y_i)\\) son i.i.d. (independientes e idénticamente distribuidas).\n\n. . .\n\nExogeneidad: \\(E[\\varepsilon_i | X_i] = 0\\), que es una forma de independencia condicional entre el error y los regresores.\n\n. . .\n\nIdentificación causal: la asignación al tratamiento es independiente de los resultados potenciales.\n\n. . .\nCuando estos supuestos fallan, los estimadores estándar pierden sus buenas propiedades. Gran parte de la econometría avanzada consiste en lidiar con la falta de independencia."
-  },
-  {
-    "objectID": "weeks/week01/slides.html#resumen-de-la-clase",
-    "href": "weeks/week01/slides.html#resumen-de-la-clase",
-    "title": "Clase 01: Fundamentos de Probabilidad",
-    "section": "Resumen de la clase",
-    "text": "Resumen de la clase\n\n\nConceptos clave:\n\nEspacio muestral \\(\\Omega\\)\nAxiomas de Kolmogorov\nProbabilidad condicional\nTeorema de Bayes\nIndependencia estadística\n\n\nPara la próxima clase:\n\nVariables aleatorias (discretas y continuas)\nFunción de densidad y distribución\nEsperanza, varianza, covarianza\nDistribuciones Normal, \\(t\\), \\(\\chi^2\\), \\(F\\)\n\n\n\n. . .\n\n\n\n\n\n\nTipLectura sugerida\n\n\n\nCasella & Berger (2002), Capítulo 1, secciones 1.1–1.3."
-  },
-  {
-    "objectID": "syllabus.html",
-    "href": "syllabus.html",
-    "title": "📓 Programa del Curso",
-    "section": "",
-    "text": "Este curso proporciona una formación sistemática en los fundamentos de la estadística matemática y la econometría, con énfasis en la comprensión teórica de los métodos y su aplicación en ciencias sociales. El enfoque es acumulativo: cada clase construye sobre los conceptos de la anterior."
-  },
-  {
-    "objectID": "syllabus.html#descripción-general",
-    "href": "syllabus.html#descripción-general",
-    "title": "📓 Programa del Curso",
-    "section": "",
-    "text": "Este curso proporciona una formación sistemática en los fundamentos de la estadística matemática y la econometría, con énfasis en la comprensión teórica de los métodos y su aplicación en ciencias sociales. El enfoque es acumulativo: cada clase construye sobre los conceptos de la anterior."
-  },
-  {
-    "objectID": "syllabus.html#contenidos-por-unidad",
-    "href": "syllabus.html#contenidos-por-unidad",
-    "title": "📓 Programa del Curso",
-    "section": "Contenidos por Unidad",
-    "text": "Contenidos por Unidad\n\nUnidad I: Fundamentos Probabilísticos (Clases 1–3)\nLa primera unidad sienta las bases matemáticas necesarias. Se revisan los axiomas de probabilidad, las variables aleatorias discretas y continuas, sus momentos (esperanza, varianza, covarianza), y las distribuciones más relevantes para la inferencia estadística. Se cierra con el Teorema Central del Límite y su importancia para la construcción de estimadores.\nTemas clave: espacios muestrales, probabilidad condicional y Bayes, funciones de densidad y distribución, distribuciones Normal, \\(t\\), \\(\\chi^2\\) y \\(F\\), convergencia en probabilidad y en distribución.\n\n\nUnidad II: Teoría de la Estimación (Clases 4–6)\nLa segunda unidad aborda el problema de la estimación de parámetros. Se estudian las propiedades deseables de un estimador (insesgadez, eficiencia, consistencia, suficiencia), y se introduce la estimación por máxima verosimilitud (MLE) como método general. Luego se desarrollan los intervalos de confianza y las pruebas de hipótesis dentro del marco de Neyman-Pearson.\nTemas clave: sesgo y error cuadrático medio, información de Fisher, cota de Cramér-Rao, función de verosimilitud, lema de Neyman-Pearson, errores tipo I y II, potencia de un test.\n\n\nUnidad III: Modelos de Regresión (Clases 7–10)\nEl corazón econométrico del curso. Se parte del modelo de regresión lineal simple, se deriva el estimador OLS por minimización de la suma de cuadrados de los residuos, y se demuestra que bajo los supuestos clásicos es BLUE (Teorema de Gauss-Markov). Se extiende a regresión múltiple y se desarrolla la inferencia sobre los coeficientes.\nTemas clave: supuestos del modelo clásico de regresión lineal, derivación matricial de OLS, \\(\\hat{\\beta} = (X'X)^{-1}X'Y\\), propiedades en muestras finitas y asintóticas, coeficiente de determinación \\(R^2\\), test \\(t\\) individual, test \\(F\\) conjunto, variables dummy.\n\n\nUnidad IV: Diagnóstico y Extensiones (Clases 11–12)\nLa última unidad problematiza los supuestos del modelo clásico. Se estudian las consecuencias de su violación —heterocedasticidad, multicolinealidad, endogeneidad— y se introducen soluciones como errores robustos, variables instrumentales y el estimador de mínimos cuadrados en dos etapas (2SLS).\nTemas clave: tests de White y Breusch-Pagan, errores estándar de Huber-White, factor de inflación de varianza (VIF), sesgo por variable omitida, instrumentos y condiciones de relevancia/exclusión."
-  },
-  {
-    "objectID": "syllabus.html#bibliografía-principal",
-    "href": "syllabus.html#bibliografía-principal",
-    "title": "📓 Programa del Curso",
-    "section": "Bibliografía Principal",
-    "text": "Bibliografía Principal\n\nWooldridge, J. M. (2015). Introductory Econometrics: A Modern Approach. Cengage Learning.\nStock, J. H. & Watson, M. W. (2020). Introduction to Econometrics. Pearson.\nHansen, B. E. (2022). Econometrics. Princeton University Press. Disponible en línea.\nCasella, G. & Berger, R. L. (2002). Statistical Inference. Duxbury.\nAngrist, J. D. & Pischke, J.-S. (2009). Mostly Harmless Econometrics. Princeton University Press."
-  },
-  {
-    "objectID": "syllabus.html#bibliografía-complementaria",
-    "href": "syllabus.html#bibliografía-complementaria",
-    "title": "📓 Programa del Curso",
-    "section": "Bibliografía Complementaria",
-    "text": "Bibliografía Complementaria\n\nGujarati, D. & Porter, D. (2009). Econometría. McGraw-Hill.\nCameron, A. C. & Trivedi, P. K. (2005). Microeconometrics: Methods and Applications. Cambridge.\nWickham, H., Çetinkaya-Rundel, M. & Grolemund, G. (2023). R para Ciencia de Datos (2ª ed.)."
-  },
-  {
     "objectID": "recursos.html",
     "href": "recursos.html",
-    "title": "📚 Recursos",
+    "title": "🐒 Recursos",
     "section": "",
     "text": "Hansen, B. E. (2022). Econometrics. Princeton University Press. — Tratamiento riguroso y moderno; disponible gratis en el sitio del autor.\nWickham, H. et al. (2023). R para Ciencia de Datos. — Referencia esencial para manejo de datos en R."
   },
   {
     "objectID": "recursos.html#libros-de-referencia-acceso-abierto",
     "href": "recursos.html#libros-de-referencia-acceso-abierto",
-    "title": "📚 Recursos",
+    "title": "🐒 Recursos",
     "section": "",
     "text": "Hansen, B. E. (2022). Econometrics. Princeton University Press. — Tratamiento riguroso y moderno; disponible gratis en el sitio del autor.\nWickham, H. et al. (2023). R para Ciencia de Datos. — Referencia esencial para manejo de datos en R."
   },
   {
     "objectID": "recursos.html#software",
     "href": "recursos.html#software",
-    "title": "📚 Recursos",
+    "title": "🐒 Recursos",
     "section": "Software",
     "text": "Software\nPara las aplicaciones prácticas se utiliza R y RStudio:\n\nDescargar R\nDescargar RStudio\nInstalar Quarto (para documentos reproducibles)"
   },
   {
     "objectID": "recursos.html#paquetes-de-r-recomendados",
     "href": "recursos.html#paquetes-de-r-recomendados",
-    "title": "📚 Recursos",
+    "title": "🐒 Recursos",
     "section": "Paquetes de R recomendados",
     "text": "Paquetes de R recomendados\ninstall.packages(c(\n  \"tidyverse\",    # Manipulación y visualización de datos\n  \"estimatr\",     # Regresión con errores robustos\n  \"modelsummary\", # Tablas de regresión\n  \"fixest\",       # Modelos de efectos fijos (eficiente)\n  \"ivreg\",        # Variables instrumentales\n  \"car\",          # Diagnóstico de regresión\n  \"lmtest\",       # Tests de especificación\n  \"sandwich\",     # Errores estándar robustos\n  \"broom\"         # Tidying de modelos\n))"
   },
   {
     "objectID": "recursos.html#recursos-de-latex-y-notación",
     "href": "recursos.html#recursos-de-latex-y-notación",
-    "title": "📚 Recursos",
+    "title": "🐒 Recursos",
     "section": "Recursos de \\(\\LaTeX\\) y notación",
     "text": "Recursos de \\(\\LaTeX\\) y notación\nSi no estás familiarizado/a con la notación matemática usada en las slides, estos recursos pueden ayudar:\n\nDetexify — Dibuja un símbolo y encuentra su comando LaTeX.\nLaTeX Cheat Sheet — Referencia rápida de símbolos y comandos."
   },
   {
     "objectID": "recursos.html#canales-de-apoyo",
     "href": "recursos.html#canales-de-apoyo",
-    "title": "📚 Recursos",
+    "title": "🐒 Recursos",
     "section": "Canales de apoyo",
     "text": "Canales de apoyo\n\n\n\n\n\n\nTipContacto\n\n\n\nPara consultas sobre el curso: fransofia.nr@gmail.com"
   },
   {
     "objectID": "weeks/week01/page.html",
     "href": "weeks/week01/page.html",
-    "title": "🗓️ Clase 01: Fundamentos de Probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad [PLANTILLA]",
     "section": "",
     "text": "En esta primera clase se introducen los conceptos fundamentales de la teoría de probabilidades que serán la base de todo el curso. Revisaremos los axiomas de Kolmogorov, la probabilidad condicional, el Teorema de Bayes, y la noción de independencia estadística. Estos conceptos, que pueden parecer abstractos al principio, son el andamiaje sobre el cual se construyen los estimadores, las pruebas de hipótesis y los modelos de regresión que veremos más adelante."
   },
   {
     "objectID": "weeks/week01/page.html#presentación",
     "href": "weeks/week01/page.html#presentación",
-    "title": "🗓️ Clase 01: Fundamentos de Probabilidad",
-    "section": "👨‍🏫 Presentación",
-    "text": "👨‍🏫 Presentación\nPuedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic aquí para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar."
+    "title": "Clase 01: Fundamentos de Probabilidad [PLANTILLA]",
+    "section": "🦦 Presentación",
+    "text": "🦦 Presentación\nPuedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic aquí para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar."
   },
   {
     "objectID": "weeks/week01/page.html#lecturas-recomendadas",
     "href": "weeks/week01/page.html#lecturas-recomendadas",
-    "title": "🗓️ Clase 01: Fundamentos de Probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad [PLANTILLA]",
     "section": "📚 Lecturas recomendadas",
     "text": "📚 Lecturas recomendadas\nPara acompañar los contenidos de esta clase:\n\nCasella, G. & Berger, R. L. (2002). Statistical Inference, Capítulo 1: Probability Theory.\nWooldridge, J. M. (2015). Introductory Econometrics, Apéndice B: Fundamentos de Probabilidad.\nHansen, B. E. (2022). Econometrics, Capítulo 2."
   },
   {
     "objectID": "weeks/week01/page.html#dudas",
     "href": "weeks/week01/page.html#dudas",
-    "title": "🗓️ Clase 01: Fundamentos de Probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad [PLANTILLA]",
     "section": "📟 Dudas",
     "text": "📟 Dudas\nSi tienes preguntas sobre el material, no dudes en escribir a fransofia.nr@gmail.com."
   },
@@ -376,19 +173,5 @@
     "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
     "section": "📟 Dudas",
     "text": "📟 Dudas\nPara consultas: fransofia.nr@gmail.com"
-  },
-  {
-    "objectID": "index.html#bienvenidaeo",
-    "href": "index.html#bienvenidaeo",
-    "title": "Estadística y Econometría",
-    "section": "",
-    "text": "Este es el sitio web del curso Estadística y Econometría, un espacio diseñado para ofrecer una formación rigurosa en los fundamentos del análisis estadístico y el modelamiento econométrico aplicado a las ciencias sociales. Aquí encontrarás las presentaciones de cada clase, materiales prácticos y recursos complementarios."
-  },
-  {
-    "objectID": "index.html#estructura-del-curso-provisorio",
-    "href": "index.html#estructura-del-curso-provisorio",
-    "title": "Estadística y Econometría",
-    "section": "Estructura del curso [PROVISORIO]",
-    "text": "Estructura del curso [PROVISORIO]\nEl curso se organiza en clases semanales. Cada clase incluye una presentación teórica (tipo slides) y, cuando corresponde, un práctico aplicado.\n\n\n\nClase\nTema\n\n\n\n\n01\nFundamentos de Probabilidad\n\n\n02\nVariables Aleatorias y Distribuciones\n\n\n03\nDistribuciones Muestrales y Teorema Central del Límite\n\n\n04\nEstimación Puntual: Propiedades de los Estimadores\n\n\n05\nEn evaluación (MLE o MCO)\n\n\n06\nIntervalos de Confianza y Pruebas de Hipótesis\n\n\n07\nEl Modelo de Regresión Lineal Simple\n\n\n08\nMínimos Cuadrados Ordinarios: Derivación y Propiedades\n\n\n09\nRegresión Lineal Múltiple y Teorema de Gauss-Markov\n\n\n10\nInferencia en Regresión: Tests t, F y \\(R^2\\)\n\n\n11\nDiagnóstico de Modelos: Heterocedasticidad y Multicolinealidad\n\n\n12\nIntroducción a Variables Instrumentales y Endogeneidad"
   }
 ]

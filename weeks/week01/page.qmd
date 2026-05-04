@@ -1,5 +1,5 @@
 ---
-title: "Clase 01: Fundamentos de Probabilidad"
+title: "Clase 01: Fundamentos de Probabilidad [PLANTILLA]"
 author: "Fran Sofía Núñez Rebolledo"
 ---
 

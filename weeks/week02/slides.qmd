@@ -1,8 +1,8 @@
 ---
-title: "Clase 02: Variables Aleatorias y Distribuciones"
+title: "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]"
 subtitle: "Estadística y Econometría"
-author: "[Fran Sofía Núñez Rebolledo](mailto:fransofia.nr@gmail.com)"
-institute: "Universidad de Chile / INE"
+author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezre@fen.uchile.cl)"
+institute: "UCH / INE"
 date: today
 format:
   revealjs:

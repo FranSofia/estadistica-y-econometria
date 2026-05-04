@@ -1,8 +1,8 @@
 ---
-title: "Clase 01: Fundamentos de Probabilidad"
+title: "Clase 01: Fundamentos de Probabilidad [PLANTILLAS]"
 subtitle: "Estadística y Econometría"
-author: "[Fran Sofía Núñez Rebolledo](mailto:fransofia.nr@gmail.com)"
-institute: "Universidad de Chile / INE"
+author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezr@fen.uchile.cl)"
+institute: "UCH / INE"
 date: today
 format:
   revealjs:
