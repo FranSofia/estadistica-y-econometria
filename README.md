@@ -85,5 +85,5 @@ Este material está bajo licencia [CC BY-SA 4.0](https://creativecommons.org/lic
 ## Contacto
 
 **Fran Sofía Núñez Rebolledo**  
-fransofia.nr@gmail.com  
-Universidad de Chile / INE
+fnunezre@fen.uchile.cl
+Universidad de Chile / Instituto Nacional de Estadísticas
