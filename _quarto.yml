@@ -8,7 +8,7 @@ website:
   navbar:
     background: "#69000C"
     foreground: "#ffffff"
-    logo: figures/logos/logo-curso.png
+    logo: figures/logos/logo-curso2.png
     left:
       - text: "🏠 Inicio"
         href: index.qmd

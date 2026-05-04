@@ -1,11 +1,12 @@
 ---
 title: "Estadística y Econometría"
-subtitle: "Curso de Fundamentos Estadísticos y Econométrico"
+subtitle: "Curso de Fundamentos Estadísticos y Econométricos"
 ---
 
 ## ¡Bienvenida/e/o!
 
 Este es el sitio web del curso **Estadística y Econometría**, un espacio diseñado para ofrecer una formación rigurosa en los fundamentos del análisis estadístico y el modelamiento econométrico aplicado a las ciencias sociales. Aquí encontrarás las presentaciones de cada clase, materiales prácticos y recursos complementarios.
+
 
 ## Descripción del curso
 
