@@ -103,28 +103,17 @@ $code-block-font-size: 0.65em;
   color: white;
 }
 
-// Title slide
-.reveal .slides > section.title-slide {
-  background-color: $mDarkTeal;
-  
-  h1 {
-    color: white;
-    font-size: 1.6em;
-    font-weight: 700;
-    margin-bottom: 0.3em;
-  }
-  
-  .subtitle {
-    color: $mAccent;
-    font-size: 0.75em;
-    font-weight: 400;
-  }
-  
-  .author, .institute, .date {
-    color: rgba(white, 0.85);
-    font-size: 0.6em;
-    font-weight: 300;
-  }
+// Title slide 
+.reveal .slides section.title-slide {
+  background-color: $mDarkTeal !important;
+}
+
+.reveal .title-slide .subtitle,
+.reveal .title-slide .author,
+.reveal .title-slide .institute,
+.reveal .title-slide .date,
+.reveal .title-slide a {
+  color: rgba(255, 255, 255, 0.85) !important;
 }
 
 // ============================================================
