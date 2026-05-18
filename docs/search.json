@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "weeks/week01/slides.html#references",
+    "href": "weeks/week01/slides.html#references",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Para revisar",
+    "text": "Para revisar\n\n\n\n\n\n\nLecturas sugeridas\n\n\n\nDeGroot & Schervish, Capítulos 1 y 2.\nHansen, Probability and Statistics for Economists, Capítulo 1.\nCanavos, Probabilidad y Estadística, Capítulo 3.\n\n\n\n\n\n\n\n\nCanavos, G. C. (1988). Probabilidad y estadística. Aplicaciones y métodos. McGraw-Hill. https://gsosa61.wordpress.com/wp-content/uploads/2008/03/10-canavos-g-probabilidad-y-estadistica-aplicaciones-y-metodos.pdf\n\n\nDeGroot, M., & Schervish, M. (2014). Probability and statistics. Pearson Education Limited.\n\n\nHansen, B. E. (2021). Introduction to econometrics. University of Wisconsin.\n\n\nHansen, B. E. (2022). Probability and statistics for economist. Princeton University Press."
+  },
+  {
     "objectID": "syllabus.html",
     "href": "syllabus.html",
     "title": "📓 Programa del Curso [PROVISORIO]",
@@ -81,14 +88,21 @@
     "href": "recursos.html",
     "title": "🐒 Recursos",
     "section": "",
-    "text": "Hansen, B. E. (2021a). Introduction to Econometrics. University of Wisconsin.\nHansen, B. E. (2021b). Econometrics. University of Wisconsin.\nWooldridge, J.M (2010). Introducción a la econometría. Un enfoque moderno. Cengage Learning.\nCunningham, S. (2021). Causal Inference. The Mixtape. Yale University Press.\nAngrist, J. D. y Pischke, J-S. (2008). *Mostly Harmless Econometrics: An Empiricist s Companion*. Princeton University Press\nWickham, H. et al. (2023). R para Ciencia de Datos.\nFernández-Avilés, G. y Montero, J.M. (Eds.) (2024) Fundamentos de ciencia de datos con R. McGraw-Hill"
+    "text": "Hansen, B. E. (2021a). Introduction to Econometrics. University of Wisconsin.\nHansen, B. E. (2021b). Econometrics. University of Wisconsin.\nDeGroot, Morris H, Schervish, Mark J. (2012). Probability and Statistics. Fourth Edition. Pearson Education.\nWooldridge, J.M (2010). Introducción a la econometría. Un enfoque moderno. Cengage Learning.\nCunningham, S. (2021). Causal Inference. The Mixtape. Yale University Press.\nAngrist, J. D. y Pischke, J-S. (2008). *Mostly Harmless Econometrics: An Empiricist s Companion*. Princeton University Press\nWickham, H. et al. (2023). R para Ciencia de Datos.\nFernández-Avilés, G. y Montero, J.M. (Eds.) (2024) Fundamentos de ciencia de datos con R. McGraw-Hill"
   },
   {
-    "objectID": "recursos.html#libros-de-referencia-acceso-abierto",
-    "href": "recursos.html#libros-de-referencia-acceso-abierto",
+    "objectID": "recursos.html#libros-de-referencia",
+    "href": "recursos.html#libros-de-referencia",
     "title": "🐒 Recursos",
     "section": "",
-    "text": "Hansen, B. E. (2022). Econometrics. Princeton University Press. — Tratamiento riguroso y moderno; disponible gratis en el sitio del autor.\nWickham, H. et al. (2023). R para Ciencia de Datos. — Referencia esencial para manejo de datos en R."
+    "text": "Hansen, B. E. (2021a). Introduction to Econometrics. University of Wisconsin.\nHansen, B. E. (2021b). Econometrics. University of Wisconsin.\nDeGroot, Morris H, Schervish, Mark J. (2012). Probability and Statistics. Fourth Edition. Pearson Education.\nWooldridge, J.M (2010). Introducción a la econometría. Un enfoque moderno. Cengage Learning.\nCunningham, S. (2021). Causal Inference. The Mixtape. Yale University Press.\nAngrist, J. D. y Pischke, J-S. (2008). *Mostly Harmless Econometrics: An Empiricist s Companion*. Princeton University Press\nWickham, H. et al. (2023). R para Ciencia de Datos.\nFernández-Avilés, G. y Montero, J.M. (Eds.) (2024) Fundamentos de ciencia de datos con R. McGraw-Hill"
+  },
+  {
+    "objectID": "recursos.html#canales-de-youtube",
+    "href": "recursos.html#canales-de-youtube",
+    "title": "🐒 Recursos",
+    "section": "Canales de Youtube",
+    "text": "Canales de Youtube\n\nClases del profesor Rómulo Chumacero."
   },
   {
     "objectID": "recursos.html#software",
@@ -137,14 +151,14 @@
     "href": "weeks/week01/page.html#lecturas-recomendadas",
     "title": "Clase 01: Fundamentos de Probabilidad [PLANTILLA]",
     "section": "📚 Lecturas recomendadas",
-    "text": "📚 Lecturas recomendadas\nPara acompañar los contenidos de esta clase:\n\nCasella, G. & Berger, R. L. (2002). Statistical Inference, Capítulo 1: Probability Theory.\nWooldridge, J. M. (2015). Introductory Econometrics, Apéndice B: Fundamentos de Probabilidad.\nHansen, B. E. (2022). Econometrics, Capítulo 2."
+    "text": "📚 Lecturas recomendadas\nPara acompañar los contenidos de esta clase:\n\nDeGroot, Morris H, Schervish, Mark J. (2012). Probability and Statistics. Fourth Edition. Pearson Education. Capítulo 1-2-3.\nHansen, B. E. (2022). Probability and Statistics for Economist, Princenton University Press. Capítulo 1- 2.\nHansen, B. E. (2021). Introduction to econometrics, Unversity of Wisconsin. Capítulo 1- 2."
   },
   {
     "objectID": "weeks/week01/page.html#dudas",
     "href": "weeks/week01/page.html#dudas",
     "title": "Clase 01: Fundamentos de Probabilidad [PLANTILLA]",
     "section": "📟 Dudas",
-    "text": "📟 Dudas\nSi tienes preguntas sobre el material, no dudes en escribir a fransofia.nr@gmail.com."
+    "text": "📟 Dudas\nSi tienes preguntas sobre el material, no dudes en escribir a fnunezre@fen.uchile.cl."
   },
   {
     "objectID": "weeks/week02/page.html",
@@ -173,19 +187,5 @@
     "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
     "section": "📟 Dudas",
     "text": "📟 Dudas\nPara consultas: fransofia.nr@gmail.com"
-  },
-  {
-    "objectID": "recursos.html#libros-de-referencia",
-    "href": "recursos.html#libros-de-referencia",
-    "title": "🐒 Recursos",
-    "section": "",
-    "text": "Hansen, B. E. (2021a). Introduction to Econometrics. University of Wisconsin.\nHansen, B. E. (2021b). Econometrics. University of Wisconsin.\nWooldridge, J.M (2010). Introducción a la econometría. Un enfoque moderno. Cengage Learning.\nCunningham, S. (2021). Causal Inference. The Mixtape. Yale University Press.\nAngrist, J. D. y Pischke, J-S. (2008). *Mostly Harmless Econometrics: An Empiricist s Companion*. Princeton University Press\nWickham, H. et al. (2023). R para Ciencia de Datos.\nFernández-Avilés, G. y Montero, J.M. (Eds.) (2024) Fundamentos de ciencia de datos con R. McGraw-Hill"
-  },
-  {
-    "objectID": "recursos.html#canales-de-youtube",
-    "href": "recursos.html#canales-de-youtube",
-    "title": "🐒 Recursos",
-    "section": "Canales de Youtube",
-    "text": "Canales de Youtube\n\nClases del profesor Rómulo Chumacero."
   }
 ]

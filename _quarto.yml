@@ -1,6 +1,9 @@
 project:
   type: website
   output-dir: docs
+  
+bibliography: referencias.bib
+csl: apa.csl
 
 website:
   title: "Estadística y Econometría"

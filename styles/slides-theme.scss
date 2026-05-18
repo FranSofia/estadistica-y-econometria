@@ -358,3 +358,8 @@ $code-block-font-size: 0.65em;
   color: $mDarkTeal;
   font-weight: 600;
 }
+
+// Slides de sección (h1) — fondo burgundy automático
+.reveal .slides section:has(> h1) {
+  background-color: $mDarkTeal !important;
+}

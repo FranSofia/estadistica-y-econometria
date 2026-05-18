@@ -1,5 +1,5 @@
 ---
-title: "Clase 01: Fundamentos de Probabilidad [PLANTILLAS]"
+title: "Clase 01: Fundamentos de Probabilidad"
 subtitle: "Estadística y Econometría"
 author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezr@fen.uchile.cl)"
 institute: "UCH / INE"
@@ -28,224 +28,1085 @@ format:
 
 1. [¿Por qué probabilidad?](#por-qué-probabilidad)
 2. [Espacios muestrales y eventos](#espacios-muestrales)
-3. [Axiomas de probabilidad](#axiomas-de-probabilidad)
+3. [Axiomas de probabilidad y función de probabilidad](#axiomas-de-probabilidad)
 4. [Probabilidad condicional](#probabilidad-condicional)
-5. [Teorema de Bayes](#teorema-de-bayes)
-6. [Independencia](#independencia)
+5. [Independencia](#independencia)
+6. [Teorema de Bayes](#teorema-de-bayes)
+
 
 # ¿Por qué probabilidad?
 
 ## La probabilidad como lenguaje de la incertidumbre
 
-La estadística y la econometría se ocupan de **extraer conclusiones a partir de datos imperfectos**. Los datos son imperfectos porque provienen de muestras finitas, contienen errores de medición, y reflejan procesos inherentemente aleatorios.
+La probabilidad es un mecanismo que permite estudiar sucesos aleatorios [@canavos]. A su vez, la probabilidad es el lenguaje matemático utilizado para manejar la incertidumbre [@hansen-intro]. 
 
 . . .
 
-La teoría de probabilidades nos da el **lenguaje formal** para cuantificar esa incertidumbre. Sin ella, no podríamos definir qué significa que un estimador sea "bueno", ni construir intervalos de confianza, ni evaluar hipótesis.
+Por lo tanto, la teoría de probabilidades nos da el **lenguaje formal** para cuantificar esa incertidumbre. Sin ella, no podríamos definir qué significa que un estimador sea "bueno", ni construir intervalos de confianza, ni evaluar hipótesis.
 
 . . .
 
-> *"Probability is the very guide of life."*
-> — Cicerón (vía Joseph Butler)
+A diferencia de los eventos deterministas, gran parte de nuestro entorno natural y social está marcado por la incertidumbre. En este escenario, la probabilidad es la herramienta matemática clave que nos permite *cuantificar la aleatoriedad*, transformando lo impredecible en *certidumbre* para poder identificar **causas** y realizar **predicciones** fiables sobre la realidad.
 
+## Conceptos de probabilidad
 
-## De la probabilidad a la econometría
-
-El camino que recorreremos en este curso sigue una lógica acumulativa:
-
-$$
-\text{Probabilidad} \longrightarrow \text{Distribuciones} \longrightarrow \text{Estimación} \longrightarrow \text{Regresión}
-$$
+Aunque la probabilidad es un concepto intuitivo y cotidiano — decimos "probablemente llueva" o "es muy probable que el vuelo se atrase" — no existe una única interpretación científica del término aceptada universalmente [@probability-statistics].
 
 . . .
 
-Cada paso depende del anterior. No se puede entender por qué $\hat{\beta}_{OLS}$ es insesgado sin saber qué es una esperanza condicional. No se puede interpretar un $p$-valor sin entender distribuciones muestrales.
+A lo largo de la historia se han propuesto distintas interpretaciones, cada una con fortalezas y limitaciones. Revisaremos las tres principales:
+
+1. Interpretación **frecuentista**
+2. Interpretación **clásica**
+3. Interpretación **subjetiva**
+
+. . .
+
+::: {.callout-important}
+## Nota clave
+La teoría matemática de la probabilidad **no depende** de cuál interpretación se adopte. Los axiomas y resultados que usaremos en este curso son válidos bajo cualquiera de ellas [@probability-statistics].
+:::
+
+## Interpretación frecuentista
+
+La probabilidad de un resultado se interpreta como la [frecuencia relativa]{.alert} con que ese resultado se obtendría si el proceso se repitiera muchas veces bajo condiciones similares [@probability-statistics].
+
+. . .
+
+**Ejemplo:** La probabilidad de obtener cara al lanzar una moneda es $1/2$ porque, al lanzarla un gran número de veces, la proporción de caras se aproximaría a $1/2.$
+
+. . .
+
+### Limitaciones
+
+- **Vaguedad en las condiciones:** ¿Qué es un "gran número" de repeticiones? ¿Qué tan "similares" deben ser las condiciones?
+- **No toda variación se elimina:** si lanzamos una moneda 1.000.000 de veces, no esperamos exactamente 500.000 caras, pero sí un número cercano.
+- **Solo aplica a procesos repetibles:** no puede usarse directamente para eventos únicos, como la probabilidad de que un proyecto de investigación médica tenga éxito o de que una persona específica se case en los próximos dos años.
+
+## Interpretación clásica
+
+Se basa en el concepto de [resultados igualmente probables]{.alert}. Si un proceso tiene $n$ resultados posibles y todos son igualmente verosímiles, la probabilidad de cada uno es $1/n$ [@probability-statistics].
+
+. . .
+
+**Ejemplo:** Al lanzar una moneda justa hay dos resultados igualmente probables, por lo que $P(\text{cara}) = P(\text{sello}) = 1/2$.
+
+. . .
+
+### Limitaciones
+
+- **Circularidad:** definir "igualmente probables" equivale a decir que tienen la misma probabilidad, que es justamente lo que intentamos definir.
+- **No ofrece un método sistemático** para asignar probabilidades cuando los resultados **no** son igualmente probables (e.g., ¿cuál es la probabilidad de que un proyecto de investigación sea exitoso?).
+
+## Interpretación subjetiva
+
+Según la interpretación subjetiva o personal, la probabilidad que una persona asigna a un resultado representa su [propio juicio]{.alert} sobre la verosimilitud de que ese resultado ocurra, basado en sus creencias e información disponible [@probability-statistics].
+
+. . .
+
+Dos personas con creencias o información distintas pueden asignar probabilidades diferentes al mismo evento. Por eso se habla de la **probabilidad subjetiva** de un resultado, más que de su "probabilidad verdadera".
+
+. . .
+
+### Limitaciones
+
+- **Consistencia:** exigir que los juicios de una persona sobre un número infinito de eventos sean perfectamente coherentes y libres de contradicciones no parece humanamente alcanzable.
+- **Falta de objetividad:** no provee una base común para que dos o más científicos lleguen a un acuerdo sobre el estado del conocimiento en su área.
+
+. . .
+
+Sin embargo, si los juicios de una persona satisfacen ciertas condiciones de consistencia, se puede demostrar que sus probabilidades subjetivas quedan unívocamente determinadas [@probability-statistics].
+
+## Las tres interpretaciones en perspectiva
+
+::: {.columns}
+::: {.column width="33%"}
+
+**Frecuentista**
+
+- Probabilidad = frecuencia relativa a largo plazo
+- Requiere repetibilidad
+- Base de la estadística clásica
+
+:::
+::: {.column width="33%"}
+
+**Clásica**
+
+- Probabilidad = casos favorables / casos posibles
+- Requiere resultados igualmente probables
+- Útil en juegos de azar y combinatoria
+
+:::
+::: {.column width="34%"}
+
+**Subjetiva**
+
+- Probabilidad = grado de creencia personal
+- Aplica a eventos únicos
+- Base de la estadística bayesiana
+
+:::
+:::
+
+. . .
+
+En la práctica, el quehacer del/x científicx puede combinar las tres: usar frecuencias relativas de datos pasados, considerar simetrías del problema, e incorporar su propio juicio. La asignación final de probabilidades numéricas es, en última instancia, responsabilidad del/x investigador/x [@probability-statistics].
 
 # Espacios muestrales y eventos {#espacios-muestrales}
 
-## Definiciones fundamentales
+## Experimentos aleatorios
 
 ::: {.callout-note}
-## Definición: Experimento aleatorio
-Un **experimento aleatorio** es un proceso cuyo resultado no puede predecirse con certeza antes de realizarlo.
+## Definición: Experimento
+Un **experimento** es cualquier proceso, real o hipotético, cuyos resultados posibles pueden identificarse de antemano, pero cuyo resultado específico no puede predecirse con certeza [@probability-statistics].
+:::
+
+. . .
+
+La teoría de la probabilidad se ocupa de los distintos resultados que podrían obtenerse y de los posibles eventos que podrían ocurrir cuando se realiza un experimento [@probability-statistics].
+
+. . .
+
+**Ejemplos:**
+
+- Lanzar una moneda al aire: ¿saldrá cara o sello?
+- Registrar la variación del valor de un índice bursátil: ¿subirá o bajará?
+- Seleccionar un individuo al azar y encuestarlo sobre su situación económica: ¿cuál será su ingreso por hora? [@hansen-for-economist]
+
+## Experimentos aleatorios
+
+En todos estos casos, la falta de conocimiento previo sobre el resultado nos lleva a describir el resultado como [aleatorio]{.alert}.
+
+## Resultados y espacio muestral
+
+::: {.callout-note}
+## Definición: Resultado (*outcome*)
+Un **resultado** es un resultado específico de un experimento. Por ejemplo, en el lanzamiento de una moneda, un resultado es cara (H) o sello (T) [@hansen-for-economist].
 :::
 
 . . .
 
 ::: {.callout-note}
 ## Definición: Espacio muestral
-El **espacio muestral** $\Omega$ es el conjunto de todos los resultados posibles de un experimento aleatorio.
+El **espacio muestral** $\Omega$ es el conjunto de todos los resultados posibles de un experimento [@probability-statistics; @hansen-for-economist].
 :::
 
 . . .
 
 **Ejemplos:**
 
+- Lanzar una moneda: $\Omega = \{H, T\}$
+- Lanzar dos monedas en secuencia: $\Omega = \{HH, HT, TH, TT\}$
 - Lanzar un dado: $\Omega = \{1, 2, 3, 4, 5, 6\}$
-- Ingreso de un hogar: $\Omega = [0, +\infty)$
-- Respuesta a encuesta (Likert 1–5): $\Omega = \{1, 2, 3, 4, 5\}$
 
-## Eventos
+## Espacios muestrales discretos y continuos
 
-Un **evento** $A$ es un subconjunto del espacio muestral: $A \subseteq \Omega$.
+El espacio muestral puede ser [finito]{.alert}, [infinito numerable]{.alert} o [infinito no numerable]{.alert}. De esta distinción se sigue la clasificación en espacios discretos y continuos.
 
 . . .
 
-**Operaciones con eventos:**
+::: {.callout-note}
+## Definición: Espacio muestral discreto
+Un espacio muestral es **discreto** si sus resultados pueden ponerse en correspondencia uno a uno con un subconjunto de los enteros positivos. Es decir, es finito o infinito numerable (*countable*) [@probability-statistics].
+:::
+
+. . .
+
+**Ejemplos:**
+
+- Finito: lanzar un dado, $\Omega = \{1, 2, 3, 4, 5, 6\}$
+- Finito: respuesta a encuesta Likert, $\Omega = \{1, 2, 3, 4, 5\}$
+- Infinito numerable: número de veces que un cliente visita una tienda, $\Omega = \{0, 1, 2, \ldots\}$
+
+## Espacios muestrales continuos
+
+::: {.callout-note}
+## Definición: Espacio muestral continuo
+Un espacio muestral es **continuo** si su conjunto de resultados es un intervalo (acotado o no) de números reales, es decir, un subconjunto no numerable (*uncountable*) de $\mathbb{R}$ [@probability-statistics].
+:::
+
+. . .
+
+En un espacio continuo, cada resultado individual $\{\omega\}$ tiene probabilidad 0. Por lo tanto, no tiene sentido asignar probabilidad a un punto aislado, sino a [intervalos]{.alert}. Para $a < b$:
+
+$$P([a, b]) = \int_a^b f(x) \, dx$$
+
+donde $f$ es la función de densidad de probabilidad (que formalizaremos más adelante).
+
+## Espacios muestrales continuos
+
+**Ejemplo:** El ingreso mensual de un hogar es un espacio muestral continuo con $\Omega = [0, +\infty)$. La probabilidad de que el ingreso caiga en un rango $[y_1, y_2]$ sería:
+
+$$P(y_1 \leq Y \leq y_2) = \int_{y_1}^{y_2} f_Y(y) \, dy$$
+
+## Eventos
+
+::: {.callout-note}
+## Definición: Evento
+Un **evento** $A$ es un subconjunto bien definido del espacio muestral: $A \subseteq \Omega$. Representa una colección de resultados del experimento [@probability-statistics; @hansen-for-economist].
+:::
+
+. . .
+
+Decimos que el evento $A$ **ha ocurrido** si el resultado del experimento es un elemento de $A$, es decir, si $s_{\text{observado}} \in A.$
+
+. . .
+
+**Ejemplo:** En el lanzamiento de un dado con $\Omega = \{1, 2, 3, 4, 5, 6\}$:
+
+- $A$ = "sale un número par" = $\{2, 4, 6\}$
+- $B$ = "sale un número mayor que 2" = $\{3, 4, 5, 6\}$
+
+Puesto que los resultados pueden interpretarse como elementos de un conjunto y los eventos como subconjuntos, el lenguaje y los conceptos de la [teoría de conjuntos]{.alert} proporcionan el contexto natural para desarrollar la teoría de la probabilidad [@probability-statistics].
+
+## Operaciones con eventos
+
+Las operaciones de conjuntos nos permiten construir nuevos eventos a partir de eventos existentes:
+
+. . .
 
 | Operación | Notación | Significado |
 |-----------|----------|-------------|
 | Unión | $A \cup B$ | Ocurre $A$ o $B$ (o ambos) |
 | Intersección | $A \cap B$ | Ocurren $A$ y $B$ simultáneamente |
 | Complemento | $A^c$ | No ocurre $A$ |
-| Diferencia | $A \setminus B$ | Ocurre $A$ pero no $B$ |
+| Contención | $A \subset B$ | Si ocurre $A$, entonces necesariamente ocurre $B$ |
 
 . . .
 
-Dos eventos son **mutuamente excluyentes** si $A \cap B = \emptyset$.
+::: {.callout-note}
+## Definición: Conjunto vacío
+El subconjunto de $\Omega$ que no contiene ningún elemento se llama **conjunto vacío** y se denota $\emptyset$. En términos de eventos, representa cualquier evento que no puede ocurrir [@probability-statistics].
+:::
 
-# Axiomas de probabilidad {#axiomas-de-probabilidad}
+## Eventos disjuntos
 
-## Los tres axiomas de Kolmogorov (1933)
+::: {.callout-note}
+## Definición: Eventos disjuntos (mutuamente excluyentes)
+Dos eventos $A$ y $B$ son **disjuntos** si no tienen resultados en común, es decir, si $A \cap B = \emptyset$. No pueden ocurrir simultáneamente.
+:::
 
-Una función de probabilidad $P$ asigna a cada evento $A$ un número real $P(A)$ que satisface:
+. . .
+
+**Ejemplo:** En el lanzamiento de un dado:
+
+- $A$ = "sale menor o igual a 3" = $\{1, 2, 3\}$
+- $B$ = "sale mayor o igual a 5" = $\{5, 6\}$
+- $A \cap B = \emptyset$ — no pueden suceder a la vez.
+
+. . .
+
+Si $A$ y $B$ son disjuntos, exactamente una de estas tres afirmaciones es verdadera:
+
+1. Ocurre $A$ (e.g., sale un 2)
+2. Ocurre $B$ (e.g., sale un 5)
+3. No ocurre ni $A$ ni $B$ (e.g., sale un 4)
+
+## Partición del espacio muestral
+
+::: {.callout-note}
+## Definición: Partición
+Los eventos $A_1, A_2, \ldots, A_k$ forman una **partición** de $\Omega$ si son mutuamente disjuntos y su unión es igual a $\Omega$:
+
+$$A_i \cap A_j = \emptyset \quad \text{para } i \neq j \qquad \text{y} \qquad \bigcup_{i=1}^{k} A_i = \Omega$$
+:::
+
+. . .
+
+**Ejemplo:** En el lanzamiento de un dado, los eventos $A_i = \{i\}$ para $i = 1, \ldots, 6$ forman una partición de $\Omega = \{1, 2, 3, 4, 5, 6\}$, pues son disjuntos y cubren todos los resultados posibles.
+
+. . .
+
+El concepto de partición será fundamental más adelante: la [ley de probabilidad total]{.alert} y el [Teorema de Bayes]{.alert} se construyen sobre la idea de descomponer $\Omega$ en piezas disjuntas y exhaustivas.
+
+## Conjuntos finitos, numerables y no numerables
+
+Esta distinción, que parece puramente matemática, tiene consecuencias directas sobre cómo asignamos probabilidades.
+
+. . .
+
+::: {.callout-note}
+## Definición: Numerable y no numerable
+Un conjunto infinito $A$ es **numerable** (*countable*) si existe una correspondencia uno a uno entre sus elementos y los números naturales $\{1, 2, 3, \ldots\}$. Un conjunto es **no numerable** (*uncountable*) si no es ni finito ni numerable [@probability-statistics].
+:::
 
 . . .
 
 ::: {.columns}
 ::: {.column width="50%"}
 
-**Axioma 1** (No negatividad):
-$$P(A) \geq 0 \quad \forall A$$
+**Conjuntos numerables:**
 
-**Axioma 2** (Normalización):
-$$P(\Omega) = 1$$
+- Los enteros $\mathbb{Z}$
+- Los números pares
+- Los primos
+- Cualquier secuencia infinita
 
 :::
 ::: {.column width="50%"}
 
-**Axioma 3** (Aditividad numerable):
+**Conjuntos no numerables:**
 
-Si $A_1, A_2, \ldots$ son mutuamente excluyentes:
-$$P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)$$
+- Los reales $\mathbb{R}$
+- El intervalo $[0, 1]$
+- Los reales positivos $\mathbb{R}^+$
+
+:::
+:::
+
+## Conjuntos finitos, numerables y no numerables
+
+Cuando $\Omega$ es numerable, podemos asignar probabilidad a cada resultado individual. Cuando $\Omega$ es no numerable, debemos trabajar con probabilidades sobre [intervalos]{.alert}, lo que nos llevará a las funciones de densidad.
+
+## Síntesis: el lenguaje de la probabilidad
+
+
+
+<table style="width:100%; font-size: 0.85em;">
+<thead>
+<tr style="background-color: #69000C; color: white;">
+<th style="width:50%; padding: 8px;">Castellano</th>
+<th style="width:50%; padding: 8px;">Notación de conjuntos</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Espacio muestral</td><td>$\Omega$</td></tr>
+<tr><td>$s$ es un posible resultado</td><td>$s \in \Omega$</td></tr>
+<tr><td>$A$ es un evento</td><td>$A \subseteq \Omega$</td></tr>
+<tr><td>$A$ ocurrió</td><td>$s_{\text{obs}} \in A$</td></tr>
+<tr><td>Algo debe ocurrir</td><td>$s_{\text{obs}} \in \Omega$</td></tr>
+<tr><td>$A$ o $B$ (o ambos)</td><td>$A \cup B$</td></tr>
+<tr><td>$A$ y $B$</td><td>$A \cap B$</td></tr>
+<tr><td>No $A$</td><td>$A^c$</td></tr>
+<tr><td>$A$ implica $B$</td><td>$A \subset B$</td></tr>
+<tr><td>$A$ y $B$ son disjuntos</td><td>$A \cap B = \emptyset$</td></tr>
+<tr><td>$A_1, \ldots, A_n$ partición de $\Omega$</td><td>$A_i \cap A_j = \emptyset \;\; (i \neq j)$ y $\bigcup_i A_i = \Omega$</td></tr>
+</tbody>
+</table>
+
+## Síntesis: el lenguaje de la probabilidad
+
+Esta tabla resume el puente entre el lenguaje cotidiano y la formalización matemática que usaremos de aquí en adelante. Todo lo que sigue ---axiomas, funciones de probabilidad, condicionalidad--- se construye sobre estas definiciones [@probability-statistics; @canavos; @hansen-for-economist]. Lo fundamental de entender es que esta base matemática es lo que nos entregará las herramientas para *modelar* estadísticamente fenómenos de la realidad. 
+
+
+
+# Axiomas de probabilidad y función de probabilidad {#axiomas-de-probabilidad}
+
+## La función de probabilidad
+
+Hasta ahora hemos descrito eventos usando teoría de conjuntos. El paso siguiente es asignarle a cada evento un [número real]{.alert} que mida la posibilidad de que ese evento ocurra cuando se realice el experimento.
+
+. . .
+
+Lo que necesitamos es una función que tome eventos como argumento y devuelva probabilidades:
+
+$$\text{Evento } A \longrightarrow P(A) \longrightarrow \text{Número real}$$
+
+. . .
+
+Diremos que una función de probabildad, por tanto, es "una función $\mathbb{P}$ que asigna un valor numérico a eventos" [@hansen-for-economist, p. 2]. Esto significa que $\mathbb{P}$ (o $\Pr$) es una función del espacio de eventos a la recta real. Las probabilidades son, por tanto, números, que indican un *quantum* de que un suceso ocurra.
+
+## Definición de función de probabilidad
+
+::: {.callout-note}
+## Definición: Función de probabilidad
+Una **medida de probabilidad**, o simplemente una **probabilidad**, sobre un espacio muestral $\Omega$ es una especificación de números $P(A)$ para todos los eventos $A$ que satisface los tres axiomas de la probabilidad [@probability-statistics].
+:::
+
+. . .
+
+No cualquier asignación de números a eventos constituye una función de probabilidad. Solo aquellas que satisfacen los axiomas que veremos a continuación.
+
+. . .
+
+::: {.callout-important}
+Cualquier función $\Pr$ que satisfaga los axiomas es una función de probabilidad válida. No importa cómo se hayan determinado las probabilidades ---ya sea por frecuencias, simetrías o juicio subjetivo--- mientras cumplan los axiomas, deben satisfacer también todas las propiedades que se derivan de ellos [@probability-statistics; @hansen-for-economist].
+:::
+
+## Los tres axiomas de Kolmogorov (1933)
+
+Una función de probabilidad $\Pr$ asigna a cada evento $A$ un número real $\Pr(A)$ que satisface:
+
+. . .
+
+**Axioma 1** (No negatividad): Para todo evento $A$,
+$$\Pr(A) \geq 0$$
+
+. . .
+
+**Axioma 2** (Normalización):
+$$\Pr(\Omega) = 1$$
+
+. . .
+
+**Axioma 3** (Aditividad numerable): Para toda secuencia infinita de eventos disjuntos $A_1, A_2, \ldots$,
+
+$$\Pr\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \Pr(A_i)$$
+
+## Los tres axiomas de Kolmogorov (1933)
+
+De estos tres axiomas se derivan **todas** las propiedades de la probabilidad que usaremos en el curso. En general, utilizaremos $\Pr$ para denotar una función de probabilidad, pero en la literatura se puede ver como $P$ o $\mathbb{P}$ también. 
+
+. . .
+
+Un ensayo muy lindo sobre Kolmogorov, puede verse en [Rolando Rebolledo. “Kolmogorov y su época”. En: Revista de la Sociedad Chilena de Estadı́stica (1988).](https://www.researchgate.net/profile/Rolando-Rebolledo-2/publication/261707417_KOLMOGOROV_Y_SU_EPOCA_El_pensamiento_y_la_accion/links/02e7e5351c5b1c4db6000000/KOLMOGOROV-Y-SU-EPOCA-El-pensamiento-y-la-accion.pdf) 
+
+## Interpretación de los axiomas
+
+El **Axioma 1** dice que las probabilidades no pueden ser negativas. Esto es razonable en el siguiente sentido: si nos preguntamos cuál es la probabilidad de que nos caiga un rayo, no decimos $-99\%,$ sino $0\%$ si creemos que no ocurrirá. Cuando *no hay* probabilidad de un suceso, es $\Pr(A) = 0.$ 
+
+. . .
+
+El **Axioma 2** dice que la probabilidad del espacio muestral completo es 1. Captura la idea de que el espacio muestral incluye *todos* los resultados posibles: algo tiene que ocurrir. Es esencialmente una normalización [@hansen-for-economist].
+
+. . .
+
+El **Axioma 3** es la [propiedad aditiva]{.alert} e impone estructura considerable. Establece que si dos eventos no pueden ocurrir simultáneamente, la probabilidad de que ocurra uno u otro es la suma de sus probabilidades individuales [@hansen-for-economist]. Es decir, si $A$ y $B$ son disjuntos:
+
+$$\Pr(A \cup B) = \Pr(A) + \Pr(B)$$
+
+## Cuidado con el Axioma 3
+
+::: {.callout-important}
+## El Axioma 3 solo aplica a eventos disjuntos
+Es un error frecuente aplicar la aditividad a eventos que **no** son disjuntos.
+:::
+
+. . .
+
+**Ejemplo:** Considere el lanzamiento de dos dados. Sea $A$ = "sale 1 en el primer dado" y $B$ = "sale 1 en el segundo dado".
+
+. . .
+
+Es tentador escribir $\Pr(\text{1 en algun dado}) = \Pr(A \cup B) = \Pr(A) + \Pr(B), \qquad$ pero esto es [incorrecto]{.alert} porque $A$ y $B$ no son disjuntos: el resultado "1 en ambos dados" pertenece tanto a $A$ como a $B$ [@hansen-for-economist].
+
+
+
+## Ejemplo: Funciones de probabilidad válidas e inválidas
+
+Considere el lanzamiento de una moneda con $\Omega = \{H, T\}$.
+
+. . .
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Válidas** ✓
+
+- $\Pr(H) = 0.5, \Pr(T) = 0.5\quad$ (moneda justa)
+- $\Pr(H) = 0.6, \Pr(T) = 0.4\quad$ (moneda cargada)
+
+:::
+::: {.column width="50%"}
+
+**Inválidas** ✗
+
+- $\Pr(H) = -0.6,  \Pr(T) = 0.6\quad$ (viola Axioma 1)
+- $\Pr(H) = 0.6, \Pr(T) = 0.6\quad$ (viola Axioma 2: suma $\neq 1)$
 
 :::
 :::
 
 . . .
 
-De estos tres axiomas se derivan **todas** las propiedades de la probabilidad que usaremos en el curso.
+No existe una única función de probabilidad para un experimento dado. Lo que los axiomas exigen es consistencia interna, no una asignación particular [@hansen-for-economist].
 
-## Consecuencias de los axiomas
+## Ejemplo: Dado justo
 
-A partir de los axiomas se puede demostrar:
-
-$$P(A^c) = 1 - P(A)$$
+En el lanzamiento de un dado con $\Omega = \{1, 2, 3, 4, 5, 6\}, \hspace{0.6cm}$ sea $\Pr(A)$ el número de elementos de $A$ dividido por 6 [@probability-statistics].
 
 . . .
 
-$$P(\emptyset) = 0$$
+- Axioma 1: $\Pr(A) = |A|/6 \geq 0\hspace{0.6cm}  \checkmark$ 
+- Axioma 2: $\Pr(\Omega) = 6/6 = 1\hspace{0.6cm} \checkmark$ 
+- Axioma 3: Si $A = \{1, 3, 5\}\hspace{0.6cm}$, entonces $\Pr(A) = p_1 + p_3 + p_5 = 3/6\hspace{0.6cm}  \checkmark$ 
 
 . . .
 
-$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+**¿Y un dado cargado?** Supongamos que el 6 tiene el doble de probabilidad de salir. Podemos asignar $p_i = 1/7\hspace{0.6cm}$  para $i = 1, \ldots, 5\hspace{0.6cm}$  y  $p_6 = 2/7.\hspace{0.6cm}$ Para cualquier evento $A\hspace{0.6cm}$, definimos $\Pr(A) = \sum_{i \in A} p_i.\hspace{0.6cm}$ Esto también satisface los tres axiomas [@probability-statistics].
 
-. . .
+## Ejemplos con datos reales
 
-$$\text{Si } A \subseteq B, \text{ entonces } P(A) \leq P(B)$$
+::: {.columns}
+::: {.column width="50%"}
 
-. . .
+**Índice S&P 500**
 
-::: {.callout-tip}
-## Ejercicio para pensar
-¿Puedes demostrar $P(A^c) = 1 - P(A)$ usando solo los tres axiomas?
+Sea $U$ = "el índice sube en una semana" y $D$ = "el índice baja". El espacio muestral es $\Omega = \{U, D\}\hspace{0.6cm}$, similar a una moneda. Con datos de 3.584 semanas (1950–2017):
 
-*Pista:* Note que $A$ y $A^c$ son mutuamente excluyentes, y que $A \cup A^c = \Omega$.
+$$\Pr(U) = 0.57, \quad \Pr(D) = 0.43$$
+
+La probabilidad de un alza es algo mayor que la de una moneda justa [@hansen-for-economist].
+
 :::
+::: {.column width="50%"}
+
+**Salarios en EE.UU.**
+
+Sea $H$ = "salario > \$25/hora" y $L$ = "salario $\leq$ \$25/hora". Con una muestra de 50.742 trabajadores (2009):
+
+$$\Pr(H) = 0.31, \quad \Pr(L) = 0.69$$
+
+Antes de encuestar a un individuo al azar, su salario es incierto y aleatorio [@hansen-for-economist].
+
+:::
+:::
+
+## Propiedades de la función de probabilidad
+
+A partir de los axiomas se demuestran las siguientes propiedades. Para cualesquiera eventos $A$ y $B$ [@probability-statistics; @hansen-for-economist]:
+
+. . .
+
+**1.** $\Pr(A^c) = 1 - \Pr(A)$
+
+. . .
+
+**2.** $\Pr(\emptyset) = 0$
+
+. . .
+
+**3.** $0 \leq \Pr(A) \leq 1$
+
+. . .
+
+**4.** **Monotonía:** Si $A \subset B\hspace{0.6cm}$, entonces $\Pr(A) \leq \Pr(B)$
+
+. . .
+
+**5.** **Inclusión-Exclusión:** $\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)$
+
+. . .
+
+**6.** $\Pr(A \cap B^c) = \Pr(A) - \Pr(A \cap B)$
+
+## Demostración: $\Pr(\emptyset) = 0$ (opcional)
+
+Consideremos la secuencia infinita $A_1, A_2, \ldots$ tal que $A_i = \emptyset$ para todo $i$. Como $\emptyset \cap \emptyset = \emptyset$, los eventos son disjuntos. Además, $\bigcup_{i=1}^{\infty} A_i = \emptyset$. Entonces, por el Axioma 3 [@probability-statistics]:
+
+$$\Pr(\emptyset) = \Pr\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \Pr(\emptyset)$$
+
+. . .
+
+La única forma de que un número sea igual a la suma infinita de sí mismo es que ese número sea cero. $\blacksquare$
+
+## Demostración: $\Pr(A^c) = 1 - \Pr(A)$ (opcional)
+
+Como $A$ y $A^c$ son disjuntos y $A \cup A^c = \Omega$, por el Axioma 3 (aditividad finita, que se deriva del Axioma 3):
+
+$$\Pr(A \cup A^c) = \Pr(A) + \Pr(A^c)$$
+
+. . .
+
+Y como $A \cup A^c = \Omega$, por el Axioma 2:
+
+$$\Pr(\Omega) = 1 = \Pr(A) + \Pr(A^c)$$
+
+. . .
+
+Por lo tanto:
+
+$$\Pr(A^c) = 1 - \Pr(A) \qquad \blacksquare$$
+
+## Demostración: Si $A \subset B$, entonces $\Pr(A) \leq \Pr(B)$ (opcional)
+
+El evento $B$ puede descomponerse como la unión de dos eventos disjuntos: $B = A \cup (B \cap A^c)$.
+
+. . .
+
+Por aditividad:
+
+$$\Pr(B) = \Pr(A) + \Pr(B \cap A^c)$$
+
+. . .
+
+Como $\Pr(B \cap A^c) \geq 0$ por el Axioma 1:
+
+$$\Pr(B) \geq \Pr(A) \qquad \blacksquare$$
+
+. . .
+
+De esta misma demostración, junto con el hecho de que $A \subset \Omega$ para todo evento $A$, se deduce que $\Pr(A) \leq \Pr(\Omega) = 1$. Combinando con el Axioma 1, obtenemos $0 \leq \Pr(A) \leq 1$ [@probability-statistics].
+
+## Demostración: Inclusión-Exclusión (opcional)
+
+Queremos demostrar que $\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)$.
+
+. . .
+
+Notemos que $A \cup B = B \cup (A \cap B^c)$, donde $B$ y $A \cap B^c$ son disjuntos. Entonces:
+
+$$\Pr(A \cup B) = \Pr(B) + \Pr(A \cap B^c)$$
+
+. . .
+
+Además, $A = (A \cap B) \cup (A \cap B^c)$, donde ambos términos son disjuntos, por lo que:
+
+$$\Pr(A) = \Pr(A \cap B) + \Pr(A \cap B^c) \implies \Pr(A \cap B^c) = \Pr(A) - \Pr(A \cap B)$$
+
+. . .
+
+Sustituyendo:
+
+$$\Pr(A \cup B) = \Pr(B) + \Pr(A) - \Pr(A \cap B) \qquad \blacksquare$$
+
+## Propiedades adicionales: desigualdades útiles (opcional)
+
+::: {.callout-note}
+## Desigualdad de Boole
+Para cualesquiera eventos $A_1, \ldots, A_n:$
+$$\Pr\left(\bigcup_{i=1}^{n} A_i\right) \leq \sum_{i=1}^{n} \Pr(A_i)$$
+
+La probabilidad de una unión está acotada superiormente por la suma de las probabilidades individuales [@hansen-for-economist].
+:::
+
+. . .
+
+::: {.callout-note}
+## Desigualdad de Bonferroni
+Para cualesquiera eventos $A_1, \ldots, A_n:$
+$$\Pr\left(\bigcap_{i=1}^{n} A_i\right) \geq 1 - \sum_{i=1}^{n} \Pr(A_i^c)$$
+
+La probabilidad de una intersección está acotada inferiormente [@probability-statistics; @hansen-for-economist].
+:::
+
+## Propiedades adicionales: desigualdades útiles (opcional)
+
+Ambas desigualdades (de Boole y de Bonferroni) son utilizadas frecuentemente en cálculos de probabilidad y serán útiles cuando veamos intervalos de confianza simultáneos.
+
+## Probabilidad cero $\neq$ imposibilidad
+
+::: {.callout-important}
+## Nota clave
+Cuando un evento tiene probabilidad 0, eso **no** significa que el evento sea imposible [@probability-statistics].
+:::
+
+. . .
+
+En un espacio muestral continuo, hay muchos eventos con probabilidad 0 que no son todos imposibles. Por ejemplo, si la demanda de agua puede tomar cualquier valor en $[4, 200],\hspace{0.2cm}$ el evento "la demanda es exactamente 150" corresponde a un solo punto ---que tiene área 0--- y por tanto probabilidad 0. Pero la demanda [*podría*]{.alert} ser 150 [@probability-statistics].  
+
+## Probabilidad cero $\neq$ imposibilidad
+
+Un evento con probabilidad 0 o 1 se denomina [trivial]{.alert} [@hansen-for-economist].
+
+. . .
+
+**Ejemplo:** en el lanzamiento de una moneda, usualmente definimos $\Omega = \{H, T\}.$ Pero podríamos ser más exhaustivos y considerar $\Omega = \{H, T, \text{canto}, \text{desaparece}\}$, donde "canto" significa que la moneda queda parada sobre su borde y "desaparece" que se pierde (cae por una rejilla, por ejemplo). Ambos resultados son físicamente concebibles, pero les asignamos $\Pr(\text{canto}) = 0$ y $\Pr(\text{desaparece}) = 0$. Son eventos triviales: no son imposibles en principio, pero no contribuyen al comportamiento aleatorio del experimento. En la práctica, los ignoramos y trabajamos con $\Omega = \{H, T\}$.
 
 # Probabilidad condicional {#probabilidad-condicional}
+
+## ¿Por qué probabilidad condicional?
+
+Un uso fundamental de la probabilidad en inferencia estadística es la [actualización de probabilidades]{.alert} cuando se observan ciertos eventos. La probabilidad actualizada de un evento $A$ después de saber que el evento $B$ ha ocurrido es la probabilidad condicional de $A$ dado $B$ [@probability-statistics].
+
+. . .
+
+Preguntas como las siguientes son preguntas de probabilidad condicional:
+
+- ¿Asistir a la universidad afecta la probabilidad de obtener un salario alto?
+- ¿Los aranceles afectan la probabilidad de un aumento de precios?
+- ¿Recibir un tratamiento médico cambia la probabilidad de recaída?
+
+. . .
+
+Todas comparten la misma estructura: ¿cómo cambia la probabilidad de $A$ cuando sabemos que $B$ ha ocurrido?
 
 ## Definición
 
 ::: {.callout-note}
 ## Definición: Probabilidad condicional
-La probabilidad de $A$ **dado que** $B$ ha ocurrido se define como:
+Supongamos que sabemos que el evento $B$ ha ocurrido y queremos calcular la probabilidad de otro evento $A$ considerando esta información. La nueva probabilidad de $A$ se llama la **probabilidad condicional de $A$ dado $B$** y se denota $\Pr(A|B).\hspace{0.2cm}$ Si $\Pr(B) > 0:$ 
 
-$$P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad P(B) > 0$$
+$$\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}$$
+
+La probabilidad condicional no está definida si $\Pr(B) = 0 \hspace{0.3cm}$ [@probability-statistics].
 :::
 
 . . .
 
-**Interpretación:** Condicionar en $B$ equivale a **restringir el espacio muestral** a $B$, y evaluar qué proporción de $B$ está ocupada por $A$.
+La notación "$A \mid B\hspace{0.4cm}$" se lee como "$A$ dado $B\hspace{0.4cm}$" o "$A$ asumiendo que $B$ es verdadero". Para mayor claridad, a veces llamaremos a $\Pr(A)\hspace{0.2cm}$ la **probabilidad incondicional** para distinguirla de $\Pr(A|B) \hspace{0.3cm}$ [@probability-statistics].
+
+## Interpretación
+
+Condicionar en $B$ equivale a [restringir el espacio muestral]{.alert} a $B$. Si sabemos que $B$ ha ocurrido, entonces el resultado del experimento es necesariamente un elemento de $B$. Para evaluar la probabilidad de $A$, debemos considerar solo aquellos resultados de $B$ que también pertenecen a $A.\hspace{0.1cm}$ Es decir, el conjunto $A \cap B\hspace{0.2cm}$  [@probability-statistics].
 
 . . .
 
-**Ejemplo sociológico:** Sea $A$ = "tener educación universitaria" y $B$ = "pertenecer al quintil más rico".
+Intuitivamente, $\Pr(A|B) \hspace{0.1cm}$ mide qué proporción de la probabilidad total de $B$ está ocupada por $A:$
 
-$$P(\text{universitario} \mid \text{quintil V}) \neq P(\text{universitario})$$
+$$\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)} = \frac{\text{proporción de } B \text{ que tambien es } A}{\text{probabilidad total de } B}$$
 
-Esta desigualdad es, en esencia, una medida de desigualdad educativa.
+## Ejemplo: Educación y salarios
+
+Considere una población donde definimos los eventos $H$ = "salario alto (> \$25/hr)" $\hspace{0.6cm}$ y $C$ = "tiene educación universitaria". Con datos de EE.UU. [@hansen-for-economist]: $\hspace{0.6cm}$
+
+. . .
+
+$$\Pr(H | C) = \frac{\Pr(H \cap C)}{\Pr(C)} = \frac{0.19}{0.36} = 0.53$$
+
+. . .
+
+$$\Pr(H | N) = \frac{\Pr(H \cap N)}{\Pr(N)} = \frac{0.12}{0.64} = 0.19$$
+
+donde $N = C^c$ $\hspace{0.6cm}$ (no tiene título universitario).
+
+. . .
+
+Hay una diferencia considerable: la probabilidad condicional de obtener un salario alto es del 53% para quienes tienen título universitario, versus 19% para quienes no lo tienen. Esta brecha es, en esencia, una medida de [desigualdad educativa]{.alert} en el mercado laboral que logramos medir solo con probabilidades (todavía no metodologías estadísticas más robustas a sesgos). 
+
+## Ejemplo: Ensayo clínico
+
+En un estudio sobre recaídas en pacientes con depresión, 150 pacientes fueron asignados a cuatro grupos [@probability-statistics]:
+
+. . .
+
+| | Imipramina | Litio | Combinación | Placebo | Total |
+|---|---|---|---|---|---|
+| Recaída | 18 | 13 | 22 | 24 | 77 |
+| Sin recaída | 22 | 25 | 16 | 10 | 73 |
+| Total | 40 | 38 | 38 | 34 | 150 |
+
+. . .
+
+Sea $A$ = "recaída" y $B$ = "recibió placebo". Entonces: 
+
+$$\Pr(A|B) = \frac{24/150}{34/150} = \frac{24}{34} = 0.706$$
+
+. . .
+
+Si en cambio el paciente recibió litio $(C):$  $\Pr(A|C) = 13/38 = 0.342. \hspace{0.8cm}$ El tratamiento recibido parece hacer una diferencia en la probabilidad de recaída. Cuantificar *cuánta* diferencia es exactamente lo que hacen los métodos econométricos de evaluación de impacto.
+
+## Probabilidad conjunta, marginal y condicional
+
+Al trabajar con dos eventos simultáneamente aparecen tres tipos de probabilidad que conviene distinguir con precisión:
+
+. . .
+
+**1. Probabilidad conjunta:**  la probabilidad de que $A$ y $B$ ocurran simultáneamente.
+$$\Pr(A \cap B)$$
+
+. . .
+
+**2. Probabilidad marginal:**$ la probabilidad de $A$ sin considerar $B$ (o viceversa).
+$$\Pr(A) = \sum_{j} \Pr(A \cap B_j)$$
+
+. . .
+
+**3. Probabilidad condicional:**  la probabilidad de $A$ dado que $B$ ha ocurrido.
+$$\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}, \quad \Pr(B) > 0$$
+
+## Ejemplo: Tabla de contingencia
+
+Supongamos que queremos estudiar la probabilidad de que hombres y mujeres voten a la izquierda, con los siguientes datos:
+
+. . .
+
+| | Hombre $(B_1)$ | Mujer $(B_2)$ | Total |
+|---|---|---|---|
+| Vota izquierda $(A_1)$ | 30 | 20 | 50 |
+| No vota izquierda $(A_2)$ | 40 | 10 | 50 |
+| Total | 70 | 30 | 100 |
+
+. . .
+
+**Conjunta:**  $\Pr(A_1 \cap B_2) = 20/100 = 0.20$
+
+. . .
+
+**Marginal:**  $\Pr(A_1) = 50/100 = 0.50$
+
+. . .
+
+**Condicional:** $\Pr(A_1 | B_2) = \frac{\Pr(A_1 \cap B_2)}{\Pr(B_2)} = \frac{0.20}{0.30} = 0.667$
+
+El 66.7% de las mujeres votan a la izquierda, versus el 42.9% de los hombres $(\Pr(A_1|B_1) = 30/70)$.
 
 ## Regla de la multiplicación
 
-De la definición de probabilidad condicional se obtiene directamente:
-
-$$P(A \cap B) = P(A|B) \cdot P(B) = P(B|A) \cdot P(A)$$
+De la definición de probabilidad condicional se obtiene directamente la **regla de la multiplicación** [@probability-statistics]: 
 
 . . .
 
-Para tres eventos:
-$$P(A \cap B \cap C) = P(A) \cdot P(B|A) \cdot P(C|A \cap B)$$
+$$\Pr(A \cap B) = \Pr(B) \cdot \Pr(A|B) = \Pr(A) \cdot \Pr(B|A)$$
 
 . . .
 
-Esta regla es la base de la **factorización de verosimilitudes** que veremos cuando estudiemos MLE.
+Esta regla es útil cuando la probabilidad condicional es fácil de evaluar directamente. Por ejemplo, si extraemos dos bolas de una caja con $r$ rojas y $b$ azules **sin reposición**: la probabilidad de que la primera sea roja $(A)$ y la segunda azul $(B)$ es [@probability-statistics]: 
 
-## Ley de probabilidad total
+$$\Pr(A \cap B) = \Pr(A) \cdot \Pr(B|A) = \frac{r}{r+b} \cdot \frac{b}{r+b-1}$$
 
-Si $B_1, B_2, \ldots, B_k$ forman una **partición** de $\Omega$ (mutuamente excluyentes y exhaustivos):
+## Regla de la multiplicación: extensión
 
-$$P(A) = \sum_{i=1}^{k} P(A|B_i) \cdot P(B_i)$$
+La regla se extiende a cualquier número finito de eventos. Para $n$ eventos tales que $\Pr(A_1 \cap \cdots \cap A_{n-1}) > 0$ $\hspace{0.6cm}$ [@probability-statistics]:
+
+$$\Pr(A_1 \cap A_2 \cap \cdots \cap A_n) = \Pr(A_1) \cdot \Pr(A_2|A_1) \cdot \Pr(A_3|A_1 \cap A_2) \cdots \Pr(A_n | A_1 \cap \cdots \cap A_{n-1})$$
 
 . . .
 
-**Ejemplo:** ¿Cuál es la probabilidad de estar desempleado?
+Esta factorización es la base de la [factorización de verosimilitudes]{.alert} que usaremos cuando estudiemos estimación por máxima verosimilitud (MLE).
 
-$$P(\text{desempleo}) = \sum_{j=1}^{J} P(\text{desempleo} \mid \text{región}_j) \cdot P(\text{región}_j)$$
-
-La probabilidad total "descompone" un evento complejo en piezas más manejables.
-
-# Teorema de Bayes {#teorema-de-bayes}
-
-## Formulación
+## Las probabilidades condicionales se comportan como probabilidades
 
 ::: {.callout-important}
-## Teorema de Bayes
-
-$$P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^{k} P(A|B_j) \cdot P(B_j)}$$
+## Resultado clave
+Todos los resultados que se pueden demostrar para probabilidades incondicionales tienen una versión condicional dado un evento $B$ con $\Pr(B) > 0.\hspace{0.3cm}$  Basta reemplazar *todas* las probabilidades por probabilidades condicionales dado $B \hspace{0.1cm}$ [@probability-statistics].
 :::
 
 . . .
 
-El teorema permite **invertir condicionales**: si conocemos $P(A|B)$, podemos obtener $P(B|A)$.
+Por ejemplo:
+
+- $\Pr(A^c) = 1 - \Pr(A) \hspace{0.6cm} \longrightarrow \hspace{0.6cm} \Pr(A^c | B) = 1 - \Pr(A|B)$
+
+- $\Pr(A \cup C) = \Pr(A) + \Pr(C) - \Pr(A \cap C) \hspace{0.3cm} \longrightarrow$
+
+$$\Pr(A \cup C | B) = \Pr(A|B) + \Pr(C|B) - \Pr(A \cap C | B)$$
+
+## Ley de probabilidad total
+
+Si $B_1, B_2, \ldots, B_k\hspace{0.5cm}$  forman una **partición** de $\Omega$  (disjuntos y exhaustivos) con $\Pr(B_j) > 0\hspace{0.5cm}$ para todo $j$,  entonces para cualquier evento $A\hspace{0.1cm}$  [@probability-statistics]:
+
+$$\Pr(A) = \sum_{j=1}^{k} \Pr(B_j) \cdot \Pr(A|B_j)$$
 
 . . .
 
-**Terminología bayesiana:**
+La ley de probabilidad total "descompone" la probabilidad de un evento complejo en piezas más manejables, usando una partición que reduce la incertidumbre del problema [@probability-statistics].
+
+. . .
+
+## Las probabilidades condicionales se comportan como probabilidades
+
+**Ejemplo:** ¿Cuál es la probabilidad de estar desempleado?
+
+$$\Pr(\text{desempleo}) = \sum_{j=1}^{J} \Pr(\text{region}_j) \cdot \Pr(\text{desempleo} \mid \text{region}_j)$$
+
+Si conocemos la tasa de desempleo por región y la proporción de la población en cada región, podemos calcular la tasa de desempleo nacional.
+
+## ¿Por qué importa la condicionalidad en econometría?
+
+La probabilidad condicional es el [fundamento matemático]{.alert} de los modelos de regresión y de la inferencia causal.
+
+. . .
+
+La **función de regresión poblacional** *es* una esperanza condicional:
+
+$$E[Y_i | X_i] = \mu(X_i)$$
+
+Cuando estimamos una regresión, estamos estimando cómo cambia el valor esperado de $Y$ al condicionar en distintos valores de $X.\hspace{0.1cm}$  Justamente, esta es la lógica del [*ceteris paribus*]{.alert}.
+
+## ¿Por qué importa la condicionalidad en econometría?
+
+En **inferencia causal**, el desafío es que condicionar en $X$ no es lo mismo que *intervenir* sobre $X. \hspace{0.1cm}$  El supuesto de identificación clave (independencia condicional, variables instrumentales, etc.) busca garantizar que $E[Y|X]$ capture el efecto causal y no solo una asociación.
+
+. . .
+
+En **series de tiempo**, los modelos de pronóstico son modelos de media condicional: $E[Y_t | Y_{t-1}, Y_{t-2}, \ldots] \hspace{0.6cm}$  usa toda la historia pasada como información condicionante para proyectar el futuro.
+
+# Independencia {#independencia}
+
+## ¿Qué significa que dos eventos sean independientes?
+
+Decimos que dos eventos son **independientes** si su ocurrencia no está relacionada, o equivalentemente, si el conocimiento de que uno ocurrió no afecta la probabilidad del otro [@hansen-for-economist].
+
+. . .
+
+Considere dos lanzamientos de moneda. Si no hay mecanismo que conecte ambos lanzamientos, esperamos que ninguno afecte al resultado del otro. De modo similar, la tasa de criminalidad en Londres y el precio del té en Shanghai no tienen razón para afectarse mutuamente [@hansen-for-economist].
+
+. . .
+
+Esta intuición implica que si $A$ y $B$ son independientes, entonces $\Pr(A|B) = \Pr(A)\hspace{0.2cm}$ y $\Pr(B|A) = \Pr(B).\hspace{0.2cm}$ Desde la definición de probabilidad condicional, esto implica $\Pr(A \cap B) = \Pr(A)\Pr(B).\hspace{0.2cm}$ Usamos esta última expresión como definición formal.
+
+## Definición formal
+
+::: {.callout-note}
+## Definición: Independencia
+Dos eventos $A$ y $B$ son **independientes** si y solo si:
+
+$$\Pr(A \cap B) = \Pr(A) \cdot \Pr(B)$$
+
+Equivalentemente, si $\Pr(A) > 0\hspace{0.2cm}$ y $\Pr(B) > 0:$
+
+$$\Pr(A|B) = \Pr(A) \qquad \text{y} \qquad \Pr(B|A) = \Pr(B)$$
+
+Si dos eventos no son independientes, decimos que son **dependientes** [@probability-statistics; @hansen-for-economist].
+:::
+
+. . .
+
+Si dos eventos son considerados independientes porque son físicamente no relacionados, y si conocemos $\Pr(A)\hspace{0.2cm}$ y $\Pr(B),\hspace{0.2cm}$ podemos usar la definición para asignar un valor a $\Pr(A \cap B)\hspace{0.2cm}$ directamente [@probability-statistics].
+
+## Independencia $\neq$ mutua exclusividad
+
+::: {.callout-important}
+## Distinción crucial
+Independencia y mutua exclusividad son conceptos [opuestos]{.alert}, no sinónimos.
+:::
+
+. . .
+
+Si $A$ y $B$ son disjuntos (mutuamente excluyentes), entonces $A \cap B = \emptyset,\hspace{0.2cm}$ y por tanto:
+
+$$\Pr(A \cap B) = \Pr(\emptyset) = 0 \neq \Pr(A)\Pr(B)$$
+
+siempre que ambos tengan probabilidad positiva. Es decir, eventos disjuntos con probabilidad positiva son necesariamente [dependientes]{.alert}: saber que ocurrió $A$ te dice con certeza que $B$ no ocurrió [@hansen-for-economist; @probability-statistics].
+
+. . .
+
+De hecho, la única forma de que eventos sean simultáneamente disjuntos e independientes es que al menos uno de ellos tenga probabilidad 0 [@probability-statistics].
+
+## Ejemplo: S&P 500 e independencia temporal
+
+Retomemos el ejemplo del S&P 500. Sea $U_t\hspace{0.1cm}$ = "el índice sube en la semana $t\hspace{0.1cm}$" [@hansen-for-economist]:
+
+. . .
+
+$$\Pr(U_t | U_{t-1}) = \frac{0.322}{0.567} = 0.568$$
+
+$$\Pr(U_t | D_{t-1}) = \frac{0.245}{0.433} = 0.566$$
+
+. . .
+
+Las dos probabilidades condicionales son prácticamente idénticas ($\approx 0.57$). La probabilidad de un alza en una semana dada no se ve afectada por lo que ocurrió la semana anterior. Esto satisface la definición de independencia: $U_t\hspace{0.2cm}$ y $U_{t-1}\hspace{0.2cm}$ son independientes.
+
+## Ejemplo: Salarios y educación (dependencia)
+
+Ahora veamos un caso de [dependencia]{.alert}. Si salarios y educación fueran independientes, las probabilidades conjuntas serían el producto de las marginales [@hansen-for-economist]:
+
+. . .
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Si fueran independientes:**
+
+| | $C$ | $N$ |
+|---|---|---|
+| $H$ | 0.11 | 0.20 |
+| $L$ | 0.25 | 0.44 |
+
+:::
+::: {.column width="50%"}
+
+**Datos reales:**
+
+| | $C$ | $N$ |
+|---|---|---|
+| $H$ | 0.19 | 0.12 |
+| $L$ | 0.17 | 0.52 |
+
+:::
+:::
+
+. . .
+
+Los eventos $H \cap C\hspace{0.2cm}$ y $L \cap N\hspace{0.2cm}$ ocurren con mucha más frecuencia de lo que predeciría la independencia. Salarios y educación son **dependientes**: la educación universitaria sí afecta la probabilidad de obtener un salario alto.
+
+## Independencia de complementos
+
+::: {.callout-note}
+## Teorema
+Si $A$ y $B$ son independientes, entonces también son independientes los pares $A$ y $B^c;\hspace{0.2cm}$ $A^c$ y $B;\hspace{0.2cm}$ y $A^c$ y $B^c\hspace{0.2cm}$ [@probability-statistics].
+:::
+
+. . .
+
+*Demostración (para $A$ y $B^c$):*
+
+$$\Pr(A \cap B^c) = \Pr(A) - \Pr(A \cap B) = \Pr(A) - \Pr(A)\Pr(B) = \Pr(A)[1 - \Pr(B)] = \Pr(A)\Pr(B^c) \quad \blacksquare$$
+
+. . .
+
+Esto es razonable: si la ocurrencia de $B$ no afecta a $A,\hspace{0.2cm}$ tampoco debería hacerlo la no-ocurrencia de $B.$
+
+## Independencia de más de dos eventos
+
+La definición se extiende a $k$ eventos, pero requiere más que independencia de a pares [@probability-statistics]:
+
+. . .
+
+::: {.callout-note}
+## Definición: Independencia mutua
+Los $k$ eventos $A_1, \ldots, A_k\hspace{0.2cm}$ son **(mutuamente) independientes** si para todo subconjunto $A_{i_1}, \ldots, A_{i_j}\hspace{0.2cm}$ de $j$ de estos eventos ($j = 2, 3, \ldots, k$):
+
+$$\Pr(A_{i_1} \cap \cdots \cap A_{i_j}) = \Pr(A_{i_1}) \cdots \Pr(A_{i_j})$$
+:::
+
+. . .
+
+Para tres eventos $A, B, C,\hspace{0.2cm}$ se necesitan **cuatro** condiciones:
+
+$$\Pr(A \cap B) = \Pr(A)\Pr(B), \quad \Pr(A \cap C) = \Pr(A)\Pr(C), \quad \Pr(B \cap C) = \Pr(B)\Pr(C)$$
+
+$$\text{y además: } \quad \Pr(A \cap B \cap C) = \Pr(A)\Pr(B)\Pr(C)$$
+
+La independencia de a pares **no basta** para garantizar la última condición.
+
+## Independencia condicional
+
+::: {.callout-note}
+## Definición: Independencia condicional
+Los eventos $A_1, \ldots, A_k\hspace{0.2cm}$ son **condicionalmente independientes dado $B$** si, para todo subconjunto $A_{i_1}, \ldots, A_{i_j}\hspace{0.2cm}$ de $j$ de estos eventos ($j = 2, \ldots, k$):
+
+$$\Pr\left(A_{i_1} \cap \cdots \cap A_{i_j} \mid B\right) = \Pr(A_{i_1}|B) \cdots \Pr(A_{i_j}|B)$$
+:::
+
+. . .
+
+Es la misma definición de independencia mutua, pero con *todas* las probabilidades condicionadas en $B.\hspace{0.2cm}$ Nótese que independencia condicional dado $B$ **no implica** independencia condicional dado $B^c,\hspace{0.2cm}$ ni viceversa [@probability-statistics].
+
+## ¿Por qué importa la independencia en econometría?
+
+El supuesto de independencia (o sus versiones más débiles) aparece en toda la econometría:
+
+. . .
+
+- **Muestreo aleatorio:** las observaciones $(X_i, Y_i)\hspace{0.2cm}$ son i.i.d. (independientes e idénticamente distribuidas).
+
+. . .
+
+- **Exogeneidad:** $E[\varepsilon_i | X_i] = 0,\hspace{0.2cm}$ que es una forma de independencia condicional entre el error y los regresores.
+
+. . .
+
+- **Identificación causal:** la asignación al tratamiento es independiente de los resultados potenciales: $(Y_0, Y_1) \perp\!\!\!\perp D.$
+
+. . .
+
+Cuando estos supuestos fallan, los estimadores estándar pierden sus buenas propiedades. Gran parte de la econometría avanzada consiste en **lidiar con la falta de independencia**.
+
+# Teorema de Bayes {#teorema-de-bayes}
+
+## Teorema de Bayes
+
+Una vez que conocemos la probabilidad condicional y la ley de probabilidad total, el Teorema de Bayes se sigue directamente. Permite [invertir condicionales]{.alert}: si conocemos $\Pr(A|B),\hspace{0.2cm}$ podemos obtener $\Pr(B|A).$
+
+. . .
+
+::: {.callout-important}
+## Teorema de Bayes
+Si $B_1, \ldots, B_k\hspace{0.2cm}$ forman una partición de $\Omega\hspace{0.2cm}$ con $\Pr(B_j) > 0\hspace{0.2cm}$ para todo $j,\hspace{0.2cm}$ entonces:
+
+$$\Pr(B_i|A) = \frac{\Pr(A|B_i) \cdot \Pr(B_i)}{\sum_{j=1}^{k} \Pr(A|B_j) \cdot \Pr(B_j)}$$
+:::
+
+## Teorema de Bayes (termonilogía)
+
+**Terminología:**
 
 | Término | Significado |
 |---------|-------------|
-| $P(B_i)$ | **Prior** — creencia antes de observar datos |
-| $P(A \mid B_i)$ | **Verosimilitud** — probabilidad de los datos dado el parámetro |
-| $P(B_i \mid A)$ | **Posterior** — creencia actualizada tras observar datos |
+| $\Pr(B_i)\hspace{0.2cm}$ | **Prior** — creencia antes de observar datos |
+| $\Pr(A \mid B_i)\hspace{0.2cm}$ | **Verosimilitud** — probabilidad de los datos dado el parámetro |
+| $\Pr(B_i \mid A)\hspace{0.2cm}$ | **Posterior** — creencia actualizada tras observar datos |
 
-## Ejemplo: Diagnóstico y falsos positivos
+## Ejemplo: diagnóstico y falsos positivos
 
 Un test diagnóstico tiene sensibilidad del 95% y especificidad del 90%. La prevalencia de la enfermedad es del 1%.
 
 . . .
 
-$$P(\text{enfermo} \mid \text{test}+) = \frac{0.95 \times 0.01}{0.95 \times 0.01 + 0.10 \times 0.99}$$
+$$\Pr(\text{enfermo} \mid \text{test}+) = \frac{0.95 \times 0.01}{0.95 \times 0.01 + 0.10 \times 0.99}$$
 
 . . .
 
@@ -257,42 +1118,80 @@ $$= \frac{0.0095}{0.0095 + 0.099} = \frac{0.0095}{0.1085} \approx 0.088$$
 Aun con un test "bueno", un resultado positivo solo implica un **8.8%** de probabilidad de estar enfermo cuando la prevalencia es baja. Este resultado es contraintuitivo y tiene profundas implicancias para política pública.
 :::
 
-# Independencia {#independencia}
+# Combinatoria (opcional) {#combinatoria}
 
-## Definición formal
+## Reglas de conteo, permutaciones y combinaciones
+
+Para algunos cálculos de probabilidad es útil contar el número de resultados posibles. Tres herramientas básicas son la regla de conteo, las permutaciones y las combinaciones [@hansen-for-economist].
+
+. . .
 
 ::: {.callout-note}
-## Definición: Independencia
-Dos eventos $A$ y $B$ son **independientes** si y solo si:
-
-$$P(A \cap B) = P(A) \cdot P(B)$$
-
-Equivalentemente: $P(A|B) = P(A)$
+## Regla de conteo
+Si una tarea consta de $K$ etapas, y la $k$-ésima etapa puede realizarse de $n_k\hspace{0.2cm}$ formas, entonces el número total de formas de completar la tarea es $n_1 \cdot n_2 \cdots n_K.$
 :::
 
 . . .
 
-**Ojo:** Independencia $\neq$ mutua exclusividad. Si $A$ y $B$ son mutuamente excluyentes y ambos tienen probabilidad positiva, entonces son **dependientes** (saber que ocurrió $A$ te dice con certeza que no ocurrió $B$).
+**Ejemplo:** si tienes 10 camisas, 3 pantalones, 5 pares de calcetines, 4 chaquetas y 2 sombreros, puedes armar $10 \times 3 \times 5 \times 4 \times 2 = 1200\hspace{0.2cm}$ outfits distintos [@hansen-for-economist].
 
-## ¿Por qué importa la independencia en econometría?
+## Permutaciones
 
-El supuesto de independencia (o sus versiones más débiles) aparece en toda la econometría:
+::: {.callout-note}
+## Definición: Permutación
+Una **permutación** es un reordenamiento de objetos donde el orden importa. El número de permutaciones de $N$ objetos tomados de $K$ en $K$ es [@hansen-for-economist]:
 
-. . .
+$$P(N, K) = \frac{N!}{(N-K)!}$$
 
-- **Muestreo aleatorio:** las observaciones $(X_i, Y_i)$ son i.i.d. (independientes e idénticamente distribuidas).
-
-. . .
-
-- **Exogeneidad:** $E[\varepsilon_i | X_i] = 0$, que es una forma de independencia condicional entre el error y los regresores.
-
-. . .
-
-- **Identificación causal:** la asignación al tratamiento es independiente de los resultados potenciales.
+En particular, el número de formas de ordenar $N$ objetos es $N!$
+:::
 
 . . .
 
-Cuando estos supuestos fallan, los estimadores estándar pierden sus buenas propiedades. Gran parte de la econometría avanzada consiste en **lidiar con la falta de independencia**.
+**Ejemplo:** ¿de cuántas formas se puede seleccionar un equipo ordenado de 5 estudiantes de una clase de 30?
+
+$$P(30, 5) = \frac{30!}{25!} = 30 \times 29 \times 28 \times 27 \times 26 = 17.100.720$$
+
+## Combinaciones
+
+::: {.callout-note}
+## Definición: Combinación
+Una **combinación** es un grupo no ordenado de objetos. El número de combinaciones de $N$ objetos tomados de $K$ en $K$ es [@hansen-for-economist]:
+
+$$\binom{N}{K} = \frac{N!}{K!(N-K)!}$$
+
+El símbolo $\binom{N}{K}\hspace{0.2cm}$ se lee "$N$ en $K$" o "$N$ choose $K$" y también se conoce como **coeficiente binomial**.
+:::
+
+. . .
+
+**Ejemplo:** ¿cuántos equipos (sin orden) de 5 estudiantes se pueden formar de una clase de 30?
+
+$$\binom{30}{5} = \frac{30!}{5! \cdot 25!} = 142.506$$
+
+## Muestreo con y sin reposición
+
+La distinción entre muestreo con y sin reposición determina qué fórmula de conteo usar [@hansen-for-economist]:
+
+. . .
+
+<table style="width:100%; font-size: 0.85em;">
+<thead>
+<tr style="background-color: #69000C; color: white;">
+<th style="width:34%; padding: 8px;"></th>
+<th style="width:33%; padding: 8px;">Sin reposición</th>
+<th style="width:33%; padding: 8px;">Con reposición</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>**Ordenado**</td><td>$\frac{N!}{(N-K)!}$</td><td>$N^K$</td></tr>
+<tr><td>**No ordenado**</td><td>$\binom{N}{K}$</td><td>$\binom{N+K-1}{K}$</td></tr>
+</tbody>
+</table>
+
+. . .
+
+Estas herramientas deben entenderse, no memorizarse: se pueden consultar cuando se necesiten [@hansen-for-economist]. Las usaremos cuando trabajemos con la distribución binomial y con problemas de muestreo.
 
 ## Resumen de la clase
 
@@ -301,28 +1200,33 @@ Cuando estos supuestos fallan, los estimadores estándar pierden sus buenas prop
 
 **Conceptos clave:**
 
-- Espacio muestral $\Omega$
+- Interpretaciones de la probabilidad
+- Espacio muestral $\Omega$ y eventos
 - Axiomas de Kolmogorov
+- Función de probabilidad
 - Probabilidad condicional
-- Teorema de Bayes
 - Independencia estadística
+- Teorema de Bayes
 
 :::
 ::: {.column width="50%"}
 
-**Para la próxima clase:**
+**Próxima clase:**
 
-- Variables aleatorias (discretas y continuas)
-- Función de densidad y distribución
-- Esperanza, varianza, covarianza
-- Distribuciones Normal, $t$, $\chi^2$, $F$
+- Variables aleatorias discretas y continuas
+- Función de masa de probabilidad (PMF)
+- Función de densidad (PDF)
+- Función de distribución acumulada (CDF)
+- Esperanza y varianza
 
 :::
 :::
 
-. . .
+## Para revisar
 
 ::: {.callout-tip}
-## Lectura sugerida
-Casella & Berger (2002), Capítulo 1, secciones 1.1–1.3.
+## Lecturas sugeridas
+- DeGroot & Schervish, Capítulos 1 y 2.
+- Hansen, *Probability and Statistics for Economists*, Capítulo 1.
+- Canavos, *Probabilidad y Estadística*, Capítulo 3.
 :::

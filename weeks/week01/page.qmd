@@ -17,10 +17,10 @@ Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer
 
 Para acompañar los contenidos de esta clase:
 
--   **Casella, G. & Berger, R. L.** (2002). *Statistical Inference*, Capítulo 1: Probability Theory.
--   **Wooldridge, J. M.** (2015). *Introductory Econometrics*, Apéndice B: Fundamentos de Probabilidad.
--   **Hansen, B. E.** (2022). [*Econometrics*](https://www.ssc.wisc.edu/~bhansen/econometrics/), Capítulo 2.
+-   **DeGroot, Morris H, Schervish, Mark J.** (2012). [*Probability and Statistics*](https://educationexclusive.com/upload/pdf/Probability%20and%20Statistics%20by%20Morris%20H.%20DeGroot%20and%20Mark%20J.%20Schervish.pdf). Fourth Edition. Pearson Education. Capítulo 1-2-3. 
+-   **Hansen, B. E.** (2022). *Probability and Statistics for Economist*, Princenton University Press. Capítulo 1- 2.
+-   **Hansen, B. E.** (2021). *Introduction to econometrics*, Unversity of Wisconsin. Capítulo 1- 2.
 
 ## 📟 Dudas
 
-Si tienes preguntas sobre el material, no dudes en escribir a **fransofia.nr\@gmail.com**.
+Si tienes preguntas sobre el material, no dudes en escribir a **fnunezre\@fen.uchile.cl**.

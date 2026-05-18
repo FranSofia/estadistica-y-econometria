@@ -11,8 +11,8 @@
   <meta name="generator" content="quarto-1.8.25">
 
   <meta name="author" content="Fran Sofía Núñez Rebolledo">
-  <meta name="dcterms.date" content="2026-05-04">
-  <title>Estadística y Econometría – Clase 01: Fundamentos de Probabilidad [PLANTILLAS]</title>
+  <meta name="dcterms.date" content="2026-05-18">
+  <title>Estadística y Econometría – Clase 01: Fundamentos de Probabilidad</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -30,8 +30,28 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
-  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-b3dec1c91f30f18c585a1a14a8abaabd.css">
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
+  <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-eb795206d5552757ffb721a9ac67931a.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -131,7 +151,7 @@
     <div class="slides">
 
 <section class="quarto-title-block center">
-  <h1 class="title">Clase 01: Fundamentos de Probabilidad [PLANTILLAS]</h1>
+  <h1 class="title">Clase 01: Fundamentos de Probabilidad</h1>
   <p class="subtitle">Estadística y Econometría</p>
 
 <div class="quarto-title-authors">
@@ -145,17 +165,17 @@
     </div>
 </div>
 
-  <p class="date">2026-05-04</p>
+  <p class="date">2026-05-18</p>
 </section>
 <section class="slide level2">
 <h2>Contenidos de hoy</h2>
 <ol type="1">
 <li><a href="#/por-qué-probabilidad">¿Por qué probabilidad?</a></li>
 <li><a href="#/espacios-muestrales">Espacios muestrales y eventos</a></li>
-<li><a href="#/axiomas-de-probabilidad">Axiomas de probabilidad</a></li>
+<li><a href="#/axiomas-de-probabilidad">Axiomas de probabilidad y función de probabilidad</a></li>
 <li><a href="#/probabilidad-condicional">Probabilidad condicional</a></li>
-<li><a href="#/teorema-de-bayes">Teorema de Bayes</a></li>
 <li><a href="#/independencia">Independencia</a></li>
+<li><a href="#/teorema-de-bayes">Teorema de Bayes</a></li>
 </ol>
 </section>
 <section>
@@ -165,24 +185,113 @@
 </section>
 <section class="slide level2">
 <h2>La probabilidad como lenguaje de la incertidumbre</h2>
-<p>La estadística y la econometría se ocupan de <strong>extraer conclusiones a partir de datos imperfectos</strong>. Los datos son imperfectos porque provienen de muestras finitas, contienen errores de medición, y reflejan procesos inherentemente aleatorios.</p>
+<p>La probabilidad es un mecanismo que permite estudiar sucesos aleatorios <span class="citation" data-cites="canavos">(<a href="#/references" role="doc-biblioref" onclick="">Canavos, 1988</a>)</span>. A su vez, la probabilidad es el lenguaje matemático utilizado para manejar la incertidumbre <span class="citation" data-cites="hansen-intro">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>.</p>
 <div class="fragment">
-<p>La teoría de probabilidades nos da el <strong>lenguaje formal</strong> para cuantificar esa incertidumbre. Sin ella, no podríamos definir qué significa que un estimador sea “bueno”, ni construir intervalos de confianza, ni evaluar hipótesis.</p>
+<p>Por lo tanto, la teoría de probabilidades nos da el <strong>lenguaje formal</strong> para cuantificar esa incertidumbre. Sin ella, no podríamos definir qué significa que un estimador sea “bueno”, ni construir intervalos de confianza, ni evaluar hipótesis.</p>
 </div>
 <div class="fragment">
-<blockquote>
-<p><em>“Probability is the very guide of life.”</em> — Cicerón (vía Joseph Butler)</p>
-</blockquote>
+<p>A diferencia de los eventos deterministas, gran parte de nuestro entorno natural y social está marcado por la incertidumbre. En este escenario, la probabilidad es la herramienta matemática clave que nos permite <em>cuantificar la aleatoriedad</em>, transformando lo impredecible en <em>certidumbre</em> para poder identificar <strong>causas</strong> y realizar <strong>predicciones</strong> fiables sobre la realidad.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>De la probabilidad a la econometría</h2>
-<p>El camino que recorreremos en este curso sigue una lógica acumulativa:</p>
-<p><span class="math display">\[
-\text{Probabilidad} \longrightarrow \text{Distribuciones} \longrightarrow \text{Estimación} \longrightarrow \text{Regresión}
-\]</span></p>
+<h2>Conceptos de probabilidad</h2>
+<p>Aunque la probabilidad es un concepto intuitivo y cotidiano — decimos “probablemente llueva” o “es muy probable que el vuelo se atrase” — no existe una única interpretación científica del término aceptada universalmente <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
 <div class="fragment">
-<p>Cada paso depende del anterior. No se puede entender por qué <span class="math inline">\(\hat{\beta}_{OLS}\)</span> es insesgado sin saber qué es una esperanza condicional. No se puede interpretar un <span class="math inline">\(p\)</span>-valor sin entender distribuciones muestrales.</p>
+<p>A lo largo de la historia se han propuesto distintas interpretaciones, cada una con fortalezas y limitaciones. Revisaremos las tres principales:</p>
+<ol type="1">
+<li>Interpretación <strong>frecuentista</strong></li>
+<li>Interpretación <strong>clásica</strong></li>
+<li>Interpretación <strong>subjetiva</strong></li>
+</ol>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota clave</strong></p>
+</div>
+<div class="callout-content">
+<p>La teoría matemática de la probabilidad <strong>no depende</strong> de cuál interpretación se adopte. Los axiomas y resultados que usaremos en este curso son válidos bajo cualquiera de ellas <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Interpretación frecuentista</h2>
+<p>La probabilidad de un resultado se interpreta como la <span class="alert">frecuencia relativa</span> con que ese resultado se obtendría si el proceso se repitiera muchas veces bajo condiciones similares <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> La probabilidad de obtener cara al lanzar una moneda es <span class="math inline">\(1/2\)</span> porque, al lanzarla un gran número de veces, la proporción de caras se aproximaría a <span class="math inline">\(1/2.\)</span></p>
+</div>
+<div class="fragment">
+<h3>Limitaciones</h3>
+<ul>
+<li><strong>Vaguedad en las condiciones:</strong> ¿Qué es un “gran número” de repeticiones? ¿Qué tan “similares” deben ser las condiciones?</li>
+<li><strong>No toda variación se elimina:</strong> si lanzamos una moneda 1.000.000 de veces, no esperamos exactamente 500.000 caras, pero sí un número cercano.</li>
+<li><strong>Solo aplica a procesos repetibles:</strong> no puede usarse directamente para eventos únicos, como la probabilidad de que un proyecto de investigación médica tenga éxito o de que una persona específica se case en los próximos dos años.</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Interpretación clásica</h2>
+<p>Se basa en el concepto de <span class="alert">resultados igualmente probables</span>. Si un proceso tiene <span class="math inline">\(n\)</span> resultados posibles y todos son igualmente verosímiles, la probabilidad de cada uno es <span class="math inline">\(1/n\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> Al lanzar una moneda justa hay dos resultados igualmente probables, por lo que <span class="math inline">\(P(\text{cara}) = P(\text{sello}) = 1/2\)</span>.</p>
+</div>
+<div class="fragment">
+<h3>Limitaciones</h3>
+<ul>
+<li><strong>Circularidad:</strong> definir “igualmente probables” equivale a decir que tienen la misma probabilidad, que es justamente lo que intentamos definir.</li>
+<li><strong>No ofrece un método sistemático</strong> para asignar probabilidades cuando los resultados <strong>no</strong> son igualmente probables (e.g., ¿cuál es la probabilidad de que un proyecto de investigación sea exitoso?).</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Interpretación subjetiva</h2>
+<p>Según la interpretación subjetiva o personal, la probabilidad que una persona asigna a un resultado representa su <span class="alert">propio juicio</span> sobre la verosimilitud de que ese resultado ocurra, basado en sus creencias e información disponible <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+<div class="fragment">
+<p>Dos personas con creencias o información distintas pueden asignar probabilidades diferentes al mismo evento. Por eso se habla de la <strong>probabilidad subjetiva</strong> de un resultado, más que de su “probabilidad verdadera”.</p>
+</div>
+<div class="fragment">
+<h3>Limitaciones</h3>
+<ul>
+<li><strong>Consistencia:</strong> exigir que los juicios de una persona sobre un número infinito de eventos sean perfectamente coherentes y libres de contradicciones no parece humanamente alcanzable.</li>
+<li><strong>Falta de objetividad:</strong> no provee una base común para que dos o más científicos lleguen a un acuerdo sobre el estado del conocimiento en su área.</li>
+</ul>
+<p>. . .</p>
+<p>Sin embargo, si los juicios de una persona satisfacen ciertas condiciones de consistencia, se puede demostrar que sus probabilidades subjetivas quedan unívocamente determinadas <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Las tres interpretaciones en perspectiva</h2>
+<div class="columns">
+<div class="column" style="width:33%;">
+<p><strong>Frecuentista</strong></p>
+<ul>
+<li>Probabilidad = frecuencia relativa a largo plazo</li>
+<li>Requiere repetibilidad</li>
+<li>Base de la estadística clásica</li>
+</ul>
+</div><div class="column" style="width:33%;">
+<p><strong>Clásica</strong></p>
+<ul>
+<li>Probabilidad = casos favorables / casos posibles</li>
+<li>Requiere resultados igualmente probables</li>
+<li>Útil en juegos de azar y combinatoria</li>
+</ul>
+</div><div class="column" style="width:34%;">
+<p><strong>Subjetiva</strong></p>
+<ul>
+<li>Probabilidad = grado de creencia personal</li>
+<li>Aplica a eventos únicos</li>
+<li>Base de la estadística bayesiana</li>
+</ul>
+</div></div>
+<div class="fragment">
+<p>En la práctica, el quehacer del/x científicx puede combinar las tres: usar frecuencias relativas de datos pasados, considerar simetrías del problema, e incorporar su propio juicio. La asignación final de probabilidades numéricas es, en última instancia, responsabilidad del/x investigador/x <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
 </div>
 </section></section>
 <section>
@@ -191,17 +300,48 @@
 
 </section>
 <section class="slide level2">
-<h2>Definiciones fundamentales</h2>
+<h2>Experimentos aleatorios</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Definición: Experimento aleatorio</strong></p>
+<p><strong>Definición: Experimento</strong></p>
 </div>
 <div class="callout-content">
-<p>Un <strong>experimento aleatorio</strong> es un proceso cuyo resultado no puede predecirse con certeza antes de realizarlo.</p>
+<p>Un <strong>experimento</strong> es cualquier proceso, real o hipotético, cuyos resultados posibles pueden identificarse de antemano, pero cuyo resultado específico no puede predecirse con certeza <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>La teoría de la probabilidad se ocupa de los distintos resultados que podrían obtenerse y de los posibles eventos que podrían ocurrir cuando se realiza un experimento <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>Ejemplos:</strong></p>
+<ul>
+<li>Lanzar una moneda al aire: ¿saldrá cara o sello?</li>
+<li>Registrar la variación del valor de un índice bursátil: ¿subirá o bajará?</li>
+<li>Seleccionar un individuo al azar y encuestarlo sobre su situación económica: ¿cuál será su ingreso por hora? <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Experimentos aleatorios</h2>
+<p>En todos estos casos, la falta de conocimiento previo sobre el resultado nos lleva a describir el resultado como <span class="alert">aleatorio</span>.</p>
+</section>
+<section class="slide level2">
+<h2>Resultados y espacio muestral</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Resultado (<em>outcome</em>)</strong></p>
+</div>
+<div class="callout-content">
+<p>Un <strong>resultado</strong> es un resultado específico de un experimento. Por ejemplo, en el lanzamiento de una moneda, un resultado es cara (H) o sello (T) <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -215,7 +355,7 @@
 <p><strong>Definición: Espacio muestral</strong></p>
 </div>
 <div class="callout-content">
-<p>El <strong>espacio muestral</strong> <span class="math inline">\(\Omega\)</span> es el conjunto de todos los resultados posibles de un experimento aleatorio.</p>
+<p>El <strong>espacio muestral</strong> <span class="math inline">\(\Omega\)</span> es el conjunto de todos los resultados posibles de un experimento <span class="citation" data-cites="probability-statistics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -223,18 +363,102 @@
 <div class="fragment">
 <p><strong>Ejemplos:</strong></p>
 <ul>
+<li>Lanzar una moneda: <span class="math inline">\(\Omega = \{H, T\}\)</span></li>
+<li>Lanzar dos monedas en secuencia: <span class="math inline">\(\Omega = \{HH, HT, TH, TT\}\)</span></li>
 <li>Lanzar un dado: <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span></li>
-<li>Ingreso de un hogar: <span class="math inline">\(\Omega = [0, +\infty)\)</span></li>
-<li>Respuesta a encuesta (Likert 1–5): <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5\}\)</span></li>
 </ul>
 </div>
 </section>
 <section class="slide level2">
-<h2>Eventos</h2>
-<p>Un <strong>evento</strong> <span class="math inline">\(A\)</span> es un subconjunto del espacio muestral: <span class="math inline">\(A \subseteq \Omega\)</span>.</p>
+<h2>Espacios muestrales discretos y continuos</h2>
+<p>El espacio muestral puede ser <span class="alert">finito</span>, <span class="alert">infinito numerable</span> o <span class="alert">infinito no numerable</span>. De esta distinción se sigue la clasificación en espacios discretos y continuos.</p>
 <div class="fragment">
-<p><strong>Operaciones con eventos:</strong></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Espacio muestral discreto</strong></p>
+</div>
+<div class="callout-content">
+<p>Un espacio muestral es <strong>discreto</strong> si sus resultados pueden ponerse en correspondencia uno a uno con un subconjunto de los enteros positivos. Es decir, es finito o infinito numerable (<em>countable</em>) <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplos:</strong></p>
+<ul>
+<li>Finito: lanzar un dado, <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span></li>
+<li>Finito: respuesta a encuesta Likert, <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5\}\)</span></li>
+<li>Infinito numerable: número de veces que un cliente visita una tienda, <span class="math inline">\(\Omega = \{0, 1, 2, \ldots\}\)</span></li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Espacios muestrales continuos</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Espacio muestral continuo</strong></p>
+</div>
+<div class="callout-content">
+<p>Un espacio muestral es <strong>continuo</strong> si su conjunto de resultados es un intervalo (acotado o no) de números reales, es decir, un subconjunto no numerable (<em>uncountable</em>) de <span class="math inline">\(\mathbb{R}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>En un espacio continuo, cada resultado individual <span class="math inline">\(\{\omega\}\)</span> tiene probabilidad 0. Por lo tanto, no tiene sentido asignar probabilidad a un punto aislado, sino a <span class="alert">intervalos</span>. Para <span class="math inline">\(a &lt; b\)</span>:</p>
+<p><span class="math display">\[P([a, b]) = \int_a^b f(x) \, dx\]</span></p>
+<p>donde <span class="math inline">\(f\)</span> es la función de densidad de probabilidad (que formalizaremos más adelante).</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Espacios muestrales continuos</h2>
+<p><strong>Ejemplo:</strong> El ingreso mensual de un hogar es un espacio muestral continuo con <span class="math inline">\(\Omega = [0, +\infty)\)</span>. La probabilidad de que el ingreso caiga en un rango <span class="math inline">\([y_1, y_2]\)</span> sería:</p>
+<p><span class="math display">\[P(y_1 \leq Y \leq y_2) = \int_{y_1}^{y_2} f_Y(y) \, dy\]</span></p>
+</section>
+<section class="slide level2">
+<h2>Eventos</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Evento</strong></p>
+</div>
+<div class="callout-content">
+<p>Un <strong>evento</strong> <span class="math inline">\(A\)</span> es un subconjunto bien definido del espacio muestral: <span class="math inline">\(A \subseteq \Omega\)</span>. Representa una colección de resultados del experimento <span class="citation" data-cites="probability-statistics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Decimos que el evento <span class="math inline">\(A\)</span> <strong>ha ocurrido</strong> si el resultado del experimento es un elemento de <span class="math inline">\(A\)</span>, es decir, si <span class="math inline">\(s_{\text{observado}} \in A.\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> En el lanzamiento de un dado con <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span>:</p>
+<ul>
+<li><span class="math inline">\(A\)</span> = “sale un número par” = <span class="math inline">\(\{2, 4, 6\}\)</span></li>
+<li><span class="math inline">\(B\)</span> = “sale un número mayor que 2” = <span class="math inline">\(\{3, 4, 5, 6\}\)</span></li>
+</ul>
+<p>Puesto que los resultados pueden interpretarse como elementos de un conjunto y los eventos como subconjuntos, el lenguaje y los conceptos de la <span class="alert">teoría de conjuntos</span> proporcionan el contexto natural para desarrollar la teoría de la probabilidad <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Operaciones con eventos</h2>
+<p>Las operaciones de conjuntos nos permiten construir nuevos eventos a partir de eventos existentes:</p>
+<div class="fragment">
 <table class="caption-top">
+<colgroup>
+<col style="width: 32%">
+<col style="width: 29%">
+<col style="width: 38%">
+</colgroup>
 <thead>
 <tr class="header">
 <th>Operación</th>
@@ -259,73 +483,547 @@
 <td>No ocurre <span class="math inline">\(A\)</span></td>
 </tr>
 <tr class="even">
-<td>Diferencia</td>
-<td><span class="math inline">\(A \setminus B\)</span></td>
-<td>Ocurre <span class="math inline">\(A\)</span> pero no <span class="math inline">\(B\)</span></td>
+<td>Contención</td>
+<td><span class="math inline">\(A \subset B\)</span></td>
+<td>Si ocurre <span class="math inline">\(A\)</span>, entonces necesariamente ocurre <span class="math inline">\(B\)</span></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="fragment">
-<p>Dos eventos son <strong>mutuamente excluyentes</strong> si <span class="math inline">\(A \cap B = \emptyset\)</span>.</p>
-</div>
-</section></section>
-<section>
-<section id="axiomas-de-probabilidad" class="title-slide slide level1 center">
-<h1>Axiomas de probabilidad</h1>
-
-</section>
-<section class="slide level2">
-<h2>Los tres axiomas de Kolmogorov (1933)</h2>
-<p>Una función de probabilidad <span class="math inline">\(P\)</span> asigna a cada evento <span class="math inline">\(A\)</span> un número real <span class="math inline">\(P(A)\)</span> que satisface:</p>
-<div class="fragment">
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Axioma 1</strong> (No negatividad): <span class="math display">\[P(A) \geq 0 \quad \forall A\]</span></p>
-<p><strong>Axioma 2</strong> (Normalización): <span class="math display">\[P(\Omega) = 1\]</span></p>
-</div><div class="column" style="width:50%;">
-<p><strong>Axioma 3</strong> (Aditividad numerable):</p>
-<p>Si <span class="math inline">\(A_1, A_2, \ldots\)</span> son mutuamente excluyentes: <span class="math display">\[P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)\]</span></p>
-</div></div>
-</div>
-<div class="fragment">
-<p>De estos tres axiomas se derivan <strong>todas</strong> las propiedades de la probabilidad que usaremos en el curso.</p>
-</div>
-</section>
-<section class="slide level2">
-<h2>Consecuencias de los axiomas</h2>
-<p>A partir de los axiomas se puede demostrar:</p>
-<p><span class="math display">\[P(A^c) = 1 - P(A)\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[P(\emptyset) = 0\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[P(A \cup B) = P(A) + P(B) - P(A \cap B)\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\text{Si } A \subseteq B, \text{ entonces } P(A) \leq P(B)\]</span></p>
-</div>
-<div class="fragment">
-<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Ejercicio para pensar</strong></p>
+<p><strong>Definición: Conjunto vacío</strong></p>
 </div>
 <div class="callout-content">
-<p>¿Puedes demostrar <span class="math inline">\(P(A^c) = 1 - P(A)\)</span> usando solo los tres axiomas?</p>
-<p><em>Pista:</em> Note que <span class="math inline">\(A\)</span> y <span class="math inline">\(A^c\)</span> son mutuamente excluyentes, y que <span class="math inline">\(A \cup A^c = \Omega\)</span>.</p>
+<p>El subconjunto de <span class="math inline">\(\Omega\)</span> que no contiene ningún elemento se llama <strong>conjunto vacío</strong> y se denota <span class="math inline">\(\emptyset\)</span>. En términos de eventos, representa cualquier evento que no puede ocurrir <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
 </div>
 </div>
 </div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Eventos disjuntos</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Eventos disjuntos (mutuamente excluyentes)</strong></p>
+</div>
+<div class="callout-content">
+<p>Dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son <strong>disjuntos</strong> si no tienen resultados en común, es decir, si <span class="math inline">\(A \cap B = \emptyset\)</span>. No pueden ocurrir simultáneamente.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> En el lanzamiento de un dado:</p>
+<ul>
+<li><span class="math inline">\(A\)</span> = “sale menor o igual a 3” = <span class="math inline">\(\{1, 2, 3\}\)</span></li>
+<li><span class="math inline">\(B\)</span> = “sale mayor o igual a 5” = <span class="math inline">\(\{5, 6\}\)</span></li>
+<li><span class="math inline">\(A \cap B = \emptyset\)</span> — no pueden suceder a la vez.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son disjuntos, exactamente una de estas tres afirmaciones es verdadera:</p>
+<ol type="1">
+<li>Ocurre <span class="math inline">\(A\)</span> (e.g., sale un 2)</li>
+<li>Ocurre <span class="math inline">\(B\)</span> (e.g., sale un 5)</li>
+<li>No ocurre ni <span class="math inline">\(A\)</span> ni <span class="math inline">\(B\)</span> (e.g., sale un 4)</li>
+</ol>
+</div>
+</section>
+<section class="slide level2">
+<h2>Partición del espacio muestral</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Partición</strong></p>
+</div>
+<div class="callout-content">
+<p>Los eventos <span class="math inline">\(A_1, A_2, \ldots, A_k\)</span> forman una <strong>partición</strong> de <span class="math inline">\(\Omega\)</span> si son mutuamente disjuntos y su unión es igual a <span class="math inline">\(\Omega\)</span>:</p>
+<p><span class="math display">\[A_i \cap A_j = \emptyset \quad \text{para } i \neq j \qquad \text{y} \qquad \bigcup_{i=1}^{k} A_i = \Omega\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> En el lanzamiento de un dado, los eventos <span class="math inline">\(A_i = \{i\}\)</span> para <span class="math inline">\(i = 1, \ldots, 6\)</span> forman una partición de <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}\)</span>, pues son disjuntos y cubren todos los resultados posibles.</p>
+</div>
+<div class="fragment">
+<p>El concepto de partición será fundamental más adelante: la <span class="alert">ley de probabilidad total</span> y el <span class="alert">Teorema de Bayes</span> se construyen sobre la idea de descomponer <span class="math inline">\(\Omega\)</span> en piezas disjuntas y exhaustivas.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Conjuntos finitos, numerables y no numerables</h2>
+<p>Esta distinción, que parece puramente matemática, tiene consecuencias directas sobre cómo asignamos probabilidades.</p>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Numerable y no numerable</strong></p>
+</div>
+<div class="callout-content">
+<p>Un conjunto infinito <span class="math inline">\(A\)</span> es <strong>numerable</strong> (<em>countable</em>) si existe una correspondencia uno a uno entre sus elementos y los números naturales <span class="math inline">\(\{1, 2, 3, \ldots\}\)</span>. Un conjunto es <strong>no numerable</strong> (<em>uncountable</em>) si no es ni finito ni numerable <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Conjuntos numerables:</strong></p>
+<ul>
+<li>Los enteros <span class="math inline">\(\mathbb{Z}\)</span></li>
+<li>Los números pares</li>
+<li>Los primos</li>
+<li>Cualquier secuencia infinita</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Conjuntos no numerables:</strong></p>
+<ul>
+<li>Los reales <span class="math inline">\(\mathbb{R}\)</span></li>
+<li>El intervalo <span class="math inline">\([0, 1]\)</span></li>
+<li>Los reales positivos <span class="math inline">\(\mathbb{R}^+\)</span></li>
+</ul>
+</div></div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Conjuntos finitos, numerables y no numerables</h2>
+<p>Cuando <span class="math inline">\(\Omega\)</span> es numerable, podemos asignar probabilidad a cada resultado individual. Cuando <span class="math inline">\(\Omega\)</span> es no numerable, debemos trabajar con probabilidades sobre <span class="alert">intervalos</span>, lo que nos llevará a las funciones de densidad.</p>
+</section>
+<section class="slide level2">
+<h2>Síntesis: el lenguaje de la probabilidad</h2>
+<table style="width:100%; font-size: 0.85em;">
+<thead>
+<tr style="background-color: #69000C; color: white;">
+<th style="width:50%; padding: 8px;">
+Castellano
+</th>
+<th style="width:50%; padding: 8px;">
+Notación de conjuntos
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Espacio muestral
+</td>
+<td>
+<span class="math inline">\(\Omega\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(s\)</span> es un posible resultado
+</td>
+<td>
+<span class="math inline">\(s \in \Omega\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span> es un evento
+</td>
+<td>
+<span class="math inline">\(A \subseteq \Omega\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span> ocurrió
+</td>
+<td>
+<span class="math inline">\(s_{\text{obs}} \in A\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Algo debe ocurrir
+</td>
+<td>
+<span class="math inline">\(s_{\text{obs}} \in \Omega\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span> o <span class="math inline">\(B\)</span> (o ambos)
+</td>
+<td>
+<span class="math inline">\(A \cup B\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span>
+</td>
+<td>
+<span class="math inline">\(A \cap B\)</span>
+</td>
+</tr>
+<tr>
+<td>
+No <span class="math inline">\(A\)</span>
+</td>
+<td>
+<span class="math inline">\(A^c\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span> implica <span class="math inline">\(B\)</span>
+</td>
+<td>
+<span class="math inline">\(A \subset B\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son disjuntos
+</td>
+<td>
+<span class="math inline">\(A \cap B = \emptyset\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<span class="math inline">\(A_1, \ldots, A_n\)</span> partición de <span class="math inline">\(\Omega\)</span>
+</td>
+<td>
+<span class="math inline">\(A_i \cap A_j = \emptyset \;\; (i \neq j)\)</span> y <span class="math inline">\(\bigcup_i A_i = \Omega\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class="slide level2">
+<h2>Síntesis: el lenguaje de la probabilidad</h2>
+<p>Esta tabla resume el puente entre el lenguaje cotidiano y la formalización matemática que usaremos de aquí en adelante. Todo lo que sigue —axiomas, funciones de probabilidad, condicionalidad— se construye sobre estas definiciones <span class="citation" data-cites="probability-statistics canavos hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Canavos, 1988</a>; <a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Lo fundamental de entender es que esta base matemática es lo que nos entregará las herramientas para <em>modelar</em> estadísticamente fenómenos de la realidad.</p>
+</section></section>
+<section>
+<section id="axiomas-de-probabilidad" class="title-slide slide level1 center">
+<h1>Axiomas de probabilidad y función de probabilidad</h1>
+
+</section>
+<section class="slide level2">
+<h2>La función de probabilidad</h2>
+<p>Hasta ahora hemos descrito eventos usando teoría de conjuntos. El paso siguiente es asignarle a cada evento un <span class="alert">número real</span> que mida la posibilidad de que ese evento ocurra cuando se realice el experimento.</p>
+<div class="fragment">
+<p>Lo que necesitamos es una función que tome eventos como argumento y devuelva probabilidades:</p>
+<p><span class="math display">\[\text{Evento } A \longrightarrow P(A) \longrightarrow \text{Número real}\]</span></p>
+</div>
+<div class="fragment">
+<p>Diremos que una función de probabildad, por tanto, es “una función <span class="math inline">\(\mathbb{P}\)</span> que asigna un valor numérico a eventos” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022, p. 2</a>)</span>. Esto significa que <span class="math inline">\(\mathbb{P}\)</span> (o <span class="math inline">\(\Pr\)</span>) es una función del espacio de eventos a la recta real. Las probabilidades son, por tanto, números, que indican un <em>quantum</em> de que un suceso ocurra.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Definición de función de probabilidad</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Función de probabilidad</strong></p>
+</div>
+<div class="callout-content">
+<p>Una <strong>medida de probabilidad</strong>, o simplemente una <strong>probabilidad</strong>, sobre un espacio muestral <span class="math inline">\(\Omega\)</span> es una especificación de números <span class="math inline">\(P(A)\)</span> para todos los eventos <span class="math inline">\(A\)</span> que satisface los tres axiomas de la probabilidad <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>No cualquier asignación de números a eventos constituye una función de probabilidad. Solo aquellas que satisfacen los axiomas que veremos a continuación.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Cualquier función <span class="math inline">\(\Pr\)</span> que satisfaga los axiomas es una función de probabilidad válida. No importa cómo se hayan determinado las probabilidades —ya sea por frecuencias, simetrías o juicio subjetivo— mientras cumplan los axiomas, deben satisfacer también todas las propiedades que se derivan de ellos <span class="citation" data-cites="probability-statistics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Los tres axiomas de Kolmogorov (1933)</h2>
+<p>Una función de probabilidad <span class="math inline">\(\Pr\)</span> asigna a cada evento <span class="math inline">\(A\)</span> un número real <span class="math inline">\(\Pr(A)\)</span> que satisface:</p>
+<div class="fragment">
+<p><strong>Axioma 1</strong> (No negatividad): Para todo evento <span class="math inline">\(A\)</span>, <span class="math display">\[\Pr(A) \geq 0\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Axioma 2</strong> (Normalización): <span class="math display">\[\Pr(\Omega) = 1\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Axioma 3</strong> (Aditividad numerable): Para toda secuencia infinita de eventos disjuntos <span class="math inline">\(A_1, A_2, \ldots\)</span>,</p>
+<p><span class="math display">\[\Pr\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \Pr(A_i)\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Los tres axiomas de Kolmogorov (1933)</h2>
+<p>De estos tres axiomas se derivan <strong>todas</strong> las propiedades de la probabilidad que usaremos en el curso. En general, utilizaremos <span class="math inline">\(\Pr\)</span> para denotar una función de probabilidad, pero en la literatura se puede ver como <span class="math inline">\(P\)</span> o <span class="math inline">\(\mathbb{P}\)</span> también.</p>
+<div class="fragment">
+<p>Un ensayo muy lindo sobre Kolmogorov, puede verse en <a href="https://www.researchgate.net/profile/Rolando-Rebolledo-2/publication/261707417_KOLMOGOROV_Y_SU_EPOCA_El_pensamiento_y_la_accion/links/02e7e5351c5b1c4db6000000/KOLMOGOROV-Y-SU-EPOCA-El-pensamiento-y-la-accion.pdf">Rolando Rebolledo. “Kolmogorov y su época”. En: Revista de la Sociedad Chilena de Estadı́stica (1988).</a></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Interpretación de los axiomas</h2>
+<p>El <strong>Axioma 1</strong> dice que las probabilidades no pueden ser negativas. Esto es razonable en el siguiente sentido: si nos preguntamos cuál es la probabilidad de que nos caiga un rayo, no decimos <span class="math inline">\(-99\%,\)</span> sino <span class="math inline">\(0\%\)</span> si creemos que no ocurrirá. Cuando <em>no hay</em> probabilidad de un suceso, es <span class="math inline">\(\Pr(A) = 0.\)</span></p>
+<div class="fragment">
+<p>El <strong>Axioma 2</strong> dice que la probabilidad del espacio muestral completo es 1. Captura la idea de que el espacio muestral incluye <em>todos</em> los resultados posibles: algo tiene que ocurrir. Es esencialmente una normalización <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p>El <strong>Axioma 3</strong> es la <span class="alert">propiedad aditiva</span> e impone estructura considerable. Establece que si dos eventos no pueden ocurrir simultáneamente, la probabilidad de que ocurra uno u otro es la suma de sus probabilidades individuales <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Es decir, si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son disjuntos:</p>
+<p><span class="math display">\[\Pr(A \cup B) = \Pr(A) + \Pr(B)\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Cuidado con el Axioma 3</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>El Axioma 3 solo aplica a eventos disjuntos</strong></p>
+</div>
+<div class="callout-content">
+<p>Es un error frecuente aplicar la aditividad a eventos que <strong>no</strong> son disjuntos.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> Considere el lanzamiento de dos dados. Sea <span class="math inline">\(A\)</span> = “sale 1 en el primer dado” y <span class="math inline">\(B\)</span> = “sale 1 en el segundo dado”.</p>
+</div>
+<div class="fragment">
+<p>Es tentador escribir <span class="math inline">\(\Pr(\text{1 en algun dado}) = \Pr(A \cup B) = \Pr(A) + \Pr(B), \qquad\)</span> pero esto es <span class="alert">incorrecto</span> porque <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> no son disjuntos: el resultado “1 en ambos dados” pertenece tanto a <span class="math inline">\(A\)</span> como a <span class="math inline">\(B\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: Funciones de probabilidad válidas e inválidas</h2>
+<p>Considere el lanzamiento de una moneda con <span class="math inline">\(\Omega = \{H, T\}\)</span>.</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Válidas</strong> ✓</p>
+<ul>
+<li><span class="math inline">\(\Pr(H) = 0.5, \Pr(T) = 0.5\quad\)</span> (moneda justa)</li>
+<li><span class="math inline">\(\Pr(H) = 0.6, \Pr(T) = 0.4\quad\)</span> (moneda cargada)</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Inválidas</strong> ✗</p>
+<ul>
+<li><span class="math inline">\(\Pr(H) = -0.6,  \Pr(T) = 0.6\quad\)</span> (viola Axioma 1)</li>
+<li><span class="math inline">\(\Pr(H) = 0.6, \Pr(T) = 0.6\quad\)</span> (viola Axioma 2: suma <span class="math inline">\(\neq 1)\)</span></li>
+</ul>
+</div></div>
+</div>
+<div class="fragment">
+<p>No existe una única función de probabilidad para un experimento dado. Lo que los axiomas exigen es consistencia interna, no una asignación particular <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: Dado justo</h2>
+<p>En el lanzamiento de un dado con <span class="math inline">\(\Omega = \{1, 2, 3, 4, 5, 6\}, \hspace{0.6cm}\)</span> sea <span class="math inline">\(\Pr(A)\)</span> el número de elementos de <span class="math inline">\(A\)</span> dividido por 6 <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+<div class="fragment">
+<ul>
+<li>Axioma 1: <span class="math inline">\(\Pr(A) = |A|/6 \geq 0\hspace{0.6cm}  \checkmark\)</span></li>
+<li>Axioma 2: <span class="math inline">\(\Pr(\Omega) = 6/6 = 1\hspace{0.6cm} \checkmark\)</span></li>
+<li>Axioma 3: Si <span class="math inline">\(A = \{1, 3, 5\}\hspace{0.6cm}\)</span>, entonces <span class="math inline">\(\Pr(A) = p_1 + p_3 + p_5 = 3/6\hspace{0.6cm}  \checkmark\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>¿Y un dado cargado?</strong> Supongamos que el 6 tiene el doble de probabilidad de salir. Podemos asignar <span class="math inline">\(p_i = 1/7\hspace{0.6cm}\)</span> para <span class="math inline">\(i = 1, \ldots, 5\hspace{0.6cm}\)</span> y <span class="math inline">\(p_6 = 2/7.\hspace{0.6cm}\)</span> Para cualquier evento <span class="math inline">\(A\hspace{0.6cm}\)</span>, definimos <span class="math inline">\(\Pr(A) = \sum_{i \in A} p_i.\hspace{0.6cm}\)</span> Esto también satisface los tres axiomas <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplos con datos reales</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Índice S&amp;P 500</strong></p>
+<p>Sea <span class="math inline">\(U\)</span> = “el índice sube en una semana” y <span class="math inline">\(D\)</span> = “el índice baja”. El espacio muestral es <span class="math inline">\(\Omega = \{U, D\}\hspace{0.6cm}\)</span>, similar a una moneda. Con datos de 3.584 semanas (1950–2017):</p>
+<p><span class="math display">\[\Pr(U) = 0.57, \quad \Pr(D) = 0.43\]</span></p>
+<p>La probabilidad de un alza es algo mayor que la de una moneda justa <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Salarios en EE.UU.</strong></p>
+<p>Sea <span class="math inline">\(H\)</span> = “salario &gt; $25/hora” y <span class="math inline">\(L\)</span> = “salario <span class="math inline">\(\leq\)</span> $25/hora”. Con una muestra de 50.742 trabajadores (2009):</p>
+<p><span class="math display">\[\Pr(H) = 0.31, \quad \Pr(L) = 0.69\]</span></p>
+<p>Antes de encuestar a un individuo al azar, su salario es incierto y aleatorio <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div></div>
+</section>
+<section class="slide level2">
+<h2>Propiedades de la función de probabilidad</h2>
+<p>A partir de los axiomas se demuestran las siguientes propiedades. Para cualesquiera eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> <span class="citation" data-cites="probability-statistics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<div class="fragment">
+<p><strong>1.</strong> <span class="math inline">\(\Pr(A^c) = 1 - \Pr(A)\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>2.</strong> <span class="math inline">\(\Pr(\emptyset) = 0\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>3.</strong> <span class="math inline">\(0 \leq \Pr(A) \leq 1\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>4.</strong> <strong>Monotonía:</strong> Si <span class="math inline">\(A \subset B\hspace{0.6cm}\)</span>, entonces <span class="math inline">\(\Pr(A) \leq \Pr(B)\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>5.</strong> <strong>Inclusión-Exclusión:</strong> <span class="math inline">\(\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>6.</strong> <span class="math inline">\(\Pr(A \cap B^c) = \Pr(A) - \Pr(A \cap B)\)</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Demostración: <span class="math inline">\(\Pr(\emptyset) = 0\)</span> (opcional)</h2>
+<p>Consideremos la secuencia infinita <span class="math inline">\(A_1, A_2, \ldots\)</span> tal que <span class="math inline">\(A_i = \emptyset\)</span> para todo <span class="math inline">\(i\)</span>. Como <span class="math inline">\(\emptyset \cap \emptyset = \emptyset\)</span>, los eventos son disjuntos. Además, <span class="math inline">\(\bigcup_{i=1}^{\infty} A_i = \emptyset\)</span>. Entonces, por el Axioma 3 <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>:</p>
+<p><span class="math display">\[\Pr(\emptyset) = \Pr\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \Pr(\emptyset)\]</span></p>
+<div class="fragment">
+<p>La única forma de que un número sea igual a la suma infinita de sí mismo es que ese número sea cero. <span class="math inline">\(\blacksquare\)</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Demostración: <span class="math inline">\(\Pr(A^c) = 1 - \Pr(A)\)</span> (opcional)</h2>
+<p>Como <span class="math inline">\(A\)</span> y <span class="math inline">\(A^c\)</span> son disjuntos y <span class="math inline">\(A \cup A^c = \Omega\)</span>, por el Axioma 3 (aditividad finita, que se deriva del Axioma 3):</p>
+<p><span class="math display">\[\Pr(A \cup A^c) = \Pr(A) + \Pr(A^c)\]</span></p>
+<div class="fragment">
+<p>Y como <span class="math inline">\(A \cup A^c = \Omega\)</span>, por el Axioma 2:</p>
+<p><span class="math display">\[\Pr(\Omega) = 1 = \Pr(A) + \Pr(A^c)\]</span></p>
+</div>
+<div class="fragment">
+<p>Por lo tanto:</p>
+<p><span class="math display">\[\Pr(A^c) = 1 - \Pr(A) \qquad \blacksquare\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Demostración: Si <span class="math inline">\(A \subset B\)</span>, entonces <span class="math inline">\(\Pr(A) \leq \Pr(B)\)</span> (opcional)</h2>
+<p>El evento <span class="math inline">\(B\)</span> puede descomponerse como la unión de dos eventos disjuntos: <span class="math inline">\(B = A \cup (B \cap A^c)\)</span>.</p>
+<div class="fragment">
+<p>Por aditividad:</p>
+<p><span class="math display">\[\Pr(B) = \Pr(A) + \Pr(B \cap A^c)\]</span></p>
+</div>
+<div class="fragment">
+<p>Como <span class="math inline">\(\Pr(B \cap A^c) \geq 0\)</span> por el Axioma 1:</p>
+<p><span class="math display">\[\Pr(B) \geq \Pr(A) \qquad \blacksquare\]</span></p>
+</div>
+<div class="fragment">
+<p>De esta misma demostración, junto con el hecho de que <span class="math inline">\(A \subset \Omega\)</span> para todo evento <span class="math inline">\(A\)</span>, se deduce que <span class="math inline">\(\Pr(A) \leq \Pr(\Omega) = 1\)</span>. Combinando con el Axioma 1, obtenemos <span class="math inline">\(0 \leq \Pr(A) \leq 1\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Demostración: Inclusión-Exclusión (opcional)</h2>
+<p>Queremos demostrar que <span class="math inline">\(\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B)\)</span>.</p>
+<div class="fragment">
+<p>Notemos que <span class="math inline">\(A \cup B = B \cup (A \cap B^c)\)</span>, donde <span class="math inline">\(B\)</span> y <span class="math inline">\(A \cap B^c\)</span> son disjuntos. Entonces:</p>
+<p><span class="math display">\[\Pr(A \cup B) = \Pr(B) + \Pr(A \cap B^c)\]</span></p>
+</div>
+<div class="fragment">
+<p>Además, <span class="math inline">\(A = (A \cap B) \cup (A \cap B^c)\)</span>, donde ambos términos son disjuntos, por lo que:</p>
+<p><span class="math display">\[\Pr(A) = \Pr(A \cap B) + \Pr(A \cap B^c) \implies \Pr(A \cap B^c) = \Pr(A) - \Pr(A \cap B)\]</span></p>
+</div>
+<div class="fragment">
+<p>Sustituyendo:</p>
+<p><span class="math display">\[\Pr(A \cup B) = \Pr(B) + \Pr(A) - \Pr(A \cap B) \qquad \blacksquare\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Propiedades adicionales: desigualdades útiles (opcional)</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Desigualdad de Boole</strong></p>
+</div>
+<div class="callout-content">
+<p>Para cualesquiera eventos <span class="math inline">\(A_1, \ldots, A_n:\)</span> <span class="math display">\[\Pr\left(\bigcup_{i=1}^{n} A_i\right) \leq \sum_{i=1}^{n} \Pr(A_i)\]</span></p>
+<p>La probabilidad de una unión está acotada superiormente por la suma de las probabilidades individuales <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Desigualdad de Bonferroni</strong></p>
+</div>
+<div class="callout-content">
+<p>Para cualesquiera eventos <span class="math inline">\(A_1, \ldots, A_n:\)</span> <span class="math display">\[\Pr\left(\bigcap_{i=1}^{n} A_i\right) \geq 1 - \sum_{i=1}^{n} \Pr(A_i^c)\]</span></p>
+<p>La probabilidad de una intersección está acotada inferiormente <span class="citation" data-cites="probability-statistics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Propiedades adicionales: desigualdades útiles (opcional)</h2>
+<p>Ambas desigualdades (de Boole y de Bonferroni) son utilizadas frecuentemente en cálculos de probabilidad y serán útiles cuando veamos intervalos de confianza simultáneos.</p>
+</section>
+<section class="slide level2">
+<h2>Probabilidad cero <span class="math inline">\(\neq\)</span> imposibilidad</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Nota clave</strong></p>
+</div>
+<div class="callout-content">
+<p>Cuando un evento tiene probabilidad 0, eso <strong>no</strong> significa que el evento sea imposible <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>En un espacio muestral continuo, hay muchos eventos con probabilidad 0 que no son todos imposibles. Por ejemplo, si la demanda de agua puede tomar cualquier valor en <span class="math inline">\([4, 200],\hspace{0.2cm}\)</span> el evento “la demanda es exactamente 150” corresponde a un solo punto —que tiene área 0— y por tanto probabilidad 0. Pero la demanda <span class="alert"><em>podría</em></span> ser 150 <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Probabilidad cero <span class="math inline">\(\neq\)</span> imposibilidad</h2>
+<p>Un evento con probabilidad 0 o 1 se denomina <span class="alert">trivial</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> en el lanzamiento de una moneda, usualmente definimos <span class="math inline">\(\Omega = \{H, T\}.\)</span> Pero podríamos ser más exhaustivos y considerar <span class="math inline">\(\Omega = \{H, T, \text{canto}, \text{desaparece}\}\)</span>, donde “canto” significa que la moneda queda parada sobre su borde y “desaparece” que se pierde (cae por una rejilla, por ejemplo). Ambos resultados son físicamente concebibles, pero les asignamos <span class="math inline">\(\Pr(\text{canto}) = 0\)</span> y <span class="math inline">\(\Pr(\text{desaparece}) = 0\)</span>. Son eventos triviales: no son imposibles en principio, pero no contribuyen al comportamiento aleatorio del experimento. En la práctica, los ignoramos y trabajamos con <span class="math inline">\(\Omega = \{H, T\}\)</span>.</p>
 </div>
 </section></section>
 <section>
 <section id="probabilidad-condicional" class="title-slide slide level1 center">
 <h1>Probabilidad condicional</h1>
 
+</section>
+<section class="slide level2">
+<h2>¿Por qué probabilidad condicional?</h2>
+<p>Un uso fundamental de la probabilidad en inferencia estadística es la <span class="alert">actualización de probabilidades</span> cuando se observan ciertos eventos. La probabilidad actualizada de un evento <span class="math inline">\(A\)</span> después de saber que el evento <span class="math inline">\(B\)</span> ha ocurrido es la probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+<div class="fragment">
+<p>Preguntas como las siguientes son preguntas de probabilidad condicional:</p>
+<ul>
+<li>¿Asistir a la universidad afecta la probabilidad de obtener un salario alto?</li>
+<li>¿Los aranceles afectan la probabilidad de un aumento de precios?</li>
+<li>¿Recibir un tratamiento médico cambia la probabilidad de recaída?</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Todas comparten la misma estructura: ¿cómo cambia la probabilidad de <span class="math inline">\(A\)</span> cuando sabemos que <span class="math inline">\(B\)</span> ha ocurrido?</p>
+</div>
 </section>
 <section class="slide level2">
 <h2>Definición</h2>
@@ -338,39 +1036,440 @@
 <p><strong>Definición: Probabilidad condicional</strong></p>
 </div>
 <div class="callout-content">
-<p>La probabilidad de <span class="math inline">\(A\)</span> <strong>dado que</strong> <span class="math inline">\(B\)</span> ha ocurrido se define como:</p>
-<p><span class="math display">\[P(A|B) = \frac{P(A \cap B)}{P(B)}, \quad P(B) &gt; 0\]</span></p>
+<p>Supongamos que sabemos que el evento <span class="math inline">\(B\)</span> ha ocurrido y queremos calcular la probabilidad de otro evento <span class="math inline">\(A\)</span> considerando esta información. La nueva probabilidad de <span class="math inline">\(A\)</span> se llama la <strong>probabilidad condicional de <span class="math inline">\(A\)</span> dado <span class="math inline">\(B\)</span></strong> y se denota <span class="math inline">\(\Pr(A|B).\hspace{0.2cm}\)</span> Si <span class="math inline">\(\Pr(B) &gt; 0:\)</span></p>
+<p><span class="math display">\[\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}\]</span></p>
+<p>La probabilidad condicional no está definida si <span class="math inline">\(\Pr(B) = 0 \hspace{0.3cm}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Interpretación:</strong> Condicionar en <span class="math inline">\(B\)</span> equivale a <strong>restringir el espacio muestral</strong> a <span class="math inline">\(B\)</span>, y evaluar qué proporción de <span class="math inline">\(B\)</span> está ocupada por <span class="math inline">\(A\)</span>.</p>
+<p>La notación “<span class="math inline">\(A \mid B\hspace{0.4cm}\)</span>” se lee como “<span class="math inline">\(A\)</span> dado <span class="math inline">\(B\hspace{0.4cm}\)</span>” o “<span class="math inline">\(A\)</span> asumiendo que <span class="math inline">\(B\)</span> es verdadero”. Para mayor claridad, a veces llamaremos a <span class="math inline">\(\Pr(A)\hspace{0.2cm}\)</span> la <strong>probabilidad incondicional</strong> para distinguirla de <span class="math inline">\(\Pr(A|B) \hspace{0.3cm}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Interpretación</h2>
+<p>Condicionar en <span class="math inline">\(B\)</span> equivale a <span class="alert">restringir el espacio muestral</span> a <span class="math inline">\(B\)</span>. Si sabemos que <span class="math inline">\(B\)</span> ha ocurrido, entonces el resultado del experimento es necesariamente un elemento de <span class="math inline">\(B\)</span>. Para evaluar la probabilidad de <span class="math inline">\(A\)</span>, debemos considerar solo aquellos resultados de <span class="math inline">\(B\)</span> que también pertenecen a <span class="math inline">\(A.\hspace{0.1cm}\)</span> Es decir, el conjunto <span class="math inline">\(A \cap B\hspace{0.2cm}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+<div class="fragment">
+<p>Intuitivamente, <span class="math inline">\(\Pr(A|B) \hspace{0.1cm}\)</span> mide qué proporción de la probabilidad total de <span class="math inline">\(B\)</span> está ocupada por <span class="math inline">\(A:\)</span></p>
+<p><span class="math display">\[\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)} = \frac{\text{proporción de } B \text{ que tambien es } A}{\text{probabilidad total de } B}\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: Educación y salarios</h2>
+<p>Considere una población donde definimos los eventos <span class="math inline">\(H\)</span> = “salario alto (&gt; $25/hr)” <span class="math inline">\(\hspace{0.6cm}\)</span> y <span class="math inline">\(C\)</span> = “tiene educación universitaria”. Con datos de EE.UU. <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>: <span class="math inline">\(\hspace{0.6cm}\)</span></p>
+<div class="fragment">
+<p><span class="math display">\[\Pr(H | C) = \frac{\Pr(H \cap C)}{\Pr(C)} = \frac{0.19}{0.36} = 0.53\]</span></p>
 </div>
 <div class="fragment">
-<p><strong>Ejemplo sociológico:</strong> Sea <span class="math inline">\(A\)</span> = “tener educación universitaria” y <span class="math inline">\(B\)</span> = “pertenecer al quintil más rico”.</p>
-<p><span class="math display">\[P(\text{universitario} \mid \text{quintil V}) \neq P(\text{universitario})\]</span></p>
-<p>Esta desigualdad es, en esencia, una medida de desigualdad educativa.</p>
+<p><span class="math display">\[\Pr(H | N) = \frac{\Pr(H \cap N)}{\Pr(N)} = \frac{0.12}{0.64} = 0.19\]</span></p>
+<p>donde <span class="math inline">\(N = C^c\)</span> <span class="math inline">\(\hspace{0.6cm}\)</span> (no tiene título universitario).</p>
+</div>
+<div class="fragment">
+<p>Hay una diferencia considerable: la probabilidad condicional de obtener un salario alto es del 53% para quienes tienen título universitario, versus 19% para quienes no lo tienen. Esta brecha es, en esencia, una medida de <span class="alert">desigualdad educativa</span> en el mercado laboral que logramos medir solo con probabilidades (todavía no metodologías estadísticas más robustas a sesgos).</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: Ensayo clínico</h2>
+<p>En un estudio sobre recaídas en pacientes con depresión, 150 pacientes fueron asignados a cuatro grupos <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>:</p>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Imipramina</th>
+<th>Litio</th>
+<th>Combinación</th>
+<th>Placebo</th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Recaída</td>
+<td>18</td>
+<td>13</td>
+<td>22</td>
+<td>24</td>
+<td>77</td>
+</tr>
+<tr class="even">
+<td>Sin recaída</td>
+<td>22</td>
+<td>25</td>
+<td>16</td>
+<td>10</td>
+<td>73</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>40</td>
+<td>38</td>
+<td>38</td>
+<td>34</td>
+<td>150</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>Sea <span class="math inline">\(A\)</span> = “recaída” y <span class="math inline">\(B\)</span> = “recibió placebo”. Entonces:</p>
+<p><span class="math display">\[\Pr(A|B) = \frac{24/150}{34/150} = \frac{24}{34} = 0.706\]</span></p>
+</div>
+<div class="fragment">
+<p>Si en cambio el paciente recibió litio <span class="math inline">\((C):\)</span> <span class="math inline">\(\Pr(A|C) = 13/38 = 0.342. \hspace{0.8cm}\)</span> El tratamiento recibido parece hacer una diferencia en la probabilidad de recaída. Cuantificar <em>cuánta</em> diferencia es exactamente lo que hacen los métodos econométricos de evaluación de impacto.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Probabilidad conjunta, marginal y condicional</h2>
+<p>Al trabajar con dos eventos simultáneamente aparecen tres tipos de probabilidad que conviene distinguir con precisión:</p>
+<div class="fragment">
+<p><strong>1. Probabilidad conjunta:</strong> la probabilidad de que <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> ocurran simultáneamente. <span class="math display">\[\Pr(A \cap B)\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>2. Probabilidad marginal:</strong>$ la probabilidad de <span class="math inline">\(A\)</span> sin considerar <span class="math inline">\(B\)</span> (o viceversa). <span class="math display">\[\Pr(A) = \sum_{j} \Pr(A \cap B_j)\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>3. Probabilidad condicional:</strong> la probabilidad de <span class="math inline">\(A\)</span> dado que <span class="math inline">\(B\)</span> ha ocurrido. <span class="math display">\[\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}, \quad \Pr(B) &gt; 0\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: Tabla de contingencia</h2>
+<p>Supongamos que queremos estudiar la probabilidad de que hombres y mujeres voten a la izquierda, con los siguientes datos:</p>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Hombre <span class="math inline">\((B_1)\)</span></th>
+<th>Mujer <span class="math inline">\((B_2)\)</span></th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Vota izquierda <span class="math inline">\((A_1)\)</span></td>
+<td>30</td>
+<td>20</td>
+<td>50</td>
+</tr>
+<tr class="even">
+<td>No vota izquierda <span class="math inline">\((A_2)\)</span></td>
+<td>40</td>
+<td>10</td>
+<td>50</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>70</td>
+<td>30</td>
+<td>100</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p><strong>Conjunta:</strong> <span class="math inline">\(\Pr(A_1 \cap B_2) = 20/100 = 0.20\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>Marginal:</strong> <span class="math inline">\(\Pr(A_1) = 50/100 = 0.50\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>Condicional:</strong> <span class="math inline">\(\Pr(A_1 | B_2) = \frac{\Pr(A_1 \cap B_2)}{\Pr(B_2)} = \frac{0.20}{0.30} = 0.667\)</span></p>
+<p>El 66.7% de las mujeres votan a la izquierda, versus el 42.9% de los hombres <span class="math inline">\((\Pr(A_1|B_1) = 30/70)\)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>Regla de la multiplicación</h2>
-<p>De la definición de probabilidad condicional se obtiene directamente:</p>
-<p><span class="math display">\[P(A \cap B) = P(A|B) \cdot P(B) = P(B|A) \cdot P(A)\]</span></p>
+<p>De la definición de probabilidad condicional se obtiene directamente la <strong>regla de la multiplicación</strong> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>:</p>
 <div class="fragment">
-<p>Para tres eventos: <span class="math display">\[P(A \cap B \cap C) = P(A) \cdot P(B|A) \cdot P(C|A \cap B)\]</span></p>
+<p><span class="math display">\[\Pr(A \cap B) = \Pr(B) \cdot \Pr(A|B) = \Pr(A) \cdot \Pr(B|A)\]</span></p>
 </div>
 <div class="fragment">
-<p>Esta regla es la base de la <strong>factorización de verosimilitudes</strong> que veremos cuando estudiemos MLE.</p>
+<p>Esta regla es útil cuando la probabilidad condicional es fácil de evaluar directamente. Por ejemplo, si extraemos dos bolas de una caja con <span class="math inline">\(r\)</span> rojas y <span class="math inline">\(b\)</span> azules <strong>sin reposición</strong>: la probabilidad de que la primera sea roja <span class="math inline">\((A)\)</span> y la segunda azul <span class="math inline">\((B)\)</span> es <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>:</p>
+<p><span class="math display">\[\Pr(A \cap B) = \Pr(A) \cdot \Pr(B|A) = \frac{r}{r+b} \cdot \frac{b}{r+b-1}\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Regla de la multiplicación: extensión</h2>
+<p>La regla se extiende a cualquier número finito de eventos. Para <span class="math inline">\(n\)</span> eventos tales que <span class="math inline">\(\Pr(A_1 \cap \cdots \cap A_{n-1}) &gt; 0\)</span> <span class="math inline">\(\hspace{0.6cm}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>:</p>
+<p><span class="math display">\[\Pr(A_1 \cap A_2 \cap \cdots \cap A_n) = \Pr(A_1) \cdot \Pr(A_2|A_1) \cdot \Pr(A_3|A_1 \cap A_2) \cdots \Pr(A_n | A_1 \cap \cdots \cap A_{n-1})\]</span></p>
+<div class="fragment">
+<p>Esta factorización es la base de la <span class="alert">factorización de verosimilitudes</span> que usaremos cuando estudiemos estimación por máxima verosimilitud (MLE).</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Las probabilidades condicionales se comportan como probabilidades</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Resultado clave</strong></p>
+</div>
+<div class="callout-content">
+<p>Todos los resultados que se pueden demostrar para probabilidades incondicionales tienen una versión condicional dado un evento <span class="math inline">\(B\)</span> con <span class="math inline">\(\Pr(B) &gt; 0.\hspace{0.3cm}\)</span> Basta reemplazar <em>todas</em> las probabilidades por probabilidades condicionales dado <span class="math inline">\(B \hspace{0.1cm}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Por ejemplo:</p>
+<ul>
+<li><p><span class="math inline">\(\Pr(A^c) = 1 - \Pr(A) \hspace{0.6cm} \longrightarrow \hspace{0.6cm} \Pr(A^c | B) = 1 - \Pr(A|B)\)</span></p></li>
+<li><p><span class="math inline">\(\Pr(A \cup C) = \Pr(A) + \Pr(C) - \Pr(A \cap C) \hspace{0.3cm} \longrightarrow\)</span></p></li>
+</ul>
+<p><span class="math display">\[\Pr(A \cup C | B) = \Pr(A|B) + \Pr(C|B) - \Pr(A \cap C | B)\]</span></p>
 </div>
 </section>
 <section class="slide level2">
 <h2>Ley de probabilidad total</h2>
-<p>Si <span class="math inline">\(B_1, B_2, \ldots, B_k\)</span> forman una <strong>partición</strong> de <span class="math inline">\(\Omega\)</span> (mutuamente excluyentes y exhaustivos):</p>
-<p><span class="math display">\[P(A) = \sum_{i=1}^{k} P(A|B_i) \cdot P(B_i)\]</span></p>
+<p>Si <span class="math inline">\(B_1, B_2, \ldots, B_k\hspace{0.5cm}\)</span> forman una <strong>partición</strong> de <span class="math inline">\(\Omega\)</span> (disjuntos y exhaustivos) con <span class="math inline">\(\Pr(B_j) &gt; 0\hspace{0.5cm}\)</span> para todo <span class="math inline">\(j\)</span>, entonces para cualquier evento <span class="math inline">\(A\hspace{0.1cm}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>:</p>
+<p><span class="math display">\[\Pr(A) = \sum_{j=1}^{k} \Pr(B_j) \cdot \Pr(A|B_j)\]</span></p>
 <div class="fragment">
+<p>La ley de probabilidad total “descompone” la probabilidad de un evento complejo en piezas más manejables, usando una partición que reduce la incertidumbre del problema <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Las probabilidades condicionales se comportan como probabilidades</h2>
 <p><strong>Ejemplo:</strong> ¿Cuál es la probabilidad de estar desempleado?</p>
-<p><span class="math display">\[P(\text{desempleo}) = \sum_{j=1}^{J} P(\text{desempleo} \mid \text{región}_j) \cdot P(\text{región}_j)\]</span></p>
-<p>La probabilidad total “descompone” un evento complejo en piezas más manejables.</p>
+<p><span class="math display">\[\Pr(\text{desempleo}) = \sum_{j=1}^{J} \Pr(\text{region}_j) \cdot \Pr(\text{desempleo} \mid \text{region}_j)\]</span></p>
+<p>Si conocemos la tasa de desempleo por región y la proporción de la población en cada región, podemos calcular la tasa de desempleo nacional.</p>
+</section>
+<section class="slide level2">
+<h2>¿Por qué importa la condicionalidad en econometría?</h2>
+<p>La probabilidad condicional es el <span class="alert">fundamento matemático</span> de los modelos de regresión y de la inferencia causal.</p>
+<div class="fragment">
+<p>La <strong>función de regresión poblacional</strong> <em>es</em> una esperanza condicional:</p>
+<p><span class="math display">\[E[Y_i | X_i] = \mu(X_i)\]</span></p>
+<p>Cuando estimamos una regresión, estamos estimando cómo cambia el valor esperado de <span class="math inline">\(Y\)</span> al condicionar en distintos valores de <span class="math inline">\(X.\hspace{0.1cm}\)</span> Justamente, esta es la lógica del <span class="alert"><em>ceteris paribus</em></span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>¿Por qué importa la condicionalidad en econometría?</h2>
+<p>En <strong>inferencia causal</strong>, el desafío es que condicionar en <span class="math inline">\(X\)</span> no es lo mismo que <em>intervenir</em> sobre <span class="math inline">\(X. \hspace{0.1cm}\)</span> El supuesto de identificación clave (independencia condicional, variables instrumentales, etc.) busca garantizar que <span class="math inline">\(E[Y|X]\)</span> capture el efecto causal y no solo una asociación.</p>
+<div class="fragment">
+<p>En <strong>series de tiempo</strong>, los modelos de pronóstico son modelos de media condicional: <span class="math inline">\(E[Y_t | Y_{t-1}, Y_{t-2}, \ldots] \hspace{0.6cm}\)</span> usa toda la historia pasada como información condicionante para proyectar el futuro.</p>
+</div>
+</section></section>
+<section>
+<section id="independencia" class="title-slide slide level1 center">
+<h1>Independencia</h1>
+
+</section>
+<section class="slide level2">
+<h2>¿Qué significa que dos eventos sean independientes?</h2>
+<p>Decimos que dos eventos son <strong>independientes</strong> si su ocurrencia no está relacionada, o equivalentemente, si el conocimiento de que uno ocurrió no afecta la probabilidad del otro <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<p>Considere dos lanzamientos de moneda. Si no hay mecanismo que conecte ambos lanzamientos, esperamos que ninguno afecte al resultado del otro. De modo similar, la tasa de criminalidad en Londres y el precio del té en Shanghai no tienen razón para afectarse mutuamente <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p>Esta intuición implica que si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes, entonces <span class="math inline">\(\Pr(A|B) = \Pr(A)\hspace{0.2cm}\)</span> y <span class="math inline">\(\Pr(B|A) = \Pr(B).\hspace{0.2cm}\)</span> Desde la definición de probabilidad condicional, esto implica <span class="math inline">\(\Pr(A \cap B) = \Pr(A)\Pr(B).\hspace{0.2cm}\)</span> Usamos esta última expresión como definición formal.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Definición formal</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Independencia</strong></p>
+</div>
+<div class="callout-content">
+<p>Dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son <strong>independientes</strong> si y solo si:</p>
+<p><span class="math display">\[\Pr(A \cap B) = \Pr(A) \cdot \Pr(B)\]</span></p>
+<p>Equivalentemente, si <span class="math inline">\(\Pr(A) &gt; 0\hspace{0.2cm}\)</span> y <span class="math inline">\(\Pr(B) &gt; 0:\)</span></p>
+<p><span class="math display">\[\Pr(A|B) = \Pr(A) \qquad \text{y} \qquad \Pr(B|A) = \Pr(B)\]</span></p>
+<p>Si dos eventos no son independientes, decimos que son <strong>dependientes</strong> <span class="citation" data-cites="probability-statistics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Si dos eventos son considerados independientes porque son físicamente no relacionados, y si conocemos <span class="math inline">\(\Pr(A)\hspace{0.2cm}\)</span> y <span class="math inline">\(\Pr(B),\hspace{0.2cm}\)</span> podemos usar la definición para asignar un valor a <span class="math inline">\(\Pr(A \cap B)\hspace{0.2cm}\)</span> directamente <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Independencia <span class="math inline">\(\neq\)</span> mutua exclusividad</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Distinción crucial</strong></p>
+</div>
+<div class="callout-content">
+<p>Independencia y mutua exclusividad son conceptos <span class="alert">opuestos</span>, no sinónimos.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son disjuntos (mutuamente excluyentes), entonces <span class="math inline">\(A \cap B = \emptyset,\hspace{0.2cm}\)</span> y por tanto:</p>
+<p><span class="math display">\[\Pr(A \cap B) = \Pr(\emptyset) = 0 \neq \Pr(A)\Pr(B)\]</span></p>
+<p>siempre que ambos tengan probabilidad positiva. Es decir, eventos disjuntos con probabilidad positiva son necesariamente <span class="alert">dependientes</span>: saber que ocurrió <span class="math inline">\(A\)</span> te dice con certeza que <span class="math inline">\(B\)</span> no ocurrió <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p>De hecho, la única forma de que eventos sean simultáneamente disjuntos e independientes es que al menos uno de ellos tenga probabilidad 0 <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: S&amp;P 500 e independencia temporal</h2>
+<p>Retomemos el ejemplo del S&amp;P 500. Sea <span class="math inline">\(U_t\hspace{0.1cm}\)</span> = “el índice sube en la semana <span class="math inline">\(t\hspace{0.1cm}\)</span>” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<div class="fragment">
+<p><span class="math display">\[\Pr(U_t | U_{t-1}) = \frac{0.322}{0.567} = 0.568\]</span></p>
+<p><span class="math display">\[\Pr(U_t | D_{t-1}) = \frac{0.245}{0.433} = 0.566\]</span></p>
+</div>
+<div class="fragment">
+<p>Las dos probabilidades condicionales son prácticamente idénticas (<span class="math inline">\(\approx 0.57\)</span>). La probabilidad de un alza en una semana dada no se ve afectada por lo que ocurrió la semana anterior. Esto satisface la definición de independencia: <span class="math inline">\(U_t\hspace{0.2cm}\)</span> y <span class="math inline">\(U_{t-1}\hspace{0.2cm}\)</span> son independientes.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: Salarios y educación (dependencia)</h2>
+<p>Ahora veamos un caso de <span class="alert">dependencia</span>. Si salarios y educación fueran independientes, las probabilidades conjuntas serían el producto de las marginales <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Si fueran independientes:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(C\)</span></th>
+<th><span class="math inline">\(N\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(H\)</span></td>
+<td>0.11</td>
+<td>0.20</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L\)</span></td>
+<td>0.25</td>
+<td>0.44</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<p><strong>Datos reales:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(C\)</span></th>
+<th><span class="math inline">\(N\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(H\)</span></td>
+<td>0.19</td>
+<td>0.12</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(L\)</span></td>
+<td>0.17</td>
+<td>0.52</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+</div>
+<div class="fragment">
+<p>Los eventos <span class="math inline">\(H \cap C\hspace{0.2cm}\)</span> y <span class="math inline">\(L \cap N\hspace{0.2cm}\)</span> ocurren con mucha más frecuencia de lo que predeciría la independencia. Salarios y educación son <strong>dependientes</strong>: la educación universitaria sí afecta la probabilidad de obtener un salario alto.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Independencia de complementos</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Teorema</strong></p>
+</div>
+<div class="callout-content">
+<p>Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son independientes, entonces también son independientes los pares <span class="math inline">\(A\)</span> y <span class="math inline">\(B^c;\hspace{0.2cm}\)</span> <span class="math inline">\(A^c\)</span> y <span class="math inline">\(B;\hspace{0.2cm}\)</span> y <span class="math inline">\(A^c\)</span> y <span class="math inline">\(B^c\hspace{0.2cm}\)</span> <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><em>Demostración (para <span class="math inline">\(A\)</span> y <span class="math inline">\(B^c\)</span>):</em></p>
+<p><span class="math display">\[\Pr(A \cap B^c) = \Pr(A) - \Pr(A \cap B) = \Pr(A) - \Pr(A)\Pr(B) = \Pr(A)[1 - \Pr(B)] = \Pr(A)\Pr(B^c) \quad \blacksquare\]</span></p>
+</div>
+<div class="fragment">
+<p>Esto es razonable: si la ocurrencia de <span class="math inline">\(B\)</span> no afecta a <span class="math inline">\(A,\hspace{0.2cm}\)</span> tampoco debería hacerlo la no-ocurrencia de <span class="math inline">\(B.\)</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Independencia de más de dos eventos</h2>
+<p>La definición se extiende a <span class="math inline">\(k\)</span> eventos, pero requiere más que independencia de a pares <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>:</p>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Independencia mutua</strong></p>
+</div>
+<div class="callout-content">
+<p>Los <span class="math inline">\(k\)</span> eventos <span class="math inline">\(A_1, \ldots, A_k\hspace{0.2cm}\)</span> son <strong>(mutuamente) independientes</strong> si para todo subconjunto <span class="math inline">\(A_{i_1}, \ldots, A_{i_j}\hspace{0.2cm}\)</span> de <span class="math inline">\(j\)</span> de estos eventos (<span class="math inline">\(j = 2, 3, \ldots, k\)</span>):</p>
+<p><span class="math display">\[\Pr(A_{i_1} \cap \cdots \cap A_{i_j}) = \Pr(A_{i_1}) \cdots \Pr(A_{i_j})\]</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Para tres eventos <span class="math inline">\(A, B, C,\hspace{0.2cm}\)</span> se necesitan <strong>cuatro</strong> condiciones:</p>
+<p><span class="math display">\[\Pr(A \cap B) = \Pr(A)\Pr(B), \quad \Pr(A \cap C) = \Pr(A)\Pr(C), \quad \Pr(B \cap C) = \Pr(B)\Pr(C)\]</span></p>
+<p><span class="math display">\[\text{y además: } \quad \Pr(A \cap B \cap C) = \Pr(A)\Pr(B)\Pr(C)\]</span></p>
+<p>La independencia de a pares <strong>no basta</strong> para garantizar la última condición.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Independencia condicional</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Independencia condicional</strong></p>
+</div>
+<div class="callout-content">
+<p>Los eventos <span class="math inline">\(A_1, \ldots, A_k\hspace{0.2cm}\)</span> son <strong>condicionalmente independientes dado <span class="math inline">\(B\)</span></strong> si, para todo subconjunto <span class="math inline">\(A_{i_1}, \ldots, A_{i_j}\hspace{0.2cm}\)</span> de <span class="math inline">\(j\)</span> de estos eventos (<span class="math inline">\(j = 2, \ldots, k\)</span>):</p>
+<p><span class="math display">\[\Pr\left(A_{i_1} \cap \cdots \cap A_{i_j} \mid B\right) = \Pr(A_{i_1}|B) \cdots \Pr(A_{i_j}|B)\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Es la misma definición de independencia mutua, pero con <em>todas</em> las probabilidades condicionadas en <span class="math inline">\(B.\hspace{0.2cm}\)</span> Nótese que independencia condicional dado <span class="math inline">\(B\)</span> <strong>no implica</strong> independencia condicional dado <span class="math inline">\(B^c,\hspace{0.2cm}\)</span> ni viceversa <span class="citation" data-cites="probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2014</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>¿Por qué importa la independencia en econometría?</h2>
+<p>El supuesto de independencia (o sus versiones más débiles) aparece en toda la econometría:</p>
+<div class="fragment">
+<ul>
+<li><strong>Muestreo aleatorio:</strong> las observaciones <span class="math inline">\((X_i, Y_i)\hspace{0.2cm}\)</span> son i.i.d. (independientes e idénticamente distribuidas).</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Exogeneidad:</strong> <span class="math inline">\(E[\varepsilon_i | X_i] = 0,\hspace{0.2cm}\)</span> que es una forma de independencia condicional entre el error y los regresores.</li>
+</ul>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Identificación causal:</strong> la asignación al tratamiento es independiente de los resultados potenciales: <span class="math inline">\((Y_0, Y_1) \perp\!\!\!\perp D.\)</span></li>
+</ul>
+</div>
+<div class="fragment">
+<p>Cuando estos supuestos fallan, los estimadores estándar pierden sus buenas propiedades. Gran parte de la econometría avanzada consiste en <strong>lidiar con la falta de independencia</strong>.</p>
 </div>
 </section></section>
 <section>
@@ -379,7 +1478,9 @@
 
 </section>
 <section class="slide level2">
-<h2>Formulación</h2>
+<h2>Teorema de Bayes</h2>
+<p>Una vez que conocemos la probabilidad condicional y la ley de probabilidad total, el Teorema de Bayes se sigue directamente. Permite <span class="alert">invertir condicionales</span>: si conocemos <span class="math inline">\(\Pr(A|B),\hspace{0.2cm}\)</span> podemos obtener <span class="math inline">\(\Pr(B|A).\)</span></p>
+<div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -389,15 +1490,16 @@
 <p><strong>Teorema de Bayes</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[P(B_i|A) = \frac{P(A|B_i) \cdot P(B_i)}{\sum_{j=1}^{k} P(A|B_j) \cdot P(B_j)}\]</span></p>
+<p>Si <span class="math inline">\(B_1, \ldots, B_k\hspace{0.2cm}\)</span> forman una partición de <span class="math inline">\(\Omega\hspace{0.2cm}\)</span> con <span class="math inline">\(\Pr(B_j) &gt; 0\hspace{0.2cm}\)</span> para todo <span class="math inline">\(j,\hspace{0.2cm}\)</span> entonces:</p>
+<p><span class="math display">\[\Pr(B_i|A) = \frac{\Pr(A|B_i) \cdot \Pr(B_i)}{\sum_{j=1}^{k} \Pr(A|B_j) \cdot \Pr(B_j)}\]</span></p>
 </div>
 </div>
 </div>
-<div class="fragment">
-<p>El teorema permite <strong>invertir condicionales</strong>: si conocemos <span class="math inline">\(P(A|B)\)</span>, podemos obtener <span class="math inline">\(P(B|A)\)</span>.</p>
 </div>
-<div class="fragment">
-<p><strong>Terminología bayesiana:</strong></p>
+</section>
+<section class="slide level2">
+<h2>Teorema de Bayes (termonilogía)</h2>
+<p><strong>Terminología:</strong></p>
 <table class="caption-top">
 <colgroup>
 <col style="width: 40%">
@@ -411,26 +1513,25 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(P(B_i)\)</span></td>
+<td><span class="math inline">\(\Pr(B_i)\hspace{0.2cm}\)</span></td>
 <td><strong>Prior</strong> — creencia antes de observar datos</td>
 </tr>
 <tr class="even">
-<td><span class="math inline">\(P(A \mid B_i)\)</span></td>
+<td><span class="math inline">\(\Pr(A \mid B_i)\hspace{0.2cm}\)</span></td>
 <td><strong>Verosimilitud</strong> — probabilidad de los datos dado el parámetro</td>
 </tr>
 <tr class="odd">
-<td><span class="math inline">\(P(B_i \mid A)\)</span></td>
+<td><span class="math inline">\(\Pr(B_i \mid A)\hspace{0.2cm}\)</span></td>
 <td><strong>Posterior</strong> — creencia actualizada tras observar datos</td>
 </tr>
 </tbody>
 </table>
-</div>
 </section>
 <section class="slide level2">
-<h2>Ejemplo: Diagnóstico y falsos positivos</h2>
+<h2>Ejemplo: diagnóstico y falsos positivos</h2>
 <p>Un test diagnóstico tiene sensibilidad del 95% y especificidad del 90%. La prevalencia de la enfermedad es del 1%.</p>
 <div class="fragment">
-<p><span class="math display">\[P(\text{enfermo} \mid \text{test}+) = \frac{0.95 \times 0.01}{0.95 \times 0.01 + 0.10 \times 0.99}\]</span></p>
+<p><span class="math display">\[\Pr(\text{enfermo} \mid \text{test}+) = \frac{0.95 \times 0.01}{0.95 \times 0.01 + 0.10 \times 0.99}\]</span></p>
 </div>
 <div class="fragment">
 <p><span class="math display">\[= \frac{0.0095}{0.0095 + 0.099} = \frac{0.0095}{0.1085} \approx 0.088\]</span></p>
@@ -452,51 +1553,121 @@
 </div>
 </section></section>
 <section>
-<section id="independencia" class="title-slide slide level1 center">
-<h1>Independencia</h1>
+<section id="combinatoria" class="title-slide slide level1 center">
+<h1>Combinatoria (opcional)</h1>
 
 </section>
 <section class="slide level2">
-<h2>Definición formal</h2>
+<h2>Reglas de conteo, permutaciones y combinaciones</h2>
+<p>Para algunos cálculos de probabilidad es útil contar el número de resultados posibles. Tres herramientas básicas son la regla de conteo, las permutaciones y las combinaciones <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Definición: Independencia</strong></p>
+<p><strong>Regla de conteo</strong></p>
 </div>
 <div class="callout-content">
-<p>Dos eventos <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son <strong>independientes</strong> si y solo si:</p>
-<p><span class="math display">\[P(A \cap B) = P(A) \cdot P(B)\]</span></p>
-<p>Equivalentemente: <span class="math inline">\(P(A|B) = P(A)\)</span></p>
+<p>Si una tarea consta de <span class="math inline">\(K\)</span> etapas, y la <span class="math inline">\(k\)</span>-ésima etapa puede realizarse de <span class="math inline">\(n_k\hspace{0.2cm}\)</span> formas, entonces el número total de formas de completar la tarea es <span class="math inline">\(n_1 \cdot n_2 \cdots n_K.\)</span></p>
+</div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Ojo:</strong> Independencia <span class="math inline">\(\neq\)</span> mutua exclusividad. Si <span class="math inline">\(A\)</span> y <span class="math inline">\(B\)</span> son mutuamente excluyentes y ambos tienen probabilidad positiva, entonces son <strong>dependientes</strong> (saber que ocurrió <span class="math inline">\(A\)</span> te dice con certeza que no ocurrió <span class="math inline">\(B\)</span>).</p>
+<p><strong>Ejemplo:</strong> si tienes 10 camisas, 3 pantalones, 5 pares de calcetines, 4 chaquetas y 2 sombreros, puedes armar <span class="math inline">\(10 \times 3 \times 5 \times 4 \times 2 = 1200\hspace{0.2cm}\)</span> outfits distintos <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>¿Por qué importa la independencia en econometría?</h2>
-<p>El supuesto de independencia (o sus versiones más débiles) aparece en toda la econometría:</p>
-<div class="fragment">
-<ul>
-<li><strong>Muestreo aleatorio:</strong> las observaciones <span class="math inline">\((X_i, Y_i)\)</span> son i.i.d. (independientes e idénticamente distribuidas).</li>
-</ul>
+<h2>Permutaciones</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Permutación</strong></p>
+</div>
+<div class="callout-content">
+<p>Una <strong>permutación</strong> es un reordenamiento de objetos donde el orden importa. El número de permutaciones de <span class="math inline">\(N\)</span> objetos tomados de <span class="math inline">\(K\)</span> en <span class="math inline">\(K\)</span> es <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p><span class="math display">\[P(N, K) = \frac{N!}{(N-K)!}\]</span></p>
+<p>En particular, el número de formas de ordenar <span class="math inline">\(N\)</span> objetos es <span class="math inline">\(N!\)</span></p>
+</div>
+</div>
 </div>
 <div class="fragment">
-<ul>
-<li><strong>Exogeneidad:</strong> <span class="math inline">\(E[\varepsilon_i | X_i] = 0\)</span>, que es una forma de independencia condicional entre el error y los regresores.</li>
-</ul>
+<p><strong>Ejemplo:</strong> ¿de cuántas formas se puede seleccionar un equipo ordenado de 5 estudiantes de una clase de 30?</p>
+<p><span class="math display">\[P(30, 5) = \frac{30!}{25!} = 30 \times 29 \times 28 \times 27 \times 26 = 17.100.720\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Combinaciones</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Combinación</strong></p>
+</div>
+<div class="callout-content">
+<p>Una <strong>combinación</strong> es un grupo no ordenado de objetos. El número de combinaciones de <span class="math inline">\(N\)</span> objetos tomados de <span class="math inline">\(K\)</span> en <span class="math inline">\(K\)</span> es <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p><span class="math display">\[\binom{N}{K} = \frac{N!}{K!(N-K)!}\]</span></p>
+<p>El símbolo <span class="math inline">\(\binom{N}{K}\hspace{0.2cm}\)</span> se lee “<span class="math inline">\(N\)</span> en <span class="math inline">\(K\)</span>” o “<span class="math inline">\(N\)</span> choose <span class="math inline">\(K\)</span>” y también se conoce como <strong>coeficiente binomial</strong>.</p>
+</div>
+</div>
 </div>
 <div class="fragment">
-<ul>
-<li><strong>Identificación causal:</strong> la asignación al tratamiento es independiente de los resultados potenciales.</li>
-</ul>
+<p><strong>Ejemplo:</strong> ¿cuántos equipos (sin orden) de 5 estudiantes se pueden formar de una clase de 30?</p>
+<p><span class="math display">\[\binom{30}{5} = \frac{30!}{5! \cdot 25!} = 142.506\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Muestreo con y sin reposición</h2>
+<p>La distinción entre muestreo con y sin reposición determina qué fórmula de conteo usar <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<div class="fragment">
+<table style="width:100%; font-size: 0.85em;">
+<thead>
+<tr style="background-color: #69000C; color: white;">
+<th style="width:34%; padding: 8px;">
+</th>
+<th style="width:33%; padding: 8px;">
+Sin reposición
+</th>
+<th style="width:33%; padding: 8px;">
+Con reposición
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<strong>Ordenado</strong>
+</td>
+<td>
+<span class="math inline">\(\frac{N!}{(N-K)!}\)</span>
+</td>
+<td>
+<span class="math inline">\(N^K\)</span>
+</td>
+</tr>
+<tr>
+<td>
+<strong>No ordenado</strong>
+</td>
+<td>
+<span class="math inline">\(\binom{N}{K}\)</span>
+</td>
+<td>
+<span class="math inline">\(\binom{N+K-1}{K}\)</span>
+</td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="fragment">
-<p>Cuando estos supuestos fallan, los estimadores estándar pierden sus buenas propiedades. Gran parte de la econometría avanzada consiste en <strong>lidiar con la falta de independencia</strong>.</p>
+<p>Estas herramientas deben entenderse, no memorizarse: se pueden consultar cuando se necesiten <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Las usaremos cuando trabajemos con la distribución binomial y con problemas de muestreo.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -505,37 +1676,59 @@
 <div class="column" style="width:50%;">
 <p><strong>Conceptos clave:</strong></p>
 <ul>
-<li>Espacio muestral <span class="math inline">\(\Omega\)</span></li>
+<li>Interpretaciones de la probabilidad</li>
+<li>Espacio muestral <span class="math inline">\(\Omega\)</span> y eventos</li>
 <li>Axiomas de Kolmogorov</li>
+<li>Función de probabilidad</li>
 <li>Probabilidad condicional</li>
-<li>Teorema de Bayes</li>
 <li>Independencia estadística</li>
+<li>Teorema de Bayes</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<p><strong>Para la próxima clase:</strong></p>
+<p><strong>Próxima clase:</strong></p>
 <ul>
-<li>Variables aleatorias (discretas y continuas)</li>
-<li>Función de densidad y distribución</li>
-<li>Esperanza, varianza, covarianza</li>
-<li>Distribuciones Normal, <span class="math inline">\(t\)</span>, <span class="math inline">\(\chi^2\)</span>, <span class="math inline">\(F\)</span></li>
+<li>Variables aleatorias discretas y continuas</li>
+<li>Función de masa de probabilidad (PMF)</li>
+<li>Función de densidad (PDF)</li>
+<li>Función de distribución acumulada (CDF)</li>
+<li>Esperanza y varianza</li>
 </ul>
 </div></div>
-<div class="fragment">
+</section>
+<section class="slide level2 smaller scrollable" id="references">
+<h2>Para revisar</h2>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Lectura sugerida</strong></p>
+<p><strong>Lecturas sugeridas</strong></p>
 </div>
 <div class="callout-content">
-<p>Casella &amp; Berger (2002), Capítulo 1, secciones 1.1–1.3.</p>
+<ul>
+<li>DeGroot &amp; Schervish, Capítulos 1 y 2.</li>
+<li>Hansen, <em>Probability and Statistics for Economists</em>, Capítulo 1.</li>
+<li>Canavos, <em>Probabilidad y Estadística</em>, Capítulo 3.</li>
+</ul>
 </div>
 </div>
 </div>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-canavos" class="csl-entry" role="listitem">
+Canavos, G. C. (1988). <em>Probabilidad y estadística. Aplicaciones y métodos</em>. McGraw-Hill. <a href="https://gsosa61.wordpress.com/wp-content/uploads/2008/03/10-canavos-g-probabilidad-y-estadistica-aplicaciones-y-metodos.pdf">https://gsosa61.wordpress.com/wp-content/uploads/2008/03/10-canavos-g-probabilidad-y-estadistica-aplicaciones-y-metodos.pdf</a>
+</div>
+<div id="ref-probability-statistics" class="csl-entry" role="listitem">
+DeGroot, M., &amp; Schervish, M. (2014). <em>Probability and statistics</em>. Pearson Education Limited.
+</div>
+<div id="ref-hansen-intro" class="csl-entry" role="listitem">
+Hansen, B. E. (2021). <em>Introduction to econometrics</em>. University of Wisconsin.
+</div>
+<div id="ref-hansen-for-economist" class="csl-entry" role="listitem">
+Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princeton University Press.
+</div>
 </div>
 </section></section>
     </div>
