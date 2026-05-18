@@ -103,17 +103,13 @@ $code-block-font-size: 0.65em;
   color: white;
 }
 
-// Title slide 
-.reveal .slides section.title-slide {
+// Title slide — portada completa
+.reveal .quarto-title-block {
   background-color: $mDarkTeal !important;
 }
 
-.reveal .title-slide .subtitle,
-.reveal .title-slide .author,
-.reveal .title-slide .institute,
-.reveal .title-slide .date,
-.reveal .title-slide a {
-  color: rgba(255, 255, 255, 0.85) !important;
+.reveal .quarto-title-block * {
+  color: white !important;
 }
 
 // ============================================================
