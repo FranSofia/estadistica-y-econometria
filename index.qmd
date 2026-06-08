@@ -45,7 +45,8 @@ El curso se organiza en clases semanales. Cada clase incluye una **presentación
 | 09 | Regresión Lineal Múltiple y Teorema de Gauss-Markov |
 | 10 | Inferencia en Regresión: Tests t, F y $R^2$ |
 | 11 | Diagnóstico de Modelos: Heterocedasticidad y Multicolinealidad |
-| 12 | Introducción a Variables Instrumentales y Endogeneidad |
+| 12 | Introducción a la inferencia causal |
+| 13 | Introducción a Variables Instrumentales y Endogeneidad |
 
 ## Información del curso
 

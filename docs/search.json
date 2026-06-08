@@ -67,7 +67,7 @@
     "href": "index.html#estructura-del-curso-provisorio",
     "title": "Estadística y Econometría",
     "section": "Estructura del curso [PROVISORIO]",
-    "text": "Estructura del curso [PROVISORIO]\nEl curso se organiza en clases semanales. Cada clase incluye una presentación teórica (tipo slides) y, cuando corresponde, un práctico aplicado.\n\n\n\nClase\nTema\n\n\n\n\n01\nFundamentos de Probabilidad\n\n\n02\nVariables Aleatorias y Distribuciones\n\n\n03\nDistribuciones Muestrales y Teorema Central del Límite\n\n\n04\nEstimación Puntual: Propiedades de los Estimadores\n\n\n05\nEn evaluación (MLE o MCO)\n\n\n06\nIntervalos de Confianza y Pruebas de Hipótesis\n\n\n07\nEl Modelo de Regresión Lineal Simple\n\n\n08\nMínimos Cuadrados Ordinarios: Derivación y Propiedades\n\n\n09\nRegresión Lineal Múltiple y Teorema de Gauss-Markov\n\n\n10\nInferencia en Regresión: Tests t, F y \\(R^2\\)\n\n\n11\nDiagnóstico de Modelos: Heterocedasticidad y Multicolinealidad\n\n\n12\nIntroducción a Variables Instrumentales y Endogeneidad"
+    "text": "Estructura del curso [PROVISORIO]\nEl curso se organiza en clases semanales. Cada clase incluye una presentación teórica (tipo slides) y, cuando corresponde, un práctico aplicado.\n\n\n\nClase\nTema\n\n\n\n\n01\nFundamentos de Probabilidad\n\n\n02\nVariables Aleatorias y Distribuciones\n\n\n03\nDistribuciones Muestrales y Teorema Central del Límite\n\n\n04\nEstimación Puntual: Propiedades de los Estimadores\n\n\n05\nEn evaluación (MLE o MCO)\n\n\n06\nIntervalos de Confianza y Pruebas de Hipótesis\n\n\n07\nEl Modelo de Regresión Lineal Simple\n\n\n08\nMínimos Cuadrados Ordinarios: Derivación y Propiedades\n\n\n09\nRegresión Lineal Múltiple y Teorema de Gauss-Markov\n\n\n10\nInferencia en Regresión: Tests t, F y \\(R^2\\)\n\n\n11\nDiagnóstico de Modelos: Heterocedasticidad y Multicolinealidad\n\n\n12\nIntroducción a la inferencia causal\n\n\n13\nIntroducción a Variables Instrumentales y Endogeneidad"
   },
   {
     "objectID": "index.html#información-del-curso",
@@ -187,5 +187,600 @@
     "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
     "section": "📟 Dudas",
     "text": "📟 Dudas\nPara consultas: fransofia.nr@gmail.com"
+  },
+  {
+    "objectID": "weeks/week02/slides.html",
+    "href": "weeks/week02/slides.html",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "",
+    "text": "Variables aleatorias\nFunción de distribución y densidad\nEsperanza y varianza\nCovarianza y correlación\nDistribuciones fundamentales"
+  },
+  {
+    "objectID": "weeks/week02/slides.html#contenidos-de-hoy",
+    "href": "weeks/week02/slides.html#contenidos-de-hoy",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "",
+    "text": "Variables aleatorias\nFunción de distribución y densidad\nEsperanza y varianza\nCovarianza y correlación\nDistribuciones fundamentales"
+  },
+  {
+    "objectID": "weeks/week02/slides.html#definición",
+    "href": "weeks/week02/slides.html#definición",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Definición",
+    "text": "Definición\n\n\n\n\n\n\nNoteDefinición: Variable aleatoria\n\n\n\nUna variable aleatoria \\(X\\) es una función que asigna un número real a cada resultado del espacio muestral:\n\\[X: \\Omega \\longrightarrow \\mathbb{R}\\]\n\n\n. . .\nTipos:\n\nDiscreta: toma valores en un conjunto numerable. Ejemplo: \\(X\\) = número de hijos.\nContinua: toma valores en un intervalo de \\(\\mathbb{R}\\). Ejemplo: \\(X\\) = ingreso mensual.\n\n. . .\nEn econometría, las variables de interés (\\(Y_i\\), \\(X_i\\), \\(\\varepsilon_i\\)) son todas variables aleatorias. Tratarlas como tales es lo que nos permite hacer inferencia."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#función-de-distribución-acumulada-cdf",
+    "href": "weeks/week02/slides.html#función-de-distribución-acumulada-cdf",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Función de distribución acumulada (CDF)",
+    "text": "Función de distribución acumulada (CDF)\n\n\n\n\n\n\nNoteDefinición\n\n\n\nLa función de distribución acumulada (CDF) de \\(X\\) es:\n\\[F_X(x) = P(X \\leq x), \\quad \\forall x \\in \\mathbb{R}\\]\n\n\n. . .\nPropiedades:\n\n\\(0 \\leq F_X(x) \\leq 1\\)\n\\(F_X\\) es no decreciente\n\\(\\lim_{x \\to -\\infty} F_X(x) = 0\\) y \\(\\lim_{x \\to +\\infty} F_X(x) = 1\\)\n\\(P(a &lt; X \\leq b) = F_X(b) - F_X(a)\\)"
+  },
+  {
+    "objectID": "weeks/week02/slides.html#función-de-densidad-pdf",
+    "href": "weeks/week02/slides.html#función-de-densidad-pdf",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Función de densidad (PDF)",
+    "text": "Función de densidad (PDF)\nPara variables continuas, la función de densidad \\(f_X(x)\\) se define como:\n\\[f_X(x) = \\frac{dF_X(x)}{dx}\\]\n. . .\nDe modo que:\n\\[P(a \\leq X \\leq b) = \\int_a^b f_X(x) \\, dx\\]\n. . .\n\n\n\n\n\n\nImportant\n\n\n\nOjo: \\(f_X(x)\\) no es una probabilidad. Puede ser mayor que 1. Lo que sí se cumple es \\(f_X(x) \\geq 0\\) y \\(\\int_{-\\infty}^{+\\infty} f_X(x) \\, dx = 1\\)."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#esperanza-valor-esperado",
+    "href": "weeks/week02/slides.html#esperanza-valor-esperado",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Esperanza (valor esperado)",
+    "text": "Esperanza (valor esperado)\n\n\n\n\n\n\nNoteDefinición\n\n\n\n\\[E[X] = \\begin{cases} \\sum_x x \\cdot p(x) & \\text{si } X \\text{ es discreta} \\\\ \\int_{-\\infty}^{+\\infty} x \\cdot f_X(x) \\, dx & \\text{si } X \\text{ es continua} \\end{cases}\\]\n\n\n. . .\nPropiedades fundamentales:\n\nLinealidad: \\(E[aX + bY] = aE[X] + bE[Y]\\)\n\\(E[c] = c\\) para cualquier constante \\(c\\)\nSi \\(X \\geq 0\\), entonces \\(E[X] \\geq 0\\)\n\n. . .\nLa esperanza es el operador más importante de la estadística. En econometría, la esperanza condicional \\(E[Y|X]\\) es la función de regresión poblacional."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#varianza",
+    "href": "weeks/week02/slides.html#varianza",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Varianza",
+    "text": "Varianza\n\n\n\n\n\n\nNoteDefinición\n\n\n\n\\[\\text{Var}(X) = E\\left[(X - E[X])^2\\right] = E[X^2] - (E[X])^2\\]\n\n\n. . .\nPropiedades:\n\n\\(\\text{Var}(X) \\geq 0\\)\n\\(\\text{Var}(aX + b) = a^2 \\text{Var}(X)\\)\nSi \\(X\\) e \\(Y\\) son independientes: \\(\\text{Var}(X + Y) = \\text{Var}(X) + \\text{Var}(Y)\\)\n\n. . .\nLa desviación estándar \\(\\sigma_X = \\sqrt{\\text{Var}(X)}\\) tiene las mismas unidades que \\(X\\)."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#covarianza",
+    "href": "weeks/week02/slides.html#covarianza",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Covarianza",
+    "text": "Covarianza\n\\[\\text{Cov}(X, Y) = E[(X - \\mu_X)(Y - \\mu_Y)] = E[XY] - E[X]E[Y]\\]\n. . .\nPropiedades:\n\n\\(\\text{Cov}(X, X) = \\text{Var}(X)\\)\n\\(\\text{Cov}(X, Y) = \\text{Cov}(Y, X)\\)\n\\(\\text{Cov}(aX, bY) = ab \\cdot \\text{Cov}(X, Y)\\)\nSi \\(X \\perp Y\\) (independientes), entonces \\(\\text{Cov}(X, Y) = 0\\)\n\n. . .\n\n\n\n\n\n\nImportant\n\n\n\nEl recíproco no es cierto: \\(\\text{Cov}(X,Y) = 0\\) no implica independencia. Solo implica ausencia de relación lineal."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#correlación",
+    "href": "weeks/week02/slides.html#correlación",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Correlación",
+    "text": "Correlación\nEl coeficiente de correlación de Pearson normaliza la covarianza:\n\\[\\rho_{XY} = \\frac{\\text{Cov}(X, Y)}{\\sigma_X \\cdot \\sigma_Y}, \\quad -1 \\leq \\rho \\leq 1\\]\n. . .\n\n\n\nValor de \\(\\rho\\)\nInterpretación\n\n\n\n\n\\(\\rho = 1\\)\nRelación lineal positiva perfecta\n\n\n\\(\\rho = 0\\)\nSin asociación lineal\n\n\n\\(\\rho = -1\\)\nRelación lineal negativa perfecta\n\n\n\n. . .\nEn regresión simple, \\(R^2 = \\rho_{XY}^2\\). Esta conexión la formalizaremos más adelante."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#la-distribución-normal",
+    "href": "weeks/week02/slides.html#la-distribución-normal",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "La distribución Normal",
+    "text": "La distribución Normal\n\n\n\n\n\n\nNoteDistribución Normal\n\n\n\nSi \\(X \\sim N(\\mu, \\sigma^2)\\), su densidad es:\n\\[f(x) = \\frac{1}{\\sqrt{2\\pi\\sigma^2}} \\exp\\left[-\\frac{1}{2\\sigma^2}(x - \\mu)^2\\right]\\]\n\n\n. . .\n¿Por qué es tan importante?\n\nEl Teorema Central del Límite garantiza que los promedios muestrales convergen a una Normal.\nBajo normalidad de los errores, el estimador OLS es idéntico al de máxima verosimilitud (MLE).\nLos tests \\(t\\) y \\(F\\) se derivan de ella."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#distribuciones-derivadas-de-la-normal",
+    "href": "weeks/week02/slides.html#distribuciones-derivadas-de-la-normal",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Distribuciones derivadas de la Normal",
+    "text": "Distribuciones derivadas de la Normal\nEstas distribuciones aparecen constantemente en inferencia:\n. . .\nChi-cuadrado: Si \\(Z_1, \\ldots, Z_k \\overset{iid}{\\sim} N(0,1)\\): \\[\\sum_{i=1}^{k} Z_i^2 \\sim \\chi^2_k\\]\n. . .\nt de Student: Si \\(Z \\sim N(0,1)\\) y \\(V \\sim \\chi^2_k\\) independientes: \\[T = \\frac{Z}{\\sqrt{V/k}} \\sim t_k\\]\n. . .\nF de Fisher: Si \\(V_1 \\sim \\chi^2_{k_1}\\) y \\(V_2 \\sim \\chi^2_{k_2}\\) independientes: \\[F = \\frac{V_1/k_1}{V_2/k_2} \\sim F_{k_1, k_2}\\]"
+  },
+  {
+    "objectID": "weeks/week02/slides.html#dónde-aparecen-estas-distribuciones",
+    "href": "weeks/week02/slides.html#dónde-aparecen-estas-distribuciones",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "¿Dónde aparecen estas distribuciones?",
+    "text": "¿Dónde aparecen estas distribuciones?\n\n\n\n\n\n\n\nDistribución\nUso en econometría\n\n\n\n\n\\(N(\\mu, \\sigma^2)\\)\nDistribución de \\(\\hat{\\beta}\\) bajo normalidad\n\n\n\\(\\chi^2_k\\)\nTest de Wald, test de heterocedasticidad\n\n\n\\(t_k\\)\nTest de significancia individual de \\(\\hat{\\beta}_j\\)\n\n\n\\(F_{k_1, k_2}\\)\nTest de significancia conjunta, test de restricciones\n\n\n\n. . .\nEn la próxima clase veremos cómo el Teorema Central del Límite justifica el uso de estas distribuciones incluso cuando los datos no son normales."
+  },
+  {
+    "objectID": "weeks/week02/slides.html#resumen",
+    "href": "weeks/week02/slides.html#resumen",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]",
+    "section": "Resumen",
+    "text": "Resumen\n\n\nHoy cubrimos:\n\nVariables aleatorias\nCDF y PDF\n\\(E[X]\\), \\(\\text{Var}(X)\\), \\(\\text{Cov}(X,Y)\\)\nDistribuciones \\(N\\), \\(\\chi^2\\), \\(t\\), \\(F\\)\n\n\nPróxima clase:\n\nDistribuciones muestrales\nLey de los Grandes Números\nTeorema Central del Límite\nConvergencia en probabilidad"
+  },
+  {
+    "objectID": "weeks/week01/slides.html",
+    "href": "weeks/week01/slides.html",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "",
+    "text": "¿Por qué probabilidad?\nEspacios muestrales y eventos\nAxiomas de probabilidad y función de probabilidad\nProbabilidad condicional\nIndependencia\nTeorema de Bayes"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#contenidos-de-hoy",
+    "href": "weeks/week01/slides.html#contenidos-de-hoy",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "",
+    "text": "¿Por qué probabilidad?\nEspacios muestrales y eventos\nAxiomas de probabilidad y función de probabilidad\nProbabilidad condicional\nIndependencia\nTeorema de Bayes"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#la-probabilidad-como-lenguaje-de-la-incertidumbre",
+    "href": "weeks/week01/slides.html#la-probabilidad-como-lenguaje-de-la-incertidumbre",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "La probabilidad como lenguaje de la incertidumbre",
+    "text": "La probabilidad como lenguaje de la incertidumbre\nLa probabilidad es un mecanismo que permite estudiar sucesos aleatorios (Canavos, 1988). A su vez, la probabilidad es el lenguaje matemático utilizado para manejar la incertidumbre (Hansen, 2021).\n. . .\nPor lo tanto, la teoría de probabilidades nos da el lenguaje formal para cuantificar esa incertidumbre. Sin ella, no podríamos definir qué significa que un estimador sea “bueno”, ni construir intervalos de confianza, ni evaluar hipótesis.\n. . .\nA diferencia de los eventos deterministas, gran parte de nuestro entorno natural y social está marcado por la incertidumbre. En este escenario, la probabilidad es la herramienta matemática clave que nos permite cuantificar la aleatoriedad, transformando lo impredecible en certidumbre para poder identificar causas y realizar predicciones fiables sobre la realidad."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#conceptos-de-probabilidad",
+    "href": "weeks/week01/slides.html#conceptos-de-probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Conceptos de probabilidad",
+    "text": "Conceptos de probabilidad\nAunque la probabilidad es un concepto intuitivo y cotidiano — decimos “probablemente llueva” o “es muy probable que el vuelo se atrase” — no existe una única interpretación científica del término aceptada universalmente (DeGroot & Schervish, 2014).\n. . .\nA lo largo de la historia se han propuesto distintas interpretaciones, cada una con fortalezas y limitaciones. Revisaremos las tres principales:\n\nInterpretación frecuentista\nInterpretación clásica\nInterpretación subjetiva\n\n. . .\n\n\n\n\n\n\nImportantNota clave\n\n\n\nLa teoría matemática de la probabilidad no depende de cuál interpretación se adopte. Los axiomas y resultados que usaremos en este curso son válidos bajo cualquiera de ellas (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#interpretación-frecuentista",
+    "href": "weeks/week01/slides.html#interpretación-frecuentista",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Interpretación frecuentista",
+    "text": "Interpretación frecuentista\nLa probabilidad de un resultado se interpreta como la frecuencia relativa con que ese resultado se obtendría si el proceso se repitiera muchas veces bajo condiciones similares (DeGroot & Schervish, 2014).\n. . .\nEjemplo: La probabilidad de obtener cara al lanzar una moneda es \\(1/2\\) porque, al lanzarla un gran número de veces, la proporción de caras se aproximaría a \\(1/2.\\)\n. . .\n\nLimitaciones\n\nVaguedad en las condiciones: ¿Qué es un “gran número” de repeticiones? ¿Qué tan “similares” deben ser las condiciones?\nNo toda variación se elimina: si lanzamos una moneda 1.000.000 de veces, no esperamos exactamente 500.000 caras, pero sí un número cercano.\nSolo aplica a procesos repetibles: no puede usarse directamente para eventos únicos, como la probabilidad de que un proyecto de investigación médica tenga éxito o de que una persona específica se case en los próximos dos años."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#interpretación-clásica",
+    "href": "weeks/week01/slides.html#interpretación-clásica",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Interpretación clásica",
+    "text": "Interpretación clásica\nSe basa en el concepto de resultados igualmente probables. Si un proceso tiene \\(n\\) resultados posibles y todos son igualmente verosímiles, la probabilidad de cada uno es \\(1/n\\) (DeGroot & Schervish, 2014).\n. . .\nEjemplo: Al lanzar una moneda justa hay dos resultados igualmente probables, por lo que \\(P(\\text{cara}) = P(\\text{sello}) = 1/2\\).\n. . .\n\nLimitaciones\n\nCircularidad: definir “igualmente probables” equivale a decir que tienen la misma probabilidad, que es justamente lo que intentamos definir.\nNo ofrece un método sistemático para asignar probabilidades cuando los resultados no son igualmente probables (e.g., ¿cuál es la probabilidad de que un proyecto de investigación sea exitoso?)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#interpretación-subjetiva",
+    "href": "weeks/week01/slides.html#interpretación-subjetiva",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Interpretación subjetiva",
+    "text": "Interpretación subjetiva\nSegún la interpretación subjetiva o personal, la probabilidad que una persona asigna a un resultado representa su propio juicio sobre la verosimilitud de que ese resultado ocurra, basado en sus creencias e información disponible (DeGroot & Schervish, 2014).\n. . .\nDos personas con creencias o información distintas pueden asignar probabilidades diferentes al mismo evento. Por eso se habla de la probabilidad subjetiva de un resultado, más que de su “probabilidad verdadera”.\n. . .\n\nLimitaciones\n\nConsistencia: exigir que los juicios de una persona sobre un número infinito de eventos sean perfectamente coherentes y libres de contradicciones no parece humanamente alcanzable.\nFalta de objetividad: no provee una base común para que dos o más científicos lleguen a un acuerdo sobre el estado del conocimiento en su área.\n\n. . .\nSin embargo, si los juicios de una persona satisfacen ciertas condiciones de consistencia, se puede demostrar que sus probabilidades subjetivas quedan unívocamente determinadas (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#las-tres-interpretaciones-en-perspectiva",
+    "href": "weeks/week01/slides.html#las-tres-interpretaciones-en-perspectiva",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Las tres interpretaciones en perspectiva",
+    "text": "Las tres interpretaciones en perspectiva\n\n\nFrecuentista\n\nProbabilidad = frecuencia relativa a largo plazo\nRequiere repetibilidad\nBase de la estadística clásica\n\n\nClásica\n\nProbabilidad = casos favorables / casos posibles\nRequiere resultados igualmente probables\nÚtil en juegos de azar y combinatoria\n\n\nSubjetiva\n\nProbabilidad = grado de creencia personal\nAplica a eventos únicos\nBase de la estadística bayesiana\n\n\n\n. . .\nEn la práctica, el quehacer del/x científicx puede combinar las tres: usar frecuencias relativas de datos pasados, considerar simetrías del problema, e incorporar su propio juicio. La asignación final de probabilidades numéricas es, en última instancia, responsabilidad del/x investigador/x (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#experimentos-aleatorios",
+    "href": "weeks/week01/slides.html#experimentos-aleatorios",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Experimentos aleatorios",
+    "text": "Experimentos aleatorios\n\n\n\n\n\n\nNoteDefinición: Experimento\n\n\n\nUn experimento es cualquier proceso, real o hipotético, cuyos resultados posibles pueden identificarse de antemano, pero cuyo resultado específico no puede predecirse con certeza (DeGroot & Schervish, 2014).\n\n\n. . .\nLa teoría de la probabilidad se ocupa de los distintos resultados que podrían obtenerse y de los posibles eventos que podrían ocurrir cuando se realiza un experimento (DeGroot & Schervish, 2014).\n. . .\nEjemplos:\n\nLanzar una moneda al aire: ¿saldrá cara o sello?\nRegistrar la variación del valor de un índice bursátil: ¿subirá o bajará?\nSeleccionar un individuo al azar y encuestarlo sobre su situación económica: ¿cuál será su ingreso por hora? (Hansen, 2022)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#experimentos-aleatorios-1",
+    "href": "weeks/week01/slides.html#experimentos-aleatorios-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Experimentos aleatorios",
+    "text": "Experimentos aleatorios\nEn todos estos casos, la falta de conocimiento previo sobre el resultado nos lleva a describir el resultado como aleatorio."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#resultados-y-espacio-muestral",
+    "href": "weeks/week01/slides.html#resultados-y-espacio-muestral",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Resultados y espacio muestral",
+    "text": "Resultados y espacio muestral\n\n\n\n\n\n\nNoteDefinición: Resultado (outcome)\n\n\n\nUn resultado es un resultado específico de un experimento. Por ejemplo, en el lanzamiento de una moneda, un resultado es cara (H) o sello (T) (Hansen, 2022).\n\n\n. . .\n\n\n\n\n\n\nNoteDefinición: Espacio muestral\n\n\n\nEl espacio muestral \\(\\Omega\\) es el conjunto de todos los resultados posibles de un experimento (DeGroot & Schervish, 2014; Hansen, 2022).\n\n\n. . .\nEjemplos:\n\nLanzar una moneda: \\(\\Omega = \\{H, T\\}\\)\nLanzar dos monedas en secuencia: \\(\\Omega = \\{HH, HT, TH, TT\\}\\)\nLanzar un dado: \\(\\Omega = \\{1, 2, 3, 4, 5, 6\\}\\)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#espacios-muestrales-discretos-y-continuos",
+    "href": "weeks/week01/slides.html#espacios-muestrales-discretos-y-continuos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Espacios muestrales discretos y continuos",
+    "text": "Espacios muestrales discretos y continuos\nEl espacio muestral puede ser finito, infinito numerable o infinito no numerable. De esta distinción se sigue la clasificación en espacios discretos y continuos.\n. . .\n\n\n\n\n\n\nNoteDefinición: Espacio muestral discreto\n\n\n\nUn espacio muestral es discreto si sus resultados pueden ponerse en correspondencia uno a uno con un subconjunto de los enteros positivos. Es decir, es finito o infinito numerable (countable) (DeGroot & Schervish, 2014).\n\n\n. . .\nEjemplos:\n\nFinito: lanzar un dado, \\(\\Omega = \\{1, 2, 3, 4, 5, 6\\}\\)\nFinito: respuesta a encuesta Likert, \\(\\Omega = \\{1, 2, 3, 4, 5\\}\\)\nInfinito numerable: número de veces que un cliente visita una tienda, \\(\\Omega = \\{0, 1, 2, \\ldots\\}\\)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#espacios-muestrales-continuos",
+    "href": "weeks/week01/slides.html#espacios-muestrales-continuos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Espacios muestrales continuos",
+    "text": "Espacios muestrales continuos\n\n\n\n\n\n\nNoteDefinición: Espacio muestral continuo\n\n\n\nUn espacio muestral es continuo si su conjunto de resultados es un intervalo (acotado o no) de números reales, es decir, un subconjunto no numerable (uncountable) de \\(\\mathbb{R}\\) (DeGroot & Schervish, 2014).\n\n\n. . .\nEn un espacio continuo, cada resultado individual \\(\\{\\omega\\}\\) tiene probabilidad 0. Por lo tanto, no tiene sentido asignar probabilidad a un punto aislado, sino a intervalos. Para \\(a &lt; b\\):\n\\[P([a, b]) = \\int_a^b f(x) \\, dx\\]\ndonde \\(f\\) es la función de densidad de probabilidad (que formalizaremos más adelante)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#espacios-muestrales-continuos-1",
+    "href": "weeks/week01/slides.html#espacios-muestrales-continuos-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Espacios muestrales continuos",
+    "text": "Espacios muestrales continuos\nEjemplo: El ingreso mensual de un hogar es un espacio muestral continuo con \\(\\Omega = [0, +\\infty)\\). La probabilidad de que el ingreso caiga en un rango \\([y_1, y_2]\\) sería:\n\\[P(y_1 \\leq Y \\leq y_2) = \\int_{y_1}^{y_2} f_Y(y) \\, dy\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#eventos",
+    "href": "weeks/week01/slides.html#eventos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Eventos",
+    "text": "Eventos\n\n\n\n\n\n\nNoteDefinición: Evento\n\n\n\nUn evento \\(A\\) es un subconjunto bien definido del espacio muestral: \\(A \\subseteq \\Omega\\). Representa una colección de resultados del experimento (DeGroot & Schervish, 2014; Hansen, 2022).\n\n\n. . .\nDecimos que el evento \\(A\\) ha ocurrido si el resultado del experimento es un elemento de \\(A\\), es decir, si \\(s_{\\text{observado}} \\in A.\\)\n. . .\nEjemplo: En el lanzamiento de un dado con \\(\\Omega = \\{1, 2, 3, 4, 5, 6\\}\\):\n\n\\(A\\) = “sale un número par” = \\(\\{2, 4, 6\\}\\)\n\\(B\\) = “sale un número mayor que 2” = \\(\\{3, 4, 5, 6\\}\\)\n\nPuesto que los resultados pueden interpretarse como elementos de un conjunto y los eventos como subconjuntos, el lenguaje y los conceptos de la teoría de conjuntos proporcionan el contexto natural para desarrollar la teoría de la probabilidad (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#operaciones-con-eventos",
+    "href": "weeks/week01/slides.html#operaciones-con-eventos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Operaciones con eventos",
+    "text": "Operaciones con eventos\nLas operaciones de conjuntos nos permiten construir nuevos eventos a partir de eventos existentes:\n. . .\n\n\n\n\n\n\n\n\nOperación\nNotación\nSignificado\n\n\n\n\nUnión\n\\(A \\cup B\\)\nOcurre \\(A\\) o \\(B\\) (o ambos)\n\n\nIntersección\n\\(A \\cap B\\)\nOcurren \\(A\\) y \\(B\\) simultáneamente\n\n\nComplemento\n\\(A^c\\)\nNo ocurre \\(A\\)\n\n\nContención\n\\(A \\subset B\\)\nSi ocurre \\(A\\), entonces necesariamente ocurre \\(B\\)\n\n\n\n. . .\n\n\n\n\n\n\nNoteDefinición: Conjunto vacío\n\n\n\nEl subconjunto de \\(\\Omega\\) que no contiene ningún elemento se llama conjunto vacío y se denota \\(\\emptyset\\). En términos de eventos, representa cualquier evento que no puede ocurrir (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#eventos-disjuntos",
+    "href": "weeks/week01/slides.html#eventos-disjuntos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Eventos disjuntos",
+    "text": "Eventos disjuntos\n\n\n\n\n\n\nNoteDefinición: Eventos disjuntos (mutuamente excluyentes)\n\n\n\nDos eventos \\(A\\) y \\(B\\) son disjuntos si no tienen resultados en común, es decir, si \\(A \\cap B = \\emptyset\\). No pueden ocurrir simultáneamente.\n\n\n. . .\nEjemplo: En el lanzamiento de un dado:\n\n\\(A\\) = “sale menor o igual a 3” = \\(\\{1, 2, 3\\}\\)\n\\(B\\) = “sale mayor o igual a 5” = \\(\\{5, 6\\}\\)\n\\(A \\cap B = \\emptyset\\) — no pueden suceder a la vez.\n\n. . .\nSi \\(A\\) y \\(B\\) son disjuntos, exactamente una de estas tres afirmaciones es verdadera:\n\nOcurre \\(A\\) (e.g., sale un 2)\nOcurre \\(B\\) (e.g., sale un 5)\nNo ocurre ni \\(A\\) ni \\(B\\) (e.g., sale un 4)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#partición-del-espacio-muestral",
+    "href": "weeks/week01/slides.html#partición-del-espacio-muestral",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Partición del espacio muestral",
+    "text": "Partición del espacio muestral\n\n\n\n\n\n\nNoteDefinición: Partición\n\n\n\nLos eventos \\(A_1, A_2, \\ldots, A_k\\) forman una partición de \\(\\Omega\\) si son mutuamente disjuntos y su unión es igual a \\(\\Omega\\):\n\\[A_i \\cap A_j = \\emptyset \\quad \\text{para } i \\neq j \\qquad \\text{y} \\qquad \\bigcup_{i=1}^{k} A_i = \\Omega\\]\n\n\n. . .\nEjemplo: En el lanzamiento de un dado, los eventos \\(A_i = \\{i\\}\\) para \\(i = 1, \\ldots, 6\\) forman una partición de \\(\\Omega = \\{1, 2, 3, 4, 5, 6\\}\\), pues son disjuntos y cubren todos los resultados posibles.\n. . .\nEl concepto de partición será fundamental más adelante: la ley de probabilidad total y el Teorema de Bayes se construyen sobre la idea de descomponer \\(\\Omega\\) en piezas disjuntas y exhaustivas."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#conjuntos-finitos-numerables-y-no-numerables",
+    "href": "weeks/week01/slides.html#conjuntos-finitos-numerables-y-no-numerables",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Conjuntos finitos, numerables y no numerables",
+    "text": "Conjuntos finitos, numerables y no numerables\nEsta distinción, que parece puramente matemática, tiene consecuencias directas sobre cómo asignamos probabilidades.\n. . .\n\n\n\n\n\n\nNoteDefinición: Numerable y no numerable\n\n\n\nUn conjunto infinito \\(A\\) es numerable (countable) si existe una correspondencia uno a uno entre sus elementos y los números naturales \\(\\{1, 2, 3, \\ldots\\}\\). Un conjunto es no numerable (uncountable) si no es ni finito ni numerable (DeGroot & Schervish, 2014).\n\n\n. . .\n\n\nConjuntos numerables:\n\nLos enteros \\(\\mathbb{Z}\\)\nLos números pares\nLos primos\nCualquier secuencia infinita\n\n\nConjuntos no numerables:\n\nLos reales \\(\\mathbb{R}\\)\nEl intervalo \\([0, 1]\\)\nLos reales positivos \\(\\mathbb{R}^+\\)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#conjuntos-finitos-numerables-y-no-numerables-1",
+    "href": "weeks/week01/slides.html#conjuntos-finitos-numerables-y-no-numerables-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Conjuntos finitos, numerables y no numerables",
+    "text": "Conjuntos finitos, numerables y no numerables\nCuando \\(\\Omega\\) es numerable, podemos asignar probabilidad a cada resultado individual. Cuando \\(\\Omega\\) es no numerable, debemos trabajar con probabilidades sobre intervalos, lo que nos llevará a las funciones de densidad."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#síntesis-el-lenguaje-de-la-probabilidad",
+    "href": "weeks/week01/slides.html#síntesis-el-lenguaje-de-la-probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Síntesis: el lenguaje de la probabilidad",
+    "text": "Síntesis: el lenguaje de la probabilidad\n\n\n\n\nCastellano\n\n\nNotación de conjuntos\n\n\n\n\n\n\nEspacio muestral\n\n\n\\(\\Omega\\)\n\n\n\n\n\\(s\\) es un posible resultado\n\n\n\\(s \\in \\Omega\\)\n\n\n\n\n\\(A\\) es un evento\n\n\n\\(A \\subseteq \\Omega\\)\n\n\n\n\n\\(A\\) ocurrió\n\n\n\\(s_{\\text{obs}} \\in A\\)\n\n\n\n\nAlgo debe ocurrir\n\n\n\\(s_{\\text{obs}} \\in \\Omega\\)\n\n\n\n\n\\(A\\) o \\(B\\) (o ambos)\n\n\n\\(A \\cup B\\)\n\n\n\n\n\\(A\\) y \\(B\\)\n\n\n\\(A \\cap B\\)\n\n\n\n\nNo \\(A\\)\n\n\n\\(A^c\\)\n\n\n\n\n\\(A\\) implica \\(B\\)\n\n\n\\(A \\subset B\\)\n\n\n\n\n\\(A\\) y \\(B\\) son disjuntos\n\n\n\\(A \\cap B = \\emptyset\\)\n\n\n\n\n\\(A_1, \\ldots, A_n\\) partición de \\(\\Omega\\)\n\n\n\\(A_i \\cap A_j = \\emptyset \\;\\; (i \\neq j)\\) y \\(\\bigcup_i A_i = \\Omega\\)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#síntesis-el-lenguaje-de-la-probabilidad-1",
+    "href": "weeks/week01/slides.html#síntesis-el-lenguaje-de-la-probabilidad-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Síntesis: el lenguaje de la probabilidad",
+    "text": "Síntesis: el lenguaje de la probabilidad\nEsta tabla resume el puente entre el lenguaje cotidiano y la formalización matemática que usaremos de aquí en adelante. Todo lo que sigue —axiomas, funciones de probabilidad, condicionalidad— se construye sobre estas definiciones (Canavos, 1988; DeGroot & Schervish, 2014; Hansen, 2022). Lo fundamental de entender es que esta base matemática es lo que nos entregará las herramientas para modelar estadísticamente fenómenos de la realidad."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#la-función-de-probabilidad",
+    "href": "weeks/week01/slides.html#la-función-de-probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "La función de probabilidad",
+    "text": "La función de probabilidad\nHasta ahora hemos descrito eventos usando teoría de conjuntos. El paso siguiente es asignarle a cada evento un número real que mida la posibilidad de que ese evento ocurra cuando se realice el experimento.\n. . .\nLo que necesitamos es una función que tome eventos como argumento y devuelva probabilidades:\n\\[\\text{Evento } A \\longrightarrow P(A) \\longrightarrow \\text{Número real}\\]\n. . .\nDiremos que una función de probabildad, por tanto, es “una función \\(\\mathbb{P}\\) que asigna un valor numérico a eventos” (Hansen, 2022, p. 2). Esto significa que \\(\\mathbb{P}\\) (o \\(\\Pr\\)) es una función del espacio de eventos a la recta real. Las probabilidades son, por tanto, números, que indican un quantum de que un suceso ocurra."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#definición-de-función-de-probabilidad",
+    "href": "weeks/week01/slides.html#definición-de-función-de-probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Definición de función de probabilidad",
+    "text": "Definición de función de probabilidad\n\n\n\n\n\n\nNoteDefinición: Función de probabilidad\n\n\n\nUna medida de probabilidad, o simplemente una probabilidad, sobre un espacio muestral \\(\\Omega\\) es una especificación de números \\(P(A)\\) para todos los eventos \\(A\\) que satisface los tres axiomas de la probabilidad (DeGroot & Schervish, 2014).\n\n\n. . .\nNo cualquier asignación de números a eventos constituye una función de probabilidad. Solo aquellas que satisfacen los axiomas que veremos a continuación.\n. . .\n\n\n\n\n\n\nImportant\n\n\n\nCualquier función \\(\\Pr\\) que satisfaga los axiomas es una función de probabilidad válida. No importa cómo se hayan determinado las probabilidades —ya sea por frecuencias, simetrías o juicio subjetivo— mientras cumplan los axiomas, deben satisfacer también todas las propiedades que se derivan de ellos (DeGroot & Schervish, 2014; Hansen, 2022)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#los-tres-axiomas-de-kolmogorov-1933",
+    "href": "weeks/week01/slides.html#los-tres-axiomas-de-kolmogorov-1933",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Los tres axiomas de Kolmogorov (1933)",
+    "text": "Los tres axiomas de Kolmogorov (1933)\nUna función de probabilidad \\(\\Pr\\) asigna a cada evento \\(A\\) un número real \\(\\Pr(A)\\) que satisface:\n. . .\nAxioma 1 (No negatividad): Para todo evento \\(A\\), \\[\\Pr(A) \\geq 0\\]\n. . .\nAxioma 2 (Normalización): \\[\\Pr(\\Omega) = 1\\]\n. . .\nAxioma 3 (Aditividad numerable): Para toda secuencia infinita de eventos disjuntos \\(A_1, A_2, \\ldots\\),\n\\[\\Pr\\left(\\bigcup_{i=1}^{\\infty} A_i\\right) = \\sum_{i=1}^{\\infty} \\Pr(A_i)\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#los-tres-axiomas-de-kolmogorov-1933-1",
+    "href": "weeks/week01/slides.html#los-tres-axiomas-de-kolmogorov-1933-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Los tres axiomas de Kolmogorov (1933)",
+    "text": "Los tres axiomas de Kolmogorov (1933)\nDe estos tres axiomas se derivan todas las propiedades de la probabilidad que usaremos en el curso. En general, utilizaremos \\(\\Pr\\) para denotar una función de probabilidad, pero en la literatura se puede ver como \\(P\\) o \\(\\mathbb{P}\\) también.\n. . .\nUn ensayo muy lindo sobre Kolmogorov, puede verse en Rolando Rebolledo. “Kolmogorov y su época”. En: Revista de la Sociedad Chilena de Estadı́stica (1988)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#interpretación-de-los-axiomas",
+    "href": "weeks/week01/slides.html#interpretación-de-los-axiomas",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Interpretación de los axiomas",
+    "text": "Interpretación de los axiomas\nEl Axioma 1 dice que las probabilidades no pueden ser negativas. Esto es razonable en el siguiente sentido: si nos preguntamos cuál es la probabilidad de que nos caiga un rayo, no decimos \\(-99\\%,\\) sino \\(0\\%\\) si creemos que no ocurrirá. Cuando no hay probabilidad de un suceso, es \\(\\Pr(A) = 0.\\)\n. . .\nEl Axioma 2 dice que la probabilidad del espacio muestral completo es 1. Captura la idea de que el espacio muestral incluye todos los resultados posibles: algo tiene que ocurrir. Es esencialmente una normalización (Hansen, 2022).\n. . .\nEl Axioma 3 es la propiedad aditiva e impone estructura considerable. Establece que si dos eventos no pueden ocurrir simultáneamente, la probabilidad de que ocurra uno u otro es la suma de sus probabilidades individuales (Hansen, 2022). Es decir, si \\(A\\) y \\(B\\) son disjuntos:\n\\[\\Pr(A \\cup B) = \\Pr(A) + \\Pr(B)\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#cuidado-con-el-axioma-3",
+    "href": "weeks/week01/slides.html#cuidado-con-el-axioma-3",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Cuidado con el Axioma 3",
+    "text": "Cuidado con el Axioma 3\n\n\n\n\n\n\nImportantEl Axioma 3 solo aplica a eventos disjuntos\n\n\n\nEs un error frecuente aplicar la aditividad a eventos que no son disjuntos.\n\n\n. . .\nEjemplo: Considere el lanzamiento de dos dados. Sea \\(A\\) = “sale 1 en el primer dado” y \\(B\\) = “sale 1 en el segundo dado”.\n. . .\nEs tentador escribir \\(\\Pr(\\text{1 en algun dado}) = \\Pr(A \\cup B) = \\Pr(A) + \\Pr(B), \\qquad\\) pero esto es incorrecto porque \\(A\\) y \\(B\\) no son disjuntos: el resultado “1 en ambos dados” pertenece tanto a \\(A\\) como a \\(B\\) (Hansen, 2022)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-funciones-de-probabilidad-válidas-e-inválidas",
+    "href": "weeks/week01/slides.html#ejemplo-funciones-de-probabilidad-válidas-e-inválidas",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: Funciones de probabilidad válidas e inválidas",
+    "text": "Ejemplo: Funciones de probabilidad válidas e inválidas\nConsidere el lanzamiento de una moneda con \\(\\Omega = \\{H, T\\}\\).\n. . .\n\n\nVálidas ✓\n\n\\(\\Pr(H) = 0.5, \\Pr(T) = 0.5\\quad\\) (moneda justa)\n\\(\\Pr(H) = 0.6, \\Pr(T) = 0.4\\quad\\) (moneda cargada)\n\n\nInválidas ✗\n\n\\(\\Pr(H) = -0.6,  \\Pr(T) = 0.6\\quad\\) (viola Axioma 1)\n\\(\\Pr(H) = 0.6, \\Pr(T) = 0.6\\quad\\) (viola Axioma 2: suma \\(\\neq 1)\\)\n\n\n\n. . .\nNo existe una única función de probabilidad para un experimento dado. Lo que los axiomas exigen es consistencia interna, no una asignación particular (Hansen, 2022)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-dado-justo",
+    "href": "weeks/week01/slides.html#ejemplo-dado-justo",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: Dado justo",
+    "text": "Ejemplo: Dado justo\nEn el lanzamiento de un dado con \\(\\Omega = \\{1, 2, 3, 4, 5, 6\\}, \\hspace{0.6cm}\\) sea \\(\\Pr(A)\\) el número de elementos de \\(A\\) dividido por 6 (DeGroot & Schervish, 2014).\n. . .\n\nAxioma 1: \\(\\Pr(A) = |A|/6 \\geq 0\\hspace{0.6cm}  \\checkmark\\)\nAxioma 2: \\(\\Pr(\\Omega) = 6/6 = 1\\hspace{0.6cm} \\checkmark\\)\nAxioma 3: Si \\(A = \\{1, 3, 5\\}\\hspace{0.6cm}\\), entonces \\(\\Pr(A) = p_1 + p_3 + p_5 = 3/6\\hspace{0.6cm}  \\checkmark\\)\n\n. . .\n¿Y un dado cargado? Supongamos que el 6 tiene el doble de probabilidad de salir. Podemos asignar \\(p_i = 1/7\\hspace{0.6cm}\\) para \\(i = 1, \\ldots, 5\\hspace{0.6cm}\\) y \\(p_6 = 2/7.\\hspace{0.6cm}\\) Para cualquier evento \\(A\\hspace{0.6cm}\\), definimos \\(\\Pr(A) = \\sum_{i \\in A} p_i.\\hspace{0.6cm}\\) Esto también satisface los tres axiomas (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplos-con-datos-reales",
+    "href": "weeks/week01/slides.html#ejemplos-con-datos-reales",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplos con datos reales",
+    "text": "Ejemplos con datos reales\n\n\nÍndice S&P 500\nSea \\(U\\) = “el índice sube en una semana” y \\(D\\) = “el índice baja”. El espacio muestral es \\(\\Omega = \\{U, D\\}\\hspace{0.6cm}\\), similar a una moneda. Con datos de 3.584 semanas (1950–2017):\n\\[\\Pr(U) = 0.57, \\quad \\Pr(D) = 0.43\\]\nLa probabilidad de un alza es algo mayor que la de una moneda justa (Hansen, 2022).\n\nSalarios en EE.UU.\nSea \\(H\\) = “salario &gt; $25/hora” y \\(L\\) = “salario \\(\\leq\\) $25/hora”. Con una muestra de 50.742 trabajadores (2009):\n\\[\\Pr(H) = 0.31, \\quad \\Pr(L) = 0.69\\]\nAntes de encuestar a un individuo al azar, su salario es incierto y aleatorio (Hansen, 2022)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#propiedades-de-la-función-de-probabilidad",
+    "href": "weeks/week01/slides.html#propiedades-de-la-función-de-probabilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Propiedades de la función de probabilidad",
+    "text": "Propiedades de la función de probabilidad\nA partir de los axiomas se demuestran las siguientes propiedades. Para cualesquiera eventos \\(A\\) y \\(B\\) (DeGroot & Schervish, 2014; Hansen, 2022):\n. . .\n1. \\(\\Pr(A^c) = 1 - \\Pr(A)\\)\n. . .\n2. \\(\\Pr(\\emptyset) = 0\\)\n. . .\n3. \\(0 \\leq \\Pr(A) \\leq 1\\)\n. . .\n4. Monotonía: Si \\(A \\subset B\\hspace{0.6cm}\\), entonces \\(\\Pr(A) \\leq \\Pr(B)\\)\n. . .\n5. Inclusión-Exclusión: \\(\\Pr(A \\cup B) = \\Pr(A) + \\Pr(B) - \\Pr(A \\cap B)\\)\n. . .\n6. \\(\\Pr(A \\cap B^c) = \\Pr(A) - \\Pr(A \\cap B)\\)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#demostración-premptyset-0-opcional",
+    "href": "weeks/week01/slides.html#demostración-premptyset-0-opcional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Demostración: \\(\\Pr(\\emptyset) = 0\\) (opcional)",
+    "text": "Demostración: \\(\\Pr(\\emptyset) = 0\\) (opcional)\nConsideremos la secuencia infinita \\(A_1, A_2, \\ldots\\) tal que \\(A_i = \\emptyset\\) para todo \\(i\\). Como \\(\\emptyset \\cap \\emptyset = \\emptyset\\), los eventos son disjuntos. Además, \\(\\bigcup_{i=1}^{\\infty} A_i = \\emptyset\\). Entonces, por el Axioma 3 (DeGroot & Schervish, 2014):\n\\[\\Pr(\\emptyset) = \\Pr\\left(\\bigcup_{i=1}^{\\infty} A_i\\right) = \\sum_{i=1}^{\\infty} \\Pr(\\emptyset)\\]\n. . .\nLa única forma de que un número sea igual a la suma infinita de sí mismo es que ese número sea cero. \\(\\blacksquare\\)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#demostración-prac-1---pra-opcional",
+    "href": "weeks/week01/slides.html#demostración-prac-1---pra-opcional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Demostración: \\(\\Pr(A^c) = 1 - \\Pr(A)\\) (opcional)",
+    "text": "Demostración: \\(\\Pr(A^c) = 1 - \\Pr(A)\\) (opcional)\nComo \\(A\\) y \\(A^c\\) son disjuntos y \\(A \\cup A^c = \\Omega\\), por el Axioma 3 (aditividad finita, que se deriva del Axioma 3):\n\\[\\Pr(A \\cup A^c) = \\Pr(A) + \\Pr(A^c)\\]\n. . .\nY como \\(A \\cup A^c = \\Omega\\), por el Axioma 2:\n\\[\\Pr(\\Omega) = 1 = \\Pr(A) + \\Pr(A^c)\\]\n. . .\nPor lo tanto:\n\\[\\Pr(A^c) = 1 - \\Pr(A) \\qquad \\blacksquare\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#demostración-si-a-subset-b-entonces-pra-leq-prb-opcional",
+    "href": "weeks/week01/slides.html#demostración-si-a-subset-b-entonces-pra-leq-prb-opcional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Demostración: Si \\(A \\subset B\\), entonces \\(\\Pr(A) \\leq \\Pr(B)\\) (opcional)",
+    "text": "Demostración: Si \\(A \\subset B\\), entonces \\(\\Pr(A) \\leq \\Pr(B)\\) (opcional)\nEl evento \\(B\\) puede descomponerse como la unión de dos eventos disjuntos: \\(B = A \\cup (B \\cap A^c)\\).\n. . .\nPor aditividad:\n\\[\\Pr(B) = \\Pr(A) + \\Pr(B \\cap A^c)\\]\n. . .\nComo \\(\\Pr(B \\cap A^c) \\geq 0\\) por el Axioma 1:\n\\[\\Pr(B) \\geq \\Pr(A) \\qquad \\blacksquare\\]\n. . .\nDe esta misma demostración, junto con el hecho de que \\(A \\subset \\Omega\\) para todo evento \\(A\\), se deduce que \\(\\Pr(A) \\leq \\Pr(\\Omega) = 1\\). Combinando con el Axioma 1, obtenemos \\(0 \\leq \\Pr(A) \\leq 1\\) (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#demostración-inclusión-exclusión-opcional",
+    "href": "weeks/week01/slides.html#demostración-inclusión-exclusión-opcional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Demostración: Inclusión-Exclusión (opcional)",
+    "text": "Demostración: Inclusión-Exclusión (opcional)\nQueremos demostrar que \\(\\Pr(A \\cup B) = \\Pr(A) + \\Pr(B) - \\Pr(A \\cap B)\\).\n. . .\nNotemos que \\(A \\cup B = B \\cup (A \\cap B^c)\\), donde \\(B\\) y \\(A \\cap B^c\\) son disjuntos. Entonces:\n\\[\\Pr(A \\cup B) = \\Pr(B) + \\Pr(A \\cap B^c)\\]\n. . .\nAdemás, \\(A = (A \\cap B) \\cup (A \\cap B^c)\\), donde ambos términos son disjuntos, por lo que:\n\\[\\Pr(A) = \\Pr(A \\cap B) + \\Pr(A \\cap B^c) \\implies \\Pr(A \\cap B^c) = \\Pr(A) - \\Pr(A \\cap B)\\]\n. . .\nSustituyendo:\n\\[\\Pr(A \\cup B) = \\Pr(B) + \\Pr(A) - \\Pr(A \\cap B) \\qquad \\blacksquare\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#propiedades-adicionales-desigualdades-útiles-opcional",
+    "href": "weeks/week01/slides.html#propiedades-adicionales-desigualdades-útiles-opcional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Propiedades adicionales: desigualdades útiles (opcional)",
+    "text": "Propiedades adicionales: desigualdades útiles (opcional)\n\n\n\n\n\n\nNoteDesigualdad de Boole\n\n\n\nPara cualesquiera eventos \\(A_1, \\ldots, A_n:\\) \\[\\Pr\\left(\\bigcup_{i=1}^{n} A_i\\right) \\leq \\sum_{i=1}^{n} \\Pr(A_i)\\]\nLa probabilidad de una unión está acotada superiormente por la suma de las probabilidades individuales (Hansen, 2022).\n\n\n. . .\n\n\n\n\n\n\nNoteDesigualdad de Bonferroni\n\n\n\nPara cualesquiera eventos \\(A_1, \\ldots, A_n:\\) \\[\\Pr\\left(\\bigcap_{i=1}^{n} A_i\\right) \\geq 1 - \\sum_{i=1}^{n} \\Pr(A_i^c)\\]\nLa probabilidad de una intersección está acotada inferiormente (DeGroot & Schervish, 2014; Hansen, 2022)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#propiedades-adicionales-desigualdades-útiles-opcional-1",
+    "href": "weeks/week01/slides.html#propiedades-adicionales-desigualdades-útiles-opcional-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Propiedades adicionales: desigualdades útiles (opcional)",
+    "text": "Propiedades adicionales: desigualdades útiles (opcional)\nAmbas desigualdades (de Boole y de Bonferroni) son utilizadas frecuentemente en cálculos de probabilidad y serán útiles cuando veamos intervalos de confianza simultáneos."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#probabilidad-cero-neq-imposibilidad",
+    "href": "weeks/week01/slides.html#probabilidad-cero-neq-imposibilidad",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Probabilidad cero \\(\\neq\\) imposibilidad",
+    "text": "Probabilidad cero \\(\\neq\\) imposibilidad\n\n\n\n\n\n\nImportantNota clave\n\n\n\nCuando un evento tiene probabilidad 0, eso no significa que el evento sea imposible (DeGroot & Schervish, 2014).\n\n\n. . .\nEn un espacio muestral continuo, hay muchos eventos con probabilidad 0 que no son todos imposibles. Por ejemplo, si la demanda de agua puede tomar cualquier valor en \\([4, 200],\\hspace{0.2cm}\\) el evento “la demanda es exactamente 150” corresponde a un solo punto —que tiene área 0— y por tanto probabilidad 0. Pero la demanda podría ser 150 (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#probabilidad-cero-neq-imposibilidad-1",
+    "href": "weeks/week01/slides.html#probabilidad-cero-neq-imposibilidad-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Probabilidad cero \\(\\neq\\) imposibilidad",
+    "text": "Probabilidad cero \\(\\neq\\) imposibilidad\nUn evento con probabilidad 0 o 1 se denomina trivial (Hansen, 2022).\n. . .\nEjemplo: en el lanzamiento de una moneda, usualmente definimos \\(\\Omega = \\{H, T\\}.\\) Pero podríamos ser más exhaustivos y considerar \\(\\Omega = \\{H, T, \\text{canto}, \\text{desaparece}\\}\\), donde “canto” significa que la moneda queda parada sobre su borde y “desaparece” que se pierde (cae por una rejilla, por ejemplo). Ambos resultados son físicamente concebibles, pero les asignamos \\(\\Pr(\\text{canto}) = 0\\) y \\(\\Pr(\\text{desaparece}) = 0\\). Son eventos triviales: no son imposibles en principio, pero no contribuyen al comportamiento aleatorio del experimento. En la práctica, los ignoramos y trabajamos con \\(\\Omega = \\{H, T\\}\\)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#por-qué-probabilidad-condicional",
+    "href": "weeks/week01/slides.html#por-qué-probabilidad-condicional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "¿Por qué probabilidad condicional?",
+    "text": "¿Por qué probabilidad condicional?\nUn uso fundamental de la probabilidad en inferencia estadística es la actualización de probabilidades cuando se observan ciertos eventos. La probabilidad actualizada de un evento \\(A\\) después de saber que el evento \\(B\\) ha ocurrido es la probabilidad condicional de \\(A\\) dado \\(B\\) (DeGroot & Schervish, 2014).\n. . .\nPreguntas como las siguientes son preguntas de probabilidad condicional:\n\n¿Asistir a la universidad afecta la probabilidad de obtener un salario alto?\n¿Los aranceles afectan la probabilidad de un aumento de precios?\n¿Recibir un tratamiento médico cambia la probabilidad de recaída?\n\n. . .\nTodas comparten la misma estructura: ¿cómo cambia la probabilidad de \\(A\\) cuando sabemos que \\(B\\) ha ocurrido?"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#definición",
+    "href": "weeks/week01/slides.html#definición",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Definición",
+    "text": "Definición\n\n\n\n\n\n\nNoteDefinición: Probabilidad condicional\n\n\n\nSupongamos que sabemos que el evento \\(B\\) ha ocurrido y queremos calcular la probabilidad de otro evento \\(A\\) considerando esta información. La nueva probabilidad de \\(A\\) se llama la probabilidad condicional de \\(A\\) dado \\(B\\) y se denota \\(\\Pr(A|B).\\hspace{0.2cm}\\) Si \\(\\Pr(B) &gt; 0:\\)\n\\[\\Pr(A|B) = \\frac{\\Pr(A \\cap B)}{\\Pr(B)}\\]\nLa probabilidad condicional no está definida si \\(\\Pr(B) = 0 \\hspace{0.3cm}\\) (DeGroot & Schervish, 2014).\n\n\n. . .\nLa notación “\\(A \\mid B\\hspace{0.4cm}\\)” se lee como “\\(A\\) dado \\(B\\hspace{0.4cm}\\)” o “\\(A\\) asumiendo que \\(B\\) es verdadero”. Para mayor claridad, a veces llamaremos a \\(\\Pr(A)\\hspace{0.2cm}\\) la probabilidad incondicional para distinguirla de \\(\\Pr(A|B) \\hspace{0.3cm}\\) (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#interpretación",
+    "href": "weeks/week01/slides.html#interpretación",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Interpretación",
+    "text": "Interpretación\nCondicionar en \\(B\\) equivale a restringir el espacio muestral a \\(B\\). Si sabemos que \\(B\\) ha ocurrido, entonces el resultado del experimento es necesariamente un elemento de \\(B\\). Para evaluar la probabilidad de \\(A\\), debemos considerar solo aquellos resultados de \\(B\\) que también pertenecen a \\(A.\\hspace{0.1cm}\\) Es decir, el conjunto \\(A \\cap B\\hspace{0.2cm}\\) (DeGroot & Schervish, 2014).\n. . .\nIntuitivamente, \\(\\Pr(A|B) \\hspace{0.1cm}\\) mide qué proporción de la probabilidad total de \\(B\\) está ocupada por \\(A:\\)\n\\[\\Pr(A|B) = \\frac{\\Pr(A \\cap B)}{\\Pr(B)} = \\frac{\\text{proporción de } B \\text{ que tambien es } A}{\\text{probabilidad total de } B}\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-educación-y-salarios",
+    "href": "weeks/week01/slides.html#ejemplo-educación-y-salarios",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: Educación y salarios",
+    "text": "Ejemplo: Educación y salarios\nConsidere una población donde definimos los eventos \\(H\\) = “salario alto (&gt; $25/hr)” \\(\\hspace{0.6cm}\\) y \\(C\\) = “tiene educación universitaria”. Con datos de EE.UU. (Hansen, 2022): \\(\\hspace{0.6cm}\\)\n. . .\n\\[\\Pr(H | C) = \\frac{\\Pr(H \\cap C)}{\\Pr(C)} = \\frac{0.19}{0.36} = 0.53\\]\n. . .\n\\[\\Pr(H | N) = \\frac{\\Pr(H \\cap N)}{\\Pr(N)} = \\frac{0.12}{0.64} = 0.19\\]\ndonde \\(N = C^c\\) \\(\\hspace{0.6cm}\\) (no tiene título universitario).\n. . .\nHay una diferencia considerable: la probabilidad condicional de obtener un salario alto es del 53% para quienes tienen título universitario, versus 19% para quienes no lo tienen. Esta brecha es, en esencia, una medida de desigualdad educativa en el mercado laboral que logramos medir solo con probabilidades (todavía no metodologías estadísticas más robustas a sesgos)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-ensayo-clínico",
+    "href": "weeks/week01/slides.html#ejemplo-ensayo-clínico",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: Ensayo clínico",
+    "text": "Ejemplo: Ensayo clínico\nEn un estudio sobre recaídas en pacientes con depresión, 150 pacientes fueron asignados a cuatro grupos (DeGroot & Schervish, 2014):\n. . .\n\n\n\n\nImipramina\nLitio\nCombinación\nPlacebo\nTotal\n\n\n\n\nRecaída\n18\n13\n22\n24\n77\n\n\nSin recaída\n22\n25\n16\n10\n73\n\n\nTotal\n40\n38\n38\n34\n150\n\n\n\n. . .\nSea \\(A\\) = “recaída” y \\(B\\) = “recibió placebo”. Entonces:\n\\[\\Pr(A|B) = \\frac{24/150}{34/150} = \\frac{24}{34} = 0.706\\]\n. . .\nSi en cambio el paciente recibió litio \\((C):\\) \\(\\Pr(A|C) = 13/38 = 0.342. \\hspace{0.8cm}\\) El tratamiento recibido parece hacer una diferencia en la probabilidad de recaída. Cuantificar cuánta diferencia es exactamente lo que hacen los métodos econométricos de evaluación de impacto."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#probabilidad-conjunta-marginal-y-condicional",
+    "href": "weeks/week01/slides.html#probabilidad-conjunta-marginal-y-condicional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Probabilidad conjunta, marginal y condicional",
+    "text": "Probabilidad conjunta, marginal y condicional\nAl trabajar con dos eventos simultáneamente aparecen tres tipos de probabilidad que conviene distinguir con precisión:\n. . .\n1. Probabilidad conjunta: la probabilidad de que \\(A\\) y \\(B\\) ocurran simultáneamente. \\[\\Pr(A \\cap B)\\]\n. . .\n2. Probabilidad marginal:$ la probabilidad de \\(A\\) sin considerar \\(B\\) (o viceversa). \\[\\Pr(A) = \\sum_{j} \\Pr(A \\cap B_j)\\]\n. . .\n3. Probabilidad condicional: la probabilidad de \\(A\\) dado que \\(B\\) ha ocurrido. \\[\\Pr(A|B) = \\frac{\\Pr(A \\cap B)}{\\Pr(B)}, \\quad \\Pr(B) &gt; 0\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-tabla-de-contingencia",
+    "href": "weeks/week01/slides.html#ejemplo-tabla-de-contingencia",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: Tabla de contingencia",
+    "text": "Ejemplo: Tabla de contingencia\nSupongamos que queremos estudiar la probabilidad de que hombres y mujeres voten a la izquierda, con los siguientes datos:\n. . .\n\n\n\n\nHombre \\((B_1)\\)\nMujer \\((B_2)\\)\nTotal\n\n\n\n\nVota izquierda \\((A_1)\\)\n30\n20\n50\n\n\nNo vota izquierda \\((A_2)\\)\n40\n10\n50\n\n\nTotal\n70\n30\n100\n\n\n\n. . .\nConjunta: \\(\\Pr(A_1 \\cap B_2) = 20/100 = 0.20\\)\n. . .\nMarginal: \\(\\Pr(A_1) = 50/100 = 0.50\\)\n. . .\nCondicional: \\(\\Pr(A_1 | B_2) = \\frac{\\Pr(A_1 \\cap B_2)}{\\Pr(B_2)} = \\frac{0.20}{0.30} = 0.667\\)\nEl 66.7% de las mujeres votan a la izquierda, versus el 42.9% de los hombres \\((\\Pr(A_1|B_1) = 30/70)\\)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#regla-de-la-multiplicación",
+    "href": "weeks/week01/slides.html#regla-de-la-multiplicación",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Regla de la multiplicación",
+    "text": "Regla de la multiplicación\nDe la definición de probabilidad condicional se obtiene directamente la regla de la multiplicación (DeGroot & Schervish, 2014):\n. . .\n\\[\\Pr(A \\cap B) = \\Pr(B) \\cdot \\Pr(A|B) = \\Pr(A) \\cdot \\Pr(B|A)\\]\n. . .\nEsta regla es útil cuando la probabilidad condicional es fácil de evaluar directamente. Por ejemplo, si extraemos dos bolas de una caja con \\(r\\) rojas y \\(b\\) azules sin reposición: la probabilidad de que la primera sea roja \\((A)\\) y la segunda azul \\((B)\\) es (DeGroot & Schervish, 2014):\n\\[\\Pr(A \\cap B) = \\Pr(A) \\cdot \\Pr(B|A) = \\frac{r}{r+b} \\cdot \\frac{b}{r+b-1}\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#regla-de-la-multiplicación-extensión",
+    "href": "weeks/week01/slides.html#regla-de-la-multiplicación-extensión",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Regla de la multiplicación: extensión",
+    "text": "Regla de la multiplicación: extensión\nLa regla se extiende a cualquier número finito de eventos. Para \\(n\\) eventos tales que \\(\\Pr(A_1 \\cap \\cdots \\cap A_{n-1}) &gt; 0\\) \\(\\hspace{0.6cm}\\) (DeGroot & Schervish, 2014):\n\\[\\Pr(A_1 \\cap A_2 \\cap \\cdots \\cap A_n) = \\Pr(A_1) \\cdot \\Pr(A_2|A_1) \\cdot \\Pr(A_3|A_1 \\cap A_2) \\cdots \\Pr(A_n | A_1 \\cap \\cdots \\cap A_{n-1})\\]\n. . .\nEsta factorización es la base de la factorización de verosimilitudes que usaremos cuando estudiemos estimación por máxima verosimilitud (MLE)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#las-probabilidades-condicionales-se-comportan-como-probabilidades",
+    "href": "weeks/week01/slides.html#las-probabilidades-condicionales-se-comportan-como-probabilidades",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Las probabilidades condicionales se comportan como probabilidades",
+    "text": "Las probabilidades condicionales se comportan como probabilidades\n\n\n\n\n\n\nImportantResultado clave\n\n\n\nTodos los resultados que se pueden demostrar para probabilidades incondicionales tienen una versión condicional dado un evento \\(B\\) con \\(\\Pr(B) &gt; 0.\\hspace{0.3cm}\\) Basta reemplazar todas las probabilidades por probabilidades condicionales dado \\(B \\hspace{0.1cm}\\) (DeGroot & Schervish, 2014).\n\n\n. . .\nPor ejemplo:\n\n\\(\\Pr(A^c) = 1 - \\Pr(A) \\hspace{0.6cm} \\longrightarrow \\hspace{0.6cm} \\Pr(A^c | B) = 1 - \\Pr(A|B)\\)\n\\(\\Pr(A \\cup C) = \\Pr(A) + \\Pr(C) - \\Pr(A \\cap C) \\hspace{0.3cm} \\longrightarrow\\)\n\n\\[\\Pr(A \\cup C | B) = \\Pr(A|B) + \\Pr(C|B) - \\Pr(A \\cap C | B)\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ley-de-probabilidad-total",
+    "href": "weeks/week01/slides.html#ley-de-probabilidad-total",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ley de probabilidad total",
+    "text": "Ley de probabilidad total\nSi \\(B_1, B_2, \\ldots, B_k\\hspace{0.5cm}\\) forman una partición de \\(\\Omega\\) (disjuntos y exhaustivos) con \\(\\Pr(B_j) &gt; 0\\hspace{0.5cm}\\) para todo \\(j\\), entonces para cualquier evento \\(A\\hspace{0.1cm}\\) (DeGroot & Schervish, 2014):\n\\[\\Pr(A) = \\sum_{j=1}^{k} \\Pr(B_j) \\cdot \\Pr(A|B_j)\\]\n. . .\nLa ley de probabilidad total “descompone” la probabilidad de un evento complejo en piezas más manejables, usando una partición que reduce la incertidumbre del problema (DeGroot & Schervish, 2014).\n. . ."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#las-probabilidades-condicionales-se-comportan-como-probabilidades-1",
+    "href": "weeks/week01/slides.html#las-probabilidades-condicionales-se-comportan-como-probabilidades-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Las probabilidades condicionales se comportan como probabilidades",
+    "text": "Las probabilidades condicionales se comportan como probabilidades\nEjemplo: ¿Cuál es la probabilidad de estar desempleado?\n\\[\\Pr(\\text{desempleo}) = \\sum_{j=1}^{J} \\Pr(\\text{region}_j) \\cdot \\Pr(\\text{desempleo} \\mid \\text{region}_j)\\]\nSi conocemos la tasa de desempleo por región y la proporción de la población en cada región, podemos calcular la tasa de desempleo nacional."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#por-qué-importa-la-condicionalidad-en-econometría",
+    "href": "weeks/week01/slides.html#por-qué-importa-la-condicionalidad-en-econometría",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "¿Por qué importa la condicionalidad en econometría?",
+    "text": "¿Por qué importa la condicionalidad en econometría?\nLa probabilidad condicional es el fundamento matemático de los modelos de regresión y de la inferencia causal.\n. . .\nLa función de regresión poblacional es una esperanza condicional:\n\\[E[Y_i | X_i] = \\mu(X_i)\\]\nCuando estimamos una regresión, estamos estimando cómo cambia el valor esperado de \\(Y\\) al condicionar en distintos valores de \\(X.\\hspace{0.1cm}\\) Justamente, esta es la lógica del ceteris paribus."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#por-qué-importa-la-condicionalidad-en-econometría-1",
+    "href": "weeks/week01/slides.html#por-qué-importa-la-condicionalidad-en-econometría-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "¿Por qué importa la condicionalidad en econometría?",
+    "text": "¿Por qué importa la condicionalidad en econometría?\nEn inferencia causal, el desafío es que condicionar en \\(X\\) no es lo mismo que intervenir sobre \\(X. \\hspace{0.1cm}\\) El supuesto de identificación clave (independencia condicional, variables instrumentales, etc.) busca garantizar que \\(E[Y|X]\\) capture el efecto causal y no solo una asociación.\n. . .\nEn series de tiempo, los modelos de pronóstico son modelos de media condicional: \\(E[Y_t | Y_{t-1}, Y_{t-2}, \\ldots] \\hspace{0.6cm}\\) usa toda la historia pasada como información condicionante para proyectar el futuro."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#qué-significa-que-dos-eventos-sean-independientes",
+    "href": "weeks/week01/slides.html#qué-significa-que-dos-eventos-sean-independientes",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "¿Qué significa que dos eventos sean independientes?",
+    "text": "¿Qué significa que dos eventos sean independientes?\nDecimos que dos eventos son independientes si su ocurrencia no está relacionada, o equivalentemente, si el conocimiento de que uno ocurrió no afecta la probabilidad del otro (Hansen, 2022).\n. . .\nConsidere dos lanzamientos de moneda. Si no hay mecanismo que conecte ambos lanzamientos, esperamos que ninguno afecte al resultado del otro. De modo similar, la tasa de criminalidad en Londres y el precio del té en Shanghai no tienen razón para afectarse mutuamente (Hansen, 2022).\n. . .\nEsta intuición implica que si \\(A\\) y \\(B\\) son independientes, entonces \\(\\Pr(A|B) = \\Pr(A)\\hspace{0.2cm}\\) y \\(\\Pr(B|A) = \\Pr(B).\\hspace{0.2cm}\\) Desde la definición de probabilidad condicional, esto implica \\(\\Pr(A \\cap B) = \\Pr(A)\\Pr(B).\\hspace{0.2cm}\\) Usamos esta última expresión como definición formal."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#definición-formal",
+    "href": "weeks/week01/slides.html#definición-formal",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Definición formal",
+    "text": "Definición formal\n\n\n\n\n\n\nNoteDefinición: Independencia\n\n\n\nDos eventos \\(A\\) y \\(B\\) son independientes si y solo si:\n\\[\\Pr(A \\cap B) = \\Pr(A) \\cdot \\Pr(B)\\]\nEquivalentemente, si \\(\\Pr(A) &gt; 0\\hspace{0.2cm}\\) y \\(\\Pr(B) &gt; 0:\\)\n\\[\\Pr(A|B) = \\Pr(A) \\qquad \\text{y} \\qquad \\Pr(B|A) = \\Pr(B)\\]\nSi dos eventos no son independientes, decimos que son dependientes (DeGroot & Schervish, 2014; Hansen, 2022).\n\n\n. . .\nSi dos eventos son considerados independientes porque son físicamente no relacionados, y si conocemos \\(\\Pr(A)\\hspace{0.2cm}\\) y \\(\\Pr(B),\\hspace{0.2cm}\\) podemos usar la definición para asignar un valor a \\(\\Pr(A \\cap B)\\hspace{0.2cm}\\) directamente (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#independencia-neq-mutua-exclusividad",
+    "href": "weeks/week01/slides.html#independencia-neq-mutua-exclusividad",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Independencia \\(\\neq\\) mutua exclusividad",
+    "text": "Independencia \\(\\neq\\) mutua exclusividad\n\n\n\n\n\n\nImportantDistinción crucial\n\n\n\nIndependencia y mutua exclusividad son conceptos opuestos, no sinónimos.\n\n\n. . .\nSi \\(A\\) y \\(B\\) son disjuntos (mutuamente excluyentes), entonces \\(A \\cap B = \\emptyset,\\hspace{0.2cm}\\) y por tanto:\n\\[\\Pr(A \\cap B) = \\Pr(\\emptyset) = 0 \\neq \\Pr(A)\\Pr(B)\\]\nsiempre que ambos tengan probabilidad positiva. Es decir, eventos disjuntos con probabilidad positiva son necesariamente dependientes: saber que ocurrió \\(A\\) te dice con certeza que \\(B\\) no ocurrió (DeGroot & Schervish, 2014; Hansen, 2022).\n. . .\nDe hecho, la única forma de que eventos sean simultáneamente disjuntos e independientes es que al menos uno de ellos tenga probabilidad 0 (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-sp-500-e-independencia-temporal",
+    "href": "weeks/week01/slides.html#ejemplo-sp-500-e-independencia-temporal",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: S&P 500 e independencia temporal",
+    "text": "Ejemplo: S&P 500 e independencia temporal\nRetomemos el ejemplo del S&P 500. Sea \\(U_t\\hspace{0.1cm}\\) = “el índice sube en la semana \\(t\\hspace{0.1cm}\\)” (Hansen, 2022):\n. . .\n\\[\\Pr(U_t | U_{t-1}) = \\frac{0.322}{0.567} = 0.568\\]\n\\[\\Pr(U_t | D_{t-1}) = \\frac{0.245}{0.433} = 0.566\\]\n. . .\nLas dos probabilidades condicionales son prácticamente idénticas (\\(\\approx 0.57\\)). La probabilidad de un alza en una semana dada no se ve afectada por lo que ocurrió la semana anterior. Esto satisface la definición de independencia: \\(U_t\\hspace{0.2cm}\\) y \\(U_{t-1}\\hspace{0.2cm}\\) son independientes."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-salarios-y-educación-dependencia",
+    "href": "weeks/week01/slides.html#ejemplo-salarios-y-educación-dependencia",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: Salarios y educación (dependencia)",
+    "text": "Ejemplo: Salarios y educación (dependencia)\nAhora veamos un caso de dependencia. Si salarios y educación fueran independientes, las probabilidades conjuntas serían el producto de las marginales (Hansen, 2022):\n. . .\n\n\nSi fueran independientes:\n\n\n\n\n\\(C\\)\n\\(N\\)\n\n\n\n\n\\(H\\)\n0.11\n0.20\n\n\n\\(L\\)\n0.25\n0.44\n\n\n\n\nDatos reales:\n\n\n\n\n\\(C\\)\n\\(N\\)\n\n\n\n\n\\(H\\)\n0.19\n0.12\n\n\n\\(L\\)\n0.17\n0.52\n\n\n\n\n\n. . .\nLos eventos \\(H \\cap C\\hspace{0.2cm}\\) y \\(L \\cap N\\hspace{0.2cm}\\) ocurren con mucha más frecuencia de lo que predeciría la independencia. Salarios y educación son dependientes: la educación universitaria sí afecta la probabilidad de obtener un salario alto."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#independencia-de-complementos",
+    "href": "weeks/week01/slides.html#independencia-de-complementos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Independencia de complementos",
+    "text": "Independencia de complementos\n\n\n\n\n\n\nNoteTeorema\n\n\n\nSi \\(A\\) y \\(B\\) son independientes, entonces también son independientes los pares \\(A\\) y \\(B^c;\\hspace{0.2cm}\\) \\(A^c\\) y \\(B;\\hspace{0.2cm}\\) y \\(A^c\\) y \\(B^c\\hspace{0.2cm}\\) (DeGroot & Schervish, 2014).\n\n\n. . .\nDemostración (para \\(A\\) y \\(B^c\\)):\n\\[\\Pr(A \\cap B^c) = \\Pr(A) - \\Pr(A \\cap B) = \\Pr(A) - \\Pr(A)\\Pr(B) = \\Pr(A)[1 - \\Pr(B)] = \\Pr(A)\\Pr(B^c) \\quad \\blacksquare\\]\n. . .\nEsto es razonable: si la ocurrencia de \\(B\\) no afecta a \\(A,\\hspace{0.2cm}\\) tampoco debería hacerlo la no-ocurrencia de \\(B.\\)"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#independencia-de-más-de-dos-eventos",
+    "href": "weeks/week01/slides.html#independencia-de-más-de-dos-eventos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Independencia de más de dos eventos",
+    "text": "Independencia de más de dos eventos\nLa definición se extiende a \\(k\\) eventos, pero requiere más que independencia de a pares (DeGroot & Schervish, 2014):\n. . .\n\n\n\n\n\n\nNoteDefinición: Independencia mutua\n\n\n\nLos \\(k\\) eventos \\(A_1, \\ldots, A_k\\hspace{0.2cm}\\) son (mutuamente) independientes si para todo subconjunto \\(A_{i_1}, \\ldots, A_{i_j}\\hspace{0.2cm}\\) de \\(j\\) de estos eventos (\\(j = 2, 3, \\ldots, k\\)):\n\\[\\Pr(A_{i_1} \\cap \\cdots \\cap A_{i_j}) = \\Pr(A_{i_1}) \\cdots \\Pr(A_{i_j})\\]\n\n\n. . .\nPara tres eventos \\(A, B, C,\\hspace{0.2cm}\\) se necesitan cuatro condiciones:\n\\[\\Pr(A \\cap B) = \\Pr(A)\\Pr(B), \\quad \\Pr(A \\cap C) = \\Pr(A)\\Pr(C), \\quad \\Pr(B \\cap C) = \\Pr(B)\\Pr(C)\\]\n\\[\\text{y además: } \\quad \\Pr(A \\cap B \\cap C) = \\Pr(A)\\Pr(B)\\Pr(C)\\]\nLa independencia de a pares no basta para garantizar la última condición."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#independencia-condicional",
+    "href": "weeks/week01/slides.html#independencia-condicional",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Independencia condicional",
+    "text": "Independencia condicional\n\n\n\n\n\n\nNoteDefinición: Independencia condicional\n\n\n\nLos eventos \\(A_1, \\ldots, A_k\\hspace{0.2cm}\\) son condicionalmente independientes dado \\(B\\) si, para todo subconjunto \\(A_{i_1}, \\ldots, A_{i_j}\\hspace{0.2cm}\\) de \\(j\\) de estos eventos (\\(j = 2, \\ldots, k\\)):\n\\[\\Pr\\left(A_{i_1} \\cap \\cdots \\cap A_{i_j} \\mid B\\right) = \\Pr(A_{i_1}|B) \\cdots \\Pr(A_{i_j}|B)\\]\n\n\n. . .\nEs la misma definición de independencia mutua, pero con todas las probabilidades condicionadas en \\(B.\\hspace{0.2cm}\\) Nótese que independencia condicional dado \\(B\\) no implica independencia condicional dado \\(B^c,\\hspace{0.2cm}\\) ni viceversa (DeGroot & Schervish, 2014)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#por-qué-importa-la-independencia-en-econometría",
+    "href": "weeks/week01/slides.html#por-qué-importa-la-independencia-en-econometría",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "¿Por qué importa la independencia en econometría?",
+    "text": "¿Por qué importa la independencia en econometría?\nEl supuesto de independencia (o sus versiones más débiles) aparece en toda la econometría:\n. . .\n\nMuestreo aleatorio: las observaciones \\((X_i, Y_i)\\hspace{0.2cm}\\) son i.i.d. (independientes e idénticamente distribuidas).\n\n. . .\n\nExogeneidad: \\(E[\\varepsilon_i | X_i] = 0,\\hspace{0.2cm}\\) que es una forma de independencia condicional entre el error y los regresores.\n\n. . .\n\nIdentificación causal: la asignación al tratamiento es independiente de los resultados potenciales: \\((Y_0, Y_1) \\perp\\!\\!\\!\\perp D.\\)\n\n. . .\nCuando estos supuestos fallan, los estimadores estándar pierden sus buenas propiedades. Gran parte de la econometría avanzada consiste en lidiar con la falta de independencia."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#teorema-de-bayes-1",
+    "href": "weeks/week01/slides.html#teorema-de-bayes-1",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Teorema de Bayes",
+    "text": "Teorema de Bayes\nUna vez que conocemos la probabilidad condicional y la ley de probabilidad total, el Teorema de Bayes se sigue directamente. Permite invertir condicionales: si conocemos \\(\\Pr(A|B),\\hspace{0.2cm}\\) podemos obtener \\(\\Pr(B|A).\\)\n. . .\n\n\n\n\n\n\nImportantTeorema de Bayes\n\n\n\nSi \\(B_1, \\ldots, B_k\\hspace{0.2cm}\\) forman una partición de \\(\\Omega\\hspace{0.2cm}\\) con \\(\\Pr(B_j) &gt; 0\\hspace{0.2cm}\\) para todo \\(j,\\hspace{0.2cm}\\) entonces:\n\\[\\Pr(B_i|A) = \\frac{\\Pr(A|B_i) \\cdot \\Pr(B_i)}{\\sum_{j=1}^{k} \\Pr(A|B_j) \\cdot \\Pr(B_j)}\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#teorema-de-bayes-termonilogía",
+    "href": "weeks/week01/slides.html#teorema-de-bayes-termonilogía",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Teorema de Bayes (termonilogía)",
+    "text": "Teorema de Bayes (termonilogía)\nTerminología:\n\n\n\n\n\n\n\nTérmino\nSignificado\n\n\n\n\n\\(\\Pr(B_i)\\hspace{0.2cm}\\)\nPrior — creencia antes de observar datos\n\n\n\\(\\Pr(A \\mid B_i)\\hspace{0.2cm}\\)\nVerosimilitud — probabilidad de los datos dado el parámetro\n\n\n\\(\\Pr(B_i \\mid A)\\hspace{0.2cm}\\)\nPosterior — creencia actualizada tras observar datos"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#ejemplo-diagnóstico-y-falsos-positivos",
+    "href": "weeks/week01/slides.html#ejemplo-diagnóstico-y-falsos-positivos",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Ejemplo: diagnóstico y falsos positivos",
+    "text": "Ejemplo: diagnóstico y falsos positivos\nUn test diagnóstico tiene sensibilidad del 95% y especificidad del 90%. La prevalencia de la enfermedad es del 1%.\n. . .\n\\[\\Pr(\\text{enfermo} \\mid \\text{test}+) = \\frac{0.95 \\times 0.01}{0.95 \\times 0.01 + 0.10 \\times 0.99}\\]\n. . .\n\\[= \\frac{0.0095}{0.0095 + 0.099} = \\frac{0.0095}{0.1085} \\approx 0.088\\]\n. . .\n\n\n\n\n\n\nImportant\n\n\n\nAun con un test “bueno”, un resultado positivo solo implica un 8.8% de probabilidad de estar enfermo cuando la prevalencia es baja. Este resultado es contraintuitivo y tiene profundas implicancias para política pública."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#reglas-de-conteo-permutaciones-y-combinaciones",
+    "href": "weeks/week01/slides.html#reglas-de-conteo-permutaciones-y-combinaciones",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Reglas de conteo, permutaciones y combinaciones",
+    "text": "Reglas de conteo, permutaciones y combinaciones\nPara algunos cálculos de probabilidad es útil contar el número de resultados posibles. Tres herramientas básicas son la regla de conteo, las permutaciones y las combinaciones (Hansen, 2022).\n. . .\n\n\n\n\n\n\nNoteRegla de conteo\n\n\n\nSi una tarea consta de \\(K\\) etapas, y la \\(k\\)-ésima etapa puede realizarse de \\(n_k\\hspace{0.2cm}\\) formas, entonces el número total de formas de completar la tarea es \\(n_1 \\cdot n_2 \\cdots n_K.\\)\n\n\n. . .\nEjemplo: si tienes 10 camisas, 3 pantalones, 5 pares de calcetines, 4 chaquetas y 2 sombreros, puedes armar \\(10 \\times 3 \\times 5 \\times 4 \\times 2 = 1200\\hspace{0.2cm}\\) outfits distintos (Hansen, 2022)."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#permutaciones",
+    "href": "weeks/week01/slides.html#permutaciones",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Permutaciones",
+    "text": "Permutaciones\n\n\n\n\n\n\nNoteDefinición: Permutación\n\n\n\nUna permutación es un reordenamiento de objetos donde el orden importa. El número de permutaciones de \\(N\\) objetos tomados de \\(K\\) en \\(K\\) es (Hansen, 2022):\n\\[P(N, K) = \\frac{N!}{(N-K)!}\\]\nEn particular, el número de formas de ordenar \\(N\\) objetos es \\(N!\\)\n\n\n. . .\nEjemplo: ¿de cuántas formas se puede seleccionar un equipo ordenado de 5 estudiantes de una clase de 30?\n\\[P(30, 5) = \\frac{30!}{25!} = 30 \\times 29 \\times 28 \\times 27 \\times 26 = 17.100.720\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#combinaciones",
+    "href": "weeks/week01/slides.html#combinaciones",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Combinaciones",
+    "text": "Combinaciones\n\n\n\n\n\n\nNoteDefinición: Combinación\n\n\n\nUna combinación es un grupo no ordenado de objetos. El número de combinaciones de \\(N\\) objetos tomados de \\(K\\) en \\(K\\) es (Hansen, 2022):\n\\[\\binom{N}{K} = \\frac{N!}{K!(N-K)!}\\]\nEl símbolo \\(\\binom{N}{K}\\hspace{0.2cm}\\) se lee “\\(N\\) en \\(K\\)” o “\\(N\\) choose \\(K\\)” y también se conoce como coeficiente binomial.\n\n\n. . .\nEjemplo: ¿cuántos equipos (sin orden) de 5 estudiantes se pueden formar de una clase de 30?\n\\[\\binom{30}{5} = \\frac{30!}{5! \\cdot 25!} = 142.506\\]"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#muestreo-con-y-sin-reposición",
+    "href": "weeks/week01/slides.html#muestreo-con-y-sin-reposición",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Muestreo con y sin reposición",
+    "text": "Muestreo con y sin reposición\nLa distinción entre muestreo con y sin reposición determina qué fórmula de conteo usar (Hansen, 2022):\n. . .\n\n\n\n\n\n\nSin reposición\n\n\nCon reposición\n\n\n\n\n\n\nOrdenado\n\n\n\\(\\frac{N!}{(N-K)!}\\)\n\n\n\\(N^K\\)\n\n\n\n\nNo ordenado\n\n\n\\(\\binom{N}{K}\\)\n\n\n\\(\\binom{N+K-1}{K}\\)\n\n\n\n\n. . .\nEstas herramientas deben entenderse, no memorizarse: se pueden consultar cuando se necesiten (Hansen, 2022). Las usaremos cuando trabajemos con la distribución binomial y con problemas de muestreo."
+  },
+  {
+    "objectID": "weeks/week01/slides.html#resumen-de-la-clase",
+    "href": "weeks/week01/slides.html#resumen-de-la-clase",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Resumen de la clase",
+    "text": "Resumen de la clase\n\n\nConceptos clave:\n\nInterpretaciones de la probabilidad\nEspacio muestral \\(\\Omega\\) y eventos\nAxiomas de Kolmogorov\nFunción de probabilidad\nProbabilidad condicional\nIndependencia estadística\nTeorema de Bayes\n\n\nPróxima clase:\n\nVariables aleatorias discretas y continuas\nFunción de masa de probabilidad (PMF)\nFunción de densidad (PDF)\nFunción de distribución acumulada (CDF)\nEsperanza y varianza"
+  },
+  {
+    "objectID": "weeks/week01/slides.html#para-revisar",
+    "href": "weeks/week01/slides.html#para-revisar",
+    "title": "Clase 01: Fundamentos de Probabilidad",
+    "section": "Para revisar",
+    "text": "Para revisar\n\n\n\n\n\n\nTipLecturas sugeridas\n\n\n\n\nDeGroot & Schervish, Capítulos 1 y 2.\nHansen, Probability and Statistics for Economists, Capítulo 1.\nCanavos, Probabilidad y Estadística, Capítulo 3."
   }
 ]
