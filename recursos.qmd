@@ -10,11 +10,11 @@ Algunos de estos textos tienen derechos de autor y no están disponibles en el r
 :::
 
 - **Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press.
-- **Hansen, B. E.** (2021). [*Econometrics*](http://home.ustc.edu.cn/~matheming/Econometrics.pdf). University of Wisconsin.
-- **DeGroot, Morris H, Schervish, Mark J.** (2012). [*Probability and Statistics*](https://educationexclusive.com/upload/pdf/Probability%20and%20Statistics%20by%20Morris%20H.%20DeGroot%20and%20Mark%20J.%20Schervish.pdf). Fourth Edition. Pearson Education. 
-- **Wooldridge, J.M** (2010). [*Introducción a la econometría. Un enfoque moderno*](https://econometriauca.wordpress.com/wp-content/uploads/2016/01/wooldridge-jeffrey-2010-introduccic3b3n-a-la-econometrc3ada-4ed.pdf). Cengage Learning.
+- **Hansen, B. E.** (2021). [*Econometrics*](https://www.ssc.wisc.edu/~bhansen/econometrics/). University of Wisconsin.
+- **DeGroot, Morris H, Schervish, Mark J.** (2012). *Probability and Statistics*. Fourth Edition. Pearson Education. 
+- **Wooldridge, J.M** (2010). *Introducción a la econometría. Un enfoque moderno*. Cengage Learning.
 - **Cunningham, S.** (2021). [*Causal Inference. The Mixtape*](https://mixtape.scunning.com/). Yale University Press. 
-- **Angrist, J. D. y Pischke, J-S.** (2008). *[Mostly Harmless Econometrics: An Empiricist s Companion*](https://deepeconomics.in/wp-content/uploads/2026/01/2008-Angrist-Pischke-MostlyHarmlessEconometrics.pdf). Princeton University Press
+- **Angrist, J. D. y Pischke, J-S.** (2008). *Mostly Harmless Econometrics: An Empiricist's Companion*. Princeton University Press
 - **Wickham, H. et al.** (2023). [*R para Ciencia de Datos*](https://es.r4ds.hadley.nz/).
 - **Fernández-Avilés, G. y Montero, J.M.** (Eds.) (2024) [*Fundamentos de ciencia de datos con R*](https://cdr-book.github.io/index.html). McGraw-Hill 
 
