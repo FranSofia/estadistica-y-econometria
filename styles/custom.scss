@@ -5,7 +5,7 @@
 // Replica el estilo Beamer Metropolis con paleta burgundy
 // ============================================================
 
-@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Fira+Code:wght@400;500&family=Fira+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Fira+Code:wght@300..700&display=swap');
 
 // --- Paleta (desde tu custom.scss) ---
 $mDarkTeal:    #69000C;       // primary — barra de título, secciones
@@ -19,7 +19,7 @@ $mCodeBg:      #F5F5F5;       // fondo de código
 // --- Tipografía ---
 $font-family-sans-serif: "Fira Sans", sans-serif;
 $presentation-heading-font: "Fira Sans", sans-serif;
-$font-family-monospace: "Fira Code", "Fira Mono", monospace;
+$font-family-monospace: "Fira Code", monospace;
 
 // --- Variables Revealjs ---
 $body-bg: $mBackground;
@@ -357,4 +357,11 @@ $code-block-font-size: 0.65em;
 .alert {
   color: $mDarkTeal;
   font-weight: 600;
+}
+
+// Fira Code para todo el código del sitio
+code, pre, .sourceCode, div.sourceCode, pre.sourceCode {
+  font-family: $font-family-monospace !important;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-optical-sizing: auto;
 }

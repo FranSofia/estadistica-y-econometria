@@ -15,7 +15,7 @@ format:
     width: 1050
     height: 700
     margin: 0.1
-    highlight-style: github
+    highlight-style: atom-one
     code-line-numbers: false
     fig-align: center
     footer: "Estadística y Econometría — Clase 01"
@@ -23,6 +23,11 @@ format:
     chalkboard: true
     multiplex: false
 ---
+
+```{r}
+#| include: false
+source("../../R/estilo.R")
+```
 
 ## Contenidos de hoy
 
@@ -109,7 +114,7 @@ Con pocos lanzamientos la proporción puede alejarse bastante de $1/2$; a medida
 #| output-location: column
 #| fig-width: 5
 #| fig-height: 4
-plot(prop_caras, type = "l",
+plot(prop_caras, type = "l", col = "#464646",
      log = "x", ylim = c(0.2, 0.8),
      xlab = "Lanzamientos",
      ylab = "Proporción de caras")

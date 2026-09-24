@@ -15,13 +15,18 @@ format:
     width: 1050
     height: 700
     margin: 0.1
-    highlight-style: github
+    highlight-style: atom-one
     code-line-numbers: false
     fig-align: center
     footer: "Estadística y Econometría — Clase 02"
     logo: ../../figures/logos/logo-curso.png
     chalkboard: true
 ---
+
+```{r}
+#| include: false
+source("../../R/estilo.R")
+```
 
 ## Contenidos de hoy
 
@@ -144,7 +149,7 @@ pk <- dpois(k, lambda = 1)
 round(pk, 3)
 
 barplot(pk, names.arg = k,
-        col = "#69000C",
+        col = "#69000C", border = NA,
         xlab = "k",
         ylab = "Pr(X = k)")
 ```
@@ -382,7 +387,7 @@ u <- runif(10000)
 y <- -log(u)
 
 hist(y, breaks = 50, freq = FALSE,
-     col = "grey85", border = "white",
+     col = "#69000C2E", border = "white",
      main = "", xlab = "y")
 curve(dexp(x), add = TRUE,
       col = "#69000C", lwd = 2)
@@ -656,10 +661,10 @@ Ojo con la parametrización de la exponencial: aquí $\lambda$ es la **media** (
 #| echo: true
 #| fig-width: 9
 #| fig-height: 3.3
-par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
-barplot(dbinom(0:10, size = 10, prob = 0.3), names.arg = 0:10,
+par(mfrow = c(1, 2))
+barplot(dbinom(0:10, size = 10, prob = 0.3), names.arg = 0:10, border = NA,
         col = "#69000C", main = "Binomial(10, 0.3)")
-barplot(dpois(0:10, lambda = 3), names.arg = 0:10,
+barplot(dpois(0:10, lambda = 3), names.arg = 0:10, border = NA,
         col = "#69000C", main = "Poisson(3)")
 ```
 
