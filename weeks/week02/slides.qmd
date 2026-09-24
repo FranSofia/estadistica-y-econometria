@@ -1,7 +1,7 @@
 ---
-title: "Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]"
+title: "Clase 02: Variables Aleatorias y Distribuciones"
 subtitle: "Estadística y Econometría"
-author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezre@fen.uchile.cl)"
+author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezr@fen.uchile.cl)"
 institute: "UCH / INE"
 date: today
 format:
@@ -26,221 +26,938 @@ format:
 ## Contenidos de hoy
 
 1. [Variables aleatorias](#variables-aleatorias)
-2. [Función de distribución y densidad](#distribución-y-densidad)
-3. [Esperanza y varianza](#esperanza-y-varianza)
-4. [Covarianza y correlación](#covarianza-y-correlación)
-5. [Distribuciones fundamentales](#distribuciones-fundamentales)
+2. [Variables aleatorias discretas](#discretas)
+3. [Función de distribución](#cdf)
+4. [Variables aleatorias continuas y densidades](#continuas)
+5. [Transformaciones](#transformaciones)
+6. [Esperanza](#esperanza)
+7. [Varianza y momentos](#varianza)
+8. [Distribuciones paramétricas](#parametricas)
+9. [Dos variables aleatorias](#bivariadas)
 
 # Variables aleatorias {#variables-aleatorias}
+
+## De resultados a números
+
+En la clase anterior trabajamos con **eventos**: subconjuntos del espacio muestral $\Omega$. En la práctica, casi siempre conviene representar los resultados aleatorios con [números]{.alert} [@hansen-for-economist].
+
+. . .
+
+**Ejemplo:** al lanzar una moneda, en vez de hablar de $\{H\}$ y $\{T\}$ definimos
+
+$$X = \begin{cases} 1 & \text{si sale cara} \\ 0 & \text{si sale sello} \end{cases}$$
+
+$X$ es aleatoria porque su valor depende del resultado del lanzamiento.
+
+. . .
+
+Lo mismo hacemos con datos económicos: el ingreso de un hogar, los años de educación de una persona o si una persona está desempleada ($1$) o no ($0$) son variables aleatorias antes de observarlas.
 
 ## Definición
 
 ::: {.callout-note}
 ## Definición: Variable aleatoria
-Una **variable aleatoria** $X$ es una función que asigna un número real a cada resultado del espacio muestral:
-
+Una **variable aleatoria** es una función que asigna un número real a cada resultado del experimento:
 $$X: \Omega \longrightarrow \mathbb{R}$$
+[@hansen-for-economist; @probability-statistics]
 :::
 
 . . .
 
-**Tipos:**
-
-- **Discreta:** toma valores en un conjunto numerable. Ejemplo: $X$ = número de hijos.
-- **Continua:** toma valores en un intervalo de $\mathbb{R}$. Ejemplo: $X$ = ingreso mensual.
-
-. . .
-
-En econometría, las variables de interés ($Y_i$, $X_i$, $\varepsilon_i$) son todas variables aleatorias. Tratarlas como tales es lo que nos permite hacer inferencia.
-
-# Distribución y densidad {#distribución-y-densidad}
-
-## Función de distribución acumulada (CDF)
-
-::: {.callout-note}
-## Definición
-La **función de distribución acumulada** (CDF) de $X$ es:
-
-$$F_X(x) = P(X \leq x), \quad \forall x \in \mathbb{R}$$
-:::
-
-. . .
-
-**Propiedades:**
-
-- $0 \leq F_X(x) \leq 1$
-- $F_X$ es no decreciente
-- $\lim_{x \to -\infty} F_X(x) = 0$ y $\lim_{x \to +\infty} F_X(x) = 1$
-- $P(a < X \leq b) = F_X(b) - F_X(a)$
-
-## Función de densidad (PDF)
-
-Para variables continuas, la **función de densidad** $f_X(x)$ se define como:
-
-$$f_X(x) = \frac{dF_X(x)}{dx}$$
-
-. . .
-
-De modo que:
-
-$$P(a \leq X \leq b) = \int_a^b f_X(x) \, dx$$
+Si el resultado es un vector de números (por ejemplo, salario y experiencia de una misma persona) hablamos de un **vector aleatorio**.
 
 . . .
 
 ::: {.callout-important}
-**Ojo:** $f_X(x)$ no es una probabilidad. Puede ser mayor que 1. Lo que sí se cumple es $f_X(x) \geq 0$ y $\int_{-\infty}^{+\infty} f_X(x) \, dx = 1$.
+## Notación
+- $X$ (mayúscula) es la **variable aleatoria**: un objeto cuyo valor aún no conocemos.
+- $x$ (minúscula) es una **realización**: un número específico que $X$ puede tomar.
+
+Así, $\Pr(X = x)$ se lee "la probabilidad de que la variable $X$ tome el valor $x$".
 :::
 
-# Esperanza y varianza {#esperanza-y-varianza}
+## Una variable aleatoria es una función
 
-## Esperanza (valor esperado)
+```{r}
+#| echo: false
+#| fig-width: 7
+#| fig-height: 3.2
+par(mar = c(0.5, 0.5, 0.5, 0.5))
+plot(NULL, xlim = c(0, 10), ylim = c(0, 4), axes = FALSE, xlab = "", ylab = "")
+symbols(2.2, 2, circles = 1.5, inches = FALSE, add = TRUE, lwd = 2, fg = "#69000C")
+text(2.2, 3.8, expression(Omega), cex = 1.6)
+text(1.7, 2.5, "H", cex = 1.6); text(2.7, 1.5, "T", cex = 1.6)
+segments(6, 2, 9.5, 2, lwd = 2); text(9.7, 2, expression(R), cex = 1.4)
+points(c(7, 8.5), c(2, 2), pch = 19, cex = 1.3)
+text(c(7, 8.5), c(1.6, 1.6), c("0", "1"), cex = 1.4)
+arrows(1.9, 2.5, 8.4, 2.15, length = 0.12, col = "#69000C", lwd = 1.5)
+arrows(3.0, 1.5, 6.9, 1.9, length = 0.12, col = "#69000C", lwd = 1.5)
+```
+
+Cada resultado de $\Omega$ se envía a un punto de la recta real. La probabilidad "viaja" con la función: $\Pr(X = 1) = \Pr(\{H\})$ [@hansen-for-economist].
+
+# Variables aleatorias discretas {#discretas}
+
+## Soporte y función de masa de probabilidad
 
 ::: {.callout-note}
-## Definición
-
-$$E[X] = \begin{cases} \sum_x x \cdot p(x) & \text{si } X \text{ es discreta} \\ \int_{-\infty}^{+\infty} x \cdot f_X(x) \, dx & \text{si } X \text{ es continua} \end{cases}$$
+## Definición: Variable aleatoria discreta
+$X$ es **discreta** si existe un conjunto finito o infinito numerable $\mathcal{X}$ tal que $\Pr(X \in \mathcal{X}) = 1$. El menor conjunto con esta propiedad es el **soporte** de $X$: los valores que ocurren con probabilidad positiva [@hansen-for-economist].
 :::
 
 . . .
-
-**Propiedades fundamentales:**
-
-- Linealidad: $E[aX + bY] = aE[X] + bE[Y]$
-- $E[c] = c$ para cualquier constante $c$
-- Si $X \geq 0$, entonces $E[X] \geq 0$
-
-. . .
-
-La esperanza es el operador más importante de la estadística. En econometría, la **esperanza condicional** $E[Y|X]$ es la función de regresión poblacional.
-
-## Varianza
 
 ::: {.callout-note}
-## Definición
+## Definición: Función de masa de probabilidad (PMF)
+$$\pi(x) = \Pr(X = x)$$
+Asigna a cada valor posible su probabilidad. Cumple $\pi(x) \geq 0$ y $\sum_{x \in \mathcal{X}} \pi(x) = 1$ [@hansen-for-economist; @probability-statistics].
+:::
 
-$$\text{Var}(X) = E\left[(X - E[X])^2\right] = E[X^2] - (E[X])^2$$
+## Ejemplos de funciones de masa
+
+**Moneda con probabilidad $p$ de cara.** Soporte $\{0, 1\}$, con $\pi(0) = 1 - p$ y $\pi(1) = p$.
+
+. . .
+
+**Dado justo.** Soporte $\{1, \ldots, 6\}$, con $\pi(j) = 1/6$ para cada $j$.
+
+. . .
+
+**Un soporte infinito numerable.** Soporte $\{0, 1, 2, \ldots\}$ con
+$$\pi(k) = \frac{e^{-1}}{k!}, \qquad k = 0, 1, 2, \ldots$$
+
+Es una función de masa válida porque $\sum_{k=0}^{\infty} 1/k! = e$. Es un caso particular de la distribución de Poisson, que veremos más adelante [@hansen-for-economist].
+
+. . .
+
+**Años de educación** (asalariados de EE.UU., 2009). La mayor probabilidad está en 12 años (cerca de 27%, secundaria completa) y la segunda en 16 años (cerca de 23%, título universitario) [@hansen-for-economist].
+
+## En R: graficar una función de masa
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-width: 5
+#| fig-height: 4
+k  <- 0:5
+pk <- dpois(k, lambda = 1)
+round(pk, 3)
+
+barplot(pk, names.arg = k,
+        col = "#69000C",
+        xlab = "k",
+        ylab = "Pr(X = k)")
+```
+
+. . .
+
+La altura de cada barra es la probabilidad de ese valor. `dpois()` evalúa la función de masa de la Poisson; en R, las funciones que empiezan con `d` entregan masas o densidades.
+
+# Función de distribución {#cdf}
+
+## La función de distribución acumulada
+
+::: {.callout-note}
+## Definición: Función de distribución (CDF)
+$$F(x) = \Pr(X \leq x)$$
+Es la probabilidad de que $X$ tome un valor menor o igual que $x$ [@hansen-for-economist; @probability-statistics].
 :::
 
 . . .
 
-**Propiedades:**
-
-- $\text{Var}(X) \geq 0$
-- $\text{Var}(aX + b) = a^2 \text{Var}(X)$
-- Si $X$ e $Y$ son independientes: $\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)$
+Escribimos $X \sim F$ para decir que "$X$ tiene distribución $F$". Cuando hay varias variables, usamos subíndices: $F_X$, $F_Y$.
 
 . . .
 
-La **desviación estándar** $\sigma_X = \sqrt{\text{Var}(X)}$ tiene las mismas unidades que $X$.
+La CDF tiene una gran ventaja: está definida para **cualquier** variable aleatoria, sea discreta, continua o mixta. Por eso es la forma más general de describir una distribución.
 
-# Covarianza y correlación {#covarianza-y-correlación}
+## Propiedades de una CDF
 
-## Covarianza
+::: {.callout-important}
+## Teorema
+Si $F$ es una función de distribución, entonces [@hansen-for-economist]:
 
-$$\text{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)] = E[XY] - E[X]E[Y]$$
+1. $F(x)$ es no decreciente.
+2. $\lim_{x \to -\infty} F(x) = 0$.
+3. $\lim_{x \to \infty} F(x) = 1$.
+4. $F$ es continua por la derecha: $\lim_{x \downarrow x_0} F(x) = F(x_0)$.
+:::
 
 . . .
 
-**Propiedades:**
+Las propiedades 1 y 2 vienen del Axioma 1 (las probabilidades no son negativas) y la 3 del Axioma 2. La 4 es consecuencia de haber definido $F$ con "$\leq$" y no con "$<$".
 
-- $\text{Cov}(X, X) = \text{Var}(X)$
-- $\text{Cov}(X, Y) = \text{Cov}(Y, X)$
-- $\text{Cov}(aX, bY) = ab \cdot \text{Cov}(X, Y)$
-- Si $X \perp Y$ (independientes), entonces $\text{Cov}(X, Y) = 0$
+. . .
+
+Para una variable **discreta**, la CDF es una [función escalonada]{.alert}: es constante entre los puntos del soporte y salta en cada uno de ellos una altura igual a $\pi(x)$.
+
+## Probabilidades a partir de la CDF
+
+Para cualquier intervalo $(a, b]$:
+
+$$\Pr(a < X \leq b) = F(b) - F(a)$$
+
+. . .
+
+**Ejemplo: salarios por hora** (EE.UU., 2009). La CDF evaluada en algunos puntos es [@hansen-for-economist]:
+
+| $x$ | \$10 | \$20 | \$30 | \$40 | \$50 |
+|---|---|---|---|---|---|
+| $F(x)$ | 0.14 | 0.54 | 0.78 | 0.89 | 0.94 |
+
+. . .
+
+- 54% de los salarios son menores o iguales a \$20.
+- La probabilidad de que un salario esté entre \$10 y \$20 es $0.54 - 0.14 = 0.30$.
+- La probabilidad de que supere los \$50 es $1 - 0.94 = 0.06$.
+
+# Variables aleatorias continuas y densidades {#continuas}
+
+## Variables aleatorias continuas
+
+::: {.callout-note}
+## Definición: Variable aleatoria continua
+$X$ es **continua** si su función de distribución $F(x)$ es continua [@hansen-for-economist].
+:::
+
+. . .
+
+**Ejemplo: Uniforme en $[0,1]$.**
+$$F(x) = \begin{cases} 0 & x < 0 \\ x & 0 \leq x \leq 1 \\ 1 & x > 1 \end{cases}$$
+
+. . .
+
+**Ejemplo: Exponencial.**
+$$F(x) = \begin{cases} 0 & x < 0 \\ 1 - e^{-x} & x \geq 0 \end{cases}$$
+
+Ambas son continuas, parten en 0 y llegan a 1: cumplen las propiedades de una CDF.
+
+## Cada punto tiene probabilidad cero
+
+Si $F$ es continua, para cualquier número $x$ [@hansen-for-economist]:
+
+$$\Pr(X = x) = \lim_{\epsilon \to 0} \Pr(x \leq X \leq x + \epsilon) = \lim_{\epsilon \to 0} \left[F(x + \epsilon) - F(x)\right] = 0$$
+
+. . .
+
+Esto conecta con lo que vimos la clase pasada: **probabilidad cero no significa imposible**. Cada valor tiene probabilidad cero, pero la probabilidad de que $X$ tome *algún* valor es uno.
+
+. . .
+
+Una consecuencia práctica: para variables continuas da lo mismo usar desigualdades estrictas o no,
+
+$$\Pr(a < X < b) = \Pr(a \leq X \leq b) = F(b) - F(a)$$
+
+## La función de densidad
+
+Las variables continuas no tienen función de masa. Su análogo es la derivada de la CDF.
+
+. . .
+
+::: {.callout-note}
+## Definición: Función de densidad (PDF)
+Cuando $F(x)$ es diferenciable, su **densidad** es
+$$f(x) = \frac{d}{dx} F(x)$$
+[@hansen-for-economist; @probability-statistics]
+:::
+
+. . .
+
+Una función $f$ es una densidad si y solo si $f(x) \geq 0$ para todo $x$ y $\int_{-\infty}^{\infty} f(x)\,dx = 1$. Por el teorema fundamental del cálculo,
+
+$$\Pr(a \leq X \leq b) = \int_a^b f(x)\,dx$$
+
+[Las áreas bajo la densidad son probabilidades]{.alert}.
+
+## Cómo leer una densidad
+
+::: {.callout-warning}
+## Cuidado
+$f(x)$ **no** es una probabilidad. Puede ser mayor que 1 (por ejemplo, la uniforme en $[0, 0.5]$ tiene $f(x) = 2$). Lo que es una probabilidad es el área bajo $f$ en un intervalo.
+:::
+
+. . .
+
+**Ejemplo: salarios por hora** [@hansen-for-economist]:
+
+- Donde la densidad es alta, los valores de $X$ son relativamente más frecuentes.
+- El área entre \$20 y \$30 es 0.24: esa es la probabilidad de que un salario esté en ese rango.
+- La densidad tiene un único máximo cerca de \$15. Ese punto se llama **moda**.
+- La cola derecha cae mucho más lento que la izquierda. Esta asimetría se llama **sesgo** (*skewness*) y es típica de los ingresos y la riqueza: hay una probabilidad pequeña, pero relevante, de salarios muy altos.
+
+## Ejemplos de densidades
+
+**Uniforme en $[0,1]$.** Derivando $F(x) = x$:
+$$f(x) = 1 \quad \text{para } 0 \leq x \leq 1, \qquad 0 \text{ en otro caso}$$
+
+. . .
+
+**Exponencial.** Derivando $F(x) = 1 - e^{-x}$:
+$$f(x) = e^{-x} \quad \text{para } x \geq 0$$
+
+. . .
+
+Con ella podemos calcular, por ejemplo:
+$$\Pr(1 \leq X \leq 2) = \int_1^2 e^{-x}\,dx = e^{-1} - e^{-2} \approx 0.233$$
+
+## Cuantiles
+
+::: {.callout-note}
+## Definición: Cuantil
+Para una distribución continua, el **cuantil** $q(\alpha)$ es el valor que deja una probabilidad $\alpha$ a su izquierda:
+$$F(q(\alpha)) = \alpha \qquad \Longleftrightarrow \qquad q(\alpha) = F^{-1}(\alpha)$$
+[@hansen-for-economist]
+:::
+
+. . .
+
+- La **mediana** es $q(0.5)$.
+- Los **cuartiles** son $q(0.25)$, $q(0.5)$ y $q(0.75)$. Los **deciles** son $q(0.1), \ldots, q(0.9)$.
+- Expresados en porcentaje se llaman **percentiles**: el percentil 95 es $q(0.95)$.
+
+. . .
+
+**Ejemplo: salarios por hora.** Los cuartiles son \$12.82, \$18.88 y \$28.35: la mitad de los asalariados gana \$18.88 o menos por hora [@hansen-for-economist].
+
+## En R: `d`, `p`, `q` y `r`
+
+R usa el mismo prefijo para cada distribución: `d` (densidad o masa), `p` (CDF), `q` (cuantil) y `r` (simulación).
+
+```{r}
+#| echo: true
+dexp(1)                  # densidad f(1) = e^(-1)
+pexp(2) - pexp(1)        # Pr(1 <= X <= 2)
+qexp(c(0.5, 0.9))        # mediana y cuantil 0.9
+```
+
+. . .
+
+Los cuantiles coinciden con la fórmula analítica $q(\alpha) = -\log(1 - \alpha)$: la mediana es $\approx 0.69$ y el cuantil 0.9 es $\approx 2.30$ [@hansen-for-economist].
+
+# Transformaciones {#transformaciones}
+
+## Funciones de variables aleatorias
+
+Si $X$ es una variable aleatoria y $Y = g(X)$, entonces $Y$ **también es una variable aleatoria** [@hansen-for-economist; @probability-statistics].
+
+. . .
+
+**Caso discreto.** Los puntos del soporte se mueven y las probabilidades se conservan. Si dos puntos van al mismo valor, sus probabilidades se suman.
+
+**Ejemplo:** $X$ con soporte $\{-1, 0, 1\}$ e $Y = X^2$. Como $-1$ y $1$ van a $1$:
+$$\Pr(Y = 0) = \Pr(X = 0), \qquad \Pr(Y = 1) = \Pr(X = -1) + \Pr(X = 1)$$
+
+. . .
+
+Esto importa en economía porque trabajamos todo el tiempo con transformaciones: logaritmo del ingreso, ingreso al cuadrado, indicadores de pobreza, etc.
+
+## Transformaciones monótonas de variables continuas
+
+::: {.callout-note}
+## Teorema
+Si $X$ tiene densidad $f_X$ y $g$ es estrictamente monótona con inversa $g^{-1}$ diferenciable, entonces $Y = g(X)$ tiene densidad
+$$f_Y(y) = f_X\big(g^{-1}(y)\big)\left|\frac{d}{dy} g^{-1}(y)\right|$$
+[@hansen-for-economist]
+:::
+
+. . .
+
+El término $\left|\frac{d}{dy} g^{-1}(y)\right|$ es el **jacobiano**: corrige por cuánto "estira" o "comprime" la transformación cada tramo de la recta.
+
+. . .
+
+**Ejemplo: log salarios.** Si $Y = \log X$, entonces $f_Y(y) = f_X(e^y)\,e^y$. La densidad de los log salarios es mucho más simétrica que la de los salarios en niveles [@hansen-for-economist]. Es una de las razones por las que en econometría solemos modelar $\log(\text{salario})$.
+
+## En R: de uniforme a exponencial
+
+Un resultado útil: si $U \sim U[0,1]$, entonces $Y = -\log U$ tiene distribución exponencial [@hansen-for-economist]. Comprobémoslo simulando:
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-width: 5
+#| fig-height: 4
+set.seed(123)
+u <- runif(10000)
+y <- -log(u)
+
+hist(y, breaks = 50, freq = FALSE,
+     col = "grey85", border = "white",
+     main = "", xlab = "y")
+curve(dexp(x), add = TRUE,
+      col = "#69000C", lwd = 2)
+```
+
+. . .
+
+El histograma de los valores simulados coincide con la densidad exponencial teórica (línea roja).
+
+# Esperanza {#esperanza}
+
+## Esperanza de una variable discreta
+
+::: {.callout-note}
+## Definición: Esperanza
+Para una variable discreta con soporte $\{\tau_j\}$ y masas $\pi_j$, la **esperanza** (o valor esperado) de $X$ es
+$$\mathbb{E}[X] = \sum_{j} \tau_j \, \pi_j$$
+si la serie converge [@hansen-for-economist].
+:::
+
+. . .
+
+Es un **promedio ponderado** de los valores posibles, donde las ponderaciones son las probabilidades.
 
 . . .
 
 ::: {.callout-important}
-**El recíproco no es cierto:** $\text{Cov}(X,Y) = 0$ no implica independencia. Solo implica ausencia de relación **lineal**.
+Aunque $X$ es aleatoria, $\mathbb{E}[X]$ **no lo es**: es un número fijo, una característica de la distribución [@hansen-for-economist].
 :::
 
-## Correlación
+## Ejemplos
 
-El **coeficiente de correlación** de Pearson normaliza la covarianza:
-
-$$\rho_{XY} = \frac{\text{Cov}(X, Y)}{\sigma_X \cdot \sigma_Y}, \quad -1 \leq \rho \leq 1$$
+**Bernoulli.** $\mathbb{E}[X] = 1 \cdot p + 0 \cdot (1-p) = p$
 
 . . .
 
-| Valor de $\rho$ | Interpretación |
-|:---:|:---|
-| $\rho = 1$ | Relación lineal positiva perfecta |
-| $\rho = 0$ | Sin asociación lineal |
-| $\rho = -1$ | Relación lineal negativa perfecta |
+**Dado justo.** $\mathbb{E}[X] = \frac{1}{6}(1 + 2 + 3 + 4 + 5 + 6) = 3.5$
+
+Nótese que 3.5 no es un valor que el dado pueda tomar: la esperanza no tiene por qué pertenecer al soporte.
 
 . . .
 
-En regresión simple, $R^2 = \rho_{XY}^2$. Esta conexión la formalizaremos más adelante.
+**Años de educación** (EE.UU., 2009): $\mathbb{E}[X] \approx 14$ años [@hansen-for-economist].
 
-# Distribuciones fundamentales {#distribuciones-fundamentales}
+. . .
 
-## La distribución Normal
+**Interpretación física:** la esperanza es el [centro de masa]{.alert} de la distribución. Si pusiéramos las probabilidades como pesos sobre una tabla, la tabla quedaría en equilibrio al apoyarla en $\mathbb{E}[X]$ [@hansen-for-economist].
+
+## Esperanza de una variable continua
 
 ::: {.callout-note}
-## Distribución Normal
-Si $X \sim N(\mu, \sigma^2)$, su densidad es:
-
-$$f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left[-\frac{1}{2\sigma^2}(x - \mu)^2\right]$$
+## Definición
+Si $X$ tiene densidad $f(x)$,
+$$\mathbb{E}[X] = \int_{-\infty}^{\infty} x\, f(x)\,dx$$
+cuando la integral converge [@hansen-for-economist].
 :::
 
 . . .
 
-**¿Por qué es tan importante?**
-
-1. El **Teorema Central del Límite** garantiza que los promedios muestrales convergen a una Normal.
-2. Bajo normalidad de los errores, el estimador OLS es idéntico al de **máxima verosimilitud** (MLE).
-3. Los tests $t$ y $F$ se derivan de ella.
-
-## Distribuciones derivadas de la Normal
-
-Estas distribuciones aparecen constantemente en inferencia:
+- **Uniforme en $[0,1]$:** $\mathbb{E}[X] = \int_0^1 x\,dx = 1/2$
+- **Exponencial:** $\mathbb{E}[X] = \int_0^\infty x e^{-x}\,dx = 1$ (integrando por partes)
 
 . . .
 
-**Chi-cuadrado:** Si $Z_1, \ldots, Z_k \overset{iid}{\sim} N(0,1)$:
-$$\sum_{i=1}^{k} Z_i^2 \sim \chi^2_k$$
+**Salarios por hora:** $\mathbb{E}[X] = \$23.92$, mientras que la mediana es \$18.88 [@hansen-for-economist].
+
+::: {.callout-tip}
+En distribuciones con sesgo a la derecha, como los ingresos, la media queda **por encima** de la mediana: los salarios muy altos "tiran" el promedio hacia arriba. Por eso muchas estadísticas oficiales de ingresos reportan la mediana.
+:::
+
+## Esperanza de transformaciones y linealidad
+
+La esperanza de una función $g(X)$ se calcula con la distribución de $X$ [@hansen-for-economist]:
+
+$$\mathbb{E}[g(X)] = \sum_j g(\tau_j)\,\pi_j \qquad \text{o} \qquad \mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)\,f(x)\,dx$$
 
 . . .
 
-**t de Student:** Si $Z \sim N(0,1)$ y $V \sim \chi^2_k$ independientes:
-$$T = \frac{Z}{\sqrt{V/k}} \sim t_k$$
+::: {.callout-important}
+## Teorema: Linealidad de la esperanza
+Para constantes $a$ y $b$:
+$$\mathbb{E}[a + bX] = a + b\,\mathbb{E}[X]$$
+[@hansen-for-economist]
+:::
 
 . . .
 
-**F de Fisher:** Si $V_1 \sim \chi^2_{k_1}$ y $V_2 \sim \chi^2_{k_2}$ independientes:
-$$F = \frac{V_1/k_1}{V_2/k_2} \sim F_{k_1, k_2}$$
+**Ejemplo:** si $X \sim U[0,1]$, entonces $\mathbb{E}[X^2] = \int_0^1 x^2\,dx = 1/3$. Observe que $\mathbb{E}[X^2] = 1/3 \neq (\mathbb{E}[X])^2 = 1/4$: la linealidad **no** se extiende a funciones no lineales.
 
-## ¿Dónde aparecen estas distribuciones?
+## Desigualdad de Jensen
 
-| Distribución | Uso en econometría |
-|:---:|:---|
-| $N(\mu, \sigma^2)$ | Distribución de $\hat{\beta}$ bajo normalidad |
-| $\chi^2_k$ | Test de Wald, test de heterocedasticidad |
-| $t_k$ | Test de significancia individual de $\hat{\beta}_j$ |
-| $F_{k_1, k_2}$ | Test de significancia conjunta, test de restricciones |
+Para funciones no lineales no podemos "meter la esperanza adentro", pero sí sabemos hacia dónde va el error si la función es convexa o cóncava.
 
 . . .
 
-En la próxima clase veremos cómo el **Teorema Central del Límite** justifica el uso de estas distribuciones incluso cuando los datos no son normales.
+::: {.callout-important}
+## Teorema: Desigualdad de Jensen
+Si $g$ es **convexa**: $\quad g(\mathbb{E}[X]) \leq \mathbb{E}[g(X)]$
 
-## Resumen
+Si $g$ es **cóncava**: $\quad \mathbb{E}[g(X)] \leq g(\mathbb{E}[X])$
+
+[@hansen-for-economist]
+:::
+
+. . .
+
+**Ejemplo con salarios.** Como el logaritmo es cóncavo, $\mathbb{E}[\log X] \leq \log \mathbb{E}[X]$. En los datos: $\mathbb{E}[\log(\text{salario})] = 2.95$, mientras que $\log(23.92) \approx 3.17$ [@hansen-for-economist].
+
+. . .
+
+La misma lógica explica la aversión al riesgo: con utilidad cóncava, la utilidad esperada de una lotería es menor que la utilidad de su valor esperado.
+
+## ¿Siempre existe la esperanza? (opcional)
+
+No necesariamente. **La paradoja de San Petersburgo** [@hansen-for-economist]: se lanza una moneda hasta que sale cara. Si sale en el lanzamiento $k$, el pago es $X = 2^k$, con $\Pr(X = 2^k) = 2^{-k}$.
+
+$$\mathbb{E}[X] = \sum_{k=1}^{\infty} 2^k \cdot 2^{-k} = \sum_{k=1}^{\infty} 1 = \infty$$
+
+. . .
+
+A pesar de que la esperanza es infinita, casi nadie pagaría mucho por jugar. La "paradoja" desaparece al introducir una utilidad cóncava.
+
+. . .
+
+En distribuciones continuas pasa lo mismo: la densidad $f(x) = x^{-2}$ para $x > 1$ (un caso de la Pareto) tiene esperanza infinita, y la distribución de Cauchy no tiene esperanza definida [@hansen-for-economist].
+
+# Varianza y momentos {#varianza}
+
+## Varianza y desviación estándar
+
+::: {.callout-note}
+## Definición
+La **varianza** de $X$ es
+$$\sigma^2 = \text{var}(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]$$
+y la **desviación estándar** es $\sigma = \sqrt{\sigma^2}$ [@hansen-for-economist].
+:::
+
+. . .
+
+- La varianza mide la **dispersión** en torno a la media. Está en unidades al cuadrado; la desviación estándar vuelve a las unidades de $X$.
+- $\sigma^2 \geq 0$, y vale cero solo si $X$ es **degenerada** (constante con probabilidad 1).
+
+. . .
+
+::: {.callout-important}
+## Dos resultados útiles
+$$\text{var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2 \qquad\qquad \text{var}(a + bX) = b^2\,\text{var}(X)$$
+[@hansen-for-economist]
+:::
+
+La segunda implica que sumar una constante no cambia la varianza.
+
+## Ejemplos
+
+**Bernoulli.** $\mathbb{E}[X^2] = p$, así que
+$$\text{var}(X) = p - p^2 = p(1-p)$$
+
+La varianza es máxima cuando $p = 1/2$: el caso más incierto.
+
+. . .
+
+**Uniforme en $[0,1]$.** $\text{var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2 = 1/3 - 1/4 = 1/12$
+
+. . .
+
+**Datos de EE.UU., 2009** [@hansen-for-economist]:
+
+| | Media | Varianza | Desv. estándar |
+|---|---|---|---|
+| Salario por hora | \$24 | 429 | \$20.7 |
+| Años de educación | 13.9 | 7.5 | 2.7 |
+
+## Momentos (opcional)
+
+::: {.callout-note}
+## Definición
+- El **momento** de orden $m$ es $\mu'_m = \mathbb{E}[X^m]$.
+- El **momento central** de orden $m$ es $\mu_m = \mathbb{E}[(X - \mathbb{E}[X])^m]$.
+
+[@hansen-for-economist]
+:::
+
+. . .
+
+- La media es el primer momento y la varianza el segundo momento central.
+- El tercer momento central, normalizado por $\sigma^3$, mide el **sesgo** (asimetría) de la distribución.
+- Los momentos serán la base del **método de momentos** en la clase 5: estimaremos parámetros igualando momentos poblacionales con sus análogos muestrales.
+
+# Distribuciones paramétricas {#parametricas}
+
+## Familias de distribuciones
+
+::: {.callout-note}
+## Definición: Distribución paramétrica
+Una **distribución paramétrica** $F(x \mid \theta)$ es una familia de distribuciones indexada por un **parámetro** $\theta \in \Theta$. Para cada valor de $\theta$ obtenemos una distribución distinta [@hansen-for-economist].
+:::
+
+. . .
+
+Los economistas las usan para construir **modelos teóricos**; los econometristas, para **modelos estadísticos**: suponemos que los datos vienen de una familia, pero no conocemos $\theta$ y lo estimamos a partir de los datos [@hansen-for-economist].
+
+. . .
+
+Esta es la idea que organizará toda la unidad de estimación. Por ahora basta conocer algunas familias y entender cómo cambian con sus parámetros. No es necesario memorizarlas: se consultan cuando se necesitan [@hansen-for-economist].
+
+## Distribuciones discretas
+
+**Bernoulli$(p)$:** una variable con dos resultados, $\Pr(X = 1) = p$. Modela, por ejemplo, si una persona está desempleada o no.
+
+. . .
+
+**Binomial$(n, p)$:** número de "éxitos" en $n$ ensayos Bernoulli independientes.
+$$\pi(x) = \binom{n}{x} p^x (1-p)^{n-x}, \qquad x = 0, 1, \ldots, n$$
+
+Aquí reaparece el coeficiente binomial de la clase pasada.
+
+. . .
+
+**Poisson$(\lambda)$:** conteos sin un máximo natural.
+$$\pi(x) = \frac{e^{-\lambda}\lambda^x}{x!}, \qquad x = 0, 1, 2, \ldots$$
+
+En econometría se usa para datos de conteo (número de visitas al médico, de patentes, de hijos). Un solo parámetro $\lambda$ determina a la vez la media y la varianza [@hansen-for-economist; @probability-statistics].
+
+## Distribuciones continuas
+
+**Uniforme $U[a, b]$:** todos los valores del intervalo son igualmente verosímiles.
+$$f(x) = \frac{1}{b - a}, \qquad a \leq x \leq b$$
+
+. . .
+
+**Exponencial$(\lambda)$:** duraciones y tiempos de espera.
+$$f(x) = \frac{1}{\lambda} e^{-x/\lambda}, \qquad x \geq 0$$
+
+Es muy usada en modelos teóricos por su simplicidad, pero poco en econometría aplicada [@hansen-for-economist].
+
+. . .
+
+**Normal $N(\mu, \sigma^2)$:** la distribución más usada en econometría.
+$$f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)$$
+
+## Resumen: medias y varianzas
+
+<table style="width:100%; font-size: 0.8em;">
+<thead>
+<tr style="background-color: #69000C; color: white;">
+<th style="padding: 8px;">Distribución</th>
+<th style="padding: 8px;">Soporte</th>
+<th style="padding: 8px;">$\mathbb{E}[X]$</th>
+<th style="padding: 8px;">$\text{var}(X)$</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>Bernoulli$(p)$</td><td>$\{0, 1\}$</td><td>$p$</td><td>$p(1-p)$</td></tr>
+<tr><td>Binomial$(n, p)$</td><td>$\{0, \ldots, n\}$</td><td>$np$</td><td>$np(1-p)$</td></tr>
+<tr><td>Poisson$(\lambda)$</td><td>$\{0, 1, 2, \ldots\}$</td><td>$\lambda$</td><td>$\lambda$</td></tr>
+<tr><td>Uniforme $U[a,b]$</td><td>$[a, b]$</td><td>$(a+b)/2$</td><td>$(b-a)^2/12$</td></tr>
+<tr><td>Exponencial$(\lambda)$</td><td>$[0, \infty)$</td><td>$\lambda$</td><td>$\lambda^2$</td></tr>
+<tr><td>Normal $N(\mu, \sigma^2)$</td><td>$\mathbb{R}$</td><td>$\mu$</td><td>$\sigma^2$</td></tr>
+</tbody>
+</table>
+
+[@hansen-for-economist; @probability-statistics]
+
+::: {.callout-note}
+Ojo con la parametrización de la exponencial: aquí $\lambda$ es la **media** (como en Hansen). Otros textos, y la función `dexp()` de R, usan la **tasa** $1/\lambda$.
+:::
+
+## En R: binomial y Poisson
+
+```{r}
+#| echo: true
+#| fig-width: 9
+#| fig-height: 3.3
+par(mfrow = c(1, 2), mar = c(4, 4, 2, 1))
+barplot(dbinom(0:10, size = 10, prob = 0.3), names.arg = 0:10,
+        col = "#69000C", main = "Binomial(10, 0.3)")
+barplot(dpois(0:10, lambda = 3), names.arg = 0:10,
+        col = "#69000C", main = "Poisson(3)")
+```
+
+## La distribución normal
+
+Cuando $\mu = 0$ y $\sigma^2 = 1$ hablamos de la **normal estándar**. Su densidad se denota $\phi(x)$ y su CDF $\Phi(x)$ [@hansen-for-economist].
+
+. . .
+
+**Estandarización.** Si $X \sim N(\mu, \sigma^2)$, entonces
+$$Z = \frac{X - \mu}{\sigma} \sim N(0, 1)$$
+
+$\mu$ es un parámetro de **ubicación** y $\sigma$ de **escala**: cambiar $\mu$ desplaza la campana y cambiar $\sigma$ la ensancha o la angosta.
+
+. . .
+
+**Una relación que usaremos más adelante:** si $Z \sim N(0,1)$, entonces $Z^2$ tiene distribución **chi-cuadrado con 1 grado de libertad**, $\chi^2_1$. Se obtiene aplicando la regla de transformaciones a $g(x) = x^2$ [@hansen-for-economist]. Junto con la $t$ y la $F$, la retomaremos al hacer inferencia.
+
+## En R: la regla 68–95–99.7
+
+```{r}
+#| echo: true
+pnorm(1) - pnorm(-1)     # Pr(-1 < Z < 1)
+pnorm(2) - pnorm(-2)     # Pr(-2 < Z < 2)
+pnorm(3) - pnorm(-3)     # Pr(-3 < Z < 3)
+qnorm(0.975)             # cuantil 0.975
+```
+
+. . .
+
+Cerca de 68% de la probabilidad está a menos de una desviación estándar de la media, 95% a menos de dos y 99.7% a menos de tres. El cuantil 0.975, $\approx 1.96$, aparecerá una y otra vez cuando construyamos intervalos de confianza.
+
+# Dos variables aleatorias {#bivariadas}
+
+## Distribución conjunta
+
+En economía casi siempre nos interesa la relación entre variables: salario y educación, consumo e ingreso, precio y cantidad.
+
+. . .
+
+::: {.callout-note}
+## Definición
+Un par de **variables aleatorias bivariadas** $(X, Y)$ es una función de $\Omega$ en $\mathbb{R}^2$. Su **función de distribución conjunta** es
+$$F(x, y) = \Pr(X \leq x,\; Y \leq y)$$
+[@hansen-for-economist; @probability-statistics]
+:::
+
+. . .
+
+En el caso discreto trabajamos con la **función de masa conjunta** $\pi(x, y) = \Pr(X = x, Y = y)$; en el continuo, con la **densidad conjunta** $f(x, y)$, y las probabilidades son volúmenes bajo esa superficie.
+
+## Ejemplo: la pizzería
+
+Una pizzería atiende estudiantes. Cada cliente compra una o dos porciones ($X$) y una o dos bebidas ($Y$). La función de masa conjunta es [@hansen-for-economist]:
+
+| | $Y = 1$ | $Y = 2$ | $\Pr(X = x)$ |
+|---|---|---|---|
+| $X = 1$ | 0.4 | 0.1 | 0.5 |
+| $X = 2$ | 0.2 | 0.3 | 0.5 |
+| $\Pr(Y = y)$ | 0.6 | 0.4 | 1 |
+
+. . .
+
+Las cuatro probabilidades del centro son no negativas y suman uno: es una función de masa válida. La última fila y la última columna son las **distribuciones marginales**.
+
+## Distribuciones marginales
+
+::: {.callout-note}
+## Definición
+La **distribución marginal** de $X$ es la distribución de $X$ sola. Se obtiene "sumando" o "integrando" la otra variable [@hansen-for-economist]:
+$$\pi_X(x) = \sum_y \pi(x, y) \qquad\qquad f_X(x) = \int_{-\infty}^{\infty} f(x, y)\,dy$$
+:::
+
+. . .
+
+**En la pizzería:**
+
+- $\Pr(X = 1) = 0.4 + 0.1 = 0.5$: la mitad de los clientes compra una porción.
+- $\Pr(Y = 1) = 0.4 + 0.2 = 0.6$: 60% compra una bebida.
+
+. . .
+
+Es la misma idea de la ley de probabilidad total de la clase pasada. La conjunta determina las marginales, pero **las marginales no determinan la conjunta**.
+
+## Distribución condicional
+
+::: {.callout-note}
+## Definición
+La **distribución condicional** de $Y$ dado $X = x$ es la distribución de $Y$ en la subpoblación con $X = x$ [@hansen-for-economist]:
+$$\pi_{Y|X}(y \mid x) = \frac{\pi(x, y)}{\pi_X(x)} \qquad\qquad f_{Y|X}(y \mid x) = \frac{f(x, y)}{f_X(x)}$$
+:::
+
+. . .
+
+**Ejemplo: salarios según educación** (EE.UU., 2009). Al comparar la distribución de salarios de quienes tienen 12, 16, 18 y 20 años de educación [@hansen-for-economist]:
+
+- Las distribuciones se desplazan a la derecha con cada nivel educativo.
+- También se vuelven **más dispersas**: los universitarios ganan más en promedio, pero sus salarios varían más.
+- Hay una zona amplia de superposición entre grupos.
+
+## Independencia de variables aleatorias
+
+::: {.callout-note}
+## Definición
+$X$ e $Y$ son **independientes**, $X \perp\!\!\!\perp Y$, si para todo $(x, y)$
+$$F(x, y) = F_X(x)\,F_Y(y)$$
+Equivalentemente, $\pi(x, y) = \pi_X(x)\,\pi_Y(y)$ o $f(x, y) = f_X(x)\,f_Y(y)$ [@hansen-for-economist].
+:::
+
+. . .
+
+Es la definición de independencia de eventos de la clase pasada, aplicada a todos los eventos $\{X \leq x\}$ y $\{Y \leq y\}$. Si son independientes, la condicional es igual a la marginal: $f_{Y|X}(y \mid x) = f_Y(y)$.
+
+. . .
+
+**En la pizzería:** $\Pr(X = 1, Y = 1) = 0.4$, pero $\Pr(X = 1)\Pr(Y = 1) = 0.5 \times 0.6 = 0.3$. Porciones y bebidas son **dependientes** [@hansen-for-economist].
+
+## Covarianza y correlación
+
+::: {.callout-note}
+## Definición
+$$\text{cov}(X, Y) = \mathbb{E}\big[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])\big] = \mathbb{E}[XY] - \mathbb{E}[X]\,\mathbb{E}[Y]$$
+$$\text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sqrt{\text{var}(X)\,\text{var}(Y)}}$$
+[@hansen-for-economist]
+:::
+
+. . .
+
+- La correlación está entre $-1$ y $1$ (por la desigualdad de Cauchy-Schwarz). Valores cerca de cero indican una relación **lineal** débil.
+- Para sumas: $\text{var}(X + Y) = \text{var}(X) + \text{var}(Y) + 2\,\text{cov}(X, Y)$.
+
+. . .
+
+**En la pizzería:** $\mathbb{E}[XY] = 2.2$, $\mathbb{E}[X] = 1.5$ y $\mathbb{E}[Y] = 1.4$, así que $\text{cov}(X, Y) = 2.2 - 2.1 = 0.1$ y $\text{corr}(X, Y) \approx 0.41$.
+
+## No correlación $\neq$ independencia
+
+::: {.callout-important}
+## Teorema
+Si $X$ e $Y$ son independientes (con varianzas finitas), entonces no están correlacionadas. **Lo contrario no es cierto** [@hansen-for-economist].
+:::
+
+. . .
+
+**Contraejemplo:** sea $X \sim U[-1, 1]$ e $Y = X^2$. Como la distribución de $X$ es simétrica en torno a cero, $\mathbb{E}[X] = 0$ y $\mathbb{E}[X^3] = 0$, así que
+$$\text{cov}(X, Y) = \mathbb{E}[X^3] - \mathbb{E}[X]\,\mathbb{E}[X^2] = 0$$
+
+. . .
+
+Sin embargo, $Y$ está **completamente determinada** por $X$. La covarianza solo capta relaciones lineales; una relación en forma de U puede tener covarianza cero.
+
+## Esperanza condicional
+
+::: {.callout-note}
+## Definición
+La **esperanza condicional** de $Y$ dado $X = x$ es la esperanza de la distribución condicional:
+$$m(x) = \mathbb{E}[Y \mid X = x] = \sum_y y\,\pi_{Y|X}(y \mid x) \qquad \text{o} \qquad \int y\, f_{Y|X}(y \mid x)\,dy$$
+[@hansen-for-economist]
+:::
+
+. . .
+
+Es el valor promedio de $Y$ en la subpoblación con $X = x$.
+
+. . .
+
+**En la pizzería:** $\mathbb{E}[Y \mid X = 1] = 1.2$ y $\mathbb{E}[Y \mid X = 2] = 1.6$. Quienes compran dos porciones compran, en promedio, más bebidas.
+
+. . .
+
+**Salario promedio por hora según años de educación** (EE.UU., 2009) [@hansen-for-economist]:
+
+| Educación | 8 | 12 | 14 | 16 | 18 | 20 |
+|---|---|---|---|---|---|---|
+| $\mathbb{E}[\text{salario} \mid \text{educ}]$ | \$11.75 | \$17.61 | \$21.49 | \$30.12 | \$35.16 | \$51.76 |
+
+## La esperanza condicional y la regresión
+
+La función $m(x) = \mathbb{E}[Y \mid X = x]$ es el objeto central de la econometría: la **regresión** busca justamente describir cómo cambia el promedio de $Y$ con $X$.
+
+. . .
+
+**Ejemplo: salario según experiencia.** El salario esperado es cerca de \$16.50 sin experiencia, sube casi linealmente hasta unos \$26 a los 20 años y luego baja a unos \$21 a los 50 años: un perfil en forma de U invertida [@hansen-for-economist]. Por eso, más adelante incluiremos la experiencia al cuadrado en las regresiones de salarios.
+
+. . .
+
+::: {.callout-warning}
+Igual que en la clase pasada: $\mathbb{E}[\text{salario} \mid \text{educ}]$ describe cómo difiere el salario promedio **entre** grupos con distinta educación. No dice cuánto aumentaría el salario de una persona si estudiara un año más. Esa es una pregunta causal.
+:::
+
+## Ley de esperanzas iteradas
+
+$m(x)$ es un número para cada $x$. Pero si la evaluamos en la variable aleatoria $X$, obtenemos $\mathbb{E}[Y \mid X]$, que **es una variable aleatoria** (una transformación de $X$) [@hansen-for-economist].
+
+. . .
+
+::: {.callout-important}
+## Teorema: Ley de esperanzas iteradas
+Si $\mathbb{E}|Y| < \infty$, entonces
+$$\mathbb{E}\big[\mathbb{E}[Y \mid X]\big] = \mathbb{E}[Y]$$
+[@hansen-for-economist]
+:::
+
+En palabras: **el promedio de los promedios por grupo es el promedio total**.
+
+. . .
+
+**En la pizzería:**
+$$\mathbb{E}[Y] = 0.5 \times 1.2 + 0.5 \times 1.6 = 1.4 \qquad \checkmark$$
+
+## Varianza condicional (opcional)
+
+La **varianza condicional** $\text{var}(Y \mid X = x)$ es la varianza de $Y$ en la subpoblación con $X = x$ [@hansen-for-economist].
+
+. . .
+
+::: {.callout-important}
+## Teorema: Descomposición de la varianza
+$$\text{var}(Y) = \underbrace{\mathbb{E}\big[\text{var}(Y \mid X)\big]}_{\text{dentro de los grupos}} + \underbrace{\text{var}\big(\mathbb{E}[Y \mid X]\big)}_{\text{entre grupos}}$$
+[@hansen-for-economist]
+:::
+
+. . .
+
+**Salarios según educación:** la varianza del salario es 150 para quienes tienen secundaria completa, 573 para universitarios y 1646 para quienes tienen posgrado profesional o doctorado. Con más educación sube el salario promedio, pero también su dispersión [@hansen-for-economist]. Cuando la varianza condicional cambia con $X$ hablamos de **heterocedasticidad**, un concepto clave en la unidad de regresión.
+
+## En R: el ejemplo de la pizzería
+
+```{r}
+#| echo: true
+p <- matrix(c(0.4, 0.1,
+              0.2, 0.3), nrow = 2, byrow = TRUE,
+            dimnames = list(X = c("1", "2"), Y = c("1", "2")))
+x <- c(1, 2); y <- c(1, 2)
+
+pX <- rowSums(p)                     # marginal de X
+pY <- colSums(p)                     # marginal de Y
+EY_dado_X <- (p %*% y) / pX          # E[Y | X = x]
+EY_dado_X
+sum(pX * EY_dado_X)                  # ley de esperanzas iteradas
+```
+
+## En R: el ejemplo de la pizzería
+
+```{r}
+#| echo: true
+EX  <- sum(x * pX);  EY <- sum(y * pY)
+EXY <- sum(outer(x, y) * p)          # E[XY]
+covXY <- EXY - EX * EY
+varX  <- sum(x^2 * pX) - EX^2
+varY  <- sum(y^2 * pY) - EY^2
+
+c(cov = covXY, corr = covXY / sqrt(varX * varY))
+```
+
+. . .
+
+Los resultados coinciden con los cálculos a mano: $\text{cov}(X, Y) = 0.1$ y $\text{corr}(X, Y) \approx 0.41$.
+
+## Resumen de la clase
 
 ::: {.columns}
 ::: {.column width="50%"}
-**Hoy cubrimos:**
 
-- Variables aleatorias
-- CDF y PDF
-- $E[X]$, $\text{Var}(X)$, $\text{Cov}(X,Y)$
-- Distribuciones $N$, $\chi^2$, $t$, $F$
+**Conceptos clave:**
+
+- Variable aleatoria como función $\Omega \to \mathbb{R}$
+- Función de masa, CDF y densidad
+- Cuantiles y mediana
+- Transformaciones
+- Esperanza, varianza y Jensen
+- Familias paramétricas
+- Conjunta, marginal y condicional
+- Covarianza, correlación e independencia
+- Esperanza condicional e iteradas
+
 :::
-
 ::: {.column width="50%"}
+
 **Próxima clase:**
 
-- Distribuciones muestrales
-- Ley de los Grandes Números
-- Teorema Central del Límite
-- Convergencia en probabilidad
+- Muestreo aleatorio
+- La media muestral como variable aleatoria
+- Ley de los grandes números
+- Teorema central del límite
+
 :::
+:::
+
+## Para revisar
+
+::: {.callout-tip}
+## Lecturas sugeridas
+- Hansen, *Probability and Statistics for Economists*, Capítulo 2 y secciones seleccionadas de los capítulos 3 (3.1–3.9, 3.12) y 4 (4.1–4.16).
+- DeGroot & Schervish, Capítulo 3 (3.1–3.6), Capítulo 4 (4.1–4.3, 4.6–4.7) y Capítulo 5 (5.2, 5.4, 5.6).
+:::
+
+## Referencias
+
+::: {#refs}
 :::
