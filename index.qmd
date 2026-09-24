@@ -1,54 +1,63 @@
 ---
 title: "Estadística y Econometría"
-subtitle: "Curso de Fundamentos Estadísticos y Econométricos"
+subtitle: "Un curso abierto de fundamentos estadísticos, regresión e inferencia causal"
 ---
 
 ## ¡Bienvenida/e/o!
 
-Este es el sitio web del curso **Estadística y Econometría**, un espacio diseñado para ofrecer una formación rigurosa en los fundamentos del análisis estadístico y el modelamiento econométrico aplicado a las ciencias sociales. Aquí encontrarás las presentaciones de cada clase, materiales prácticos y recursos complementarios.
+Este es el sitio del curso **Estadística y Econometría**, un curso abierto y fuera del circuito universitario, pensado para quien quiera entender con cierta profundidad las herramientas con las que se hace investigación empírica en economía y ciencias sociales. Aquí están las presentaciones de cada clase, las lecturas recomendadas y los recursos complementarios.
 
+## De qué trata el curso
 
-## Descripción del curso
+El recorrido va desde la probabilidad hasta la inferencia causal. Empezamos por los fundamentos (probabilidad, variables aleatorias, distribuciones y teoría asintótica), seguimos con el problema de la estimación, entramos de lleno en el modelo de regresión y terminamos con una introducción a los métodos que la economía aplicada usa para identificar efectos causales.
 
-El curso aborda la estadística y la econometría como herramientas fundamentales para la investigación empírica. Se parte desde los cimientos —probabilidad, variables aleatorias y distribuciones— para construir progresivamente hacia técnicas de estimación, pruebas de hipótesis y modelos de regresión. El énfasis está puesto en la comprensión conceptual profunda, la derivación formal cuando es necesaria, y la interpretación sustantiva de los resultados.
-
-Este curso prioriza la **teoría estadística**: entender *por qué* los métodos funcionan, bajo qué supuestos operan, y cuáles son sus límites. No obstante, varios temas se ilustrarán con ejemplos empíricos, simulaciones y aplicaciones concretas; principalmente utilizando R como lenguaje de programación. 
-
-### Objetivos de aprendizaje
+El enfoque es aplicado sin renunciar a la teoría. Las slides incluyen el desarrollo formal y algunas demostraciones para quien quiera detenerse en ellas, pero el objetivo es entender *por qué* funcionan los métodos, bajo qué supuestos y cómo interpretar lo que producen. Siempre que el tema lo permita, las clases incluyen ejemplos en R.
 
 ::: {.callout-note}
 ## Objetivo general
 
-Comprender los fundamentos teóricos de la estadística y la econometría, desarrollando la capacidad de seleccionar, aplicar e interpretar técnicas de estimación y modelamiento en el contexto de la investigación social.
+Comprender los fundamentos de la estadística y la econometría para poder elegir, aplicar e interpretar métodos de estimación, regresión e inferencia causal en investigación empírica.
 :::
 
-**Objetivos específicos:**
+**Al terminar el curso deberías poder:**
 
-- Comprender los conceptos de probabilidad, distribuciones y teoremas límite que sustentan la inferencia estadística.
-- Comprender las propiedades de los estimadores (insesgadez, eficiencia, consistencia) y sus implicancias prácticas.
-- Abordar problemas como sesgo de selección, heterocedasticidad, multicolinealidad, endogeneidad y especificación incorrecta.
+- Manejar los conceptos de probabilidad, distribuciones y teoremas límite en los que descansa la inferencia estadística.
+- Evaluar un estimador según sus propiedades y conocer los métodos generales de estimación (máxima verosimilitud, método de momentos, mínimos cuadrados).
+- Estimar, interpretar y hacer inferencia sobre modelos de regresión lineal, incluidas distintas formas funcionales.
+- Reconocer problemas de endogeneidad y entender la lógica de identificación de variables instrumentales, diferencias en diferencias y regresión discontinua.
 
-## Estructura del curso [PROVISORIO]
+## Estructura del curso
 
-El curso se organiza en clases semanales. Cada clase incluye una **presentación teórica** (tipo slides) y, cuando corresponde, un **práctico aplicado**.
+El curso tiene 14 clases organizadas en cuatro unidades. El detalle de contenidos y lecturas de cada sesión está en el [programa](syllabus.qmd).
 
-| Clase | Tema |
-|-------|------|
-| 01 | Fundamentos de Probabilidad |
-| 02 | Variables Aleatorias y Distribuciones |
-| 03 | Distribuciones Muestrales y Teorema Central del Límite |
-| 04 | Estimación Puntual: Propiedades de los Estimadores |
-| 05 | En evaluación (MLE o MCO)|
-| 06 | Intervalos de Confianza y Pruebas de Hipótesis |
-| 07 | El Modelo de Regresión Lineal Simple |
-| 08 | Mínimos Cuadrados Ordinarios: Derivación y Propiedades |
-| 09 | Regresión Lineal Múltiple y Teorema de Gauss-Markov |
-| 10 | Inferencia en Regresión: Tests t, F y $R^2$ |
-| 11 | Diagnóstico de Modelos: Heterocedasticidad y Multicolinealidad |
-| 12 | Introducción a la inferencia causal |
-| 13 | Introducción a Variables Instrumentales y Endogeneidad |
+| Unidad | Clase | Tema |
+|--------|:-----:|------|
+| **I. Fundamentos de probabilidad** | 01 | [Fundamentos de probabilidad](weeks/week01/page.qmd) |
+| | 02 | [Variables aleatorias y distribuciones](weeks/week02/page.qmd) |
+| | 03 | Muestreo y teoría asintótica |
+| **II. Estimación** | 04 | Estimación puntual y propiedades de los estimadores |
+| | 05 | Máxima verosimilitud y método de momentos |
+| | 06 | Mínimos cuadrados ordinarios como estimador |
+| **III. Regresión** | 07 | Teoría asintótica de mínimos cuadrados |
+| | 08 | Regresión simple y múltiple en la práctica |
+| | 09 | Formas funcionales e interpretación de coeficientes |
+| | 10 | Pruebas de hipótesis e intervalos de confianza |
+| **IV. Inferencia causal** | 11 | Causalidad, endogeneidad e identificación |
+| | 12 | Variables instrumentales |
+| | 13 | Diferencias en diferencias |
+| | 14 | Regresión discontinua |
 
-## Información del curso
+## Cómo usar el sitio
+
+Cada clase tiene su propia página con la presentación embebida y las lecturas recomendadas. Puedes recorrer las slides dentro de la página o abrirlas en pantalla completa; las flechas del teclado sirven para avanzar.
+
+::: {.callout-tip}
+## Sobre las presentaciones
+
+Las slides están hechas con Quarto y reveal.js. Tienen el aspecto de una presentación académica tipo Beamer, pero funcionan en cualquier navegador e incluyen fórmulas en $\LaTeX$, código en R y gráficos.
+:::
+
+## Información
 
 ::: {.callout-note}
 ## Detalles
@@ -56,15 +65,4 @@ El curso se organiza en clases semanales. Cada clase incluye una **presentación
 - **Autora:** Fran Sofía Núñez Rebolledo
 - **Contacto:** fnunezre@fen.uchile.cl
 - **Institución:** Universidad de Chile / Instituto Nacional de Estadísticas
-
-:::
-
-## Navegación
-
-Cada clase tiene su propia página con la presentación embebida. Puedes navegar las diapositivas directamente en el sitio o abrirlas en pantalla completa. Usa las flechas del teclado para avanzar entre slides.
-
-::: {.callout-tip}
-## Sobre las presentaciones
-
-Las slides están diseñadas para verse como presentaciones académicas (estilo Beamer) pero con la ventaja de ser interactivas y accesibles desde cualquier navegador. Incluyen fórmulas en $\LaTeX$, código en R, y gráficos embebidos.
 :::

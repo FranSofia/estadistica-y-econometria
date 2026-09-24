@@ -21,13 +21,31 @@ website:
         href: recursos.qmd
       - text: "🗓️ Clases"
         menu:
-          - text: "Clase 01: Fundamentos de Probabilidad"
+          - text: "Unidad I · Fundamentos de probabilidad"
+          - text: "Clase 01: Fundamentos de probabilidad"
             href: weeks/week01/page.qmd
-          - text: "Clase 02: Variables Aleatorias y Distribuciones"
+          - text: "Clase 02: Variables aleatorias y distribuciones"
             href: weeks/week02/page.qmd
-          # Agregar más clases aquí
+          # Clase 03: Muestreo y teoría asintótica
+          # - text: "---"
+          # - text: "Unidad II · Estimación"
+          # Clase 04: Estimación puntual y propiedades de los estimadores
+          # Clase 05: Máxima verosimilitud y método de momentos
+          # Clase 06: Mínimos cuadrados ordinarios como estimador
+          # - text: "---"
+          # - text: "Unidad III · Regresión"
+          # Clase 07: Teoría asintótica de mínimos cuadrados
+          # Clase 08: Regresión simple y múltiple en la práctica
+          # Clase 09: Formas funcionales e interpretación de coeficientes
+          # Clase 10: Pruebas de hipótesis e intervalos de confianza
+          # - text: "---"
+          # - text: "Unidad IV · Inferencia causal"
+          # Clase 11: Causalidad, endogeneidad e identificación
+          # Clase 12: Variables instrumentales
+          # Clase 13: Diferencias en diferencias
+          # Clase 14: Regresión discontinua
   page-footer:
-    center: "© 2026 — Fran Sofía Núñez Rebolledo"
+    center: "© 2026 — Fran Sofía Núñez Rebolledo · [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/)"
     background: "#69000C"
 
   search: true
