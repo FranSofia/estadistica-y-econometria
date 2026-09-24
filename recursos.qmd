@@ -4,6 +4,11 @@ title: "🐒 Recursos"
 
 ## Libros de referencia
 
+::: {.callout-note}
+## Sobre el acceso a los libros
+Algunos de estos textos tienen derechos de autor y no están disponibles en el repositorio del curso. Si necesitas ayuda para conseguir alguno, escríbeme a **fnunezre\@fen.uchile.cl**.
+:::
+
 - **Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press.
 - **Hansen, B. E.** (2021). [*Econometrics*](http://home.ustc.edu.cn/~matheming/Econometrics.pdf). University of Wisconsin.
 - **DeGroot, Morris H, Schervish, Mark J.** (2012). [*Probability and Statistics*](https://educationexclusive.com/upload/pdf/Probability%20and%20Statistics%20by%20Morris%20H.%20DeGroot%20and%20Mark%20J.%20Schervish.pdf). Fourth Edition. Pearson Education. 

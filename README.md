@@ -27,6 +27,10 @@ Curso de fundamentos estadísticos y modelamiento econométrico, con énfasis en
 | 11 | Diagnóstico: Heterocedasticidad y Multicolinealidad |
 | 12 | Variables Instrumentales y Endogeneidad |
 
+## Bibliografía
+
+La carpeta `bibliografia/` solo incluye los libros que sus autores distribuyen libremente (Hansen y Blitzstein y Hwang). El resto de la bibliografía del curso no está en el repositorio porque tiene derechos de autor. Si necesitas ayuda para conseguir algún texto, escríbeme a fnunezre@fen.uchile.cl.
+
 ## Estructura del proyecto
 
 ```
@@ -43,6 +47,7 @@ estadistica-y-econometria/
 │   │   ├── page.qmd
 │   │   └── slides.qmd
 │   └── ...
+├── bibliografia/             # Libros de libre distribución
 ├── styles/
 │   ├── custom.scss           # Tema del sitio web
 │   ├── slides-theme.scss     # Tema de las presentaciones

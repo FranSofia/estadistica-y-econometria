@@ -19,3 +19,8 @@ Thumbs.db
 *~
 
 **/*.quarto_ipynb
+
+# Bibliografía con derechos de autor: se guarda en un repo privado aparte
+bibliografia/*.pdf
+!bibliografia/Bruce Hansen*.pdf
+!bibliografia/Blitzstein y Hwang*.pdf
