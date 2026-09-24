@@ -16,7 +16,7 @@ La primera unidad construye el lenguaje con el que se escribe todo lo demás. Pa
 
 | Clase | Tema | Lecturas principales |
 |:-----:|------|----------------------|
-| 01 | Fundamentos de probabilidad | Hansen (2022), cap. 1; DeGroot y Schervish (2012), caps. 1–2 |
+| 01 | Fundamentos de probabilidad | Hansen (2022), cap. 1; DeGroot y Schervish (2012), caps. 1–2; Canavos (1988), cap. 2 |
 | 02 | Variables aleatorias y distribuciones | Hansen (2022), caps. 2–5; Blitzstein y Hwang (2019) |
 | 03 | Muestreo y teoría asintótica | Hansen (2022), caps. 6–8; Hansen (2021), cap. 6 |
 
@@ -64,6 +64,7 @@ La última unidad pasa de la pregunta "¿cómo se relacionan estas variables?" a
 - **DeGroot, M. H. y Schervish, M. J.** (2012). *Probability and Statistics* (4.ª ed.). Pearson.
 - **Blitzstein, J. K. y Hwang, J.** (2019). *Introduction to Probability* (2.ª ed.). CRC Press.
 - **Casella, G. y Berger, R. L.** (2002). *Statistical Inference* (2.ª ed.). Duxbury.
+- **Canavos, G. C.** (1988). *Probabilidad y estadística: aplicaciones y métodos*. McGraw-Hill.
 - **Wackerly, D., Mendenhall, W. y Scheaffer, R.** (2010). *Estadística matemática con aplicaciones* (7.ª ed.). Cengage Learning.
 - **Cameron, A. C. y Trivedi, P. K.** (2005). *Microeconometrics: Methods and Applications*. Cambridge University Press.
 - **Cunningham, S.** (2021). [*Causal Inference: The Mixtape*](https://mixtape.scunning.com/). Yale University Press.

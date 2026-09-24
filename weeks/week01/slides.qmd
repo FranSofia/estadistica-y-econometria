@@ -32,13 +32,14 @@ format:
 4. [Probabilidad condicional](#probabilidad-condicional)
 5. [Independencia](#independencia)
 6. [Teorema de Bayes](#teorema-de-bayes)
+7. [Combinatoria (opcional)](#combinatoria)
 
 
 # ¿Por qué probabilidad?
 
 ## La probabilidad como lenguaje de la incertidumbre
 
-La probabilidad es un mecanismo que permite estudiar sucesos aleatorios [@canavos]. A su vez, la probabilidad es el lenguaje matemático utilizado para manejar la incertidumbre [@hansen-intro]. 
+La probabilidad es un mecanismo que permite estudiar sucesos aleatorios [@canavos]. A su vez, la probabilidad es el lenguaje matemático utilizado para manejar la incertidumbre [@hansen-for-economist]. 
 
 . . .
 
@@ -46,7 +47,7 @@ Por lo tanto, la teoría de probabilidades nos da el **lenguaje formal** para cu
 
 . . .
 
-A diferencia de los eventos deterministas, gran parte de nuestro entorno natural y social está marcado por la incertidumbre. En este escenario, la probabilidad es la herramienta matemática clave que nos permite *cuantificar la aleatoriedad*, transformando lo impredecible en *certidumbre* para poder identificar **causas** y realizar **predicciones** fiables sobre la realidad.
+A diferencia de los eventos deterministas, gran parte de nuestro entorno natural y social está marcado por la incertidumbre. En este escenario, la probabilidad es la herramienta matemática que nos permite *cuantificar la aleatoriedad*. No elimina la incertidumbre, pero la vuelve medible, y eso es lo que después nos permitirá hacer **inferencias** y **predicciones** con un grado de confianza conocido.
 
 ## Conceptos de probabilidad
 
@@ -228,7 +229,7 @@ Un espacio muestral es **continuo** si su conjunto de resultados es un intervalo
 
 . . .
 
-En un espacio continuo, cada resultado individual $\{\omega\}$ tiene probabilidad 0. Por lo tanto, no tiene sentido asignar probabilidad a un punto aislado, sino a [intervalos]{.alert}. Para $a < b$:
+Cuando la probabilidad se distribuye de forma continua sobre $\Omega$, cada resultado individual $\{\omega\}$ tiene probabilidad 0. Por eso no se asigna probabilidad a puntos aislados, sino a [intervalos]{.alert}. Para $a < b$:
 
 $$P([a, b]) = \int_a^b f(x) \, dx$$
 
@@ -236,9 +237,13 @@ donde $f$ es la función de densidad de probabilidad (que formalizaremos más ad
 
 ## Espacios muestrales continuos
 
-**Ejemplo:** El ingreso mensual de un hogar es un espacio muestral continuo con $\Omega = [0, +\infty)$. La probabilidad de que el ingreso caiga en un rango $[y_1, y_2]$ sería:
+**Ejemplo:** El ingreso mensual de un hogar tiene espacio muestral $\Omega = [0, +\infty)$. La probabilidad de que el ingreso caiga en un rango $[y_1, y_2]$ sería:
 
 $$P(y_1 \leq Y \leq y_2) = \int_{y_1}^{y_2} f_Y(y) \, dy$$
+
+. . .
+
+Ojo: que $\Omega$ sea continuo no garantiza que *todos* los puntos tengan probabilidad 0. Una fracción de hogares puede tener ingreso exactamente igual a 0, y ese punto sí tiene probabilidad positiva. Estas distribuciones *mixtas* son frecuentes en datos económicos.
 
 ## Eventos
 
@@ -249,7 +254,7 @@ Un **evento** $A$ es un subconjunto bien definido del espacio muestral: $A \subs
 
 . . .
 
-Decimos que el evento $A$ **ha ocurrido** si el resultado del experimento es un elemento de $A$, es decir, si $s_{\text{observado}} \in A.$
+Decimos que el evento $A$ **ha ocurrido** si el resultado del experimento es un elemento de $A$, es decir, si $\omega_{\text{obs}} \in A.$
 
 . . .
 
@@ -341,7 +346,7 @@ Un conjunto infinito $A$ es **numerable** (*countable*) si existe una correspond
 - Los enteros $\mathbb{Z}$
 - Los números pares
 - Los primos
-- Cualquier secuencia infinita
+- Los racionales $\mathbb{Q}$
 
 :::
 ::: {.column width="50%"}
@@ -372,10 +377,10 @@ Cuando $\Omega$ es numerable, podemos asignar probabilidad a cada resultado indi
 </thead>
 <tbody>
 <tr><td>Espacio muestral</td><td>$\Omega$</td></tr>
-<tr><td>$s$ es un posible resultado</td><td>$s \in \Omega$</td></tr>
+<tr><td>$\omega$ es un posible resultado</td><td>$\omega \in \Omega$</td></tr>
 <tr><td>$A$ es un evento</td><td>$A \subseteq \Omega$</td></tr>
-<tr><td>$A$ ocurrió</td><td>$s_{\text{obs}} \in A$</td></tr>
-<tr><td>Algo debe ocurrir</td><td>$s_{\text{obs}} \in \Omega$</td></tr>
+<tr><td>$A$ ocurrió</td><td>$\omega_{\text{obs}} \in A$</td></tr>
+<tr><td>Algo debe ocurrir</td><td>$\omega_{\text{obs}} \in \Omega$</td></tr>
 <tr><td>$A$ o $B$ (o ambos)</td><td>$A \cup B$</td></tr>
 <tr><td>$A$ y $B$</td><td>$A \cap B$</td></tr>
 <tr><td>No $A$</td><td>$A^c$</td></tr>
@@ -405,7 +410,7 @@ $$\text{Evento } A \longrightarrow P(A) \longrightarrow \text{Número real}$$
 
 . . .
 
-Diremos que una función de probabildad, por tanto, es "una función $\mathbb{P}$ que asigna un valor numérico a eventos" [@hansen-for-economist, p. 2]. Esto significa que $\mathbb{P}$ (o $\Pr$) es una función del espacio de eventos a la recta real. Las probabilidades son, por tanto, números, que indican un *quantum* de que un suceso ocurra.
+Diremos que una función de probabilidad, por tanto, es "una función $\mathbb{P}$ que asigna un valor numérico a eventos" [@hansen-for-economist, p. 2]. Esto significa que $\mathbb{P}$ (o $\Pr$) es una función del espacio de eventos a la recta real. Las probabilidades son, por tanto, números que miden qué tan posible es que un suceso ocurra.
 
 ## Definición de función de probabilidad
 
@@ -480,6 +485,10 @@ Es un error frecuente aplicar la aditividad a eventos que **no** son disjuntos.
 . . .
 
 Es tentador escribir $\Pr(\text{1 en algun dado}) = \Pr(A \cup B) = \Pr(A) + \Pr(B), \qquad$ pero esto es [incorrecto]{.alert} porque $A$ y $B$ no son disjuntos: el resultado "1 en ambos dados" pertenece tanto a $A$ como a $B$ [@hansen-for-economist].
+
+. . .
+
+Lo correcto es restar la intersección: $\Pr(A \cup B) = \frac{1}{6} + \frac{1}{6} - \frac{1}{36} = \frac{11}{36}$, que es menor que $\frac{12}{36}$.
 
 
 
@@ -704,13 +713,17 @@ Un uso fundamental de la probabilidad en inferencia estadística es la [actualiz
 
 Preguntas como las siguientes son preguntas de probabilidad condicional:
 
-- ¿Asistir a la universidad afecta la probabilidad de obtener un salario alto?
-- ¿Los aranceles afectan la probabilidad de un aumento de precios?
-- ¿Recibir un tratamiento médico cambia la probabilidad de recaída?
+- ¿Es más probable tener un salario alto entre quienes tienen título universitario?
+- ¿Es más frecuente un alza de precios en los períodos posteriores a un aumento de aranceles?
+- ¿Es menor la tasa de recaída entre quienes recibieron un tratamiento médico?
 
 . . .
 
 Todas comparten la misma estructura: ¿cómo cambia la probabilidad de $A$ cuando sabemos que $B$ ha ocurrido?
+
+::: {.callout-warning}
+Fíjate en la redacción: son preguntas de **asociación**, no de causalidad. Saber que $\Pr(A|B) \neq \Pr(A)$ no nos dice que $B$ *cause* $A$. Esa distinción es el tema central de la última unidad del curso.
+:::
 
 ## Definición
 
@@ -753,7 +766,7 @@ donde $N = C^c$ $\hspace{0.6cm}$ (no tiene título universitario).
 
 . . .
 
-Hay una diferencia considerable: la probabilidad condicional de obtener un salario alto es del 53% para quienes tienen título universitario, versus 19% para quienes no lo tienen. Esta brecha es, en esencia, una medida de [desigualdad educativa]{.alert} en el mercado laboral que logramos medir solo con probabilidades (todavía no metodologías estadísticas más robustas a sesgos). 
+Hay una diferencia considerable: la probabilidad condicional de obtener un salario alto es del 53% para quienes tienen título universitario, versus 19% para quienes no lo tienen. Esta brecha describe una [asociación]{.alert} entre educación y salarios que logramos medir solo con probabilidades. No nos dice cuánto de la brecha se debe a la educación misma y cuánto a otras diferencias entre ambos grupos.
 
 ## Ejemplo: Ensayo clínico
 
@@ -788,7 +801,7 @@ $$\Pr(A \cap B)$$
 
 . . .
 
-**2. Probabilidad marginal:**$ la probabilidad de $A$ sin considerar $B$ (o viceversa).
+**2. Probabilidad marginal:** la probabilidad de $A$ sin considerar $B$ (o viceversa).
 $$\Pr(A) = \sum_{j} \Pr(A \cap B_j)$$
 
 . . .
@@ -873,15 +886,15 @@ $$\Pr(A) = \sum_{j=1}^{k} \Pr(B_j) \cdot \Pr(A|B_j)$$
 
 La ley de probabilidad total "descompone" la probabilidad de un evento complejo en piezas más manejables, usando una partición que reduce la incertidumbre del problema [@probability-statistics].
 
-. . .
-
-## Las probabilidades condicionales se comportan como probabilidades
+## Ley de probabilidad total: ejemplo
 
 **Ejemplo:** ¿Cuál es la probabilidad de estar desempleado?
 
-$$\Pr(\text{desempleo}) = \sum_{j=1}^{J} \Pr(\text{region}_j) \cdot \Pr(\text{desempleo} \mid \text{region}_j)$$
+Tomemos como experimento seleccionar al azar a una persona de la fuerza de trabajo:
 
-Si conocemos la tasa de desempleo por región y la proporción de la población en cada región, podemos calcular la tasa de desempleo nacional.
+$$\Pr(\text{desempleo}) = \sum_{j=1}^{J} \Pr(\text{región}_j) \cdot \Pr(\text{desempleo} \mid \text{región}_j)$$
+
+Si conocemos la tasa de desempleo de cada región y la proporción de la **fuerza de trabajo** que vive en cada una, podemos calcular la tasa de desempleo nacional. Las regiones forman una partición, y la tasa nacional es un promedio ponderado de las tasas regionales.
 
 ## ¿Por qué importa la condicionalidad en econometría?
 
@@ -893,11 +906,11 @@ La **función de regresión poblacional** *es* una esperanza condicional:
 
 $$E[Y_i | X_i] = \mu(X_i)$$
 
-Cuando estimamos una regresión, estamos estimando cómo cambia el valor esperado de $Y$ al condicionar en distintos valores de $X.\hspace{0.1cm}$  Justamente, esta es la lógica del [*ceteris paribus*]{.alert}.
+Cuando estimamos una regresión, estamos estimando cómo cambia el valor esperado de $Y$ al condicionar en distintos valores de $X.\hspace{0.1cm}$ Si $X$ incluye varias variables, podemos comparar unidades que difieren en una de ellas y son iguales en las demás, que es la idea del [*ceteris paribus*]{.alert}.
 
 ## ¿Por qué importa la condicionalidad en econometría?
 
-En **inferencia causal**, el desafío es que condicionar en $X$ no es lo mismo que *intervenir* sobre $X. \hspace{0.1cm}$  El supuesto de identificación clave (independencia condicional, variables instrumentales, etc.) busca garantizar que $E[Y|X]$ capture el efecto causal y no solo una asociación.
+En **inferencia causal**, el desafío es que condicionar en $X$ no es lo mismo que *intervenir* sobre $X. \hspace{0.1cm}$  Los supuestos de identificación (independencia condicional, variables instrumentales, etc.) buscan garantizar que la comparación que estimamos capture un efecto causal y no solo una asociación.
 
 . . .
 
@@ -940,7 +953,7 @@ Si dos eventos son considerados independientes porque son físicamente no relaci
 
 ::: {.callout-important}
 ## Distinción crucial
-Independencia y mutua exclusividad son conceptos [opuestos]{.alert}, no sinónimos.
+Independencia y mutua exclusividad son conceptos [distintos]{.alert}, y es un error frecuente confundirlos.
 :::
 
 . . .
@@ -967,7 +980,7 @@ $$\Pr(U_t | D_{t-1}) = \frac{0.245}{0.433} = 0.566$$
 
 . . .
 
-Las dos probabilidades condicionales son prácticamente idénticas ($\approx 0.57$). La probabilidad de un alza en una semana dada no se ve afectada por lo que ocurrió la semana anterior. Esto satisface la definición de independencia: $U_t\hspace{0.2cm}$ y $U_{t-1}\hspace{0.2cm}$ son independientes.
+Las dos probabilidades condicionales son prácticamente idénticas ($\approx 0.57$). La probabilidad de un alza en una semana dada no se ve afectada por lo que ocurrió la semana anterior. Los datos son consistentes con que $U_t\hspace{0.2cm}$ y $U_{t-1}\hspace{0.2cm}$ sean (aproximadamente) independientes.
 
 ## Ejemplo: Salarios y educación (dependencia)
 
@@ -1000,7 +1013,7 @@ Ahora veamos un caso de [dependencia]{.alert}. Si salarios y educación fueran i
 
 . . .
 
-Los eventos $H \cap C\hspace{0.2cm}$ y $L \cap N\hspace{0.2cm}$ ocurren con mucha más frecuencia de lo que predeciría la independencia. Salarios y educación son **dependientes**: la educación universitaria sí afecta la probabilidad de obtener un salario alto.
+Los eventos $H \cap C\hspace{0.2cm}$ y $L \cap N\hspace{0.2cm}$ ocurren con mucha más frecuencia de lo que predeciría la independencia. Salarios y educación son **dependientes**: saber si alguien tiene título universitario cambia la probabilidad de que tenga un salario alto. Ojo, esto no demuestra que la educación *cause* salarios más altos.
 
 ## Independencia de complementos
 
@@ -1065,7 +1078,7 @@ El supuesto de independencia (o sus versiones más débiles) aparece en toda la 
 
 . . .
 
-- **Exogeneidad:** $E[\varepsilon_i | X_i] = 0,\hspace{0.2cm}$ que es una forma de independencia condicional entre el error y los regresores.
+- **Exogeneidad:** $E[\varepsilon_i | X_i] = 0,\hspace{0.2cm}$ que es una forma de *independencia en media* entre el error y los regresores (más débil que la independencia completa).
 
 . . .
 
@@ -1090,7 +1103,7 @@ Si $B_1, \ldots, B_k\hspace{0.2cm}$ forman una partición de $\Omega\hspace{0.2c
 $$\Pr(B_i|A) = \frac{\Pr(A|B_i) \cdot \Pr(B_i)}{\sum_{j=1}^{k} \Pr(A|B_j) \cdot \Pr(B_j)}$$
 :::
 
-## Teorema de Bayes (termonilogía)
+## Teorema de Bayes (terminología)
 
 **Terminología:**
 
@@ -1184,8 +1197,8 @@ La distinción entre muestreo con y sin reposición determina qué fórmula de c
 </tr>
 </thead>
 <tbody>
-<tr><td>**Ordenado**</td><td>$\frac{N!}{(N-K)!}$</td><td>$N^K$</td></tr>
-<tr><td>**No ordenado**</td><td>$\binom{N}{K}$</td><td>$\binom{N+K-1}{K}$</td></tr>
+<tr><td><strong>Ordenado</strong></td><td>$\frac{N!}{(N-K)!}$</td><td>$N^K$</td></tr>
+<tr><td><strong>No ordenado</strong></td><td>$\binom{N}{K}$</td><td>$\binom{N+K-1}{K}$</td></tr>
 </tbody>
 </table>
 
@@ -1228,5 +1241,5 @@ Estas herramientas deben entenderse, no memorizarse: se pueden consultar cuando 
 ## Lecturas sugeridas
 - DeGroot & Schervish, Capítulos 1 y 2.
 - Hansen, *Probability and Statistics for Economists*, Capítulo 1.
-- Canavos, *Probabilidad y Estadística*, Capítulo 3.
+- Canavos, *Probabilidad y Estadística*, Capítulo 2.
 :::
