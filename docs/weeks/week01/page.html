@@ -8,7 +8,7 @@
 
 <meta name="author" content="Fran Sofía Núñez Rebolledo">
 
-<title>Clase 01: Fundamentos de Probabilidad [PLANTILLA] – Estadística y Econometría</title>
+<title>Clase 01: Fundamentos de Probabilidad – Estadística y Econometría</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">Clase 01: Fundamentos de Probabilidad [PLANTILLA]</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Clase 01: Fundamentos de Probabilidad</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -211,7 +211,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>En esta primera clase se introducen los conceptos fundamentales de la teoría de probabilidades que serán la base de todo el curso. Revisaremos los axiomas de Kolmogorov, la probabilidad condicional, el Teorema de Bayes, y la noción de independencia estadística. Estos conceptos, que pueden parecer abstractos al principio, son el andamiaje sobre el cual se construyen los estimadores, las pruebas de hipótesis y los modelos de regresión que veremos más adelante.</p>
+<p>La primera clase introduce las ideas de la teoría de la probabilidad sobre las que se apoya todo el curso. Partimos discutiendo qué significa la probabilidad (frecuentista, clásica y subjetiva) y luego formalizamos el lenguaje: espacios muestrales, eventos, los axiomas de Kolmogorov y las propiedades que se derivan de ellos. La segunda mitad está dedicada a la probabilidad condicional, la independencia y el teorema de Bayes, con una sección opcional de combinatoria. Aunque parezcan abstractos, estos conceptos son la base de los estimadores, las pruebas de hipótesis y los modelos de regresión que veremos más adelante.</p>
 <section id="presentación" class="level2">
 <h2 class="anchored" data-anchor-id="presentación">🦦 Presentación</h2>
 <p>Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic <a href="slides.html">aquí</a> para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar.</p>
@@ -219,11 +219,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="lecturas-recomendadas" class="level2">
 <h2 class="anchored" data-anchor-id="lecturas-recomendadas">📚 Lecturas recomendadas</h2>
-<p>Para acompañar los contenidos de esta clase:</p>
 <ul>
-<li><strong>DeGroot, Morris H, Schervish, Mark J.</strong> (2012). <a href="https://educationexclusive.com/upload/pdf/Probability%20and%20Statistics%20by%20Morris%20H.%20DeGroot%20and%20Mark%20J.%20Schervish.pdf"><em>Probability and Statistics</em></a>. Fourth Edition. Pearson Education. Capítulo 1-2-3.</li>
-<li><strong>Hansen, B. E.</strong> (2022). <em>Probability and Statistics for Economist</em>, Princenton University Press. Capítulo 1- 2.</li>
-<li><strong>Hansen, B. E.</strong> (2021). <em>Introduction to econometrics</em>, Unversity of Wisconsin. Capítulo 1- 2.</li>
+<li><strong>Hansen, B. E.</strong> (2022). <em>Probability and Statistics for Economists</em>. Princeton University Press. Capítulo 1.</li>
+<li><strong>DeGroot, M. H. y Schervish, M. J.</strong> (2012). <a href="https://educationexclusive.com/upload/pdf/Probability%20and%20Statistics%20by%20Morris%20H.%20DeGroot%20and%20Mark%20J.%20Schervish.pdf"><em>Probability and Statistics</em></a> (4.ª ed.). Pearson. Capítulos 1 y 2.</li>
+<li><strong>Canavos, G. C.</strong> (1988). <em>Probabilidad y estadística: aplicaciones y métodos</em>. McGraw-Hill. Capítulo 2.</li>
 </ul>
 </section>
 <section id="dudas" class="level2">
@@ -688,11 +687,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Clase 01: Fundamentos de Probabilidad [PLANTILLA]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Clase 01: Fundamentos de Probabilidad"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Fran Sofía Núñez Rebolledo"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>En esta primera clase se introducen los conceptos fundamentales de la teoría de probabilidades que serán la base de todo el curso. Revisaremos los axiomas de Kolmogorov, la probabilidad condicional, el Teorema de Bayes, y la noción de independencia estadística. Estos conceptos, que pueden parecer abstractos al principio, son el andamiaje sobre el cual se construyen los estimadores, las pruebas de hipótesis y los modelos de regresión que veremos más adelante.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>La primera clase introduce las ideas de la teoría de la probabilidad sobre las que se apoya todo el curso. Partimos discutiendo qué significa la probabilidad (frecuentista, clásica y subjetiva) y luego formalizamos el lenguaje: espacios muestrales, eventos, los axiomas de Kolmogorov y las propiedades que se derivan de ellos. La segunda mitad está dedicada a la probabilidad condicional, la independencia y el teorema de Bayes, con una sección opcional de combinatoria. Aunque parezcan abstractos, estos conceptos son la base de los estimadores, las pruebas de hipótesis y los modelos de regresión que veremos más adelante.</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 🦦 Presentación</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
@@ -704,15 +703,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚 Lecturas recomendadas</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>Para acompañar los contenidos de esta clase:</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**DeGroot, Morris H, Schervish, Mark J.** (2012). <span class="co">[</span><span class="ot">*Probability and Statistics*</span><span class="co">](https://educationexclusive.com/upload/pdf/Probability%20and%20Statistics%20by%20Morris%20H.%20DeGroot%20and%20Mark%20J.%20Schervish.pdf)</span>. Fourth Edition. Pearson Education. Capítulo 1-2-3. </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hansen, B. E.** (2022). *Probability and Statistics for Economist*, Princenton University Press. Capítulo 1- 2.</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hansen, B. E.** (2021). *Introduction to econometrics*, Unversity of Wisconsin. Capítulo 1- 2.</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press. Capítulo 1.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**DeGroot, M. H. y Schervish, M. J.** (2012). <span class="co">[</span><span class="ot">*Probability and Statistics*</span><span class="co">](https://educationexclusive.com/upload/pdf/Probability%20and%20Statistics%20by%20Morris%20H.%20DeGroot%20and%20Mark%20J.%20Schervish.pdf)</span> (4.ª ed.). Pearson. Capítulos 1 y 2.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Canavos, G. C.** (1988). *Probabilidad y estadística: aplicaciones y métodos*. McGraw-Hill. Capítulo 2.</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📟 Dudas</span></span>
 <span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📟 Dudas</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>Si tienes preguntas sobre el material, no dudes en escribir a **fnunezre\@fen.uchile.cl**.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Si tienes preguntas sobre el material, no dudes en escribir a **fnunezre\@fen.uchile.cl**.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
