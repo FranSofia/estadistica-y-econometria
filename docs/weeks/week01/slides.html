@@ -33,6 +33,72 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
     /* CSS for citations */
     div.csl-bib-body { }
     div.csl-entry {
@@ -238,6 +304,44 @@
 <li><strong>Solo aplica a procesos repetibles:</strong> no puede usarse directamente para eventos únicos, como la probabilidad de que un proyecto de investigación médica tenga éxito o de que una persona específica se case en los próximos dos años.</li>
 </ul>
 </div>
+</section>
+<section class="slide level2">
+<h2>En R: la interpretación frecuentista</h2>
+<p>Simulemos 10.000 lanzamientos de una moneda justa y veamos cómo evoluciona la proporción de caras:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>lanzamientos <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"cara"</span>, <span class="st">"sello"</span>), <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>prop_caras <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(lanzamientos <span class="sc">==</span> <span class="st">"cara"</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>n)</span>
+<span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>prop_caras[<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6000 0.5700 0.5060 0.5017</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Con pocos lanzamientos la proporción puede alejarse bastante de <span class="math inline">\(1/2\)</span>; a medida que <span class="math inline">\(n\)</span> crece, se estabiliza cerca de ese valor. Esta es la intuición que formalizaremos como <strong>ley de los grandes números</strong> en la clase 3.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: la interpretación frecuentista</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(prop_caras, <span class="at">type =</span> <span class="st">"l"</span>,</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">log =</span> <span class="st">"x"</span>, <span class="at">ylim =</span> <span class="fu">c</span>(<span class="fl">0.2</span>, <span class="fl">0.8</span>),</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Lanzamientos"</span>,</span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Proporción de caras"</span>)</span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">2</span>,</span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"#69000C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div></div>
 </section>
 <section class="slide level2">
 <h2>Interpretación clásica</h2>
@@ -1042,7 +1146,7 @@ No <span class="math inline">\(A\)</span>
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>Fíjate en la redacción: son preguntas de <strong>asociación</strong>, no de causalidad. Saber que <span class="math inline">\(\Pr(A|B) \neq \Pr(A)\)</span> no nos dice que <span class="math inline">\(B\)</span> <em>cause</em> <span class="math inline">\(A\)</span>. Esa distinción es el tema central de la última unidad del curso.</p>
+<p>Hansen (2022) plantea estas preguntas como “¿<em>afecta</em> asistir a la universidad…?”. Aquí las reformulamos a propósito: son preguntas de <strong>asociación</strong>, no de causalidad. Saber que <span class="math inline">\(\Pr(A|B) \neq \Pr(A)\)</span> no nos dice que <span class="math inline">\(B\)</span> <em>cause</em> <span class="math inline">\(A\)</span>. Esa distinción es el tema central de la última unidad del curso.</p>
 </div>
 </div>
 </div>
@@ -1575,6 +1679,65 @@ No <span class="math inline">\(A\)</span>
 </div>
 </div>
 </div>
+</section>
+<section class="slide level2">
+<h2>Bayes con frecuencias naturales</h2>
+<p>El mismo cálculo se entiende mejor si pensamos en <strong>10.000 personas</strong>:</p>
+<div class="fragment">
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Test <span class="math inline">\(+\)</span></th>
+<th>Test <span class="math inline">\(-\)</span></th>
+<th>Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Enfermas (1%)</td>
+<td>95</td>
+<td>5</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>Sanas (99%)</td>
+<td>990</td>
+<td>8.910</td>
+<td>9.900</td>
+</tr>
+<tr class="odd">
+<td>Total</td>
+<td>1.085</td>
+<td>8.915</td>
+<td>10.000</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p>De las 1.085 personas con test positivo, solo 95 están enfermas: <span class="math inline">\(95 / 1.085 \approx 0.088\)</span>. Los falsos positivos son muchos más porque, aunque el test se equivoque poco con cada persona sana, hay muchísimas más personas sanas que enfermas.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: verificando Bayes por simulación</h2>
+<p>Simulamos una población de 100.000 personas con las mismas características:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb4-2"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">100000</span></span>
+<span id="cb4-3"><a aria-hidden="true" tabindex="-1"></a>enfermo  <span class="ot">&lt;-</span> <span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.01</span>                  <span class="co"># prevalencia de 1%</span></span>
+<span id="cb4-4"><a aria-hidden="true" tabindex="-1"></a>positivo <span class="ot">&lt;-</span> <span class="fu">ifelse</span>(enfermo,</span>
+<span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>                   <span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.95</span>,          <span class="co"># sensibilidad: 95%</span></span>
+<span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a>                   <span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.10</span>)          <span class="co"># falsos positivos: 10%</span></span>
+<span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(enfermo[positivo])                      <span class="co"># Pr(enfermo | test +)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.08419785</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>La proporción de enfermos entre quienes dieron positivo se acerca al <span class="math inline">\(0.088\)</span> que obtuvimos con el teorema de Bayes.</p>
+</div>
 </section></section>
 <section>
 <section id="combinatoria" class="title-slide slide level1 center">
@@ -1970,6 +2133,82 @@ Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princet
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
