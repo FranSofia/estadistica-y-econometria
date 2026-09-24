@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.9.38">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>📓 Programa del Curso [PROVISORIO] – Estadística y Econometría</title>
+<title>📓 Programa del curso – Estadística y Econometría</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-d5022b73c3fa0dc1e003915a93ba8e5d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-5d238c79a00c417f09bab7404377ae1f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9d9cabd6f0df8be3bb9bfc4988d488be.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
@@ -107,35 +107,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <link rel="stylesheet" href="styles/extra.css">
 </head>
@@ -178,13 +149,14 @@ window.Quarto = {
  <span class="menu-text">🗓️ Clases</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-clases">    
+        <li class="dropdown-header">Unidad I · Fundamentos de probabilidad</li>
         <li>
     <a class="dropdown-item" href="./weeks/week01/page.html">
- <span class="dropdown-text">Clase 01: Fundamentos de Probabilidad</span></a>
+ <span class="dropdown-text">Clase 01: Fundamentos de probabilidad</span></a>
   </li>  
         <li>
     <a class="dropdown-item" href="./weeks/week02/page.html">
- <span class="dropdown-text">Clase 02: Variables Aleatorias y Distribuciones</span></a>
+ <span class="dropdown-text">Clase 02: Variables aleatorias y distribuciones</span></a>
   </li>  
     </ul>
   </li>
@@ -204,16 +176,20 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link active" data-scroll-target="#descripción-general">Descripción General</a></li>
-  <li><a href="#contenidos-por-unidad" id="toc-contenidos-por-unidad" class="nav-link" data-scroll-target="#contenidos-por-unidad">Contenidos por Unidad</a>
+  <li><a href="#descripción-general" id="toc-descripción-general" class="nav-link active" data-scroll-target="#descripción-general">Descripción general</a></li>
+  <li><a href="#contenidos-por-unidad" id="toc-contenidos-por-unidad" class="nav-link" data-scroll-target="#contenidos-por-unidad">Contenidos por unidad</a>
   <ul class="collapse">
-  <li><a href="#unidad-i-fundamentos-probabilísticos-clases-13" id="toc-unidad-i-fundamentos-probabilísticos-clases-13" class="nav-link" data-scroll-target="#unidad-i-fundamentos-probabilísticos-clases-13">Unidad I: Fundamentos Probabilísticos (Clases 1–3)</a></li>
-  <li><a href="#unidad-ii-teoría-de-la-estimación-clases-46" id="toc-unidad-ii-teoría-de-la-estimación-clases-46" class="nav-link" data-scroll-target="#unidad-ii-teoría-de-la-estimación-clases-46">Unidad II: Teoría de la Estimación (Clases 4–6)</a></li>
-  <li><a href="#unidad-iii-modelos-de-regresión-clases-710" id="toc-unidad-iii-modelos-de-regresión-clases-710" class="nav-link" data-scroll-target="#unidad-iii-modelos-de-regresión-clases-710">Unidad III: Modelos de Regresión (Clases 7–10)</a></li>
-  <li><a href="#unidad-iv-diagnóstico-y-extensiones-clases-1112" id="toc-unidad-iv-diagnóstico-y-extensiones-clases-1112" class="nav-link" data-scroll-target="#unidad-iv-diagnóstico-y-extensiones-clases-1112">Unidad IV: Diagnóstico y Extensiones (Clases 11–12)</a></li>
+  <li><a href="#unidad-i-fundamentos-de-probabilidad-clases-13" id="toc-unidad-i-fundamentos-de-probabilidad-clases-13" class="nav-link" data-scroll-target="#unidad-i-fundamentos-de-probabilidad-clases-13">Unidad I: Fundamentos de probabilidad (clases 1–3)</a></li>
+  <li><a href="#unidad-ii-estimación-clases-46" id="toc-unidad-ii-estimación-clases-46" class="nav-link" data-scroll-target="#unidad-ii-estimación-clases-46">Unidad II: Estimación (clases 4–6)</a></li>
+  <li><a href="#unidad-iii-regresión-clases-710" id="toc-unidad-iii-regresión-clases-710" class="nav-link" data-scroll-target="#unidad-iii-regresión-clases-710">Unidad III: Regresión (clases 7–10)</a></li>
+  <li><a href="#unidad-iv-introducción-a-la-inferencia-causal-clases-1114" id="toc-unidad-iv-introducción-a-la-inferencia-causal-clases-1114" class="nav-link" data-scroll-target="#unidad-iv-introducción-a-la-inferencia-causal-clases-1114">Unidad IV: Introducción a la inferencia causal (clases 11–14)</a></li>
   </ul></li>
-  <li><a href="#bibliografía-principal" id="toc-bibliografía-principal" class="nav-link" data-scroll-target="#bibliografía-principal">Bibliografía Principal</a></li>
-  <li><a href="#bibliografía-complementaria" id="toc-bibliografía-complementaria" class="nav-link" data-scroll-target="#bibliografía-complementaria">Bibliografía Complementaria</a></li>
+  <li><a href="#bibliografía" id="toc-bibliografía" class="nav-link" data-scroll-target="#bibliografía">Bibliografía</a>
+  <ul class="collapse">
+  <li><a href="#textos-base" id="toc-textos-base" class="nav-link" data-scroll-target="#textos-base">Textos base</a></li>
+  <li><a href="#textos-de-apoyo-por-sesión" id="toc-textos-de-apoyo-por-sesión" class="nav-link" data-scroll-target="#textos-de-apoyo-por-sesión">Textos de apoyo por sesión</a></li>
+  <li><a href="#textos-complementarios" id="toc-textos-complementarios" class="nav-link" data-scroll-target="#textos-complementarios">Textos complementarios</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -222,7 +198,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">📓 Programa del Curso [PROVISORIO]</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">📓 Programa del curso</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -240,53 +216,197 @@ window.Quarto = {
 
 
 <section id="descripción-general" class="level2">
-<h2 class="anchored" data-anchor-id="descripción-general">Descripción General</h2>
-<p>Este curso proporciona una formación sistemática en los fundamentos de la estadística matemática y la econometría, con énfasis en la comprensión teórica de los métodos y su aplicación en ciencias sociales. El enfoque es acumulativo: cada clase construye sobre los conceptos de la anterior.</p>
+<h2 class="anchored" data-anchor-id="descripción-general">Descripción general</h2>
+<p>El curso recorre el camino que va desde la teoría de la probabilidad hasta los métodos de inferencia causal que hoy se usan en la investigación empírica en economía y ciencias sociales. Está pensado como una secuencia acumulativa: las ideas de probabilidad y teoría asintótica de las primeras sesiones son las que después permiten entender por qué funciona un estimador de mínimos cuadrados, cuándo podemos confiar en un intervalo de confianza y qué exige un diseño para identificar un efecto causal.</p>
+<p>La columna vertebral son los dos libros de Bruce Hansen, <em>Probability and Statistics for Economists</em> y <em>Econometrics</em>, complementados en cada sesión con otros textos clásicos. Cada clase tiene slides con el desarrollo formal (incluidas algunas demostraciones) y, cuando el tema lo permite, ejemplos aplicados en R.</p>
 </section>
 <section id="contenidos-por-unidad" class="level2">
-<h2 class="anchored" data-anchor-id="contenidos-por-unidad">Contenidos por Unidad</h2>
-<section id="unidad-i-fundamentos-probabilísticos-clases-13" class="level3">
-<h3 class="anchored" data-anchor-id="unidad-i-fundamentos-probabilísticos-clases-13">Unidad I: Fundamentos Probabilísticos (Clases 1–3)</h3>
-<p>La primera unidad sienta las bases matemáticas necesarias. Se revisan los axiomas de probabilidad, las variables aleatorias discretas y continuas, sus momentos (esperanza, varianza, covarianza), y las distribuciones más relevantes para la inferencia estadística. Se cierra con el Teorema Central del Límite y su importancia para la construcción de estimadores.</p>
-<p><strong>Temas clave:</strong> espacios muestrales, probabilidad condicional y Bayes, funciones de densidad y distribución, distribuciones Normal, <span class="math inline">\(t\)</span>, <span class="math inline">\(\chi^2\)</span> y <span class="math inline">\(F\)</span>, convergencia en probabilidad y en distribución.</p>
+<h2 class="anchored" data-anchor-id="contenidos-por-unidad">Contenidos por unidad</h2>
+<section id="unidad-i-fundamentos-de-probabilidad-clases-13" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-i-fundamentos-de-probabilidad-clases-13">Unidad I: Fundamentos de probabilidad (clases 1–3)</h3>
+<p>La primera unidad construye el lenguaje con el que se escribe todo lo demás. Partimos de los axiomas de probabilidad, la probabilidad condicional y la independencia, pasamos a las variables aleatorias y sus distribuciones, y cerramos con una introducción a la teoría asintótica: la ley de los grandes números y el teorema central del límite, que son la base de casi toda la inferencia que haremos después.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Clase</th>
+<th>Tema</th>
+<th>Lecturas principales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">01</td>
+<td>Fundamentos de probabilidad</td>
+<td>Hansen (2022), cap. 1; DeGroot y Schervish (2012), caps. 1–2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">02</td>
+<td>Variables aleatorias y distribuciones</td>
+<td>Hansen (2022), caps. 2–5; Blitzstein y Hwang (2019)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">03</td>
+<td>Muestreo y teoría asintótica</td>
+<td>Hansen (2022), caps. 6–8; Hansen (2021), cap. 6</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="unidad-ii-teoría-de-la-estimación-clases-46" class="level3">
-<h3 class="anchored" data-anchor-id="unidad-ii-teoría-de-la-estimación-clases-46">Unidad II: Teoría de la Estimación (Clases 4–6)</h3>
-<p>La segunda unidad aborda el problema de la estimación de parámetros. Se estudian las propiedades deseables de un estimador (insesgadez, eficiencia, consistencia, suficiencia), y se introduce la estimación por máxima verosimilitud (MLE) como método general. Luego se desarrollan los intervalos de confianza y las pruebas de hipótesis dentro del marco de Neyman-Pearson.</p>
-<p><strong>Temas clave:</strong> sesgo y error cuadrático medio, información de Fisher, cota de Cramér-Rao, función de verosimilitud, lema de Neyman-Pearson, errores tipo I y II, potencia de un test.</p>
+<section id="unidad-ii-estimación-clases-46" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-ii-estimación-clases-46">Unidad II: Estimación (clases 4–6)</h3>
+<p>La segunda unidad plantea el problema de la estimación: cómo aprender sobre un parámetro poblacional a partir de una muestra. Veremos qué hace deseable a un estimador (sesgo, varianza, error cuadrático medio, consistencia), cómo estimar una esperanza y una esperanza condicional, y dos métodos generales de estimación, máxima verosimilitud y método de momentos. La unidad termina presentando mínimos cuadrados ordinarios como estimador, que será el objeto de estudio de la unidad siguiente.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Clase</th>
+<th>Tema</th>
+<th>Lecturas principales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">04</td>
+<td>Estimación puntual y propiedades de los estimadores</td>
+<td>Hansen (2022), cap. 6; Casella y Berger (2002), cap. 7; Hansen (2021), cap. 2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">05</td>
+<td>Máxima verosimilitud y método de momentos</td>
+<td>Hansen (2022), caps. 10–11</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">06</td>
+<td>Mínimos cuadrados ordinarios como estimador</td>
+<td>Hansen (2021), caps. 3–4</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="unidad-iii-modelos-de-regresión-clases-710" class="level3">
-<h3 class="anchored" data-anchor-id="unidad-iii-modelos-de-regresión-clases-710">Unidad III: Modelos de Regresión (Clases 7–10)</h3>
-<p>El corazón econométrico del curso. Se parte del modelo de regresión lineal simple, se deriva el estimador OLS por minimización de la suma de cuadrados de los residuos, y se demuestra que bajo los supuestos clásicos es BLUE (Teorema de Gauss-Markov). Se extiende a regresión múltiple y se desarrolla la inferencia sobre los coeficientes.</p>
-<p><strong>Temas clave:</strong> supuestos del modelo clásico de regresión lineal, derivación matricial de OLS, <span class="math inline">\(\hat{\beta} = (X'X)^{-1}X'Y\)</span>, propiedades en muestras finitas y asintóticas, coeficiente de determinación <span class="math inline">\(R^2\)</span>, test <span class="math inline">\(t\)</span> individual, test <span class="math inline">\(F\)</span> conjunto, variables dummy.</p>
+<section id="unidad-iii-regresión-clases-710" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-iii-regresión-clases-710">Unidad III: Regresión (clases 7–10)</h3>
+<p>El núcleo econométrico del curso, siguiendo la lógica de muestras grandes de Hansen. Estudiamos la distribución asintótica del estimador MCO, lo aplicamos en regresiones simples y múltiples, discutimos cómo cambian la especificación y la interpretación de los coeficientes cuando se transforman las variables (logaritmos, polinomios, interacciones), y cerramos con inferencia: pruebas de hipótesis, intervalos de confianza y errores estándar robustos.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Clase</th>
+<th>Tema</th>
+<th>Lecturas principales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">07</td>
+<td>Teoría asintótica de mínimos cuadrados</td>
+<td>Hansen (2021), cap. 7</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">08</td>
+<td>Regresión simple y múltiple en la práctica</td>
+<td>Hansen (2021), caps. 3–4; Wooldridge (2010)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">09</td>
+<td>Formas funcionales e interpretación de coeficientes</td>
+<td>Hansen (2021), cap. 2; Wooldridge (2010)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">10</td>
+<td>Pruebas de hipótesis e intervalos de confianza</td>
+<td>Hansen (2021), caps. 7–9; Hansen (2022), caps. 13–14</td>
+</tr>
+</tbody>
+</table>
 </section>
-<section id="unidad-iv-diagnóstico-y-extensiones-clases-1112" class="level3">
-<h3 class="anchored" data-anchor-id="unidad-iv-diagnóstico-y-extensiones-clases-1112">Unidad IV: Diagnóstico y Extensiones (Clases 11–12)</h3>
-<p>La última unidad problematiza los supuestos del modelo clásico. Se estudian las consecuencias de su violación —heterocedasticidad, multicolinealidad, endogeneidad— y se introducen soluciones como errores robustos, variables instrumentales y el estimador de mínimos cuadrados en dos etapas (2SLS).</p>
-<p><strong>Temas clave:</strong> tests de White y Breusch-Pagan, errores estándar de Huber-White, factor de inflación de varianza (VIF), sesgo por variable omitida, instrumentos y condiciones de relevancia/exclusión.</p>
+<section id="unidad-iv-introducción-a-la-inferencia-causal-clases-1114" class="level3">
+<h3 class="anchored" data-anchor-id="unidad-iv-introducción-a-la-inferencia-causal-clases-1114">Unidad IV: Introducción a la inferencia causal (clases 11–14)</h3>
+<p>La última unidad pasa de la pregunta “¿cómo se relacionan estas variables?” a “¿qué efecto tiene esta variable sobre esta otra?”. Comenzamos con el problema de la endogeneidad y la noción de identificación, y luego revisamos tres diseños que buscan una fuente de variación plausiblemente exógena: variables instrumentales, diferencias en diferencias y regresión discontinua.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 17%">
+<col style="width: 62%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Clase</th>
+<th>Tema</th>
+<th>Lecturas principales</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">11</td>
+<td>Causalidad, endogeneidad e identificación</td>
+<td>Cunningham (2021); Angrist y Pischke (2009)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">12</td>
+<td>Variables instrumentales</td>
+<td>Hansen (2021), cap. 12; Cunningham (2021)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td>Diferencias en diferencias</td>
+<td>Hansen (2021), cap. 18; Cunningham (2021)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">14</td>
+<td>Regresión discontinua</td>
+<td>Hansen (2021), cap. 21; Cunningham (2021)</td>
+</tr>
+</tbody>
+</table>
 </section>
 </section>
-<section id="bibliografía-principal" class="level2">
-<h2 class="anchored" data-anchor-id="bibliografía-principal">Bibliografía Principal</h2>
+<section id="bibliografía" class="level2">
+<h2 class="anchored" data-anchor-id="bibliografía">Bibliografía</h2>
+<section id="textos-base" class="level3">
+<h3 class="anchored" data-anchor-id="textos-base">Textos base</h3>
 <ul>
-<li><strong>Wooldridge, J. M.</strong> (2015). <em>Introductory Econometrics: A Modern Approach</em>. Cengage Learning.</li>
-<li><strong>Stock, J. H. &amp; Watson, M. W.</strong> (2020). <em>Introduction to Econometrics</em>. Pearson.</li>
-<li><strong>Hansen, B. E.</strong> (2022). <em>Econometrics</em>. Princeton University Press. <a href="https://www.ssc.wisc.edu/~bhansen/econometrics/">Disponible en línea</a>.</li>
-<li><strong>Casella, G. &amp; Berger, R. L.</strong> (2002). <em>Statistical Inference</em>. Duxbury.</li>
-<li><strong>Angrist, J. D. &amp; Pischke, J.-S.</strong> (2009). <em>Mostly Harmless Econometrics</em>. Princeton University Press.</li>
+<li><strong>Hansen, B. E.</strong> (2022). <em>Probability and Statistics for Economists</em>. Princeton University Press.</li>
+<li><strong>Hansen, B. E.</strong> (2021). <em>Econometrics</em>. University of Wisconsin. <a href="https://www.ssc.wisc.edu/~bhansen/econometrics/">Disponible en línea</a>.</li>
 </ul>
 </section>
-<section id="bibliografía-complementaria" class="level2">
-<h2 class="anchored" data-anchor-id="bibliografía-complementaria">Bibliografía Complementaria</h2>
+<section id="textos-de-apoyo-por-sesión" class="level3">
+<h3 class="anchored" data-anchor-id="textos-de-apoyo-por-sesión">Textos de apoyo por sesión</h3>
 <ul>
-<li><strong>Gujarati, D. &amp; Porter, D.</strong> (2009). <em>Econometría</em>. McGraw-Hill.</li>
-<li><strong>Cameron, A. C. &amp; Trivedi, P. K.</strong> (2005). <em>Microeconometrics: Methods and Applications</em>. Cambridge.</li>
-<li><strong>Wickham, H., Çetinkaya-Rundel, M. &amp; Grolemund, G.</strong> (2023). <a href="https://davidrsch.github.io/r4ds-es/"><em>R para Ciencia de Datos</em></a> (2ª ed.).</li>
+<li><strong>DeGroot, M. H. y Schervish, M. J.</strong> (2012). <em>Probability and Statistics</em> (4.ª ed.). Pearson.</li>
+<li><strong>Blitzstein, J. K. y Hwang, J.</strong> (2019). <em>Introduction to Probability</em> (2.ª ed.). CRC Press.</li>
+<li><strong>Casella, G. y Berger, R. L.</strong> (2002). <em>Statistical Inference</em> (2.ª ed.). Duxbury.</li>
+<li><strong>Wackerly, D., Mendenhall, W. y Scheaffer, R.</strong> (2010). <em>Estadística matemática con aplicaciones</em> (7.ª ed.). Cengage Learning.</li>
+<li><strong>Cameron, A. C. y Trivedi, P. K.</strong> (2005). <em>Microeconometrics: Methods and Applications</em>. Cambridge University Press.</li>
+<li><strong>Cunningham, S.</strong> (2021). <a href="https://mixtape.scunning.com/"><em>Causal Inference: The Mixtape</em></a>. Yale University Press.</li>
+<li><strong>Angrist, J. D. y Pischke, J.-S.</strong> (2009). <em>Mostly Harmless Econometrics</em>. Princeton University Press.</li>
+</ul>
+</section>
+<section id="textos-complementarios" class="level3">
+<h3 class="anchored" data-anchor-id="textos-complementarios">Textos complementarios</h3>
+<p>Útiles como referencia o segunda lectura, aunque el curso no se organiza en torno a ellos:</p>
+<ul>
+<li><strong>Wooldridge, J. M.</strong> (2010). <em>Introducción a la econometría: un enfoque moderno</em> (4.ª ed.). Cengage Learning.</li>
+<li><strong>Stock, J. H. y Watson, M. W.</strong> (2020). <em>Introduction to Econometrics</em> (4.ª ed.). Pearson.</li>
+<li><strong>Wickham, H., Çetinkaya-Rundel, M. y Grolemund, G.</strong> (2023). <a href="https://es.r4ds.hadley.nz/"><em>R para Ciencia de Datos</em></a> (2.ª ed.).</li>
 </ul>
 
 
 <!-- -->
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -742,52 +862,83 @@ window.Quarto = {
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "📓 Programa del Curso [PROVISORIO]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "📓 Programa del curso"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descripción General</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">## Descripción general</span></span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>Este curso proporciona una formación sistemática en los fundamentos de la estadística matemática y la econometría, con énfasis en la comprensión teórica de los métodos y su aplicación en ciencias sociales. El enfoque es acumulativo: cada clase construye sobre los conceptos de la anterior.</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>El curso recorre el camino que va desde la teoría de la probabilidad hasta los métodos de inferencia causal que hoy se usan en la investigación empírica en economía y ciencias sociales. Está pensado como una secuencia acumulativa: las ideas de probabilidad y teoría asintótica de las primeras sesiones son las que después permiten entender por qué funciona un estimador de mínimos cuadrados, cuándo podemos confiar en un intervalo de confianza y qué exige un diseño para identificar un efecto causal.</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contenidos por Unidad</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>La columna vertebral son los dos libros de Bruce Hansen, *Probability and Statistics for Economists* y *Econometrics*, complementados en cada sesión con otros textos clásicos. Cada clase tiene slides con el desarrollo formal (incluidas algunas demostraciones) y, cuando el tema lo permite, ejemplos aplicados en R.</span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad I: Fundamentos Probabilísticos (Clases 1–3)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="fu">## Contenidos por unidad</span></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>La primera unidad sienta las bases matemáticas necesarias. Se revisan los axiomas de probabilidad, las variables aleatorias discretas y continuas, sus momentos (esperanza, varianza, covarianza), y las distribuciones más relevantes para la inferencia estadística. Se cierra con el Teorema Central del Límite y su importancia para la construcción de estimadores.</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad I: Fundamentos de probabilidad (clases 1–3)</span></span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>**Temas clave:** espacios muestrales, probabilidad condicional y Bayes, funciones de densidad y distribución, distribuciones Normal, $t$, $\chi^2$ y $F$, convergencia en probabilidad y en distribución.</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>La primera unidad construye el lenguaje con el que se escribe todo lo demás. Partimos de los axiomas de probabilidad, la probabilidad condicional y la independencia, pasamos a las variables aleatorias y sus distribuciones, y cerramos con una introducción a la teoría asintótica: la ley de los grandes números y el teorema central del límite, que son la base de casi toda la inferencia que haremos después.</span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad II: Teoría de la Estimación (Clases 4–6)</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>La segunda unidad aborda el problema de la estimación de parámetros. Se estudian las propiedades deseables de un estimador (insesgadez, eficiencia, consistencia, suficiencia), y se introduce la estimación por máxima verosimilitud (MLE) como método general. Luego se desarrollan los intervalos de confianza y las pruebas de hipótesis dentro del marco de Neyman-Pearson.</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>**Temas clave:** sesgo y error cuadrático medio, información de Fisher, cota de Cramér-Rao, función de verosimilitud, lema de Neyman-Pearson, errores tipo I y II, potencia de un test.</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Clase <span class="pp">|</span> Tema <span class="pp">|</span> Lecturas principales <span class="pp">|</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="pp">|:-----:|------|----------------------|</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 01 <span class="pp">|</span> Fundamentos de probabilidad <span class="pp">|</span> Hansen (2022), cap. 1; DeGroot y Schervish (2012), caps. 1–2 <span class="pp">|</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 02 <span class="pp">|</span> Variables aleatorias y distribuciones <span class="pp">|</span> Hansen (2022), caps. 2–5; Blitzstein y Hwang (2019) <span class="pp">|</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 03 <span class="pp">|</span> Muestreo y teoría asintótica <span class="pp">|</span> Hansen (2022), caps. 6–8; Hansen (2021), cap. 6 <span class="pp">|</span></span>
 <span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad III: Modelos de Regresión (Clases 7–10)</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad II: Estimación (clases 4–6)</span></span>
 <span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>El corazón econométrico del curso. Se parte del modelo de regresión lineal simple, se deriva el estimador OLS por minimización de la suma de cuadrados de los residuos, y se demuestra que bajo los supuestos clásicos es BLUE (Teorema de Gauss-Markov). Se extiende a regresión múltiple y se desarrolla la inferencia sobre los coeficientes.</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>La segunda unidad plantea el problema de la estimación: cómo aprender sobre un parámetro poblacional a partir de una muestra. Veremos qué hace deseable a un estimador (sesgo, varianza, error cuadrático medio, consistencia), cómo estimar una esperanza y una esperanza condicional, y dos métodos generales de estimación, máxima verosimilitud y método de momentos. La unidad termina presentando mínimos cuadrados ordinarios como estimador, que será el objeto de estudio de la unidad siguiente.</span>
 <span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>**Temas clave:** supuestos del modelo clásico de regresión lineal, derivación matricial de OLS, $\hat{\beta} = (X'X)^{-1}X'Y$, propiedades en muestras finitas y asintóticas, coeficiente de determinación $R^2$, test $t$ individual, test $F$ conjunto, variables dummy.</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad IV: Diagnóstico y Extensiones (Clases 11–12)</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>La última unidad problematiza los supuestos del modelo clásico. Se estudian las consecuencias de su violación —heterocedasticidad, multicolinealidad, endogeneidad— y se introducen soluciones como errores robustos, variables instrumentales y el estimador de mínimos cuadrados en dos etapas (2SLS).</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Clase <span class="pp">|</span> Tema <span class="pp">|</span> Lecturas principales <span class="pp">|</span></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="pp">|:-----:|------|----------------------|</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 04 <span class="pp">|</span> Estimación puntual y propiedades de los estimadores <span class="pp">|</span> Hansen (2022), cap. 6; Casella y Berger (2002), cap. 7; Hansen (2021), cap. 2 <span class="pp">|</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 05 <span class="pp">|</span> Máxima verosimilitud y método de momentos <span class="pp">|</span> Hansen (2022), caps. 10–11 <span class="pp">|</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 06 <span class="pp">|</span> Mínimos cuadrados ordinarios como estimador <span class="pp">|</span> Hansen (2021), caps. 3–4 <span class="pp">|</span></span>
 <span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>**Temas clave:** tests de White y Breusch-Pagan, errores estándar de Huber-White, factor de inflación de varianza (VIF), sesgo por variable omitida, instrumentos y condiciones de relevancia/exclusión.</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad III: Regresión (clases 7–10)</span></span>
 <span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bibliografía Principal</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>El núcleo econométrico del curso, siguiendo la lógica de muestras grandes de Hansen. Estudiamos la distribución asintótica del estimador MCO, lo aplicamos en regresiones simples y múltiples, discutimos cómo cambian la especificación y la interpretación de los coeficientes cuando se transforman las variables (logaritmos, polinomios, interacciones), y cerramos con inferencia: pruebas de hipótesis, intervalos de confianza y errores estándar robustos.</span>
 <span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wooldridge, J. M.** (2015). *Introductory Econometrics: A Modern Approach*. Cengage Learning.</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stock, J. H. &amp; Watson, M. W.** (2020). *Introduction to Econometrics*. Pearson.</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Hansen, B. E.** (2022). *Econometrics*. Princeton University Press. <span class="co">[</span><span class="ot">Disponible en línea</span><span class="co">](https://www.ssc.wisc.edu/~bhansen/econometrics/)</span>.</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Casella, G. &amp; Berger, R. L.** (2002). *Statistical Inference*. Duxbury.</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Angrist, J. D. &amp; Pischke, J.-S.** (2009). *Mostly Harmless Econometrics*. Princeton University Press.</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bibliografía Complementaria</span></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Gujarati, D. &amp; Porter, D.** (2009). *Econometría*. McGraw-Hill.</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cameron, A. C. &amp; Trivedi, P. K.** (2005). *Microeconometrics: Methods and Applications*. Cambridge.</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wickham, H., Çetinkaya-Rundel, M. &amp; Grolemund, G.** (2023). <span class="co">[</span><span class="ot">*R para Ciencia de Datos*</span><span class="co">](https://davidrsch.github.io/r4ds-es/)</span> (2ª ed.).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Clase <span class="pp">|</span> Tema <span class="pp">|</span> Lecturas principales <span class="pp">|</span></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a><span class="pp">|:-----:|------|----------------------|</span></span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 07 <span class="pp">|</span> Teoría asintótica de mínimos cuadrados <span class="pp">|</span> Hansen (2021), cap. 7 <span class="pp">|</span></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 08 <span class="pp">|</span> Regresión simple y múltiple en la práctica <span class="pp">|</span> Hansen (2021), caps. 3–4; Wooldridge (2010) <span class="pp">|</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 09 <span class="pp">|</span> Formas funcionales e interpretación de coeficientes <span class="pp">|</span> Hansen (2021), cap. 2; Wooldridge (2010) <span class="pp">|</span></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 10 <span class="pp">|</span> Pruebas de hipótesis e intervalos de confianza <span class="pp">|</span> Hansen (2021), caps. 7–9; Hansen (2022), caps. 13–14 <span class="pp">|</span></span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">### Unidad IV: Introducción a la inferencia causal (clases 11–14)</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>La última unidad pasa de la pregunta "¿cómo se relacionan estas variables?" a "¿qué efecto tiene esta variable sobre esta otra?". Comenzamos con el problema de la endogeneidad y la noción de identificación, y luego revisamos tres diseños que buscan una fuente de variación plausiblemente exógena: variables instrumentales, diferencias en diferencias y regresión discontinua.</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> Clase <span class="pp">|</span> Tema <span class="pp">|</span> Lecturas principales <span class="pp">|</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="pp">|:-----:|------|----------------------|</span></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 11 <span class="pp">|</span> Causalidad, endogeneidad e identificación <span class="pp">|</span> Cunningham (2021); Angrist y Pischke (2009) <span class="pp">|</span></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 12 <span class="pp">|</span> Variables instrumentales <span class="pp">|</span> Hansen (2021), cap. 12; Cunningham (2021) <span class="pp">|</span></span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 13 <span class="pp">|</span> Diferencias en diferencias <span class="pp">|</span> Hansen (2021), cap. 18; Cunningham (2021) <span class="pp">|</span></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="pp">|</span> 14 <span class="pp">|</span> Regresión discontinua <span class="pp">|</span> Hansen (2021), cap. 21; Cunningham (2021) <span class="pp">|</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Bibliografía</span></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="fu">### Textos base</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press.</span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Hansen, B. E.** (2021). *Econometrics*. University of Wisconsin. <span class="co">[</span><span class="ot">Disponible en línea</span><span class="co">](https://www.ssc.wisc.edu/~bhansen/econometrics/)</span>.</span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="fu">### Textos de apoyo por sesión</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**DeGroot, M. H. y Schervish, M. J.** (2012). *Probability and Statistics* (4.ª ed.). Pearson.</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Blitzstein, J. K. y Hwang, J.** (2019). *Introduction to Probability* (2.ª ed.). CRC Press.</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Casella, G. y Berger, R. L.** (2002). *Statistical Inference* (2.ª ed.). Duxbury.</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wackerly, D., Mendenhall, W. y Scheaffer, R.** (2010). *Estadística matemática con aplicaciones* (7.ª ed.). Cengage Learning.</span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cameron, A. C. y Trivedi, P. K.** (2005). *Microeconometrics: Methods and Applications*. Cambridge University Press.</span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Cunningham, S.** (2021). <span class="co">[</span><span class="ot">*Causal Inference: The Mixtape*</span><span class="co">](https://mixtape.scunning.com/)</span>. Yale University Press.</span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Angrist, J. D. y Pischke, J.-S.** (2009). *Mostly Harmless Econometrics*. Princeton University Press.</span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### Textos complementarios</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>Útiles como referencia o segunda lectura, aunque el curso no se organiza en torno a ellos:</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wooldridge, J. M.** (2010). *Introducción a la econometría: un enfoque moderno* (4.ª ed.). Cengage Learning.</span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Stock, J. H. y Watson, M. W.** (2020). *Introduction to Econometrics* (4.ª ed.). Pearson.</span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wickham, H., Çetinkaya-Rundel, M. y Grolemund, G.** (2023). <span class="co">[</span><span class="ot">*R para Ciencia de Datos*</span><span class="co">](https://es.r4ds.hadley.nz/)</span> (2.ª ed.).</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -796,7 +947,7 @@ window.Quarto = {
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2026 — Fran Sofía Núñez Rebolledo</p>
+<p>© 2026 — Fran Sofía Núñez Rebolledo · <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
