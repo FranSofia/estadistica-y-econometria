@@ -754,6 +754,8 @@ Preguntas como las siguientes son preguntas de probabilidad condicional:
 
 Todas comparten la misma estructura: ¿cómo cambia la probabilidad de $A$ cuando sabemos que $B$ ha ocurrido?
 
+## ¿Por qué probabilidad condicional?
+
 ::: {.callout-warning}
 Hansen (2022) plantea estas preguntas como "¿*afecta* asistir a la universidad…?". Aquí las reformulamos a propósito: son preguntas de **asociación**, no de causalidad. Saber que $\Pr(A|B) \neq \Pr(A)$ no nos dice que $B$ *cause* $A$. Esa distinción es el tema central de la última unidad del curso.
 :::

@@ -8,7 +8,7 @@
 
 <meta name="author" content="Fran Sofía Núñez Rebolledo">
 
-<title>🗓️ Clase 02: Variables Aleatorias y Distribuciones – Estadística y Econometría</title>
+<title>Clase 02: Variables Aleatorias y Distribuciones – Estadística y Econometría</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -188,7 +188,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title">🗓️ Clase 02: Variables Aleatorias y Distribuciones</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
+<div class="quarto-title-block"><div><h1 class="title">Clase 02: Variables Aleatorias y Distribuciones</h1><button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button></div></div>
 </div>
 
 
@@ -211,23 +211,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>En esta segunda clase damos el paso de los eventos a las <strong>variables aleatorias</strong>: funciones que asignan números a los resultados de un experimento. Este concepto es el puente entre la probabilidad abstracta y la estadística aplicada, porque nos permite hablar de promedios, varianzas, y distribuciones —las herramientas con las que después construiremos estimadores y modelos.</p>
+<p>En esta clase damos el paso de los eventos a las <strong>variables aleatorias</strong>: funciones que asignan un número a cada resultado de un experimento. Con ellas podemos describir una distribución de probabilidad mediante su función de masa, su densidad o su función de distribución, y resumirla con cuantiles, esperanza y varianza. Revisamos algunas familias paramétricas de uso frecuente (Bernoulli, binomial, Poisson, uniforme, exponencial y normal) y terminamos con dos variables a la vez: distribución conjunta, marginal y condicional, covarianza, independencia y esperanza condicional. Esta última es la pieza que más adelante dará sentido a la regresión.</p>
 <section id="presentación" class="level2">
 <h2 class="anchored" data-anchor-id="presentación">👨‍🏫 Presentación</h2>
-<p>Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic <a href="slides.html">aquí</a> para ver la presentación en pantalla completa.</p>
+<p>Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic <a href="slides.html">aquí</a> para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar.</p>
 <iframe class="slide-embed" src="slides.html" title="Slides Clase 02"></iframe>
 </section>
 <section id="lecturas-recomendadas" class="level2">
 <h2 class="anchored" data-anchor-id="lecturas-recomendadas">📚 Lecturas recomendadas</h2>
 <ul>
-<li><strong>Casella, G. &amp; Berger, R. L.</strong> (2002). <em>Statistical Inference</em>, Capítulo 2: Transformations and Expectations.</li>
-<li><strong>Hansen, B. E.</strong> (2022). <a href="https://www.ssc.wisc.edu/~bhansen/econometrics/"><em>Econometrics</em></a>, Capítulo 2, secciones 2.3–2.10.</li>
-<li><strong>Wooldridge, J. M.</strong> (2015). <em>Introductory Econometrics</em>, Apéndice B.</li>
+<li><strong>Hansen, B. E.</strong> (2022). <em>Probability and Statistics for Economists</em>. Princeton University Press. Capítulo 2; secciones 3.1–3.9 y 3.12; secciones 4.1–4.16.</li>
+<li><strong>DeGroot, M. H. y Schervish, M. J.</strong> (2012). <em>Probability and Statistics</em> (4.ª ed.). Pearson. Secciones 3.1–3.6, 4.1–4.3, 4.6–4.7, 5.2, 5.4 y 5.6.</li>
 </ul>
 </section>
 <section id="dudas" class="level2">
 <h2 class="anchored" data-anchor-id="dudas">📟 Dudas</h2>
-<p>Para consultas: <strong>fnunezre@fen.uchile.cl</strong></p>
+<p>Si tienes preguntas sobre el material, no dudes en escribir a <strong>fnunezre@fen.uchile.cl</strong>.</p>
 
 
 <!-- -->
@@ -687,15 +686,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   });
   </script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "🗓️ Clase 02: Variables Aleatorias y Distribuciones"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Clase 02: Variables Aleatorias y Distribuciones"</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Fran Sofía Núñez Rebolledo"</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>En esta segunda clase damos el paso de los eventos a las **variables aleatorias**: funciones que asignan números a los resultados de un experimento. Este concepto es el puente entre la probabilidad abstracta y la estadística aplicada, porque nos permite hablar de promedios, varianzas, y distribuciones —las herramientas con las que después construiremos estimadores y modelos.</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>En esta clase damos el paso de los eventos a las **variables aleatorias**: funciones que asignan un número a cada resultado de un experimento. Con ellas podemos describir una distribución de probabilidad mediante su función de masa, su densidad o su función de distribución, y resumirla con cuantiles, esperanza y varianza. Revisamos algunas familias paramétricas de uso frecuente (Bernoulli, binomial, Poisson, uniforme, exponencial y normal) y terminamos con dos variables a la vez: distribución conjunta, marginal y condicional, covarianza, independencia y esperanza condicional. Esta última es la pieza que más adelante dará sentido a la regresión.</span>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">## 👨‍🏫 Presentación</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic <span class="co">[</span><span class="ot">aquí</span><span class="co">](slides.html)</span> para ver la presentación en pantalla completa.</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic <span class="co">[</span><span class="ot">aquí</span><span class="co">](slides.html)</span> para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar.</span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="in">```{=html}</span></span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="in">&lt;iframe class="slide-embed" src="slides.html" title="Slides Clase 02"&gt;&lt;/iframe&gt;</span></span>
@@ -703,13 +702,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📚 Lecturas recomendadas</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Casella, G. &amp; Berger, R. L.** (2002). *Statistical Inference*, Capítulo 2: Transformations and Expectations.</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Hansen, B. E.** (2022). <span class="co">[</span><span class="ot">*Econometrics*</span><span class="co">](https://www.ssc.wisc.edu/~bhansen/econometrics/)</span>, Capítulo 2, secciones 2.3–2.10.</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Wooldridge, J. M.** (2015). *Introductory Econometrics*, Apéndice B.</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📟 Dudas</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>Para consultas: **fnunezre\@fen.uchile.cl**</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press. Capítulo 2; secciones 3.1–3.9 y 3.12; secciones 4.1–4.16.</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**DeGroot, M. H. y Schervish, M. J.** (2012). *Probability and Statistics* (4.ª ed.). Pearson. Secciones 3.1–3.6, 4.1–4.3, 4.6–4.7, 5.2, 5.4 y 5.6.</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">## 📟 Dudas</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>Si tienes preguntas sobre el material, no dudes en escribir a **fnunezre\@fen.uchile.cl**.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">

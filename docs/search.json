@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "weeks/week02/slides.html#references",
+    "href": "weeks/week02/slides.html#references",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones",
+    "section": "Referencias",
+    "text": "Referencias\n\n\nDeGroot, M., & Schervish, M. (2012). Probability and statistics. Pearson Education Limited.\n\n\nHansen, B. E. (2022). Probability and statistics for economist. Princeton University Press."
+  },
+  {
     "objectID": "weeks/week01/slides.html#references",
     "href": "weeks/week01/slides.html#references",
     "title": "Clase 01: Fundamentos de Probabilidad",
@@ -156,29 +163,29 @@
   {
     "objectID": "weeks/week02/page.html",
     "href": "weeks/week02/page.html",
-    "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones",
     "section": "",
-    "text": "En esta segunda clase damos el paso de los eventos a las variables aleatorias: funciones que asignan números a los resultados de un experimento. Este concepto es el puente entre la probabilidad abstracta y la estadística aplicada, porque nos permite hablar de promedios, varianzas, y distribuciones —las herramientas con las que después construiremos estimadores y modelos."
+    "text": "En esta clase damos el paso de los eventos a las variables aleatorias: funciones que asignan un número a cada resultado de un experimento. Con ellas podemos describir una distribución de probabilidad mediante su función de masa, su densidad o su función de distribución, y resumirla con cuantiles, esperanza y varianza. Revisamos algunas familias paramétricas de uso frecuente (Bernoulli, binomial, Poisson, uniforme, exponencial y normal) y terminamos con dos variables a la vez: distribución conjunta, marginal y condicional, covarianza, independencia y esperanza condicional. Esta última es la pieza que más adelante dará sentido a la regresión."
   },
   {
     "objectID": "weeks/week02/page.html#presentación",
     "href": "weeks/week02/page.html#presentación",
-    "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones",
     "section": "👨‍🏫 Presentación",
-    "text": "👨‍🏫 Presentación\nPuedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic aquí para ver la presentación en pantalla completa."
+    "text": "👨‍🏫 Presentación\nPuedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic aquí para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar."
   },
   {
     "objectID": "weeks/week02/page.html#lecturas-recomendadas",
     "href": "weeks/week02/page.html#lecturas-recomendadas",
-    "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones",
     "section": "📚 Lecturas recomendadas",
-    "text": "📚 Lecturas recomendadas\n\nCasella, G. & Berger, R. L. (2002). Statistical Inference, Capítulo 2: Transformations and Expectations.\nHansen, B. E. (2022). Econometrics, Capítulo 2, secciones 2.3–2.10.\nWooldridge, J. M. (2015). Introductory Econometrics, Apéndice B."
+    "text": "📚 Lecturas recomendadas\n\nHansen, B. E. (2022). Probability and Statistics for Economists. Princeton University Press. Capítulo 2; secciones 3.1–3.9 y 3.12; secciones 4.1–4.16.\nDeGroot, M. H. y Schervish, M. J. (2012). Probability and Statistics (4.ª ed.). Pearson. Secciones 3.1–3.6, 4.1–4.3, 4.6–4.7, 5.2, 5.4 y 5.6."
   },
   {
     "objectID": "weeks/week02/page.html#dudas",
     "href": "weeks/week02/page.html#dudas",
-    "title": "🗓️ Clase 02: Variables Aleatorias y Distribuciones",
+    "title": "Clase 02: Variables Aleatorias y Distribuciones",
     "section": "📟 Dudas",
-    "text": "📟 Dudas\nPara consultas: fnunezre@fen.uchile.cl"
+    "text": "📟 Dudas\nSi tienes preguntas sobre el material, no dudes en escribir a fnunezre@fen.uchile.cl."
   }
 ]

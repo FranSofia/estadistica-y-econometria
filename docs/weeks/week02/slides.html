@@ -12,7 +12,7 @@
 
   <meta name="author" content="Fran Sofía Núñez Rebolledo">
   <meta name="dcterms.date" content="2026-09-24">
-  <title>Estadística y Econometría – Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]</title>
+  <title>Estadística y Econometría – Clase 02: Variables Aleatorias y Distribuciones</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -33,7 +33,93 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-  </style>
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #24292e;  }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #24292e; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #d73a49; } /* Attribute */
+    code span.bn { color: #005cc5; } /* BaseN */
+    code span.bu { color: #d73a49; } /* BuiltIn */
+    code span.cf { color: #d73a49; } /* ControlFlow */
+    code span.ch { color: #032f62; } /* Char */
+    code span.cn { color: #005cc5; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #d73a49; } /* DataType */
+    code span.dv { color: #005cc5; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #d73a49; font-weight: bold; } /* Extension */
+    code span.fl { color: #005cc5; } /* Float */
+    code span.fu { color: #6f42c1; } /* Function */
+    code span.im { color: #032f62; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #d73a49; } /* Keyword */
+    code span.op { color: #24292e; } /* Operator */
+    code span.ot { color: #6f42c1; } /* Other */
+    code span.pp { color: #d73a49; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #005cc5; } /* SpecialChar */
+    code span.ss { color: #032f62; } /* SpecialString */
+    code span.st { color: #032f62; } /* String */
+    code span.va { color: #e36209; } /* Variable */
+    code span.vs { color: #032f62; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+    /* CSS for citations */
+    div.csl-bib-body { }
+    div.csl-entry {
+      clear: both;
+      margin-bottom: 0em;
+    }
+    .hanging-indent div.csl-entry {
+      margin-left:2em;
+      text-indent:-2em;
+    }
+    div.csl-left-margin {
+      min-width:2em;
+      float:left;
+    }
+    div.csl-right-inline {
+      margin-left:2em;
+      padding-left:1em;
+    }
+    div.csl-indent {
+      margin-left: 2em;
+    }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-3ebd0ae54e08c2a497650c4785d38852.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -134,13 +220,13 @@
     <div class="slides">
 
 <section class="quarto-title-block center">
-  <h1 class="title">Clase 02: Variables Aleatorias y Distribuciones [PLANTILLA]</h1>
+  <h1 class="title">Clase 02: Variables Aleatorias y Distribuciones</h1>
   <p class="subtitle">Estadística y Econometría</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="mailto:fnunezre@fen.uchile.cl">Fran Sofía Núñez Rebolledo</a> 
+<a href="mailto:fnunezr@fen.uchile.cl">Fran Sofía Núñez Rebolledo</a> 
 </div>
         <p class="quarto-title-affiliation">
             UCH / INE
@@ -154,16 +240,32 @@
 <h2>Contenidos de hoy</h2>
 <ol type="1">
 <li><a href="#/variables-aleatorias">Variables aleatorias</a></li>
-<li><a href="#/distribución-y-densidad">Función de distribución y densidad</a></li>
-<li><a href="#/esperanza-y-varianza">Esperanza y varianza</a></li>
-<li><a href="#/covarianza-y-correlación">Covarianza y correlación</a></li>
-<li><a href="#/distribuciones-fundamentales">Distribuciones fundamentales</a></li>
+<li><a href="#/discretas">Variables aleatorias discretas</a></li>
+<li><a href="#/cdf">Función de distribución</a></li>
+<li><a href="#/continuas">Variables aleatorias continuas y densidades</a></li>
+<li><a href="#/transformaciones">Transformaciones</a></li>
+<li><a href="#/esperanza">Esperanza</a></li>
+<li><a href="#/varianza">Varianza y momentos</a></li>
+<li><a href="#/parametricas">Distribuciones paramétricas</a></li>
+<li><a href="#/bivariadas">Dos variables aleatorias</a></li>
 </ol>
 </section>
 <section>
 <section id="variables-aleatorias" class="title-slide slide level1 center">
 <h1>Variables aleatorias</h1>
 
+</section>
+<section class="slide level2">
+<h2>De resultados a números</h2>
+<p>En la clase anterior trabajamos con <strong>eventos</strong>: subconjuntos del espacio muestral <span class="math inline">\(\Omega\)</span>. En la práctica, casi siempre conviene representar los resultados aleatorios con <span class="alert">números</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> al lanzar una moneda, en vez de hablar de <span class="math inline">\(\{H\}\)</span> y <span class="math inline">\(\{T\}\)</span> definimos</p>
+<p><span class="math display">\[X = \begin{cases} 1 &amp; \text{si sale cara} \\ 0 &amp; \text{si sale sello} \end{cases}\]</span></p>
+<p><span class="math inline">\(X\)</span> es aleatoria porque su valor depende del resultado del lanzamiento.</p>
+</div>
+<div class="fragment">
+<p>Lo mismo hacemos con datos económicos: el ingreso de un hogar, los años de educación de una persona o si una persona está desempleada (<span class="math inline">\(1\)</span>) o no (<span class="math inline">\(0\)</span>) son variables aleatorias antes de observarlas.</p>
+</div>
 </section>
 <section class="slide level2">
 <h2>Definición</h2>
@@ -176,60 +278,12 @@
 <p><strong>Definición: Variable aleatoria</strong></p>
 </div>
 <div class="callout-content">
-<p>Una <strong>variable aleatoria</strong> <span class="math inline">\(X\)</span> es una función que asigna un número real a cada resultado del espacio muestral:</p>
-<p><span class="math display">\[X: \Omega \longrightarrow \mathbb{R}\]</span></p>
+<p>Una <strong>variable aleatoria</strong> es una función que asigna un número real a cada resultado del experimento: <span class="math display">\[X: \Omega \longrightarrow \mathbb{R}\]</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Tipos:</strong></p>
-<ul>
-<li><strong>Discreta:</strong> toma valores en un conjunto numerable. Ejemplo: <span class="math inline">\(X\)</span> = número de hijos.</li>
-<li><strong>Continua:</strong> toma valores en un intervalo de <span class="math inline">\(\mathbb{R}\)</span>. Ejemplo: <span class="math inline">\(X\)</span> = ingreso mensual.</li>
-</ul>
-</div>
-<div class="fragment">
-<p>En econometría, las variables de interés (<span class="math inline">\(Y_i\)</span>, <span class="math inline">\(X_i\)</span>, <span class="math inline">\(\varepsilon_i\)</span>) son todas variables aleatorias. Tratarlas como tales es lo que nos permite hacer inferencia.</p>
-</div>
-</section></section>
-<section>
-<section id="distribución-y-densidad" class="title-slide slide level1 center">
-<h1>Distribución y densidad</h1>
-
-</section>
-<section class="slide level2">
-<h2>Función de distribución acumulada (CDF)</h2>
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Definición</strong></p>
-</div>
-<div class="callout-content">
-<p>La <strong>función de distribución acumulada</strong> (CDF) de <span class="math inline">\(X\)</span> es:</p>
-<p><span class="math display">\[F_X(x) = P(X \leq x), \quad \forall x \in \mathbb{R}\]</span></p>
-</div>
-</div>
-</div>
-<div class="fragment">
-<p><strong>Propiedades:</strong></p>
-<ul>
-<li><span class="math inline">\(0 \leq F_X(x) \leq 1\)</span></li>
-<li><span class="math inline">\(F_X\)</span> es no decreciente</li>
-<li><span class="math inline">\(\lim_{x \to -\infty} F_X(x) = 0\)</span> y <span class="math inline">\(\lim_{x \to +\infty} F_X(x) = 1\)</span></li>
-<li><span class="math inline">\(P(a &lt; X \leq b) = F_X(b) - F_X(a)\)</span></li>
-</ul>
-</div>
-</section>
-<section class="slide level2">
-<h2>Función de densidad (PDF)</h2>
-<p>Para variables continuas, la <strong>función de densidad</strong> <span class="math inline">\(f_X(x)\)</span> se define como:</p>
-<p><span class="math display">\[f_X(x) = \frac{dF_X(x)}{dx}\]</span></p>
-<div class="fragment">
-<p>De modo que:</p>
-<p><span class="math display">\[P(a \leq X \leq b) = \int_a^b f_X(x) \, dx\]</span></p>
+<p>Si el resultado es un vector de números (por ejemplo, salario y experiencia de una misma persona) hablamos de un <strong>vector aleatorio</strong>.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -238,238 +292,1284 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Notación</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>Ojo:</strong> <span class="math inline">\(f_X(x)\)</span> no es una probabilidad. Puede ser mayor que 1. Lo que sí se cumple es <span class="math inline">\(f_X(x) \geq 0\)</span> y <span class="math inline">\(\int_{-\infty}^{+\infty} f_X(x) \, dx = 1\)</span>.</p>
+<ul>
+<li><span class="math inline">\(X\)</span> (mayúscula) es la <strong>variable aleatoria</strong>: un objeto cuyo valor aún no conocemos.</li>
+<li><span class="math inline">\(x\)</span> (minúscula) es una <strong>realización</strong>: un número específico que <span class="math inline">\(X\)</span> puede tomar.</li>
+</ul>
+<p>Así, <span class="math inline">\(\Pr(X = x)\)</span> se lee “la probabilidad de que la variable <span class="math inline">\(X\)</span> tome el valor <span class="math inline">\(x\)</span>”.</p>
 </div>
 </div>
 </div>
 </div>
+</section>
+<section class="slide level2">
+<h2>Una variable aleatoria es una función</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-1-1.png" width="672" class="r-stretch"><p>Cada resultado de <span class="math inline">\(\Omega\)</span> se envía a un punto de la recta real. La probabilidad “viaja” con la función: <span class="math inline">\(\Pr(X = 1) = \Pr(\{H\})\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </section></section>
 <section>
-<section id="esperanza-y-varianza" class="title-slide slide level1 center">
-<h1>Esperanza y varianza</h1>
+<section id="discretas" class="title-slide slide level1 center">
+<h1>Variables aleatorias discretas</h1>
 
 </section>
 <section class="slide level2">
-<h2>Esperanza (valor esperado)</h2>
+<h2>Soporte y función de masa de probabilidad</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Definición</strong></p>
+<p><strong>Definición: Variable aleatoria discreta</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[E[X] = \begin{cases} \sum_x x \cdot p(x) &amp; \text{si } X \text{ es discreta} \\ \int_{-\infty}^{+\infty} x \cdot f_X(x) \, dx &amp; \text{si } X \text{ es continua} \end{cases}\]</span></p>
+<p><span class="math inline">\(X\)</span> es <strong>discreta</strong> si existe un conjunto finito o infinito numerable <span class="math inline">\(\mathcal{X}\)</span> tal que <span class="math inline">\(\Pr(X \in \mathcal{X}) = 1\)</span>. El menor conjunto con esta propiedad es el <strong>soporte</strong> de <span class="math inline">\(X\)</span>: los valores que ocurren con probabilidad positiva <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Propiedades fundamentales:</strong></p>
-<ul>
-<li>Linealidad: <span class="math inline">\(E[aX + bY] = aE[X] + bE[Y]\)</span></li>
-<li><span class="math inline">\(E[c] = c\)</span> para cualquier constante <span class="math inline">\(c\)</span></li>
-<li>Si <span class="math inline">\(X \geq 0\)</span>, entonces <span class="math inline">\(E[X] \geq 0\)</span></li>
-</ul>
-</div>
-<div class="fragment">
-<p>La esperanza es el operador más importante de la estadística. En econometría, la <strong>esperanza condicional</strong> <span class="math inline">\(E[Y|X]\)</span> es la función de regresión poblacional.</p>
-</div>
-</section>
-<section class="slide level2">
-<h2>Varianza</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Definición</strong></p>
+<p><strong>Definición: Función de masa de probabilidad (PMF)</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[\text{Var}(X) = E\left[(X - E[X])^2\right] = E[X^2] - (E[X])^2\]</span></p>
+<p><span class="math display">\[\pi(x) = \Pr(X = x)\]</span> Asigna a cada valor posible su probabilidad. Cumple <span class="math inline">\(\pi(x) \geq 0\)</span> y <span class="math inline">\(\sum_{x \in \mathcal{X}} \pi(x) = 1\)</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplos de funciones de masa</h2>
+<p><strong>Moneda con probabilidad <span class="math inline">\(p\)</span> de cara.</strong> Soporte <span class="math inline">\(\{0, 1\}\)</span>, con <span class="math inline">\(\pi(0) = 1 - p\)</span> y <span class="math inline">\(\pi(1) = p\)</span>.</p>
+<div class="fragment">
+<p><strong>Dado justo.</strong> Soporte <span class="math inline">\(\{1, \ldots, 6\}\)</span>, con <span class="math inline">\(\pi(j) = 1/6\)</span> para cada <span class="math inline">\(j\)</span>.</p>
 </div>
 <div class="fragment">
-<p><strong>Propiedades:</strong></p>
-<ul>
-<li><span class="math inline">\(\text{Var}(X) \geq 0\)</span></li>
-<li><span class="math inline">\(\text{Var}(aX + b) = a^2 \text{Var}(X)\)</span></li>
-<li>Si <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> son independientes: <span class="math inline">\(\text{Var}(X + Y) = \text{Var}(X) + \text{Var}(Y)\)</span></li>
-</ul>
+<p><strong>Un soporte infinito numerable.</strong> Soporte <span class="math inline">\(\{0, 1, 2, \ldots\}\)</span> con <span class="math display">\[\pi(k) = \frac{e^{-1}}{k!}, \qquad k = 0, 1, 2, \ldots\]</span></p>
+<p>Es una función de masa válida porque <span class="math inline">\(\sum_{k=0}^{\infty} 1/k! = e\)</span>. Es un caso particular de la distribución de Poisson, que veremos más adelante <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 <div class="fragment">
-<p>La <strong>desviación estándar</strong> <span class="math inline">\(\sigma_X = \sqrt{\text{Var}(X)}\)</span> tiene las mismas unidades que <span class="math inline">\(X\)</span>.</p>
+<p><strong>Años de educación</strong> (asalariados de EE.UU., 2009). La mayor probabilidad está en 12 años (cerca de 27%, secundaria completa) y la segunda en 16 años (cerca de 23%, título universitario) <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: graficar una función de masa</h2>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>k  <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
+<span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>pk <span class="ot">&lt;-</span> <span class="fu">dpois</span>(k, <span class="at">lambda =</span> <span class="dv">1</span>)</span>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pk, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.368 0.368 0.184 0.061 0.015 0.003</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(pk, <span class="at">names.arg =</span> k,</span>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>,</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"k"</span>,</span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pr(X = k)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<p>La altura de cada barra es la probabilidad de ese valor. <code>dpois()</code> evalúa la función de masa de la Poisson; en R, las funciones que empiezan con <code>d</code> entregan masas o densidades.</p>
 </div>
 </section></section>
 <section>
-<section id="covarianza-y-correlación" class="title-slide slide level1 center">
-<h1>Covarianza y correlación</h1>
+<section id="cdf" class="title-slide slide level1 center">
+<h1>Función de distribución</h1>
 
 </section>
 <section class="slide level2">
-<h2>Covarianza</h2>
-<p><span class="math display">\[\text{Cov}(X, Y) = E[(X - \mu_X)(Y - \mu_Y)] = E[XY] - E[X]E[Y]\]</span></p>
-<div class="fragment">
-<p><strong>Propiedades:</strong></p>
-<ul>
-<li><span class="math inline">\(\text{Cov}(X, X) = \text{Var}(X)\)</span></li>
-<li><span class="math inline">\(\text{Cov}(X, Y) = \text{Cov}(Y, X)\)</span></li>
-<li><span class="math inline">\(\text{Cov}(aX, bY) = ab \cdot \text{Cov}(X, Y)\)</span></li>
-<li>Si <span class="math inline">\(X \perp Y\)</span> (independientes), entonces <span class="math inline">\(\text{Cov}(X, Y) = 0\)</span></li>
-</ul>
+<h2>La función de distribución acumulada</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Función de distribución (CDF)</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[F(x) = \Pr(X \leq x)\]</span> Es la probabilidad de que <span class="math inline">\(X\)</span> tome un valor menor o igual que <span class="math inline">\(x\)</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
 </div>
 <div class="fragment">
+<p>Escribimos <span class="math inline">\(X \sim F\)</span> para decir que “<span class="math inline">\(X\)</span> tiene distribución <span class="math inline">\(F\)</span>”. Cuando hay varias variables, usamos subíndices: <span class="math inline">\(F_X\)</span>, <span class="math inline">\(F_Y\)</span>.</p>
+</div>
+<div class="fragment">
+<p>La CDF tiene una gran ventaja: está definida para <strong>cualquier</strong> variable aleatoria, sea discreta, continua o mixta. Por eso es la forma más general de describir una distribución.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Propiedades de una CDF</h2>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Teorema</strong></p>
 </div>
 <div class="callout-content">
-<p><strong>El recíproco no es cierto:</strong> <span class="math inline">\(\text{Cov}(X,Y) = 0\)</span> no implica independencia. Solo implica ausencia de relación <strong>lineal</strong>.</p>
+<p>Si <span class="math inline">\(F\)</span> es una función de distribución, entonces <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<ol type="1">
+<li><span class="math inline">\(F(x)\)</span> es no decreciente.</li>
+<li><span class="math inline">\(\lim_{x \to -\infty} F(x) = 0\)</span>.</li>
+<li><span class="math inline">\(\lim_{x \to \infty} F(x) = 1\)</span>.</li>
+<li><span class="math inline">\(F\)</span> es continua por la derecha: <span class="math inline">\(\lim_{x \downarrow x_0} F(x) = F(x_0)\)</span>.</li>
+</ol>
 </div>
 </div>
 </div>
+<div class="fragment">
+<p>Las propiedades 1 y 2 vienen del Axioma 1 (las probabilidades no son negativas) y la 3 del Axioma 2. La 4 es consecuencia de haber definido <span class="math inline">\(F\)</span> con “<span class="math inline">\(\leq\)</span>” y no con “<span class="math inline">\(&lt;\)</span>”.</p>
+</div>
+<div class="fragment">
+<p>Para una variable <strong>discreta</strong>, la CDF es una <span class="alert">función escalonada</span>: es constante entre los puntos del soporte y salta en cada uno de ellos una altura igual a <span class="math inline">\(\pi(x)\)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>Correlación</h2>
-<p>El <strong>coeficiente de correlación</strong> de Pearson normaliza la covarianza:</p>
-<p><span class="math display">\[\rho_{XY} = \frac{\text{Cov}(X, Y)}{\sigma_X \cdot \sigma_Y}, \quad -1 \leq \rho \leq 1\]</span></p>
+<h2>Probabilidades a partir de la CDF</h2>
+<p>Para cualquier intervalo <span class="math inline">\((a, b]\)</span>:</p>
+<p><span class="math display">\[\Pr(a &lt; X \leq b) = F(b) - F(a)\]</span></p>
 <div class="fragment">
+<p><strong>Ejemplo: salarios por hora</strong> (EE.UU., 2009). La CDF evaluada en algunos puntos es <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: center;">Valor de <span class="math inline">\(\rho\)</span></th>
-<th style="text-align: left;">Interpretación</th>
+<th><span class="math inline">\(x\)</span></th>
+<th>$10</th>
+<th>$20</th>
+<th>$30</th>
+<th>$40</th>
+<th>$50</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\rho = 1\)</span></td>
-<td style="text-align: left;">Relación lineal positiva perfecta</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\rho = 0\)</span></td>
-<td style="text-align: left;">Sin asociación lineal</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(\rho = -1\)</span></td>
-<td style="text-align: left;">Relación lineal negativa perfecta</td>
+<td><span class="math inline">\(F(x)\)</span></td>
+<td>0.14</td>
+<td>0.54</td>
+<td>0.78</td>
+<td>0.89</td>
+<td>0.94</td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="fragment">
-<p>En regresión simple, <span class="math inline">\(R^2 = \rho_{XY}^2\)</span>. Esta conexión la formalizaremos más adelante.</p>
+<ul>
+<li>54% de los salarios son menores o iguales a $20.</li>
+<li>La probabilidad de que un salario esté entre $10 y $20 es <span class="math inline">\(0.54 - 0.14 = 0.30\)</span>.</li>
+<li>La probabilidad de que supere los $50 es <span class="math inline">\(1 - 0.94 = 0.06\)</span>.</li>
+</ul>
 </div>
 </section></section>
 <section>
-<section id="distribuciones-fundamentales" class="title-slide slide level1 center">
-<h1>Distribuciones fundamentales</h1>
+<section id="continuas" class="title-slide slide level1 center">
+<h1>Variables aleatorias continuas y densidades</h1>
 
 </section>
 <section class="slide level2">
-<h2>La distribución Normal</h2>
+<h2>Variables aleatorias continuas</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Distribución Normal</strong></p>
+<p><strong>Definición: Variable aleatoria continua</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, su densidad es:</p>
-<p><span class="math display">\[f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left[-\frac{1}{2\sigma^2}(x - \mu)^2\right]\]</span></p>
+<p><span class="math inline">\(X\)</span> es <strong>continua</strong> si su función de distribución <span class="math inline">\(F(x)\)</span> es continua <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>¿Por qué es tan importante?</strong></p>
-<ol type="1">
-<li>El <strong>Teorema Central del Límite</strong> garantiza que los promedios muestrales convergen a una Normal.</li>
-<li>Bajo normalidad de los errores, el estimador OLS es idéntico al de <strong>máxima verosimilitud</strong> (MLE).</li>
-<li>Los tests <span class="math inline">\(t\)</span> y <span class="math inline">\(F\)</span> se derivan de ella.</li>
-</ol>
+<p><strong>Ejemplo: Uniforme en <span class="math inline">\([0,1]\)</span>.</strong> <span class="math display">\[F(x) = \begin{cases} 0 &amp; x &lt; 0 \\ x &amp; 0 \leq x \leq 1 \\ 1 &amp; x &gt; 1 \end{cases}\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo: Exponencial.</strong> <span class="math display">\[F(x) = \begin{cases} 0 &amp; x &lt; 0 \\ 1 - e^{-x} &amp; x \geq 0 \end{cases}\]</span></p>
+<p>Ambas son continuas, parten en 0 y llegan a 1: cumplen las propiedades de una CDF.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>Distribuciones derivadas de la Normal</h2>
-<p>Estas distribuciones aparecen constantemente en inferencia:</p>
+<h2>Cada punto tiene probabilidad cero</h2>
+<p>Si <span class="math inline">\(F\)</span> es continua, para cualquier número <span class="math inline">\(x\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p><span class="math display">\[\Pr(X = x) = \lim_{\epsilon \to 0} \Pr(x \leq X \leq x + \epsilon) = \lim_{\epsilon \to 0} \left[F(x + \epsilon) - F(x)\right] = 0\]</span></p>
 <div class="fragment">
-<p><strong>Chi-cuadrado:</strong> Si <span class="math inline">\(Z_1, \ldots, Z_k \overset{iid}{\sim} N(0,1)\)</span>: <span class="math display">\[\sum_{i=1}^{k} Z_i^2 \sim \chi^2_k\]</span></p>
+<p>Esto conecta con lo que vimos la clase pasada: <strong>probabilidad cero no significa imposible</strong>. Cada valor tiene probabilidad cero, pero la probabilidad de que <span class="math inline">\(X\)</span> tome <em>algún</em> valor es uno.</p>
 </div>
 <div class="fragment">
-<p><strong>t de Student:</strong> Si <span class="math inline">\(Z \sim N(0,1)\)</span> y <span class="math inline">\(V \sim \chi^2_k\)</span> independientes: <span class="math display">\[T = \frac{Z}{\sqrt{V/k}} \sim t_k\]</span></p>
-</div>
-<div class="fragment">
-<p><strong>F de Fisher:</strong> Si <span class="math inline">\(V_1 \sim \chi^2_{k_1}\)</span> y <span class="math inline">\(V_2 \sim \chi^2_{k_2}\)</span> independientes: <span class="math display">\[F = \frac{V_1/k_1}{V_2/k_2} \sim F_{k_1, k_2}\]</span></p>
+<p>Una consecuencia práctica: para variables continuas da lo mismo usar desigualdades estrictas o no,</p>
+<p><span class="math display">\[\Pr(a &lt; X &lt; b) = \Pr(a \leq X \leq b) = F(b) - F(a)\]</span></p>
 </div>
 </section>
 <section class="slide level2">
-<h2>¿Dónde aparecen estas distribuciones?</h2>
+<h2>La función de densidad</h2>
+<p>Las variables continuas no tienen función de masa. Su análogo es la derivada de la CDF.</p>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Función de densidad (PDF)</strong></p>
+</div>
+<div class="callout-content">
+<p>Cuando <span class="math inline">\(F(x)\)</span> es diferenciable, su <strong>densidad</strong> es <span class="math display">\[f(x) = \frac{d}{dx} F(x)\]</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Una función <span class="math inline">\(f\)</span> es una densidad si y solo si <span class="math inline">\(f(x) \geq 0\)</span> para todo <span class="math inline">\(x\)</span> y <span class="math inline">\(\int_{-\infty}^{\infty} f(x)\,dx = 1\)</span>. Por el teorema fundamental del cálculo,</p>
+<p><span class="math display">\[\Pr(a \leq X \leq b) = \int_a^b f(x)\,dx\]</span></p>
+<p><span class="alert">Las áreas bajo la densidad son probabilidades</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Cómo leer una densidad</h2>
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Cuidado</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(f(x)\)</span> <strong>no</strong> es una probabilidad. Puede ser mayor que 1 (por ejemplo, la uniforme en <span class="math inline">\([0, 0.5]\)</span> tiene <span class="math inline">\(f(x) = 2\)</span>). Lo que es una probabilidad es el área bajo <span class="math inline">\(f\)</span> en un intervalo.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo: salarios por hora</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<ul>
+<li>Donde la densidad es alta, los valores de <span class="math inline">\(X\)</span> son relativamente más frecuentes.</li>
+<li>El área entre $20 y $30 es 0.24: esa es la probabilidad de que un salario esté en ese rango.</li>
+<li>La densidad tiene un único máximo cerca de $15. Ese punto se llama <strong>moda</strong>.</li>
+<li>La cola derecha cae mucho más lento que la izquierda. Esta asimetría se llama <strong>sesgo</strong> (<em>skewness</em>) y es típica de los ingresos y la riqueza: hay una probabilidad pequeña, pero relevante, de salarios muy altos.</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplos de densidades</h2>
+<p><strong>Uniforme en <span class="math inline">\([0,1]\)</span>.</strong> Derivando <span class="math inline">\(F(x) = x\)</span>: <span class="math display">\[f(x) = 1 \quad \text{para } 0 \leq x \leq 1, \qquad 0 \text{ en otro caso}\]</span></p>
+<div class="fragment">
+<p><strong>Exponencial.</strong> Derivando <span class="math inline">\(F(x) = 1 - e^{-x}\)</span>: <span class="math display">\[f(x) = e^{-x} \quad \text{para } x \geq 0\]</span></p>
+</div>
+<div class="fragment">
+<p>Con ella podemos calcular, por ejemplo: <span class="math display">\[\Pr(1 \leq X \leq 2) = \int_1^2 e^{-x}\,dx = e^{-1} - e^{-2} \approx 0.233\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Cuantiles</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Cuantil</strong></p>
+</div>
+<div class="callout-content">
+<p>Para una distribución continua, el <strong>cuantil</strong> <span class="math inline">\(q(\alpha)\)</span> es el valor que deja una probabilidad <span class="math inline">\(\alpha\)</span> a su izquierda: <span class="math display">\[F(q(\alpha)) = \alpha \qquad \Longleftrightarrow \qquad q(\alpha) = F^{-1}(\alpha)\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>La <strong>mediana</strong> es <span class="math inline">\(q(0.5)\)</span>.</li>
+<li>Los <strong>cuartiles</strong> son <span class="math inline">\(q(0.25)\)</span>, <span class="math inline">\(q(0.5)\)</span> y <span class="math inline">\(q(0.75)\)</span>. Los <strong>deciles</strong> son <span class="math inline">\(q(0.1), \ldots, q(0.9)\)</span>.</li>
+<li>Expresados en porcentaje se llaman <strong>percentiles</strong>: el percentil 95 es <span class="math inline">\(q(0.95)\)</span>.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo: salarios por hora.</strong> Los cuartiles son $12.82, $18.88 y $28.35: la mitad de los asalariados gana $18.88 o menos por hora <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: <code>d</code>, <code>p</code>, <code>q</code> y <code>r</code></h2>
+<p>R usa el mismo prefijo para cada distribución: <code>d</code> (densidad o masa), <code>p</code> (CDF), <code>q</code> (cuantil) y <code>r</code> (simulación).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dexp</span>(<span class="dv">1</span>)                  <span class="co"># densidad f(1) = e^(-1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3678794</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pexp</span>(<span class="dv">1</span>)        <span class="co"># Pr(1 &lt;= X &lt;= 2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2325442</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">qexp</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.9</span>))        <span class="co"># mediana y cuantil 0.9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6931472 2.3025851</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Los cuantiles coinciden con la fórmula analítica <span class="math inline">\(q(\alpha) = -\log(1 - \alpha)\)</span>: la mediana es <span class="math inline">\(\approx 0.69\)</span> y el cuantil 0.9 es <span class="math inline">\(\approx 2.30\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section></section>
+<section>
+<section id="transformaciones" class="title-slide slide level1 center">
+<h1>Transformaciones</h1>
+
+</section>
+<section class="slide level2">
+<h2>Funciones de variables aleatorias</h2>
+<p>Si <span class="math inline">\(X\)</span> es una variable aleatoria y <span class="math inline">\(Y = g(X)\)</span>, entonces <span class="math inline">\(Y\)</span> <strong>también es una variable aleatoria</strong> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<p><strong>Caso discreto.</strong> Los puntos del soporte se mueven y las probabilidades se conservan. Si dos puntos van al mismo valor, sus probabilidades se suman.</p>
+<p><strong>Ejemplo:</strong> <span class="math inline">\(X\)</span> con soporte <span class="math inline">\(\{-1, 0, 1\}\)</span> e <span class="math inline">\(Y = X^2\)</span>. Como <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span> van a <span class="math inline">\(1\)</span>: <span class="math display">\[\Pr(Y = 0) = \Pr(X = 0), \qquad \Pr(Y = 1) = \Pr(X = -1) + \Pr(X = 1)\]</span></p>
+</div>
+<div class="fragment">
+<p>Esto importa en economía porque trabajamos todo el tiempo con transformaciones: logaritmo del ingreso, ingreso al cuadrado, indicadores de pobreza, etc.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Transformaciones monótonas de variables continuas</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Teorema</strong></p>
+</div>
+<div class="callout-content">
+<p>Si <span class="math inline">\(X\)</span> tiene densidad <span class="math inline">\(f_X\)</span> y <span class="math inline">\(g\)</span> es estrictamente monótona con inversa <span class="math inline">\(g^{-1}\)</span> diferenciable, entonces <span class="math inline">\(Y = g(X)\)</span> tiene densidad <span class="math display">\[f_Y(y) = f_X\big(g^{-1}(y)\big)\left|\frac{d}{dy} g^{-1}(y)\right|\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>El término <span class="math inline">\(\left|\frac{d}{dy} g^{-1}(y)\right|\)</span> es el <strong>jacobiano</strong>: corrige por cuánto “estira” o “comprime” la transformación cada tramo de la recta.</p>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo: log salarios.</strong> Si <span class="math inline">\(Y = \log X\)</span>, entonces <span class="math inline">\(f_Y(y) = f_X(e^y)\,e^y\)</span>. La densidad de los log salarios es mucho más simétrica que la de los salarios en niveles <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Es una de las razones por las que en econometría solemos modelar <span class="math inline">\(\log(\text{salario})\)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: de uniforme a exponencial</h2>
+<p>Un resultado útil: si <span class="math inline">\(U \sim U[0,1]\)</span>, entonces <span class="math inline">\(Y = -\log U\)</span> tiene distribución exponencial <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Comprobémoslo simulando:</p>
+<div class="cell columns column-output-location">
+<div class="column">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb10-2"><a aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000</span>)</span>
+<span id="cb10-3"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">log</span>(u)</span>
+<span id="cb10-4"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"grey85"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>, <span class="at">xlab =</span> <span class="st">"y"</span>)</span>
+<span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dexp</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" width="480"></p>
+</figure>
+</div>
+</div>
+</div></div>
+<div class="fragment">
+<p>El histograma de los valores simulados coincide con la densidad exponencial teórica (línea roja).</p>
+</div>
+</section></section>
+<section>
+<section id="esperanza" class="title-slide slide level1 center">
+<h1>Esperanza</h1>
+
+</section>
+<section class="slide level2">
+<h2>Esperanza de una variable discreta</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Esperanza</strong></p>
+</div>
+<div class="callout-content">
+<p>Para una variable discreta con soporte <span class="math inline">\(\{\tau_j\}\)</span> y masas <span class="math inline">\(\pi_j\)</span>, la <strong>esperanza</strong> (o valor esperado) de <span class="math inline">\(X\)</span> es <span class="math display">\[\mathbb{E}[X] = \sum_{j} \tau_j \, \pi_j\]</span> si la serie converge <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Es un <strong>promedio ponderado</strong> de los valores posibles, donde las ponderaciones son las probabilidades.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Aunque <span class="math inline">\(X\)</span> es aleatoria, <span class="math inline">\(\mathbb{E}[X]\)</span> <strong>no lo es</strong>: es un número fijo, una característica de la distribución <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplos</h2>
+<p><strong>Bernoulli.</strong> <span class="math inline">\(\mathbb{E}[X] = 1 \cdot p + 0 \cdot (1-p) = p\)</span></p>
+<div class="fragment">
+<p><strong>Dado justo.</strong> <span class="math inline">\(\mathbb{E}[X] = \frac{1}{6}(1 + 2 + 3 + 4 + 5 + 6) = 3.5\)</span></p>
+<p>Nótese que 3.5 no es un valor que el dado pueda tomar: la esperanza no tiene por qué pertenecer al soporte.</p>
+</div>
+<div class="fragment">
+<p><strong>Años de educación</strong> (EE.UU., 2009): <span class="math inline">\(\mathbb{E}[X] \approx 14\)</span> años <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>Interpretación física:</strong> la esperanza es el <span class="alert">centro de masa</span> de la distribución. Si pusiéramos las probabilidades como pesos sobre una tabla, la tabla quedaría en equilibrio al apoyarla en <span class="math inline">\(\mathbb{E}[X]\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Esperanza de una variable continua</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>Si <span class="math inline">\(X\)</span> tiene densidad <span class="math inline">\(f(x)\)</span>, <span class="math display">\[\mathbb{E}[X] = \int_{-\infty}^{\infty} x\, f(x)\,dx\]</span> cuando la integral converge <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li><strong>Uniforme en <span class="math inline">\([0,1]\)</span>:</strong> <span class="math inline">\(\mathbb{E}[X] = \int_0^1 x\,dx = 1/2\)</span></li>
+<li><strong>Exponencial:</strong> <span class="math inline">\(\mathbb{E}[X] = \int_0^\infty x e^{-x}\,dx = 1\)</span> (integrando por partes)</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Salarios por hora:</strong> <span class="math inline">\(\mathbb{E}[X] = \$23.92\)</span>, mientras que la mediana es $18.88 <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>En distribuciones con sesgo a la derecha, como los ingresos, la media queda <strong>por encima</strong> de la mediana: los salarios muy altos “tiran” el promedio hacia arriba. Por eso muchas estadísticas oficiales de ingresos reportan la mediana.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Esperanza de transformaciones y linealidad</h2>
+<p>La esperanza de una función <span class="math inline">\(g(X)\)</span> se calcula con la distribución de <span class="math inline">\(X\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p><span class="math display">\[\mathbb{E}[g(X)] = \sum_j g(\tau_j)\,\pi_j \qquad \text{o} \qquad \mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)\,f(x)\,dx\]</span></p>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Teorema: Linealidad de la esperanza</strong></p>
+</div>
+<div class="callout-content">
+<p>Para constantes <span class="math inline">\(a\)</span> y <span class="math inline">\(b\)</span>: <span class="math display">\[\mathbb{E}[a + bX] = a + b\,\mathbb{E}[X]\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo:</strong> si <span class="math inline">\(X \sim U[0,1]\)</span>, entonces <span class="math inline">\(\mathbb{E}[X^2] = \int_0^1 x^2\,dx = 1/3\)</span>. Observe que <span class="math inline">\(\mathbb{E}[X^2] = 1/3 \neq (\mathbb{E}[X])^2 = 1/4\)</span>: la linealidad <strong>no</strong> se extiende a funciones no lineales.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Desigualdad de Jensen</h2>
+<p>Para funciones no lineales no podemos “meter la esperanza adentro”, pero sí sabemos hacia dónde va el error si la función es convexa o cóncava.</p>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Teorema: Desigualdad de Jensen</strong></p>
+</div>
+<div class="callout-content">
+<p>Si <span class="math inline">\(g\)</span> es <strong>convexa</strong>: <span class="math inline">\(\quad g(\mathbb{E}[X]) \leq \mathbb{E}[g(X)]\)</span></p>
+<p>Si <span class="math inline">\(g\)</span> es <strong>cóncava</strong>: <span class="math inline">\(\quad \mathbb{E}[g(X)] \leq g(\mathbb{E}[X])\)</span></p>
+<p><span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo con salarios.</strong> Como el logaritmo es cóncavo, <span class="math inline">\(\mathbb{E}[\log X] \leq \log \mathbb{E}[X]\)</span>. En los datos: <span class="math inline">\(\mathbb{E}[\log(\text{salario})] = 2.95\)</span>, mientras que <span class="math inline">\(\log(23.92) \approx 3.17\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p>La misma lógica explica la aversión al riesgo: con utilidad cóncava, la utilidad esperada de una lotería es menor que la utilidad de su valor esperado.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>¿Siempre existe la esperanza? (opcional)</h2>
+<p>No necesariamente. <strong>La paradoja de San Petersburgo</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>: se lanza una moneda hasta que sale cara. Si sale en el lanzamiento <span class="math inline">\(k\)</span>, el pago es <span class="math inline">\(X = 2^k\)</span>, con <span class="math inline">\(\Pr(X = 2^k) = 2^{-k}\)</span>.</p>
+<p><span class="math display">\[\mathbb{E}[X] = \sum_{k=1}^{\infty} 2^k \cdot 2^{-k} = \sum_{k=1}^{\infty} 1 = \infty\]</span></p>
+<div class="fragment">
+<p>A pesar de que la esperanza es infinita, casi nadie pagaría mucho por jugar. La “paradoja” desaparece al introducir una utilidad cóncava.</p>
+</div>
+<div class="fragment">
+<p>En distribuciones continuas pasa lo mismo: la densidad <span class="math inline">\(f(x) = x^{-2}\)</span> para <span class="math inline">\(x &gt; 1\)</span> (un caso de la Pareto) tiene esperanza infinita, y la distribución de Cauchy no tiene esperanza definida <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section></section>
+<section>
+<section id="varianza" class="title-slide slide level1 center">
+<h1>Varianza y momentos</h1>
+
+</section>
+<section class="slide level2">
+<h2>Varianza y desviación estándar</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>La <strong>varianza</strong> de <span class="math inline">\(X\)</span> es <span class="math display">\[\sigma^2 = \text{var}(X) = \mathbb{E}\left[(X - \mathbb{E}[X])^2\right]\]</span> y la <strong>desviación estándar</strong> es <span class="math inline">\(\sigma = \sqrt{\sigma^2}\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>La varianza mide la <strong>dispersión</strong> en torno a la media. Está en unidades al cuadrado; la desviación estándar vuelve a las unidades de <span class="math inline">\(X\)</span>.</li>
+<li><span class="math inline">\(\sigma^2 \geq 0\)</span>, y vale cero solo si <span class="math inline">\(X\)</span> es <strong>degenerada</strong> (constante con probabilidad 1).</li>
+</ul>
+</div>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Dos resultados útiles</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\text{var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2 \qquad\qquad \text{var}(a + bX) = b^2\,\text{var}(X)\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+<p>La segunda implica que sumar una constante no cambia la varianza.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplos</h2>
+<p><strong>Bernoulli.</strong> <span class="math inline">\(\mathbb{E}[X^2] = p\)</span>, así que <span class="math display">\[\text{var}(X) = p - p^2 = p(1-p)\]</span></p>
+<p>La varianza es máxima cuando <span class="math inline">\(p = 1/2\)</span>: el caso más incierto.</p>
+<div class="fragment">
+<p><strong>Uniforme en <span class="math inline">\([0,1]\)</span>.</strong> <span class="math inline">\(\text{var}(X) = \mathbb{E}[X^2] - (\mathbb{E}[X])^2 = 1/3 - 1/4 = 1/12\)</span></p>
+</div>
+<div class="fragment">
+<p><strong>Datos de EE.UU., 2009</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Media</th>
+<th>Varianza</th>
+<th>Desv. estándar</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Salario por hora</td>
+<td>$24</td>
+<td>429</td>
+<td>$20.7</td>
+</tr>
+<tr class="even">
+<td>Años de educación</td>
+<td>13.9</td>
+<td>7.5</td>
+<td>2.7</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section class="slide level2">
+<h2>Momentos (opcional)</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>El <strong>momento</strong> de orden <span class="math inline">\(m\)</span> es <span class="math inline">\(\mu'_m = \mathbb{E}[X^m]\)</span>.</li>
+<li>El <strong>momento central</strong> de orden <span class="math inline">\(m\)</span> es <span class="math inline">\(\mu_m = \mathbb{E}[(X - \mathbb{E}[X])^m]\)</span>.</li>
+</ul>
+<p><span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>La media es el primer momento y la varianza el segundo momento central.</li>
+<li>El tercer momento central, normalizado por <span class="math inline">\(\sigma^3\)</span>, mide el <strong>sesgo</strong> (asimetría) de la distribución.</li>
+<li>Los momentos serán la base del <strong>método de momentos</strong> en la clase 5: estimaremos parámetros igualando momentos poblacionales con sus análogos muestrales.</li>
+</ul>
+</div>
+</section></section>
+<section>
+<section id="parametricas" class="title-slide slide level1 center">
+<h1>Distribuciones paramétricas</h1>
+
+</section>
+<section class="slide level2">
+<h2>Familias de distribuciones</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición: Distribución paramétrica</strong></p>
+</div>
+<div class="callout-content">
+<p>Una <strong>distribución paramétrica</strong> <span class="math inline">\(F(x \mid \theta)\)</span> es una familia de distribuciones indexada por un <strong>parámetro</strong> <span class="math inline">\(\theta \in \Theta\)</span>. Para cada valor de <span class="math inline">\(\theta\)</span> obtenemos una distribución distinta <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Los economistas las usan para construir <strong>modelos teóricos</strong>; los econometristas, para <strong>modelos estadísticos</strong>: suponemos que los datos vienen de una familia, pero no conocemos <span class="math inline">\(\theta\)</span> y lo estimamos a partir de los datos <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p>Esta es la idea que organizará toda la unidad de estimación. Por ahora basta conocer algunas familias y entender cómo cambian con sus parámetros. No es necesario memorizarlas: se consultan cuando se necesitan <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Distribuciones discretas</h2>
+<p><strong>Bernoulli<span class="math inline">\((p)\)</span>:</strong> una variable con dos resultados, <span class="math inline">\(\Pr(X = 1) = p\)</span>. Modela, por ejemplo, si una persona está desempleada o no.</p>
+<div class="fragment">
+<p><strong>Binomial<span class="math inline">\((n, p)\)</span>:</strong> número de “éxitos” en <span class="math inline">\(n\)</span> ensayos Bernoulli independientes. <span class="math display">\[\pi(x) = \binom{n}{x} p^x (1-p)^{n-x}, \qquad x = 0, 1, \ldots, n\]</span></p>
+<p>Aquí reaparece el coeficiente binomial de la clase pasada.</p>
+</div>
+<div class="fragment">
+<p><strong>Poisson<span class="math inline">\((\lambda)\)</span>:</strong> conteos sin un máximo natural. <span class="math display">\[\pi(x) = \frac{e^{-\lambda}\lambda^x}{x!}, \qquad x = 0, 1, 2, \ldots\]</span></p>
+<p>En econometría se usa para datos de conteo (número de visitas al médico, de patentes, de hijos). Un solo parámetro <span class="math inline">\(\lambda\)</span> determina a la vez la media y la varianza <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Distribuciones continuas</h2>
+<p><strong>Uniforme <span class="math inline">\(U[a, b]\)</span>:</strong> todos los valores del intervalo son igualmente verosímiles. <span class="math display">\[f(x) = \frac{1}{b - a}, \qquad a \leq x \leq b\]</span></p>
+<div class="fragment">
+<p><strong>Exponencial<span class="math inline">\((\lambda)\)</span>:</strong> duraciones y tiempos de espera. <span class="math display">\[f(x) = \frac{1}{\lambda} e^{-x/\lambda}, \qquad x \geq 0\]</span></p>
+<p>Es muy usada en modelos teóricos por su simplicidad, pero poco en econometría aplicada <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>:</strong> la distribución más usada en econometría. <span class="math display">\[f(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(x - \mu)^2}{2\sigma^2}\right)\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Resumen: medias y varianzas</h2>
+<table style="width:100%; font-size: 0.8em;">
+<thead>
+<tr style="background-color: #69000C; color: white;">
+<th style="padding: 8px;">
+Distribución
+</th>
+<th style="padding: 8px;">
+Soporte
+</th>
+<th style="padding: 8px;">
+<span class="math inline">\(\mathbb{E}[X]\)</span>
+</th>
+<th style="padding: 8px;">
+<span class="math inline">\(\text{var}(X)\)</span>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+Bernoulli<span class="math inline">\((p)\)</span>
+</td>
+<td>
+<span class="math inline">\(\{0, 1\}\)</span>
+</td>
+<td>
+<span class="math inline">\(p\)</span>
+</td>
+<td>
+<span class="math inline">\(p(1-p)\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Binomial<span class="math inline">\((n, p)\)</span>
+</td>
+<td>
+<span class="math inline">\(\{0, \ldots, n\}\)</span>
+</td>
+<td>
+<span class="math inline">\(np\)</span>
+</td>
+<td>
+<span class="math inline">\(np(1-p)\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Poisson<span class="math inline">\((\lambda)\)</span>
+</td>
+<td>
+<span class="math inline">\(\{0, 1, 2, \ldots\}\)</span>
+</td>
+<td>
+<span class="math inline">\(\lambda\)</span>
+</td>
+<td>
+<span class="math inline">\(\lambda\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Uniforme <span class="math inline">\(U[a,b]\)</span>
+</td>
+<td>
+<span class="math inline">\([a, b]\)</span>
+</td>
+<td>
+<span class="math inline">\((a+b)/2\)</span>
+</td>
+<td>
+<span class="math inline">\((b-a)^2/12\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Exponencial<span class="math inline">\((\lambda)\)</span>
+</td>
+<td>
+<span class="math inline">\([0, \infty)\)</span>
+</td>
+<td>
+<span class="math inline">\(\lambda\)</span>
+</td>
+<td>
+<span class="math inline">\(\lambda^2\)</span>
+</td>
+</tr>
+<tr>
+<td>
+Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>
+</td>
+<td>
+<span class="math inline">\(\mathbb{R}\)</span>
+</td>
+<td>
+<span class="math inline">\(\mu\)</span>
+</td>
+<td>
+<span class="math inline">\(\sigma^2\)</span>
+</td>
+</tr>
+</tbody>
+</table>
+<p><span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Ojo con la parametrización de la exponencial: aquí <span class="math inline">\(\lambda\)</span> es la <strong>media</strong> (como en Hansen). Otros textos, y la función <code>dexp()</code> de R, usan la <strong>tasa</strong> <span class="math inline">\(1/\lambda\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: binomial y Poisson</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">1</span>))</span>
+<span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.3</span>), <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">main =</span> <span class="st">"Binomial(10, 0.3)"</span>)</span>
+<span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">3</span>), <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>,</span>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">main =</span> <span class="st">"Poisson(3)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+
+</div>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" width="864" class="r-stretch"></section>
+<section class="slide level2">
+<h2>La distribución normal</h2>
+<p>Cuando <span class="math inline">\(\mu = 0\)</span> y <span class="math inline">\(\sigma^2 = 1\)</span> hablamos de la <strong>normal estándar</strong>. Su densidad se denota <span class="math inline">\(\phi(x)\)</span> y su CDF <span class="math inline">\(\Phi(x)\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<p><strong>Estandarización.</strong> Si <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>, entonces <span class="math display">\[Z = \frac{X - \mu}{\sigma} \sim N(0, 1)\]</span></p>
+<p><span class="math inline">\(\mu\)</span> es un parámetro de <strong>ubicación</strong> y <span class="math inline">\(\sigma\)</span> de <strong>escala</strong>: cambiar <span class="math inline">\(\mu\)</span> desplaza la campana y cambiar <span class="math inline">\(\sigma\)</span> la ensancha o la angosta.</p>
+</div>
+<div class="fragment">
+<p><strong>Una relación que usaremos más adelante:</strong> si <span class="math inline">\(Z \sim N(0,1)\)</span>, entonces <span class="math inline">\(Z^2\)</span> tiene distribución <strong>chi-cuadrado con 1 grado de libertad</strong>, <span class="math inline">\(\chi^2_1\)</span>. Se obtiene aplicando la regla de transformaciones a <span class="math inline">\(g(x) = x^2\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Junto con la <span class="math inline">\(t\)</span> y la <span class="math inline">\(F\)</span>, la retomaremos al hacer inferencia.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: la regla 68–95–99.7</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>)     <span class="co"># Pr(-1 &lt; Z &lt; 1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6826895</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>)     <span class="co"># Pr(-2 &lt; Z &lt; 2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9544997</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">3</span>)     <span class="co"># Pr(-3 &lt; Z &lt; 3)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9973002</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)             <span class="co"># cuantil 0.975</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.959964</code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Cerca de 68% de la probabilidad está a menos de una desviación estándar de la media, 95% a menos de dos y 99.7% a menos de tres. El cuantil 0.975, <span class="math inline">\(\approx 1.96\)</span>, aparecerá una y otra vez cuando construyamos intervalos de confianza.</p>
+</div>
+</section></section>
+<section>
+<section id="bivariadas" class="title-slide slide level1 center">
+<h1>Dos variables aleatorias</h1>
+
+</section>
+<section class="slide level2">
+<h2>Distribución conjunta</h2>
+<p>En economía casi siempre nos interesa la relación entre variables: salario y educación, consumo e ingreso, precio y cantidad.</p>
+<div class="fragment">
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>Un par de <strong>variables aleatorias bivariadas</strong> <span class="math inline">\((X, Y)\)</span> es una función de <span class="math inline">\(\Omega\)</span> en <span class="math inline">\(\mathbb{R}^2\)</span>. Su <strong>función de distribución conjunta</strong> es <span class="math display">\[F(x, y) = \Pr(X \leq x,\; Y \leq y)\]</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>En el caso discreto trabajamos con la <strong>función de masa conjunta</strong> <span class="math inline">\(\pi(x, y) = \Pr(X = x, Y = y)\)</span>; en el continuo, con la <strong>densidad conjunta</strong> <span class="math inline">\(f(x, y)\)</span>, y las probabilidades son volúmenes bajo esa superficie.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ejemplo: la pizzería</h2>
+<p>Una pizzería atiende estudiantes. Cada cliente compra una o dos porciones (<span class="math inline">\(X\)</span>) y una o dos bebidas (<span class="math inline">\(Y\)</span>). La función de masa conjunta es <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th><span class="math inline">\(Y = 1\)</span></th>
+<th><span class="math inline">\(Y = 2\)</span></th>
+<th><span class="math inline">\(\Pr(X = x)\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X = 1\)</span></td>
+<td>0.4</td>
+<td>0.1</td>
+<td>0.5</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X = 2\)</span></td>
+<td>0.2</td>
+<td>0.3</td>
+<td>0.5</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\Pr(Y = y)\)</span></td>
+<td>0.6</td>
+<td>0.4</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Las cuatro probabilidades del centro son no negativas y suman uno: es una función de masa válida. La última fila y la última columna son las <strong>distribuciones marginales</strong>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Distribuciones marginales</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>La <strong>distribución marginal</strong> de <span class="math inline">\(X\)</span> es la distribución de <span class="math inline">\(X\)</span> sola. Se obtiene “sumando” o “integrando” la otra variable <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>: <span class="math display">\[\pi_X(x) = \sum_y \pi(x, y) \qquad\qquad f_X(x) = \int_{-\infty}^{\infty} f(x, y)\,dy\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>En la pizzería:</strong></p>
+<ul>
+<li><span class="math inline">\(\Pr(X = 1) = 0.4 + 0.1 = 0.5\)</span>: la mitad de los clientes compra una porción.</li>
+<li><span class="math inline">\(\Pr(Y = 1) = 0.4 + 0.2 = 0.6\)</span>: 60% compra una bebida.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Es la misma idea de la ley de probabilidad total de la clase pasada. La conjunta determina las marginales, pero <strong>las marginales no determinan la conjunta</strong>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Distribución condicional</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>La <strong>distribución condicional</strong> de <span class="math inline">\(Y\)</span> dado <span class="math inline">\(X = x\)</span> es la distribución de <span class="math inline">\(Y\)</span> en la subpoblación con <span class="math inline">\(X = x\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>: <span class="math display">\[\pi_{Y|X}(y \mid x) = \frac{\pi(x, y)}{\pi_X(x)} \qquad\qquad f_{Y|X}(y \mid x) = \frac{f(x, y)}{f_X(x)}\]</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Ejemplo: salarios según educación</strong> (EE.UU., 2009). Al comparar la distribución de salarios de quienes tienen 12, 16, 18 y 20 años de educación <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<ul>
+<li>Las distribuciones se desplazan a la derecha con cada nivel educativo.</li>
+<li>También se vuelven <strong>más dispersas</strong>: los universitarios ganan más en promedio, pero sus salarios varían más.</li>
+<li>Hay una zona amplia de superposición entre grupos.</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Independencia de variables aleatorias</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> son <strong>independientes</strong>, <span class="math inline">\(X \perp\!\!\!\perp Y\)</span>, si para todo <span class="math inline">\((x, y)\)</span> <span class="math display">\[F(x, y) = F_X(x)\,F_Y(y)\]</span> Equivalentemente, <span class="math inline">\(\pi(x, y) = \pi_X(x)\,\pi_Y(y)\)</span> o <span class="math inline">\(f(x, y) = f_X(x)\,f_Y(y)\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Es la definición de independencia de eventos de la clase pasada, aplicada a todos los eventos <span class="math inline">\(\{X \leq x\}\)</span> y <span class="math inline">\(\{Y \leq y\}\)</span>. Si son independientes, la condicional es igual a la marginal: <span class="math inline">\(f_{Y|X}(y \mid x) = f_Y(y)\)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>En la pizzería:</strong> <span class="math inline">\(\Pr(X = 1, Y = 1) = 0.4\)</span>, pero <span class="math inline">\(\Pr(X = 1)\Pr(Y = 1) = 0.5 \times 0.6 = 0.3\)</span>. Porciones y bebidas son <strong>dependientes</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Covarianza y correlación</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\text{cov}(X, Y) = \mathbb{E}\big[(X - \mathbb{E}[X])(Y - \mathbb{E}[Y])\big] = \mathbb{E}[XY] - \mathbb{E}[X]\,\mathbb{E}[Y]\]</span> <span class="math display">\[\text{corr}(X, Y) = \frac{\text{cov}(X, Y)}{\sqrt{\text{var}(X)\,\text{var}(Y)}}\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<ul>
+<li>La correlación está entre <span class="math inline">\(-1\)</span> y <span class="math inline">\(1\)</span> (por la desigualdad de Cauchy-Schwarz). Valores cerca de cero indican una relación <strong>lineal</strong> débil.</li>
+<li>Para sumas: <span class="math inline">\(\text{var}(X + Y) = \text{var}(X) + \text{var}(Y) + 2\,\text{cov}(X, Y)\)</span>.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>En la pizzería:</strong> <span class="math inline">\(\mathbb{E}[XY] = 2.2\)</span>, <span class="math inline">\(\mathbb{E}[X] = 1.5\)</span> y <span class="math inline">\(\mathbb{E}[Y] = 1.4\)</span>, así que <span class="math inline">\(\text{cov}(X, Y) = 2.2 - 2.1 = 0.1\)</span> y <span class="math inline">\(\text{corr}(X, Y) \approx 0.41\)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>No correlación <span class="math inline">\(\neq\)</span> independencia</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Teorema</strong></p>
+</div>
+<div class="callout-content">
+<p>Si <span class="math inline">\(X\)</span> e <span class="math inline">\(Y\)</span> son independientes (con varianzas finitas), entonces no están correlacionadas. <strong>Lo contrario no es cierto</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Contraejemplo:</strong> sea <span class="math inline">\(X \sim U[-1, 1]\)</span> e <span class="math inline">\(Y = X^2\)</span>. Como la distribución de <span class="math inline">\(X\)</span> es simétrica en torno a cero, <span class="math inline">\(\mathbb{E}[X] = 0\)</span> y <span class="math inline">\(\mathbb{E}[X^3] = 0\)</span>, así que <span class="math display">\[\text{cov}(X, Y) = \mathbb{E}[X^3] - \mathbb{E}[X]\,\mathbb{E}[X^2] = 0\]</span></p>
+</div>
+<div class="fragment">
+<p>Sin embargo, <span class="math inline">\(Y\)</span> está <strong>completamente determinada</strong> por <span class="math inline">\(X\)</span>. La covarianza solo capta relaciones lineales; una relación en forma de U puede tener covarianza cero.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Esperanza condicional</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Definición</strong></p>
+</div>
+<div class="callout-content">
+<p>La <strong>esperanza condicional</strong> de <span class="math inline">\(Y\)</span> dado <span class="math inline">\(X = x\)</span> es la esperanza de la distribución condicional: <span class="math display">\[m(x) = \mathbb{E}[Y \mid X = x] = \sum_y y\,\pi_{Y|X}(y \mid x) \qquad \text{o} \qquad \int y\, f_{Y|X}(y \mid x)\,dy\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p>Es el valor promedio de <span class="math inline">\(Y\)</span> en la subpoblación con <span class="math inline">\(X = x\)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>En la pizzería:</strong> <span class="math inline">\(\mathbb{E}[Y \mid X = 1] = 1.2\)</span> y <span class="math inline">\(\mathbb{E}[Y \mid X = 2] = 1.6\)</span>. Quienes compran dos porciones compran, en promedio, más bebidas.</p>
+</div>
+<div class="fragment">
+<p><strong>Salario promedio por hora según años de educación</strong> (EE.UU., 2009) <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<table class="caption-top" style="width:100%;">
 <colgroup>
-<col style="width: 55%">
-<col style="width: 44%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
+<col style="width: 14%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Distribución</th>
-<th style="text-align: left;">Uso en econometría</th>
+<th>Educación</th>
+<th>8</th>
+<th>12</th>
+<th>14</th>
+<th>16</th>
+<th>18</th>
+<th>20</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(N(\mu, \sigma^2)\)</span></td>
-<td style="text-align: left;">Distribución de <span class="math inline">\(\hat{\beta}\)</span> bajo normalidad</td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(\chi^2_k\)</span></td>
-<td style="text-align: left;">Test de Wald, test de heterocedasticidad</td>
-</tr>
-<tr class="odd">
-<td style="text-align: center;"><span class="math inline">\(t_k\)</span></td>
-<td style="text-align: left;">Test de significancia individual de <span class="math inline">\(\hat{\beta}_j\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: center;"><span class="math inline">\(F_{k_1, k_2}\)</span></td>
-<td style="text-align: left;">Test de significancia conjunta, test de restricciones</td>
+<td><span class="math inline">\(\mathbb{E}[\text{salario} \mid \text{educ}]\)</span></td>
+<td>$11.75</td>
+<td>$17.61</td>
+<td>$21.49</td>
+<td>$30.12</td>
+<td>$35.16</td>
+<td>$51.76</td>
 </tr>
 </tbody>
 </table>
-<div class="fragment">
-<p>En la próxima clase veremos cómo el <strong>Teorema Central del Límite</strong> justifica el uso de estas distribuciones incluso cuando los datos no son normales.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>Resumen</h2>
+<h2>La esperanza condicional y la regresión</h2>
+<p>La función <span class="math inline">\(m(x) = \mathbb{E}[Y \mid X = x]\)</span> es el objeto central de la econometría: la <strong>regresión</strong> busca justamente describir cómo cambia el promedio de <span class="math inline">\(Y\)</span> con <span class="math inline">\(X\)</span>.</p>
+<div class="fragment">
+<p><strong>Ejemplo: salario según experiencia.</strong> El salario esperado es cerca de $16.50 sin experiencia, sube casi linealmente hasta unos $26 a los 20 años y luego baja a unos $21 a los 50 años: un perfil en forma de U invertida <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Por eso, más adelante incluiremos la experiencia al cuadrado en las regresiones de salarios.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Warning</strong></p>
+</div>
+<div class="callout-content">
+<p>Igual que en la clase pasada: <span class="math inline">\(\mathbb{E}[\text{salario} \mid \text{educ}]\)</span> describe cómo difiere el salario promedio <strong>entre</strong> grupos con distinta educación. No dice cuánto aumentaría el salario de una persona si estudiara un año más. Esa es una pregunta causal.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>Ley de esperanzas iteradas</h2>
+<p><span class="math inline">\(m(x)\)</span> es un número para cada <span class="math inline">\(x\)</span>. Pero si la evaluamos en la variable aleatoria <span class="math inline">\(X\)</span>, obtenemos <span class="math inline">\(\mathbb{E}[Y \mid X]\)</span>, que <strong>es una variable aleatoria</strong> (una transformación de <span class="math inline">\(X\)</span>) <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Teorema: Ley de esperanzas iteradas</strong></p>
+</div>
+<div class="callout-content">
+<p>Si <span class="math inline">\(\mathbb{E}|Y| &lt; \infty\)</span>, entonces <span class="math display">\[\mathbb{E}\big[\mathbb{E}[Y \mid X]\big] = \mathbb{E}[Y]\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+<p>En palabras: <strong>el promedio de los promedios por grupo es el promedio total</strong>.</p>
+</div>
+<div class="fragment">
+<p><strong>En la pizzería:</strong> <span class="math display">\[\mathbb{E}[Y] = 0.5 \times 1.2 + 0.5 \times 1.6 = 1.4 \qquad \checkmark\]</span></p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Varianza condicional (opcional)</h2>
+<p>La <strong>varianza condicional</strong> <span class="math inline">\(\text{var}(Y \mid X = x)\)</span> es la varianza de <span class="math inline">\(Y\)</span> en la subpoblación con <span class="math inline">\(X = x\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Teorema: Descomposición de la varianza</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\text{var}(Y) = \underbrace{\mathbb{E}\big[\text{var}(Y \mid X)\big]}_{\text{dentro de los grupos}} + \underbrace{\text{var}\big(\mathbb{E}[Y \mid X]\big)}_{\text{entre grupos}}\]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="fragment">
+<p><strong>Salarios según educación:</strong> la varianza del salario es 150 para quienes tienen secundaria completa, 573 para universitarios y 1646 para quienes tienen posgrado profesional o doctorado. Con más educación sube el salario promedio, pero también su dispersión <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Cuando la varianza condicional cambia con <span class="math inline">\(X\)</span> hablamos de <strong>heterocedasticidad</strong>, un concepto clave en la unidad de regresión.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: el ejemplo de la pizzería</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="fu">c</span>(<span class="fl">0.4</span>, <span class="fl">0.1</span>,</span>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a>              <span class="fl">0.2</span>, <span class="fl">0.3</span>), <span class="at">nrow =</span> <span class="dv">2</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb20-3"><a aria-hidden="true" tabindex="-1"></a>            <span class="at">dimnames =</span> <span class="fu">list</span>(<span class="at">X =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>), <span class="at">Y =</span> <span class="fu">c</span>(<span class="st">"1"</span>, <span class="st">"2"</span>)))</span>
+<span id="cb20-4"><a aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>); y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)</span>
+<span id="cb20-5"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>pX <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(p)                     <span class="co"># marginal de X</span></span>
+<span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a>pY <span class="ot">&lt;-</span> <span class="fu">colSums</span>(p)                     <span class="co"># marginal de Y</span></span>
+<span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a>EY_dado_X <span class="ot">&lt;-</span> (p <span class="sc">%*%</span> y) <span class="sc">/</span> pX          <span class="co"># E[Y | X = x]</span></span>
+<span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>EY_dado_X</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   
+X   [,1]
+  1  1.2
+  2  1.6</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pX <span class="sc">*</span> EY_dado_X)                  <span class="co"># ley de esperanzas iteradas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.4</code></pre>
+</div>
+</div>
+</section>
+<section class="slide level2">
+<h2>En R: el ejemplo de la pizzería</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a>EX  <span class="ot">&lt;-</span> <span class="fu">sum</span>(x <span class="sc">*</span> pX);  EY <span class="ot">&lt;-</span> <span class="fu">sum</span>(y <span class="sc">*</span> pY)</span>
+<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>EXY <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">outer</span>(x, y) <span class="sc">*</span> p)          <span class="co"># E[XY]</span></span>
+<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>covXY <span class="ot">&lt;-</span> EXY <span class="sc">-</span> EX <span class="sc">*</span> EY</span>
+<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>varX  <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> pX) <span class="sc">-</span> EX<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a>varY  <span class="ot">&lt;-</span> <span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> pY) <span class="sc">-</span> EY<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">cov =</span> covXY, <span class="at">corr =</span> covXY <span class="sc">/</span> <span class="fu">sqrt</span>(varX <span class="sc">*</span> varY))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      cov      corr 
+0.1000000 0.4082483 </code></pre>
+</div>
+</div>
+<div class="fragment">
+<p>Los resultados coinciden con los cálculos a mano: <span class="math inline">\(\text{cov}(X, Y) = 0.1\)</span> y <span class="math inline">\(\text{corr}(X, Y) \approx 0.41\)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Resumen de la clase</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<p><strong>Hoy cubrimos:</strong></p>
+<p><strong>Conceptos clave:</strong></p>
 <ul>
-<li>Variables aleatorias</li>
-<li>CDF y PDF</li>
-<li><span class="math inline">\(E[X]\)</span>, <span class="math inline">\(\text{Var}(X)\)</span>, <span class="math inline">\(\text{Cov}(X,Y)\)</span></li>
-<li>Distribuciones <span class="math inline">\(N\)</span>, <span class="math inline">\(\chi^2\)</span>, <span class="math inline">\(t\)</span>, <span class="math inline">\(F\)</span></li>
+<li>Variable aleatoria como función <span class="math inline">\(\Omega \to \mathbb{R}\)</span></li>
+<li>Función de masa, CDF y densidad</li>
+<li>Cuantiles y mediana</li>
+<li>Transformaciones</li>
+<li>Esperanza, varianza y Jensen</li>
+<li>Familias paramétricas</li>
+<li>Conjunta, marginal y condicional</li>
+<li>Covarianza, correlación e independencia</li>
+<li>Esperanza condicional e iteradas</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><strong>Próxima clase:</strong></p>
 <ul>
-<li>Distribuciones muestrales</li>
-<li>Ley de los Grandes Números</li>
-<li>Teorema Central del Límite</li>
-<li>Convergencia en probabilidad</li>
+<li>Muestreo aleatorio</li>
+<li>La media muestral como variable aleatoria</li>
+<li>Ley de los grandes números</li>
+<li>Teorema central del límite</li>
 </ul>
 </div></div>
+</section>
+<section class="slide level2">
+<h2>Para revisar</h2>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Lecturas sugeridas</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li>Hansen, <em>Probability and Statistics for Economists</em>, Capítulo 2 y secciones seleccionadas de los capítulos 3 (3.1–3.9, 3.12) y 4 (4.1–4.16).</li>
+<li>DeGroot &amp; Schervish, Capítulo 3 (3.1–3.6), Capítulo 4 (4.1–4.3, 4.6–4.7) y Capítulo 5 (5.2, 5.4, 5.6).</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section class="slide level2 smaller scrollable" id="references">
+<h2>Referencias</h2>
+<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-probability-statistics" class="csl-entry" role="listitem">
+DeGroot, M., &amp; Schervish, M. (2012). <em>Probability and statistics</em>. Pearson Education Limited.
+</div>
+<div id="ref-hansen-for-economist" class="csl-entry" role="listitem">
+Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princeton University Press.
+</div>
+</div>
 
 
 </section></section>
@@ -691,6 +1791,82 @@
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
