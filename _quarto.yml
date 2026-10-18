@@ -26,7 +26,8 @@ website:
             href: weeks/week01/page.qmd
           - text: "Clase 02: Variables aleatorias y distribuciones"
             href: weeks/week02/page.qmd
-          # Clase 03: Muestreo y teoría asintótica
+          - text: "Clase 03: Muestreo y teoría asintótica"
+            href: weeks/week03/page.qmd
           # - text: "---"
           # - text: "Unidad II · Estimación"
           # Clase 04: Estimación puntual y propiedades de los estimadores

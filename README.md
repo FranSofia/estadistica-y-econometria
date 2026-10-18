@@ -61,7 +61,8 @@ estadistica-y-econometria/
 ├── figures/                  # Imágenes y logos
 ├── R/estilo.R                # Paleta y estilo común de los gráficos
 ├── referencias.bib           # Bibliografía citada en las slides
-└── docs/                     # Sitio renderizado (GitHub Pages)
+├── data/                     # Datasets
+└── .github/workflows/        # GitHub Actions 
 ```
 
 ## Tecnologías

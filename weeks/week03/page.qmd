@@ -1,0 +1,23 @@
+---
+title: "Clase 03: Muestreo y Teoría Asintótica"
+author: "Fran Sofía Núñez Rebolledo"
+---
+
+Con esta clase pasamos de la probabilidad a la estadística. En vez de partir de una distribución conocida, partimos de una **muestra aleatoria** y nos preguntamos qué podemos aprender sobre la población que la generó. Definimos parámetros, estadísticos y estimadores, construimos estimadores con el principio de analogía y vemos que todo estimador es una variable aleatoria con su propia distribución muestral. Como esa distribución casi nunca se conoce en muestras finitas, introducimos las herramientas de la teoría asintótica: convergencia en probabilidad, la desigualdad de Chebyshev, la ley de los grandes números, el teorema de la aplicación continua, la convergencia en distribución y el teorema central del límite. Cerramos con el teorema de Slutsky y el método delta, que conectan estos resultados con la inferencia que haremos más adelante en el curso.
+
+## 👨‍🏫 Presentación
+
+Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic [aquí](slides.html) para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar.
+
+```{=html}
+<iframe class="slide-embed" src="slides.html" title="Slides Clase 03"></iframe>
+```
+
+## 📚 Lecturas recomendadas
+
+-   **Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press. Secciones 6.1–6.8 y 6.10; secciones 7.1–7.11 y 7.13; secciones 8.1–8.11 y 8.13.
+-   **Hansen, B. E.** (2021). *Econometrics*. University of Wisconsin. Capítulo 6.
+
+## 📟 Dudas
+
+Si tienes preguntas sobre el material, no dudes en escribir a **fnunezre\@fen.uchile.cl**.
