@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="es"><head>
 <link href="../../figures/logos/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
@@ -413,7 +413,7 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Importante</strong></p>
 </div>
 <div class="callout-content">
 <p>Esta es la idea central de la clase: <strong>un estimador tiene una distribución</strong>. Toda la inferencia estadística consiste en entender esa distribución.</p>
@@ -493,7 +493,7 @@
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>salario <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">37.93</span>, <span class="fl">40.87</span>, <span class="fl">14.18</span>, <span class="fl">16.83</span>, <span class="fl">33.17</span>, <span class="fl">29.81</span>, <span class="fl">54.62</span>, <span class="fl">43.08</span>, <span class="fl">14.42</span>, <span class="fl">14.90</span>,</span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>             <span class="fl">21.63</span>, <span class="fl">11.09</span>, <span class="fl">10.00</span>, <span class="fl">31.73</span>, <span class="fl">11.06</span>, <span class="fl">18.75</span>, <span class="fl">27.35</span>, <span class="fl">24.04</span>, <span class="fl">36.06</span>, <span class="fl">23.08</span>)</span>
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>educ    <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">18</span>, <span class="dv">13</span>, <span class="dv">16</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">12</span>, <span class="dv">16</span>,</span>
-<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="dv">18</span>, <span class="dv">16</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">16</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="dv">18</span>, <span class="dv">16</span>, <span class="dv">13</span>, <span class="dv">14</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">14</span>, <span class="dv">16</span>, <span class="dv">18</span>, <span class="dv">16</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="fragment">
 <p>Hay dos maneras de mirar estos números. Podemos verlos solo como los salarios de estas 20 personas, o como <span class="alert">una muestra aleatoria de una población más grande</span>. La segunda es la mirada estadística: estas 20 observaciones son una ventana para aprender sobre la población <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
@@ -502,31 +502,31 @@
 <section class="slide level2">
 <h2>En R: estimadores análogos y <em>plug-in</em></h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(salario)                            <span class="co"># media muestral</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(salario)                            <span class="co"># media muestral</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 25.73</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(educ)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(educ)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 15.7</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">log</span>(salario))                       <span class="co"># media de log salarios</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(<span class="fu">log</span>(salario))                       <span class="co"># media de log salarios</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.131907</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">mean</span>(salario))                       <span class="co"># ¡no es lo mismo!</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">log</span>(<span class="fu">mean</span>(salario))                       <span class="co"># ¡no es lo mismo!</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 3.247658</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>((salario <span class="sc">-</span> <span class="fu">mean</span>(salario))<span class="sc">^</span><span class="dv">2</span>))  <span class="co"># desv. estándar plug-in</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">mean</span>((salario <span class="sc">-</span> <span class="fu">mean</span>(salario))<span class="sc">^</span><span class="dv">2</span>))  <span class="co"># desv. estándar plug-in</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 12.12692</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(salario)))                  <span class="co"># media geométrica</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">mean</span>(<span class="fu">log</span>(salario)))                  <span class="co"># media geométrica</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 22.91765</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(salario)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">median</span>(salario)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 23.56</code></pre>
 </div>
@@ -554,7 +554,7 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
 <p>Con solo 20 observaciones es difícil hacer inferencias precisas sobre la población. ¿Qué tan lejos podría estar <span class="math inline">\(25.73\)</span> de la verdadera <span class="math inline">\(\mu\)</span>? Para responder necesitamos la <strong>distribución muestral</strong> de <span class="math inline">\(\bar X_n\)</span>.</p>
@@ -646,14 +646,15 @@
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
 <span id="cb16-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">100</span>)) {</span>
 <span id="cb16-4"><a aria-hidden="true" tabindex="-1"></a>  medias <span class="ot">&lt;-</span> <span class="fu">replicate</span>(<span class="dv">5000</span>, <span class="fu">mean</span>(<span class="fu">rexp</span>(n, <span class="at">rate =</span> <span class="dv">1</span>)))</span>
-<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(medias, <span class="at">breaks =</span> <span class="dv">40</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>),</span>
-<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"#69000C2E"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
-<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"n ="</span>, n), <span class="at">xlab =</span> <span class="st">"media muestral"</span>)</span>
-<span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb16-9"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-5"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(medias, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">ceiling</span>(<span class="fu">max</span>(medias)), <span class="at">by =</span> <span class="fl">0.05</span>),</span>
+<span id="cb16-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">freq =</span> <span class="cn">FALSE</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">3</span>),</span>
+<span id="cb16-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"#69000C2E"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"n ="</span>, n), <span class="at">xlab =</span> <span class="st">"media muestral"</span>, <span class="at">ylab =</span> <span class="st">"densidad"</span>)</span>
+<span id="cb16-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb16-10"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="slides_files/figure-html/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
 <p>A medida que <span class="math inline">\(n\)</span> crece, la distribución se <strong>concentra</strong> en torno a <span class="math inline">\(\mu = 1\)</span> y se vuelve <strong>más simétrica</strong>. Lo primero es la ley de los grandes números y lo segundo, el teorema central del límite.</p>
 </div>
 </section></section>
@@ -672,7 +673,7 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Importante</strong></p>
 </div>
 <div class="callout-content">
 <p>“<span class="math inline">\(n \to \infty\)</span>” no debe interpretarse literalmente: nadie tiene muestras infinitas. Es un <span class="alert">recurso de aproximación</span>. Nos dice cómo se comporta un estimador cuando la muestra es “grande” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
@@ -868,12 +869,12 @@
 <span id="cb17-8"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">lines</span>(<span class="fu">cumsum</span>(x) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>n),</span>
 <span id="cb17-9"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="fu">adjustcolor</span>(<span class="st">"#19375A"</span>, <span class="fl">0.6</span>))</span>
 <span id="cb17-10"><a aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb17-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb17-11"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.5</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
@@ -937,10 +938,10 @@
 <span id="cb18-6"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">cumsum</span>(<span class="fu">rcauchy</span>(n)) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>n), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"#19375A"</span>,</span>
 <span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">main =</span> <span class="st">"Cauchy"</span>, <span class="at">xlab =</span> <span class="st">"n"</span>, <span class="at">ylab =</span> <span class="st">"media acumulada"</span>)</span>
-<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="slides_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
 <p>Con la Cauchy, cada tanto aparece una observación enorme que vuelve a mover el promedio. Por más datos que agreguemos, el promedio no se estabiliza.</p>
 </div>
 </section>
@@ -1032,6 +1033,19 @@
 </div>
 </div>
 </div>
+</section>
+<section class="slide level2">
+<h2>Por qué la econometría trabaja con límites</h2>
+<p>El CMT explica buena parte de por qué la econometría prefiere los resultados asintóticos a los de muestra finita <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
+<div class="fragment">
+<p>Con límites en probabilidad, los productos y cocientes “se separan”: <span class="math display">\[\text{plim}\,(\hat a\,\hat b) = \text{plim}\,\hat a \cdot \text{plim}\,\hat b\]</span></p>
+</div>
+<div class="fragment">
+<p>Con esperanzas, en general <strong>no</strong>: <span class="math inline">\(\mathbb{E}[\hat a\,\hat b] \neq \mathbb{E}[\hat a]\,\mathbb{E}[\hat b]\)</span>, y tampoco <span class="math inline">\(\mathbb{E}[\hat a/\hat b] = \mathbb{E}[\hat a]/\mathbb{E}[\hat b]\)</span>.</p>
+</div>
+<div class="fragment">
+<p>La mayoría de los estimadores econométricos son funciones no lineales de promedios, por ejemplo un cociente entre una covarianza y una varianza muestrales. Calcular su esperanza exacta suele ser imposible, pero obtener su límite en probabilidad es directo con la LGN y el CMT.</p>
+</div>
 </section></section>
 <section>
 <section id="convergencia-distribucion" class="title-slide slide level1 center">
@@ -1070,6 +1084,17 @@
 <li>La condición “donde <span class="math inline">\(G\)</span> es continua” es un detalle técnico; en los casos que veremos, <span class="math inline">\(G\)</span> es continua en todas partes.</li>
 <li>Si el límite es una constante, convergencia en distribución y en probabilidad son equivalentes <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
 </ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Relación entre los modos de convergencia</h2>
+<p><span class="math display">\[Z_n \xrightarrow{a.s.} Z \quad \Longrightarrow \quad Z_n \xrightarrow{p} Z \quad \Longrightarrow \quad Z_n \xrightarrow{d} Z\]</span></p>
+<p><span class="citation" data-cites="microeconometrics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+<div class="fragment">
+<p>Las implicancias inversas <strong>no</strong> se cumplen en general. <strong>Ejemplo:</strong> si cada <span class="math inline">\(Z_n\)</span> es una extracción independiente de <span class="math inline">\(N(\mu, \sigma^2)\)</span>, entonces trivialmente <span class="math inline">\(Z_n \xrightarrow{d} N(\mu, \sigma^2)\)</span>. Pero <span class="math inline">\(Z_n\)</span> no se acerca a ningún valor en particular: <span class="math inline">\(Z_n - Z\)</span> tiene una varianza que no desaparece. Converge en distribución, no en probabilidad <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
+</div>
+<div class="fragment">
+<p><strong>Convergencia en media cuadrática (opcional).</strong> <span class="math inline">\(Z_n \xrightarrow{m} c\)</span> si <span class="math inline">\(\mathbb{E}[(Z_n - c)^2] \to 0\)</span>. Implica convergencia en probabilidad y suele ser fácil de verificar: basta que el sesgo y la varianza tiendan a cero <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>. Volveremos a esta idea la próxima clase con el error cuadrático medio.</p>
 </div>
 </section></section>
 <section>
@@ -1142,17 +1167,17 @@
 <span id="cb19-8"><a aria-hidden="true" tabindex="-1"></a>cols <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"#466F9D"</span>, <span class="st">"#19375A"</span>, <span class="st">"#464646"</span>)</span>
 <span id="cb19-9"><a aria-hidden="true" tabindex="-1"></a>ns   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>, <span class="dv">10</span>, <span class="dv">100</span>)</span>
 <span id="cb19-10"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>) {</span>
-<span id="cb19-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">dens_Zn</span>(x, ns[j]), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb19-11"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">dens_Zn</span>(x, ns[j]), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">n =</span> <span class="dv">501</span>,</span>
 <span id="cb19-12"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> cols[j], <span class="at">lty =</span> j <span class="sc">+</span> <span class="dv">1</span>, <span class="at">lwd =</span> <span class="fl">1.5</span>)</span>
 <span id="cb19-13"><a aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb19-14"><a aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"topright"</span>, <span class="at">bty =</span> <span class="st">"n"</span>,</span>
 <span id="cb19-15"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"N(0, 2)"</span>, <span class="fu">paste</span>(<span class="st">"n ="</span>, ns)),</span>
-<span id="cb19-16"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#69000C"</span>, cols), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-16"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="fu">c</span>(<span class="st">"#69000C"</span>, cols), <span class="at">lty =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-html/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
@@ -1176,7 +1201,7 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
 <p>El TCL es un resultado <strong>asintótico</strong>. No dice desde qué <span class="math inline">\(n\)</span> la aproximación es buena: eso depende de <span class="math inline">\(F\)</span>. Con distribuciones muy asimétricas o con colas pesadas, como la de los ingresos, puede hacer falta una muestra bastante grande.</p>
@@ -1192,11 +1217,11 @@
 <p>Por el TCL, <span class="math inline">\(\Pr\big(|\bar X_n - \mu| \geq 1\big) \approx \Pr\left(|N(0,1)| \geq \frac{1}{\sqrt{430/n}}\right)\)</span>, y <span class="math inline">\(\Pr(|N(0,1)| \geq 2.58) \approx 0.01\)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">2862</span></span>
-<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">430</span> <span class="sc">/</span> n)                        <span class="co"># desviaciones estándar de distancia</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">430</span> <span class="sc">/</span> n)                        <span class="co"># desviaciones estándar de distancia</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.579886</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">430</span> <span class="sc">/</span> n)))       <span class="co"># Pr(|media - mu| &gt;= 1), aprox.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">430</span> <span class="sc">/</span> n)))       <span class="co"># Pr(|media - mu| &gt;= 1), aprox.</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.009883281</code></pre>
 </div>
@@ -1231,6 +1256,19 @@
 <div class="fragment">
 <p>La versión vectorial es la que necesitaremos en regresión, donde el estimador de mínimos cuadrados es un <strong>vector</strong> de coeficientes que depende de promedios muestrales como <span class="math inline">\(\frac{1}{n}\sum X_i X_i'\)</span> y <span class="math inline">\(\frac{1}{n}\sum X_i Y_i\)</span> <span class="citation" data-cites="hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>.</p>
 </div>
+</section>
+<section class="slide level2">
+<h2>Más allá del caso i.i.d. (opcional)</h2>
+<p>La LGN y el TCL que vimos suponen observaciones i.i.d. Existen versiones para observaciones <strong>independientes pero no idénticamente distribuidas</strong> <span class="citation" data-cites="microeconometrics hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>:</p>
+<div class="fragment">
+<ul>
+<li><strong>LGN de Markov:</strong> permite que cada <span class="math inline">\(X_i\)</span> tenga su propia media y varianza, siempre que las varianzas no crezcan demasiado rápido. Con <span class="math inline">\(\sigma_i^2 = \sigma^2\)</span> la condición se cumple; con <span class="math inline">\(\sigma_i^2 = i\,\sigma^2\)</span>, no.</li>
+<li><strong>TCL de Liapounov:</strong> permite distribuciones distintas, a cambio de exigir un momento finito de orden mayor que dos.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Recordemos el contraejemplo de Hansen: con heterogeneidad extrema en las varianzas, la LGN falla. Estas versiones precisan <strong>cuánta</strong> heterogeneidad se puede tolerar. Son las que se usan en microeconometría con muestreo estratificado o regresores fijos <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
+</div>
 </section></section>
 <section>
 <section id="delta" class="title-slide slide level1 center">
@@ -1256,13 +1294,28 @@
 <li><span class="math inline">\(Z_n\, c_n \xrightarrow{d} Z\, c\)</span></li>
 <li><span class="math inline">\(Z_n / c_n \xrightarrow{d} Z / c \quad\)</span> si <span class="math inline">\(c \neq 0\)</span></li>
 </ol>
-<p><span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p><span class="citation" data-cites="hansen-for-economist microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
 <p>En palabras: podemos reemplazar una cantidad que converge en probabilidad por su límite sin cambiar la distribución asintótica.</p>
+</div>
+<div class="fragment">
+<div class="callout callout-warning callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Ojo con los nombres</strong></p>
+</div>
+<div class="callout-content">
+<p>Los textos no coinciden. Cameron y Trivedi llaman “teorema de Slutsky” al CMT para convergencia en probabilidad, y a este resultado “teorema de transformación” o “teorema de Cramér” <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>. Lo importante es el contenido, no el nombre.</p>
+</div>
+</div>
+</div>
 </div>
 </section>
 <section class="slide level2">
@@ -1319,6 +1372,20 @@
 </div>
 </section>
 <section class="slide level2">
+<h2>Adelanto: cómo se usará todo esto en regresión</h2>
+<p>En regresión con un solo regresor y sin constante, el estimador de mínimos cuadrados se puede escribir como <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span> <span class="math display">\[\sqrt{n}\,(\hat\beta - \beta) = \left(\frac{1}{n}\sum_{i=1}^n x_i^2\right)^{-1} \left(\frac{1}{\sqrt{n}}\sum_{i=1}^n x_i u_i\right)\]</span></p>
+<div class="fragment">
+<ul>
+<li>Al primer factor le aplicamos la <strong>LGN</strong> y el <strong>CMT</strong>: <span class="math inline">\(\frac{1}{n}\sum x_i^2 \xrightarrow{p} \mathbb{E}[x^2]\)</span>.</li>
+<li>Al segundo le aplicamos el <strong>TCL</strong>: <span class="math inline">\(\frac{1}{\sqrt{n}}\sum x_i u_i \xrightarrow{d} N\big(0, \mathbb{E}[x^2u^2]\big)\)</span>, si <span class="math inline">\(\mathbb{E}[xu] = 0\)</span>.</li>
+<li><strong>Slutsky</strong> combina ambos resultados y entrega la distribución asintótica de <span class="math inline">\(\hat\beta\)</span>.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Es exactamente la estrategia de la clase 07. Las herramientas de hoy son las piezas con las que se arma la teoría asintótica de mínimos cuadrados <span class="citation" data-cites="hansen-econometrics microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>.</p>
+</div>
+</section>
+<section class="slide level2">
 <h2>Resumen de la clase</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
@@ -1358,6 +1425,7 @@
 <ul>
 <li>Hansen, <em>Probability and Statistics for Economists</em>, secciones 6.1–6.8 y 6.10, Capítulo 7 (7.1–7.11 y 7.13) y Capítulo 8 (8.1–8.11, 8.13).</li>
 <li>Hansen, <em>Econometrics</em>, Capítulo 6, como repaso compacto de la teoría asintótica que usaremos en regresión.</li>
+<li>Cameron y Trivedi, <em>Microeconometrics</em>, Apéndice A: resumen de definiciones y teoremas asintóticos, con versiones para observaciones no idénticamente distribuidas.</li>
 </ul>
 </div>
 </div>
@@ -1366,14 +1434,17 @@
 <section class="slide level2 smaller scrollable" id="references">
 <h2>Referencias</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
+<div id="ref-microeconometrics" class="csl-entry" role="listitem">
+Cameron, A. C., &amp; Trivedi, P. K. (2005). <em>Microeconometrics. Methods and Applications</em>. Cambridge University Press.
+</div>
 <div id="ref-probability-statistics" class="csl-entry" role="listitem">
-DeGroot, M., &amp; Schervish, M. (2012). <em>Probability and statistics</em>. Pearson Education Limited.
+DeGroot, M., &amp; Schervish, M. (2012). <em>Probability and Statistics</em>. Pearson Education Limited.
 </div>
 <div id="ref-hansen-econometrics" class="csl-entry" role="listitem">
 Hansen, B. E. (2021). <em>Econometrics</em>. University of Wisconsin.
 </div>
 <div id="ref-hansen-for-economist" class="csl-entry" role="listitem">
-Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princeton University Press.
+Hansen, B. E. (2022). <em>Probability and Statistics for Economist</em>. Princeton University Press.
 </div>
 </div>
 
@@ -1597,6 +1668,82 @@ Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princet
         ]
       });
     </script>
+    
+
+    <script>
+
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+
+      // slide changes (different for each slide format).
+
+      (function () {
+
+        // dispatch for htmlwidgets
+
+        function fireSlideEnter() {
+
+          const event = window.document.createEvent("Event");
+
+          event.initEvent("slideenter", true, true);
+
+          window.document.dispatchEvent(event);
+
+        }
+
+    
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+
+          fireSlideEnter();
+
+    
+
+          // dispatch for shiny
+
+          if (window.jQuery) {
+
+            if (previousSlide) {
+
+              window.jQuery(previousSlide).trigger("hidden");
+
+            }
+
+            if (currentSlide) {
+
+              window.jQuery(currentSlide).trigger("shown");
+
+            }
+
+          }
+
+        }
+
+    
+
+        // hookup for slidy
+
+        if (window.w3c_slidy) {
+
+          window.w3c_slidy.add_observer(function (slide_num) {
+
+            // slide_num starts at position 1
+
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+
+          });
+
+        }
+
+    
+
+      })();
+
+    </script>
+
+    
+
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
@@ -1619,12 +1766,12 @@ Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princet
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copiado");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copiado");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

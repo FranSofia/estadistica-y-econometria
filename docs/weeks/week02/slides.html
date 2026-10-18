@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="es"><head>
 <link href="../../figures/logos/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
@@ -366,7 +366,7 @@
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>k  <span class="ot">&lt;-</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">5</span></span>
 <span id="cb1-2"><a aria-hidden="true" tabindex="-1"></a>pk <span class="ot">&lt;-</span> <span class="fu">dpois</span>(k, <span class="at">lambda =</span> <span class="dv">1</span>)</span>
-<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pk, <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(pk, <span class="dv">3</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.368 0.368 0.184 0.061 0.015 0.003</code></pre>
@@ -374,7 +374,7 @@
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(pk, <span class="at">names.arg =</span> k,</span>
 <span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab =</span> <span class="st">"k"</span>,</span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pr(X = k)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">ylab =</span> <span class="st">"Pr(X = k)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
@@ -608,15 +608,15 @@
 <h2>En R: <code>d</code>, <code>p</code>, <code>q</code> y <code>r</code></h2>
 <p>R usa el mismo prefijo para cada distribución: <code>d</code> (densidad o masa), <code>p</code> (CDF), <code>q</code> (cuantil) y <code>r</code> (simulación).</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dexp</span>(<span class="dv">1</span>)                  <span class="co"># densidad f(1) = e^(-1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">dexp</span>(<span class="dv">1</span>)                  <span class="co"># densidad f(1) = e^(-1)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.3678794</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pexp</span>(<span class="dv">1</span>)        <span class="co"># Pr(1 &lt;= X &lt;= 2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pexp</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pexp</span>(<span class="dv">1</span>)        <span class="co"># Pr(1 &lt;= X &lt;= 2)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2325442</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">qexp</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.9</span>))        <span class="co"># mediana y cuantil 0.9</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">qexp</span>(<span class="fu">c</span>(<span class="fl">0.5</span>, <span class="fl">0.9</span>))        <span class="co"># mediana y cuantil 0.9</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6931472 2.3025851</code></pre>
 </div>
@@ -676,7 +676,7 @@
 <span id="cb10-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#69000C2E"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
 <span id="cb10-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>, <span class="at">xlab =</span> <span class="st">"y"</span>)</span>
 <span id="cb10-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dexp</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-9"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -720,7 +720,7 @@
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Importante</strong></p>
 </div>
 <div class="callout-content">
 <p>Aunque <span class="math inline">\(X\)</span> es aleatoria, <span class="math inline">\(\mathbb{E}[X]\)</span> <strong>no lo es</strong>: es un número fijo, una característica de la distribución <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
@@ -1110,7 +1110,7 @@ Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Note</strong></p>
+<p><strong>Nota</strong></p>
 </div>
 <div class="callout-content">
 <p>Ojo con la parametrización de la exponencial: aquí <span class="math inline">\(\lambda\)</span> es la <strong>media</strong> (como en Hansen). Otros textos, y la función <code>dexp()</code> de R, usan la <strong>tasa</strong> <span class="math inline">\(1/\lambda\)</span>.</p>
@@ -1125,7 +1125,7 @@ Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>
 <span id="cb11-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">size =</span> <span class="dv">10</span>, <span class="at">prob =</span> <span class="fl">0.3</span>), <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">border =</span> <span class="cn">NA</span>,</span>
 <span id="cb11-3"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">main =</span> <span class="st">"Binomial(10, 0.3)"</span>)</span>
 <span id="cb11-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">dpois</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">lambda =</span> <span class="dv">3</span>), <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">10</span>, <span class="at">border =</span> <span class="cn">NA</span>,</span>
-<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">main =</span> <span class="st">"Poisson(3)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">main =</span> <span class="st">"Poisson(3)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="slides_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"></section>
@@ -1143,19 +1143,19 @@ Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>
 <section class="slide level2">
 <h2>En R: la regla 68–95–99.7</h2>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>)     <span class="co"># Pr(-1 &lt; Z &lt; 1)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">1</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">1</span>)     <span class="co"># Pr(-1 &lt; Z &lt; 1)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6826895</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>)     <span class="co"># Pr(-2 &lt; Z &lt; 2)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>)     <span class="co"># Pr(-2 &lt; Z &lt; 2)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9544997</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">3</span>)     <span class="co"># Pr(-3 &lt; Z &lt; 3)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(<span class="dv">3</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">3</span>)     <span class="co"># Pr(-3 &lt; Z &lt; 3)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.9973002</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)             <span class="co"># cuantil 0.975</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">qnorm</span>(<span class="fl">0.975</span>)             <span class="co"># cuantil 0.975</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.959964</code></pre>
 </div>
@@ -1418,7 +1418,7 @@ Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
 <p>Igual que en la clase pasada: <span class="math inline">\(\mathbb{E}[\text{salario} \mid \text{educ}]\)</span> describe cómo difiere el salario promedio <strong>entre</strong> grupos con distinta educación. No dice cuánto aumentaría el salario de una persona si estudiara un año más. Esa es una pregunta causal.</p>
@@ -1483,14 +1483,14 @@ Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>
 <span id="cb20-6"><a aria-hidden="true" tabindex="-1"></a>pX <span class="ot">&lt;-</span> <span class="fu">rowSums</span>(p)                     <span class="co"># marginal de X</span></span>
 <span id="cb20-7"><a aria-hidden="true" tabindex="-1"></a>pY <span class="ot">&lt;-</span> <span class="fu">colSums</span>(p)                     <span class="co"># marginal de Y</span></span>
 <span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a>EY_dado_X <span class="ot">&lt;-</span> (p <span class="sc">%*%</span> y) <span class="sc">/</span> pX          <span class="co"># E[Y | X = x]</span></span>
-<span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>EY_dado_X</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>EY_dado_X</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>   
 X   [,1]
   1  1.2
   2  1.6</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pX <span class="sc">*</span> EY_dado_X)                  <span class="co"># ley de esperanzas iteradas</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(pX <span class="sc">*</span> EY_dado_X)                  <span class="co"># ley de esperanzas iteradas</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.4</code></pre>
 </div>
@@ -1505,7 +1505,7 @@ X   [,1]
 <span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a>varX  <span class="ot">&lt;-</span> <span class="fu">sum</span>(x<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> pX) <span class="sc">-</span> EX<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb24-5"><a aria-hidden="true" tabindex="-1"></a>varY  <span class="ot">&lt;-</span> <span class="fu">sum</span>(y<span class="sc">^</span><span class="dv">2</span> <span class="sc">*</span> pY) <span class="sc">-</span> EY<span class="sc">^</span><span class="dv">2</span></span>
 <span id="cb24-6"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">cov =</span> covXY, <span class="at">corr =</span> covXY <span class="sc">/</span> <span class="fu">sqrt</span>(varX <span class="sc">*</span> varY))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb24-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">c</span>(<span class="at">cov =</span> covXY, <span class="at">corr =</span> covXY <span class="sc">/</span> <span class="fu">sqrt</span>(varX <span class="sc">*</span> varY))</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      cov      corr 
 0.1000000 0.4082483 </code></pre>
@@ -1564,10 +1564,10 @@ X   [,1]
 <h2>Referencias</h2>
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-probability-statistics" class="csl-entry" role="listitem">
-DeGroot, M., &amp; Schervish, M. (2012). <em>Probability and statistics</em>. Pearson Education Limited.
+DeGroot, M., &amp; Schervish, M. (2012). <em>Probability and Statistics</em>. Pearson Education Limited.
 </div>
 <div id="ref-hansen-for-economist" class="csl-entry" role="listitem">
-Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princeton University Press.
+Hansen, B. E. (2022). <em>Probability and Statistics for Economist</em>. Princeton University Press.
 </div>
 </div>
 
@@ -1813,12 +1813,12 @@ Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princet
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copiado");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copiado");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
+<html lang="es"><head>
 <link href="../../figures/logos/favicon.png" rel="icon" type="image/png">
 <script src="../../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../../site_libs/quarto-html/tabby.min.js"></script>
@@ -314,7 +314,7 @@
 <span id="cb1-3"><a aria-hidden="true" tabindex="-1"></a>lanzamientos <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"cara"</span>, <span class="st">"sello"</span>), <span class="at">size =</span> n, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb1-4"><a aria-hidden="true" tabindex="-1"></a>prop_caras <span class="ot">&lt;-</span> <span class="fu">cumsum</span>(lanzamientos <span class="sc">==</span> <span class="st">"cara"</span>) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>n)</span>
 <span id="cb1-5"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>prop_caras[<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-6"><a aria-hidden="true" tabindex="-1"></a>prop_caras[<span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">100</span>, <span class="dv">1000</span>, <span class="dv">10000</span>)]</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.6000 0.5700 0.5060 0.5017</code></pre>
 </div>
@@ -332,7 +332,7 @@
 <span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Lanzamientos"</span>,</span>
 <span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Proporción de caras"</span>)</span>
 <span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fl">0.5</span>, <span class="at">lty =</span> <span class="dv">2</span>,</span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"#69000C"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">col =</span> <span class="st">"#69000C"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 </div><div class="column">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -864,7 +864,7 @@ No <span class="math inline">\(A\)</span>
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Importante</strong></p>
 </div>
 <div class="callout-content">
 <p>Cualquier función <span class="math inline">\(\Pr\)</span> que satisfaga los axiomas es una función de probabilidad válida. No importa cómo se hayan determinado las probabilidades —ya sea por frecuencias, simetrías o juicio subjetivo— mientras cumplan los axiomas, deben satisfacer también todas las propiedades que se derivan de ellos <span class="citation" data-cites="probability-statistics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
@@ -1147,7 +1147,7 @@ No <span class="math inline">\(A\)</span>
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Warning</strong></p>
+<p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
 <p>Hansen (2022) plantea estas preguntas como “¿<em>afecta</em> asistir a la universidad…?”. Aquí las reformulamos a propósito: son preguntas de <strong>asociación</strong>, no de causalidad. Saber que <span class="math inline">\(\Pr(A|B) \neq \Pr(A)\)</span> no nos dice que <span class="math inline">\(B\)</span> <em>cause</em> <span class="math inline">\(A\)</span>. Esa distinción es el tema central de la última unidad del curso.</p>
@@ -1674,7 +1674,7 @@ No <span class="math inline">\(A\)</span>
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
-<p><strong>Important</strong></p>
+<p><strong>Importante</strong></p>
 </div>
 <div class="callout-content">
 <p>Aun con un test “bueno”, un resultado positivo solo implica un <strong>8.8%</strong> de probabilidad de estar enfermo cuando la prevalencia es baja. Este resultado es contraintuitivo y tiene profundas implicancias para política pública.</p>
@@ -1733,7 +1733,7 @@ No <span class="math inline">\(A\)</span>
 <span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>                   <span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.95</span>,          <span class="co"># sensibilidad: 95%</span></span>
 <span id="cb4-6"><a aria-hidden="true" tabindex="-1"></a>                   <span class="fu">runif</span>(n) <span class="sc">&lt;</span> <span class="fl">0.10</span>)          <span class="co"># falsos positivos: 10%</span></span>
 <span id="cb4-7"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(enfermo[positivo])                      <span class="co"># Pr(enfermo | test +)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(enfermo[positivo])                      <span class="co"># Pr(enfermo | test +)</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.08419785</code></pre>
 </div>
@@ -1908,13 +1908,13 @@ Con reposición
 
 <div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" data-line-spacing="2" role="list">
 <div id="ref-canavos" class="csl-entry" role="listitem">
-Canavos, G. C. (1988). <em>Probabilidad y estadística. Aplicaciones y métodos</em>. McGraw-Hill. <a href="https://gsosa61.wordpress.com/wp-content/uploads/2008/03/10-canavos-g-probabilidad-y-estadistica-aplicaciones-y-metodos.pdf">https://gsosa61.wordpress.com/wp-content/uploads/2008/03/10-canavos-g-probabilidad-y-estadistica-aplicaciones-y-metodos.pdf</a>
+Canavos, G. C. (1988). <em>Probabilidad y Estadística. Aplicaciones y métodos</em>. McGraw-Hill. <a href="https://gsosa61.wordpress.com/wp-content/uploads/2008/03/10-canavos-g-probabilidad-y-estadistica-aplicaciones-y-metodos.pdf">https://gsosa61.wordpress.com/wp-content/uploads/2008/03/10-canavos-g-probabilidad-y-estadistica-aplicaciones-y-metodos.pdf</a>
 </div>
 <div id="ref-probability-statistics" class="csl-entry" role="listitem">
-DeGroot, M., &amp; Schervish, M. (2012). <em>Probability and statistics</em>. Pearson Education Limited.
+DeGroot, M., &amp; Schervish, M. (2012). <em>Probability and Statistics</em>. Pearson Education Limited.
 </div>
 <div id="ref-hansen-for-economist" class="csl-entry" role="listitem">
-Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princeton University Press.
+Hansen, B. E. (2022). <em>Probability and Statistics for Economist</em>. Princeton University Press.
 </div>
 </div>
 </section></section>
@@ -2158,12 +2158,12 @@ Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princet
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Copied!");
+          button.setAttribute("title", "Copiado");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Copied!");
+            button.setAttribute("data-bs-title", "Copiado");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",
