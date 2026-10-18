@@ -482,7 +482,8 @@ El promedio ponderado es un estimador *plug-in*: reemplaza la distribución de l
 #| fig-width: 5
 #| fig-height: 4
 y <- ing$yoprcor / 1000          # miles de pesos
-hist(y[y <= 3000], breaks = 60, freq = FALSE,
+hist(y[y <= 3000], breaks = seq(0, 3000, by = 100),
+     freq = FALSE,
      col = "#69000C2E", border = "white",
      main = "", xlab = "ingreso (miles de $)",
      ylab = "densidad")
@@ -497,7 +498,7 @@ legend("topright", bty = "n",
 
 . . .
 
-Como en los datos de EE.UU. de la clase 02, la media queda bastante por encima de la mediana. El gráfico excluye a menos del 2% de los encuestados, que ganan más de \$3 millones.
+Como en los datos de EE.UU. de la clase 02, la media queda bastante por encima de la mediana. El gráfico excluye a menos del 2% de los encuestados, que ganan más de \$3 millones. El peak entre \$400 y \$500 mil coincide con el salario mínimo, que desde julio de 2024 es de \$500 mil.
 
 ## El error estándar (como si fuera i.i.d.)
 
@@ -537,10 +538,10 @@ Al muestrear **con reposición**, cada observación es una extracción i.i.d. de
 #| fig-width: 10
 #| fig-height: 3.2
 set.seed(2024)
-par(mfrow = c(1, 3))
+par(mfrow = c(1, 3), mar = c(4, 5, 1.5, 1))
 for (n in c(20, 100, 1000)) {
   medias <- replicate(5000, mean(sample(pob, n, replace = TRUE)))
-  hist(medias, breaks = 50, freq = FALSE, xlim = c(400, 1300),
+  hist(medias, breaks = seq(0, 3000, by = 10), freq = FALSE, xlim = c(400, 1300),
        col = "#69000C2E", border = "white", ylab = "densidad",
        main = paste("n =", n), xlab = "media muestral (miles de $)")
   abline(v = mu, col = "#69000C", lwd = 2)
@@ -569,7 +570,7 @@ razon <- sapply(ns, function(n) {
 })
 plot(ns, razon, pch = 19, col = "#69000C",
      ylim = c(0.7, 1.05), xlab = "n",
-     ylab = "E[sigma2 plug-in] / sigma2")
+     ylab = expression(E(hat(sigma)^2) / sigma^2))
 curve(1 - 1/x, add = TRUE, col = "#19375A", lwd = 2)
 abline(h = 1, lty = 2, col = "#464646")
 ```
