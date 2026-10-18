@@ -598,6 +598,23 @@ $$\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n X_i^2 - \bar X_n^2 \xrightarrow{p} \mat
 Este mismo argumento, LGN más CMT, es el que usaremos en la Unidad III para demostrar que el estimador de mínimos cuadrados es consistente.
 :::
 
+## Por qué la econometría trabaja con límites
+
+El CMT explica buena parte de por qué la econometría prefiere los resultados asintóticos a los de muestra finita [@microeconometrics].
+
+. . .
+
+Con límites en probabilidad, los productos y cocientes "se separan":
+$$\text{plim}\,(\hat a\,\hat b) = \text{plim}\,\hat a \cdot \text{plim}\,\hat b$$
+
+. . .
+
+Con esperanzas, en general **no**: $\mathbb{E}[\hat a\,\hat b] \neq \mathbb{E}[\hat a]\,\mathbb{E}[\hat b]$, y tampoco $\mathbb{E}[\hat a/\hat b] = \mathbb{E}[\hat a]/\mathbb{E}[\hat b]$.
+
+. . .
+
+La mayoría de los estimadores econométricos son funciones no lineales de promedios, por ejemplo un cociente entre una covarianza y una varianza muestrales. Calcular su esperanza exacta suele ser imposible, pero obtener su límite en probabilidad es directo con la LGN y el CMT.
+
 # Convergencia en distribución {#convergencia-distribucion}
 
 ## La LGN no basta
@@ -628,6 +645,20 @@ en todo punto $u$ donde $G$ es continua [@hansen-for-economist; @hansen-economet
 - A $G$ se le llama **distribución asintótica** o **distribución límite** de $Z_n$.
 - La condición "donde $G$ es continua" es un detalle técnico; en los casos que veremos, $G$ es continua en todas partes.
 - Si el límite es una constante, convergencia en distribución y en probabilidad son equivalentes [@hansen-for-economist].
+
+## Relación entre los modos de convergencia
+
+$$Z_n \xrightarrow{a.s.} Z \quad \Longrightarrow \quad Z_n \xrightarrow{p} Z \quad \Longrightarrow \quad Z_n \xrightarrow{d} Z$$
+
+[@microeconometrics; @hansen-for-economist]
+
+. . .
+
+Las implicancias inversas **no** se cumplen en general. **Ejemplo:** si cada $Z_n$ es una extracción independiente de $N(\mu, \sigma^2)$, entonces trivialmente $Z_n \xrightarrow{d} N(\mu, \sigma^2)$. Pero $Z_n$ no se acerca a ningún valor en particular: $Z_n - Z$ tiene una varianza que no desaparece. Converge en distribución, no en probabilidad [@microeconometrics].
+
+. . .
+
+**Convergencia en media cuadrática (opcional).** $Z_n \xrightarrow{m} c$ si $\mathbb{E}[(Z_n - c)^2] \to 0$. Implica convergencia en probabilidad y suele ser fácil de verificar: basta que el sesgo y la varianza tiendan a cero [@microeconometrics]. Volveremos a esta idea la próxima clase con el error cuadrático medio.
 
 # Teorema central del límite {#tcl}
 
@@ -762,6 +793,19 @@ Lo mismo ocurre con la LGN: si $\mathbb{E}\|X\| < \infty$, entonces $\bar X_n \x
 
 La versión vectorial es la que necesitaremos en regresión, donde el estimador de mínimos cuadrados es un **vector** de coeficientes que depende de promedios muestrales como $\frac{1}{n}\sum X_i X_i'$ y $\frac{1}{n}\sum X_i Y_i$ [@hansen-econometrics].
 
+## Más allá del caso i.i.d. (opcional)
+
+La LGN y el TCL que vimos suponen observaciones i.i.d. Existen versiones para observaciones **independientes pero no idénticamente distribuidas** [@microeconometrics; @hansen-econometrics]:
+
+. . .
+
+- **LGN de Markov:** permite que cada $X_i$ tenga su propia media y varianza, siempre que las varianzas no crezcan demasiado rápido. Con $\sigma_i^2 = \sigma^2$ la condición se cumple; con $\sigma_i^2 = i\,\sigma^2$, no.
+- **TCL de Liapounov:** permite distribuciones distintas, a cambio de exigir un momento finito de orden mayor que dos.
+
+. . .
+
+Recordemos el contraejemplo de Hansen: con heterogeneidad extrema en las varianzas, la LGN falla. Estas versiones precisan **cuánta** heterogeneidad se puede tolerar. Son las que se usan en microeconometría con muestreo estratificado o regresores fijos [@microeconometrics].
+
 # Slutsky y método delta {#delta}
 
 ## Teorema de Slutsky
@@ -778,12 +822,19 @@ Si $Z_n \xrightarrow{d} Z$ y $c_n \xrightarrow{p} c$ cuando $n \to \infty$, ento
 2. $Z_n\, c_n \xrightarrow{d} Z\, c$
 3. $Z_n / c_n \xrightarrow{d} Z / c \quad$ si $c \neq 0$
 
-[@hansen-for-economist; @hansen-econometrics]
+[@hansen-for-economist; @microeconometrics]
 :::
 
 . . .
 
 En palabras: podemos reemplazar una cantidad que converge en probabilidad por su límite sin cambiar la distribución asintótica.
+
+. . .
+
+::: {.callout-warning}
+## Ojo con los nombres
+Los textos no coinciden. Cameron y Trivedi llaman "teorema de Slutsky" al CMT para convergencia en probabilidad, y a este resultado "teorema de transformación" o "teorema de Cramér" [@microeconometrics]. Lo importante es el contenido, no el nombre.
+:::
 
 ## El estadístico $t$
 
@@ -827,6 +878,21 @@ $$\sqrt{n}\,\big(h(\hat\theta) - h(\theta)\big) \xrightarrow{d} N\big(0,\; h'(\t
 - $\sqrt{n}\,(\bar X_n^2 - \mu^2) \xrightarrow{d} N(0,\, 4\mu^2\sigma^2)$
 - Si $X > 0$: $\sqrt{n}\,(\log \bar X_n - \log \mu) \xrightarrow{d} N(0,\, \sigma^2/\mu^2)$
 
+## Adelanto: cómo se usará todo esto en regresión
+
+En regresión con un solo regresor y sin constante, el estimador de mínimos cuadrados se puede escribir como [@microeconometrics]
+$$\sqrt{n}\,(\hat\beta - \beta) = \left(\frac{1}{n}\sum_{i=1}^n x_i^2\right)^{-1} \left(\frac{1}{\sqrt{n}}\sum_{i=1}^n x_i u_i\right)$$
+
+. . .
+
+- Al primer factor le aplicamos la **LGN** y el **CMT**: $\frac{1}{n}\sum x_i^2 \xrightarrow{p} \mathbb{E}[x^2]$.
+- Al segundo le aplicamos el **TCL**: $\frac{1}{\sqrt{n}}\sum x_i u_i \xrightarrow{d} N\big(0, \mathbb{E}[x^2u^2]\big)$, si $\mathbb{E}[xu] = 0$.
+- **Slutsky** combina ambos resultados y entrega la distribución asintótica de $\hat\beta$.
+
+. . .
+
+Es exactamente la estrategia de la clase 07. Las herramientas de hoy son las piezas con las que se arma la teoría asintótica de mínimos cuadrados [@hansen-econometrics; @microeconometrics].
+
 ## Resumen de la clase
 
 ::: {.columns}
@@ -863,6 +929,7 @@ $$\sqrt{n}\,\big(h(\hat\theta) - h(\theta)\big) \xrightarrow{d} N\big(0,\; h'(\t
 ## Lecturas sugeridas
 - Hansen, *Probability and Statistics for Economists*, secciones 6.1–6.8 y 6.10, Capítulo 7 (7.1–7.11 y 7.13) y Capítulo 8 (8.1–8.11, 8.13).
 - Hansen, *Econometrics*, Capítulo 6, como repaso compacto de la teoría asintótica que usaremos en regresión.
+- Cameron y Trivedi, *Microeconometrics*, Apéndice A: resumen de definiciones y teoremas asintóticos, con versiones para observaciones no idénticamente distribuidas.
 :::
 
 ## Referencias

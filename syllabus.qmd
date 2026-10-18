@@ -18,7 +18,7 @@ La primera unidad construye el lenguaje con el que se escribe todo lo demás. Pa
 |:-----:|------|----------------------|
 | 01 | Fundamentos de probabilidad | Hansen (2022), cap. 1; DeGroot y Schervish (2012), caps. 1–2; Canavos (1988), cap. 2 |
 | 02 | Variables aleatorias y distribuciones | Hansen (2022), caps. 2–5; Blitzstein y Hwang (2019) |
-| 03 | Muestreo y teoría asintótica | Hansen (2022), caps. 6–8; Hansen (2021), cap. 6 |
+| 03 | Muestreo y teoría asintótica | Hansen (2022), caps. 6–8; Hansen (2021), cap. 6; Cameron y Trivedi (2005), apéndice A |
 
 ### Unidad II: Estimación (clases 4–6)
 

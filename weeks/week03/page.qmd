@@ -17,6 +17,7 @@ Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer
 
 -   **Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press. Secciones 6.1–6.8 y 6.10; secciones 7.1–7.11 y 7.13; secciones 8.1–8.11 y 8.13.
 -   **Hansen, B. E.** (2021). *Econometrics*. University of Wisconsin. Capítulo 6.
+-   **Cameron, A. C. y Trivedi, P. K.** (2005). *Microeconometrics: Methods and Applications*. Cambridge University Press. Apéndice A.
 
 ## 📟 Dudas
 
