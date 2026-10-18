@@ -1,5 +1,12 @@
 [
   {
+    "objectID": "weeks/week03/slides.html#references",
+    "href": "weeks/week03/slides.html#references",
+    "title": "Clase 03: Muestreo y Teoría Asintótica",
+    "section": "Referencias",
+    "text": "Referencias\n\n\nDeGroot, M., & Schervish, M. (2012). Probability and statistics. Pearson Education Limited.\n\n\nHansen, B. E. (2021). Econometrics. University of Wisconsin.\n\n\nHansen, B. E. (2022). Probability and statistics for economist. Princeton University Press."
+  },
+  {
     "objectID": "weeks/week02/slides.html#references",
     "href": "weeks/week02/slides.html#references",
     "title": "Clase 02: Variables Aleatorias y Distribuciones",
@@ -185,6 +192,34 @@
     "objectID": "weeks/week02/page.html#dudas",
     "href": "weeks/week02/page.html#dudas",
     "title": "Clase 02: Variables Aleatorias y Distribuciones",
+    "section": "📟 Dudas",
+    "text": "📟 Dudas\nSi tienes preguntas sobre el material, no dudes en escribir a fnunezre@fen.uchile.cl."
+  },
+  {
+    "objectID": "weeks/week03/page.html",
+    "href": "weeks/week03/page.html",
+    "title": "Clase 03: Muestreo y Teoría Asintótica",
+    "section": "",
+    "text": "Con esta clase pasamos de la probabilidad a la estadística. En vez de partir de una distribución conocida, partimos de una muestra aleatoria y nos preguntamos qué podemos aprender sobre la población que la generó. Definimos parámetros, estadísticos y estimadores, construimos estimadores con el principio de analogía y vemos que todo estimador es una variable aleatoria con su propia distribución muestral. Como esa distribución casi nunca se conoce en muestras finitas, introducimos las herramientas de la teoría asintótica: convergencia en probabilidad, la desigualdad de Chebyshev, la ley de los grandes números, el teorema de la aplicación continua, la convergencia en distribución y el teorema central del límite. Cerramos con el teorema de Slutsky y el método delta, que conectan estos resultados con la inferencia que haremos más adelante en el curso."
+  },
+  {
+    "objectID": "weeks/week03/page.html#presentación",
+    "href": "weeks/week03/page.html#presentación",
+    "title": "Clase 03: Muestreo y Teoría Asintótica",
+    "section": "👨‍🏫 Presentación",
+    "text": "👨‍🏫 Presentación\nPuedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic aquí para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar."
+  },
+  {
+    "objectID": "weeks/week03/page.html#lecturas-recomendadas",
+    "href": "weeks/week03/page.html#lecturas-recomendadas",
+    "title": "Clase 03: Muestreo y Teoría Asintótica",
+    "section": "📚 Lecturas recomendadas",
+    "text": "📚 Lecturas recomendadas\n\nHansen, B. E. (2022). Probability and Statistics for Economists. Princeton University Press. Secciones 6.1–6.8 y 6.10; secciones 7.1–7.11 y 7.13; secciones 8.1–8.11 y 8.13.\nHansen, B. E. (2021). Econometrics. University of Wisconsin. Capítulo 6."
+  },
+  {
+    "objectID": "weeks/week03/page.html#dudas",
+    "href": "weeks/week03/page.html#dudas",
+    "title": "Clase 03: Muestreo y Teoría Asintótica",
     "section": "📟 Dudas",
     "text": "📟 Dudas\nSi tienes preguntas sobre el material, no dudes en escribir a fnunezre@fen.uchile.cl."
   }

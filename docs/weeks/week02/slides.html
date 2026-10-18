@@ -11,7 +11,7 @@
   <meta name="generator" content="quarto-1.9.38">
 
   <meta name="author" content="Fran Sofía Núñez Rebolledo">
-  <meta name="dcterms.date" content="2026-09-24">
+  <meta name="dcterms.date" content="2026-10-18">
   <title>Estadística y Econometría – Clase 02: Variables Aleatorias y Distribuciones</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -226,7 +226,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-<a href="mailto:fnunezr@fen.uchile.cl">Fran Sofía Núñez Rebolledo</a> 
+<a href="mailto:fnunezre@fen.uchile.cl">Fran Sofía Núñez Rebolledo</a> 
 </div>
         <p class="quarto-title-affiliation">
             UCH / INE
@@ -234,7 +234,7 @@
     </div>
 </div>
 
-  <p class="date">2026-09-24</p>
+  <p class="date">2026-10-18</p>
 </section>
 <section class="slide level2">
 <h2>Contenidos de hoy</h2>
@@ -308,7 +308,7 @@
 <section class="slide level2">
 <h2>Una variable aleatoria es una función</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"><p>Cada resultado de <span class="math inline">\(\Omega\)</span> se envía a un punto de la recta real. La probabilidad “viaja” con la función: <span class="math inline">\(\Pr(X = 1) = \Pr(\{H\})\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<img data-src="slides_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"><p>Cada resultado de <span class="math inline">\(\Omega\)</span> se envía a un punto de la recta real. La probabilidad “viaja” con la función: <span class="math inline">\(\Pr(X = 1) = \Pr(\{H\})\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </section></section>
 <section>
 <section id="discretas" class="title-slide slide level1 center">
@@ -378,7 +378,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="slides_files/figure-html/unnamed-chunk-3-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
@@ -681,7 +681,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="slides_files/figure-html/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
@@ -1128,7 +1128,7 @@ Normal <span class="math inline">\(N(\mu, \sigma^2)\)</span>
 <span id="cb11-5"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">main =</span> <span class="st">"Poisson(3)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"></section>
+<img data-src="slides_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"></section>
 <section class="slide level2">
 <h2>La distribución normal</h2>
 <p>Cuando <span class="math inline">\(\mu = 0\)</span> y <span class="math inline">\(\sigma^2 = 1\)</span> hablamos de la <strong>normal estándar</strong>. Su densidad se denota <span class="math inline">\(\phi(x)\)</span> y su CDF <span class="math inline">\(\Phi(x)\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
@@ -1791,82 +1791,6 @@ Hansen, B. E. (2022). <em>Probability and statistics for economist</em>. Princet
         ]
       });
     </script>
-    
-
-    <script>
-
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
-      // slide changes (different for each slide format).
-
-      (function () {
-
-        // dispatch for htmlwidgets
-
-        function fireSlideEnter() {
-
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
-        }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
-          }
-
-        }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
-        }
-
-    
-
-      })();
-
-    </script>
-
-    
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
