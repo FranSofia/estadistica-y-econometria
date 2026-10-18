@@ -24,3 +24,6 @@ Thumbs.db
 bibliografia/*.pdf
 !bibliografia/Bruce Hansen*.pdf
 !bibliografia/Blitzstein y Hwang*.pdf
+
+# Datos originales (pesados): se guardan solo en local
+data/raw/
