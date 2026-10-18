@@ -27,3 +27,6 @@ bibliografia/*.pdf
 
 # Datos originales (pesados): se guardan solo en local
 data/raw/
+
+# Copias de gráficos que deja el render de una sola clase (el sitio usa docs/)
+weeks/**/slides_files/
