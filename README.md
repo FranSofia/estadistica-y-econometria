@@ -14,18 +14,24 @@ Curso de fundamentos estadísticos y modelamiento econométrico, con énfasis en
 
 | Clase | Tema |
 |-------|------|
-| 01 | Fundamentos de Probabilidad |
-| 02 | Variables Aleatorias y Distribuciones |
-| 03 | Distribuciones Muestrales y Teorema Central del Límite |
-| 04 | Estimación Puntual: Propiedades de los Estimadores |
-| 05 | --- |
-| 06 | Intervalos de Confianza y Pruebas de Hipótesis |
-| 07 | El Modelo de Regresión Lineal Simple |
-| 08 | Mínimos Cuadrados Ordinarios: Derivación y Propiedades |
-| 09 | Regresión Lineal Múltiple y Teorema de Gauss-Markov |
-| 10 | Inferencia en Regresión: Tests t, F y R² |
-| 11 | Diagnóstico: Heterocedasticidad y Multicolinealidad |
-| 12 | Variables Instrumentales y Endogeneidad |
+| | **Unidad I · Fundamentos de probabilidad** |
+| 01 | Fundamentos de probabilidad |
+| 02 | Variables aleatorias y distribuciones |
+| 03 | Muestreo y teoría asintótica |
+| | **Unidad II · Estimación** |
+| 04 | Estimación puntual y propiedades de los estimadores |
+| 05 | Máxima verosimilitud y método de momentos |
+| 06 | Mínimos cuadrados ordinarios como estimador |
+| | **Unidad III · Regresión** |
+| 07 | Teoría asintótica de mínimos cuadrados |
+| 08 | Regresión simple y múltiple en la práctica |
+| 09 | Formas funcionales e interpretación de coeficientes |
+| 10 | Pruebas de hipótesis e intervalos de confianza |
+| | **Unidad IV · Introducción a la inferencia causal** |
+| 11 | Causalidad, endogeneidad e identificación |
+| 12 | Variables instrumentales |
+| 13 | Diferencias en diferencias |
+| 14 | Regresión discontinua |
 
 ## Bibliografía
 
@@ -53,8 +59,9 @@ estadistica-y-econometria/
 │   ├── slides-theme.scss     # Tema de las presentaciones
 │   └── extra.css             # Ajustes menores
 ├── figures/                  # Imágenes y logos
-├── data/                     # Datasets
-└── .github/workflows/        # GitHub Actions 
+├── R/estilo.R                # Paleta y estilo común de los gráficos
+├── referencias.bib           # Bibliografía citada en las slides
+└── docs/                     # Sitio renderizado (GitHub Pages)
 ```
 
 ## Tecnologías
@@ -68,7 +75,7 @@ estadistica-y-econometria/
 
 1. Clona el repositorio:
 ```bash
-git clone https://github.com/FranSofia/estadistica-econometria.git
+git clone https://github.com/FranSofia/estadistica-y-econometria.git
 ```
 
 2. Instala [Quarto](https://quarto.org/docs/get-started/)

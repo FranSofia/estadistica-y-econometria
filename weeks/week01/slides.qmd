@@ -1,7 +1,7 @@
 ---
 title: "Clase 01: Fundamentos de Probabilidad"
 subtitle: "Estadística y Econometría"
-author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezr@fen.uchile.cl)"
+author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezre@fen.uchile.cl)"
 institute: "UCH / INE"
 date: today
 format:
