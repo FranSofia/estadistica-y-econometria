@@ -29,9 +29,10 @@ website:
             href: weeks/week02/page.qmd
           - text: "Clase 03: Muestreo y teoría asintótica"
             href: weeks/week03/page.qmd
-          # - text: "---"
-          # - text: "Unidad II · Estimación"
-          # Clase 04: Estimación puntual y propiedades de los estimadores
+          - text: "---"
+          - text: "Unidad II · Estimación"
+          - text: "Clase 04: Estimación puntual y propiedades de los estimadores"
+            href: weeks/week04/page.qmd
           # Clase 05: Máxima verosimilitud y método de momentos
           # Clase 06: Mínimos cuadrados ordinarios como estimador
           # - text: "---"

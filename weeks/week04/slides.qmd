@@ -1,0 +1,684 @@
+---
+title: "Clase 04: Estimación Puntual y Propiedades de los Estimadores"
+subtitle: "Estadística y Econometría"
+author: "[Fran Sofía Núñez Rebolledo](mailto:fnunezre@fen.uchile.cl)"
+institute: "UCH / INE"
+date: today
+format:
+  revealjs:
+    theme: [default, ../../styles/slides-theme.scss]
+    slide-number: true
+    show-slide-number: all
+    hash-type: number
+    center: false
+    transition: fade
+    width: 1050
+    height: 700
+    margin: 0.1
+    highlight-style: atom-one
+    code-line-numbers: false
+    fig-align: center
+    footer: "Estadística y Econometría — Clase 04"
+    logo: ../../figures/logos/logo-curso.png
+    chalkboard: true
+---
+
+```{r}
+#| include: false
+source("../../R/estilo.R")
+```
+
+## Contenidos de hoy
+
+1. [¿Qué hace bueno a un estimador?](#criterios)
+2. [Sesgo](#sesgo)
+3. [Varianza y error cuadrático medio](#ecm)
+4. [El mejor estimador insesgado](#mejor)
+5. [Estimación de la varianza](#varianza)
+6. [Error estándar](#error-estandar)
+7. [El modelo normal](#normal)
+8. [Insesgamiento y consistencia](#consistencia)
+9. [Aplicación: el ingreso del trabajo en CASEN 2024](#casen)
+
+# ¿Qué hace bueno a un estimador? {#criterios}
+
+## Del "cómo construir" al "cómo evaluar"
+
+En la clase pasada vimos cómo **construir** estimadores con el principio de analogía, y que todo estimador $\hat\theta$ es una variable aleatoria con su propia **distribución muestral**.
+
+. . .
+
+Pero para un mismo parámetro suele haber muchos estimadores posibles. Para estimar $\mu = \mathbb{E}[X]$ podríamos usar:
+
+- la media muestral $\bar X_n$,
+- la mediana muestral,
+- solo la primera observación, $X_1$,
+- un promedio ponderado $\sum_i w_i X_i$.
+
+. . .
+
+¿Cómo elegir? Necesitamos **criterios** para comparar distribuciones muestrales [@hansen-for-economist; @casella-berger].
+
+## La idea en una figura
+
+```{r}
+#| echo: false
+#| fig-width: 9
+#| fig-height: 3.4
+par(mfrow = c(1, 3), mar = c(2.5, 1, 2, 1))
+xs <- seq(-4, 4, length.out = 400)
+dibujar <- function(m, s, titulo) {
+  plot(xs, dnorm(xs, m, s), type = "l", lwd = 2, col = "#19375A",
+       axes = FALSE, xlab = "", ylab = "", main = titulo, ylim = c(0, 0.85))
+  axis(1, at = 0, labels = expression(theta))
+  abline(v = 0, col = "#69000C", lwd = 2, lty = 2)
+}
+dibujar(0, 1.4, "Insesgado, varianza alta")
+dibujar(1.3, 0.5, "Sesgado, varianza baja")
+dibujar(0, 0.5, "Insesgado, varianza baja")
+```
+
+Cada curva es la distribución muestral de un estimador distinto; la línea roja marca el valor verdadero $\theta$. Queremos distribuciones **centradas** en $\theta$ y **concentradas** a su alrededor.
+
+# Sesgo {#sesgo}
+
+## Sesgo e insesgamiento
+
+::: {.callout-note}
+## Definición: Sesgo
+El **sesgo** de un estimador $\hat\theta$ de un parámetro $\theta$ es
+$$\text{sesgo}(\hat\theta) = \mathbb{E}[\hat\theta] - \theta$$
+Un estimador es **insesgado** si su sesgo es cero [@hansen-for-economist; @casella-berger].
+:::
+
+. . .
+
+- El sesgo mide si la distribución muestral está **bien centrada**: si, "en promedio sobre muestras repetidas", el estimador acierta.
+- Un estimador puede ser insesgado para algunas distribuciones y sesgado para otras. Por eso Hansen define el insesgamiento respecto de una **clase** de distribuciones $\mathcal{F}$: $\hat\theta$ es insesgado en $\mathcal{F}$ si el sesgo es cero para toda $F \in \mathcal{F}$ [@hansen-for-economist].
+
+## La media muestral es insesgada
+
+Por linealidad de la esperanza, como vimos la clase pasada:
+$$\mathbb{E}[\bar X_n] = \frac{1}{n}\sum_{i=1}^n \mathbb{E}[X_i] = \mu$$
+
+::: {.callout-important}
+## Teorema
+$\bar X_n$ es insesgado para $\mu = \mathbb{E}[X]$ si $\mathbb{E}|X| < \infty$ [@hansen-for-economist].
+:::
+
+. . .
+
+Pero no es el único. También son insesgados [@hansen-for-economist]:
+
+- La **primera observación** $X_1$, porque $\mathbb{E}[X_1] = \mu$.
+- Cualquier **promedio ponderado** $\sum_i w_i X_i$ con pesos $w_i \geq 0$ que suman uno.
+
+. . .
+
+En cambio, $c\,\bar X_n$ con $c \neq 1$ tiene esperanza $c\mu$: es sesgado salvo que $\mu = 0$.
+
+## Transformaciones y sesgo
+
+Las transformaciones **lineales** preservan el insesgamiento: si $\hat\theta$ es insesgado para $\theta$, entonces $a\hat\theta + b$ es insesgado para $a\theta + b$ [@hansen-for-economist].
+
+. . .
+
+Las **no lineales**, en general, no. Y la desigualdad de Jensen nos dice hacia dónde va el sesgo de $\hat\beta = h(\hat\theta)$ [@hansen-for-economist; @casella-berger]:
+
+- Si $h$ es **cóncava**: $\mathbb{E}[h(\hat\theta)] \leq h(\mathbb{E}[\hat\theta]) = h(\theta)$. Sesgo **hacia abajo**.
+- Si $h$ es **convexa**: $\mathbb{E}[h(\hat\theta)] \geq h(\theta)$. Sesgo **hacia arriba**.
+
+. . .
+
+**Ejemplo:** aunque $s^2$ sea insesgado para $\sigma^2$, la desviación estándar $s = \sqrt{s^2}$ está sesgada **hacia abajo** para $\sigma$, porque la raíz es cóncava.
+
+. . .
+
+::: {.callout-tip}
+"Razonable" e "insesgado" no son lo mismo. El insesgamiento es una propiedad deseable, pero es solo una de varias; a veces conviene aceptar algo de sesgo a cambio de otras ventajas [@hansen-for-economist].
+:::
+
+# Varianza y error cuadrático medio {#ecm}
+
+## Varianza del estimador
+
+La **varianza muestral** de un estimador, $\text{var}(\hat\theta)$, mide la dispersión de su distribución muestral: cuánto cambiaría $\hat\theta$ de una muestra a otra [@hansen-for-economist].
+
+. . .
+
+Para la media muestral ya la conocemos:
+$$\text{var}(\bar X_n) = \frac{\sigma^2}{n}$$
+
+. . .
+
+Y para transformaciones lineales: $\text{var}(a\hat\theta + b) = a^2\,\text{var}(\hat\theta)$. Para transformaciones no lineales $h(\bar X_n)$, la varianza exacta en general no está disponible; ahí usamos el método delta de la clase pasada [@hansen-for-economist].
+
+. . .
+
+**Comparación:** $X_1$ es insesgado para $\mu$, igual que $\bar X_n$, pero $\text{var}(X_1) = \sigma^2$, que es $n$ veces mayor. Ambos están centrados en $\mu$; $\bar X_n$ está mucho más concentrado.
+
+## Error cuadrático medio
+
+¿Cómo comparar un estimador con poco sesgo y mucha varianza con otro con algo de sesgo y poca varianza? Con una medida que combine ambas cosas.
+
+::: {.callout-note}
+## Definición: Error cuadrático medio (ECM)
+$$\text{ECM}(\hat\theta) = \mathbb{E}\big[(\hat\theta - \theta)^2\big]$$
+Es la distancia cuadrática promedio entre el estimador y el parámetro [@hansen-for-economist; @casella-berger].
+:::
+
+. . .
+
+::: {.callout-important}
+## Teorema: Descomposición del ECM
+Para cualquier estimador con varianza finita,
+$$\text{ECM}(\hat\theta) = \text{var}(\hat\theta) + \big(\text{sesgo}(\hat\theta)\big)^2$$
+[@hansen-for-economist; @casella-berger]
+:::
+
+## Demostración: descomposición del ECM
+
+Sumamos y restamos $\mathbb{E}[\hat\theta]$ dentro del cuadrado:
+$$\text{ECM}(\hat\theta) = \mathbb{E}\Big[\big(\underbrace{\hat\theta - \mathbb{E}[\hat\theta]}_{\text{aleatorio}} + \underbrace{\mathbb{E}[\hat\theta] - \theta}_{\text{constante}}\big)^2\Big]$$
+
+. . .
+
+Expandiendo el cuadrado:
+$$= \mathbb{E}\big[(\hat\theta - \mathbb{E}[\hat\theta])^2\big] + 2\big(\mathbb{E}[\hat\theta] - \theta\big)\,\underbrace{\mathbb{E}\big[\hat\theta - \mathbb{E}[\hat\theta]\big]}_{=\,0} + \big(\mathbb{E}[\hat\theta] - \theta\big)^2$$
+
+. . .
+
+$$= \text{var}(\hat\theta) + \text{sesgo}(\hat\theta)^2 \qquad \blacksquare$$
+
+. . .
+
+Para un estimador insesgado, el ECM es simplemente la varianza. Por ejemplo, $\text{ECM}(\bar X_n) = \sigma^2/n$ [@hansen-for-economist].
+
+## El dilema sesgo–varianza
+
+> "Controlling bias does not guarantee that MSE is controlled. In particular, it is sometimes the case that a trade-off occurs between variance and bias in such a way that a small increase in bias can be traded for a larger decrease in variance, resulting in an improvement in MSE." [@casella-berger, p. 331]
+
+. . .
+
+- El ECM no siempre elige un ganador claro: el ECM de dos estimadores puede depender del valor de $\theta$, y cruzarse [@casella-berger].
+- Un estimador absurdo como $\hat\theta = 17$ tiene ECM cero si justo $\theta = 17$, y es pésimo en cualquier otro caso [@casella-berger].
+
+. . .
+
+::: {.callout-tip}
+Este dilema reaparece en todo el curso: al elegir cuántas variables incluir en una regresión, al elegir el ancho de banda en regresión discontinua y, más allá del curso, en los métodos de *machine learning*.
+:::
+
+# El mejor estimador insesgado {#mejor}
+
+## La media es el mejor estimador lineal insesgado
+
+Restrinjamos la búsqueda a estimadores **lineales** $\tilde\mu = \sum_{i=1}^n w_i X_i$ [@hansen-for-economist]:
+
+. . .
+
+- **Insesgamiento:** $\mathbb{E}[\tilde\mu] = \mu\sum_i w_i = \mu$ si y solo si $\sum_i w_i = 1$.
+- **Varianza:** por independencia, $\text{var}(\tilde\mu) = \sigma^2\sum_i w_i^2$.
+
+. . .
+
+Hay que minimizar $\sum_i w_i^2$ sujeto a $\sum_i w_i = 1$. El lagrangiano es
+$$\mathcal{L} = \sum_{i=1}^n w_i^2 - \lambda\left(\sum_{i=1}^n w_i - 1\right)$$
+
+y la condición de primer orden, $2w_i - \lambda = 0$, implica que **todos los pesos son iguales**. Para que sumen uno, $w_i = 1/n$. El óptimo es $\bar X_n$ [@hansen-for-economist].
+
+## MELI y mejor insesgado
+
+::: {.callout-important}
+## Teorema: Mejor estimador lineal insesgado (MELI)
+Si $\sigma^2 < \infty$, la media muestral $\bar X_n$ tiene la menor varianza entre todos los estimadores **lineales** insesgados de $\mu$ [@hansen-for-economist].
+:::
+
+. . .
+
+En inglés se le llama BLUE (*best linear unbiased estimator*). El resultado es útil, pero "no muy profundo", porque la clase de estimadores lineales es restrictiva [@hansen-for-economist].
+
+. . .
+
+Hansen enuncia un resultado más fuerte, que demuestra en el capítulo 11:
+
+::: {.callout-important}
+## Teorema: Mejor estimador insesgado
+Si $\sigma^2 < \infty$, $\bar X_n$ tiene la menor varianza entre **todos** los estimadores insesgados de $\mu$ [@hansen-for-economist].
+:::
+
+. . .
+
+Encontrar el mejor estimador insesgado en general no es fácil. Una herramienta clave es la **cota de Cramér–Rao**, que veremos la próxima clase junto con máxima verosimilitud [@casella-berger].
+
+# Estimación de la varianza {#varianza}
+
+## El estimador *plug-in* de la varianza está sesgado
+
+Recordemos el estimador *plug-in*: $\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \bar X_n)^2$. ¿Es insesgado?
+
+. . .
+
+**Paso 1.** Si conociéramos $\mu$, usaríamos $\tilde\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2$. Es un promedio de variables i.i.d. con esperanza $\sigma^2$, así que $\mathbb{E}[\tilde\sigma^2] = \sigma^2$ [@hansen-for-economist].
+
+. . .
+
+**Paso 2.** Con un poco de álgebra se obtiene
+$$\hat\sigma^2 = \tilde\sigma^2 - (\bar X_n - \mu)^2$$
+
+. . .
+
+**Paso 3.** Como $\mathbb{E}[(\bar X_n - \mu)^2] = \text{var}(\bar X_n) = \sigma^2/n$:
+$$\mathbb{E}[\hat\sigma^2] = \sigma^2 - \frac{\sigma^2}{n} = \left(1 - \frac{1}{n}\right)\sigma^2 < \sigma^2$$
+
+[@hansen-for-economist]
+
+## Intuición y corrección
+
+::: {.callout-important}
+## Teorema
+Si $\mathbb{E}[X^2] < \infty$, entonces $\mathbb{E}[\hat\sigma^2] = \left(1 - \frac{1}{n}\right)\sigma^2$ [@hansen-for-economist].
+:::
+
+. . .
+
+**¿Por qué subestima?** Porque centra las observaciones en $\bar X_n$, no en $\mu$. Y $\bar X_n$ es, por construcción, el valor que minimiza $\sum_i (X_i - c)^2$: las desviaciones respecto de $\bar X_n$ son "artificialmente" pequeñas [@hansen-for-economist].
+
+. . .
+
+Como el sesgo es proporcional, se corrige reescalando:
+$$s^2 = \frac{n}{n-1}\,\hat\sigma^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar X_n)^2, \qquad \mathbb{E}[s^2] = \sigma^2$$
+
+. . .
+
+A $s^2$ se le llama estimador de la varianza **corregido por sesgo**. Es el que calcula `var()` en R. En muestras grandes la diferencia entre ambos es mínima [@hansen-for-economist].
+
+## ¿Siempre es mejor $s^2$?
+
+No necesariamente. En el modelo normal se puede calcular el ECM de ambos estimadores [@casella-berger]:
+
+$$\text{ECM}(s^2) = \frac{2\sigma^4}{n-1} \qquad\qquad \text{ECM}(\hat\sigma^2) = \frac{2n-1}{n^2}\,\sigma^4$$
+
+. . .
+
+Y resulta que $\text{ECM}(\hat\sigma^2) < \text{ECM}(s^2)$: el estimador sesgado está, en promedio, **más cerca** de $\sigma^2$. Su sesgo hacia abajo se compensa con creces con una menor varianza [@casella-berger].
+
+. . .
+
+::: {.callout-warning}
+Esto no significa que haya que abandonar $s^2$. $\hat\sigma^2$ subestima $\sigma^2$ sistemáticamente, y el ECM castiga por igual sobreestimar y subestimar, lo que no es tan razonable para un parámetro que no puede ser negativo. No hay una respuesta absoluta: los criterios entregan información para elegir según el problema [@casella-berger].
+:::
+
+# Error estándar {#error-estandar}
+
+## Error estándar
+
+Conocer la fórmula $\text{var}(\bar X_n) = \sigma^2/n$ no basta para medir la precisión, porque depende de $\sigma^2$, que es desconocido. Hay que **estimarla** [@hansen-for-economist].
+
+. . .
+
+::: {.callout-note}
+## Definición: Error estándar
+El **error estándar** $s(\hat\theta) = \hat V^{1/2}$ de un estimador $\hat\theta$ es la raíz cuadrada de un estimador $\hat V$ de su varianza $V = \text{var}(\hat\theta)$ [@hansen-for-economist].
+:::
+
+. . .
+
+Para la media muestral, usando $s^2$:
+$$s(\bar X_n) = \frac{s}{\sqrt{n}}$$
+
+. . .
+
+Hay **dos estimaciones** en juego: $\hat\theta$ estima $\theta$, y $\hat V$ estima la precisión de $\hat\theta$. Por eso las estimaciones se reportan siempre junto con su error estándar [@hansen-for-economist].
+
+## El error estándar en la práctica
+
+**Ejemplo: las 20 asalariadas de la CPS** de la clase pasada. El salario promedio es \$25.73, con $s = 12.4$ [@hansen-for-economist]:
+$$s(\bar X_n) = \frac{12.4}{\sqrt{20}} \approx 2.78$$
+
+. . .
+
+Con solo 20 observaciones, el promedio de \$25.73 tiene una incertidumbre del orden de \$3 hacia cada lado.
+
+. . .
+
+::: {.callout-warning}
+Aunque $s^2/n$ sea insesgado para $\text{var}(\bar X_n)$, el error estándar $s/\sqrt{n}$ está **sesgado hacia abajo** para $\sigma/\sqrt{n}$, de nuevo por Jensen. En la práctica se ignora, porque no hay un método aceptado para corregirlo [@hansen-for-economist]. Lo veremos en la simulación con CASEN.
+:::
+
+# El modelo normal {#normal}
+
+## El modelo de muestreo normal
+
+Hasta ahora no supusimos nada sobre la forma de $F$. Si suponemos que $X_1, \ldots, X_n$ son i.i.d. $N(\mu, \sigma^2)$, se obtiene una teoría **exacta** para cualquier $n$ [@hansen-for-economist]:
+
+. . .
+
+::: {.callout-important}
+## Teorema
+Si $X_i$ son i.i.d. $N(\mu, \sigma^2)$, entonces
+
+1. $\bar X_n \sim N(\mu, \sigma^2/n)$
+2. $\dfrac{(n-1)s^2}{\sigma^2} \sim \chi^2_{n-1}$
+3. $\bar X_n$ y $s^2$ son **independientes**
+
+[@hansen-for-economist; @casella-berger]
+:::
+
+. . .
+
+La clave de la independencia: los residuos $X_i - \bar X_n$ no están correlacionados con $\bar X_n$, y como todo es conjuntamente normal, no correlación implica independencia [@hansen-for-economist]. Esto **solo** vale bajo normalidad.
+
+## El estadístico $t$ de Student
+
+Combinando los tres resultados:
+$$T = \frac{\sqrt{n}\,(\bar X_n - \mu)}{s} = \frac{\sqrt{n}\,(\bar X_n - \mu)/\sigma}{\sqrt{s^2/\sigma^2}} \sim \frac{N(0, 1)}{\sqrt{\chi^2_{n-1}/(n-1)}} = t_{n-1}$$
+
+[@hansen-for-economist]
+
+. . .
+
+- Es el mismo $T$ de la clase pasada. Allí vimos que, **sin suponer normalidad**, $T \xrightarrow{d} N(0,1)$. Aquí, **suponiendo normalidad**, $T$ tiene distribución $t_{n-1}$ exacta para cualquier $n$.
+- Cuando $n$ crece, la $t_{n-1}$ se acerca a la $N(0,1)$: ambas aproximaciones coinciden en muestras grandes.
+
+. . .
+
+**Historia.** El resultado se debe a William Gosset (1908), que trabajaba en la cervecería Guinness. Como la empresa no permitía a sus empleados publicar, firmó con el seudónimo "Student" [@hansen-for-economist].
+
+# Insesgamiento y consistencia {#consistencia}
+
+## Dos propiedades distintas
+
+- **Insesgamiento:** propiedad de **muestra finita**. Para un $n$ dado, $\mathbb{E}[\hat\theta] = \theta$.
+- **Consistencia:** propiedad **asintótica**. $\hat\theta \xrightarrow{p} \theta$ cuando $n \to \infty$.
+
+. . .
+
+**Ninguna implica la otra** [@microeconometrics]:
+
+- $X_1$ es **insesgado pero no consistente**: su distribución no cambia con $n$, así que no se concentra en $\mu$.
+- $\bar X_n + 1/n$ es **sesgado pero consistente**: el sesgo $1/n$ desaparece cuando $n$ crece.
+- $\hat\sigma^2$ es sesgado, con sesgo $-\sigma^2/n$, pero consistente.
+
+. . .
+
+::: {.callout-tip}
+Un criterio suficiente que conecta ambas ideas: si $\text{ECM}(\hat\theta) = \text{var}(\hat\theta) + \text{sesgo}^2 \to 0$, entonces $\hat\theta$ es consistente. Es la **convergencia en media cuadrática** de la clase pasada [@microeconometrics].
+:::
+
+# Aplicación: el ingreso del trabajo en CASEN 2024 {#casen}
+
+## La Encuesta CASEN 2024
+
+| | |
+|---|---|
+| **Población objetivo** | Hogares en viviendas particulares ocupadas y sus residentes habituales |
+| **Diseño muestral** | Probabilístico, estratificado y bietápico: las UPM son conglomerados de viviendas y la unidad final es la vivienda |
+| **Trabajo de campo** | 1 de noviembre de 2024 al 2 de febrero de 2025 |
+| **Muestra lograda** | 78 654 hogares y 218 367 personas |
+| **Representatividad** | Nacional, urbana/rural y regional (16 regiones) |
+
+[@casen2024]
+
+. . .
+
+Trabajaremos con las **personas ocupadas** y su **ingreso de la ocupación principal corregido** (`yoprcor`), en pesos.
+
+## Población, parámetro y estimador
+
+- **Población:** las personas ocupadas que residen en viviendas particulares en Chile.
+- **Parámetro:** $\mu$, el ingreso medio de la ocupación principal en esa población. Es un número fijo y desconocido.
+- **Muestra:** las personas ocupadas encuestadas por CASEN.
+- **Estimador:** una función de la muestra que usamos para "adivinar" $\mu$.
+
+```{r}
+#| echo: true
+casen <- read.csv("../../data/casen2024_ocupados.csv")
+dim(casen)
+ing <- casen[!is.na(casen$yoprcor), ]   # ocupados con ingreso informado
+nrow(ing)
+```
+
+## Describir la muestra vs. estimar la población
+
+```{r}
+#| echo: true
+mean(ing$yoprcor)                         # promedio simple de la muestra
+weighted.mean(ing$yoprcor, ing$expr)      # promedio ponderado por expr
+median(ing$yoprcor)
+sum(ing$expr)                             # personas que representa la muestra
+```
+
+. . .
+
+El promedio simple **describe a los encuestados**. Pero CASEN no es una muestra aleatoria simple: cada persona tiene un **factor de expansión** (`expr`) que indica a cuántas personas de la población representa [@casen2024]. El estimador de $\mu$ es el promedio **ponderado**, y la diferencia no es menor: cerca de \$100 mil.
+
+## ¿Por qué difieren?
+
+La muestra está diseñada para ser representativa en **cada región**, así que las regiones pequeñas están sobrerrepresentadas y la Región Metropolitana, subrepresentada:
+
+```{r}
+#| echo: true
+rm_ <- ing$region == 13
+c(muestra   = mean(rm_),                                  # % de encuestados en la RM
+  poblacion = sum(ing$expr[rm_]) / sum(ing$expr))         # % de ocupados en la RM
+```
+
+. . .
+
+La RM tiene cerca del 21% de los encuestados con ingreso, pero alrededor del 46% de los ocupados del país, y sus ingresos son más altos que el promedio. El promedio simple da muy poco peso a la RM y por eso **subestima** el ingreso medio nacional. El factor de expansión corrige ese desbalance.
+
+. . .
+
+::: {.callout-important}
+El promedio ponderado es un estimador *plug-in*: reemplaza la distribución de la muestra por una que pondera a cada persona según cuántas representa.
+:::
+
+## Una distribución muy asimétrica
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-width: 5
+#| fig-height: 4
+y <- ing$yoprcor / 1000          # miles de pesos
+hist(y[y <= 3000], breaks = 60, freq = FALSE,
+     col = "#69000C2E", border = "white",
+     main = "", xlab = "ingreso (miles de $)",
+     ylab = "densidad")
+abline(v = mean(y), col = "#69000C", lwd = 2)
+abline(v = median(y), col = "#19375A",
+       lwd = 2, lty = 2)
+legend("topright", bty = "n",
+       legend = c("media", "mediana"),
+       col = c("#69000C", "#19375A"),
+       lty = 1:2, lwd = 2)
+```
+
+. . .
+
+Como en los datos de EE.UU. de la clase 02, la media queda bastante por encima de la mediana. El gráfico excluye a menos del 2% de los encuestados, que ganan más de \$3 millones.
+
+## El error estándar (como si fuera i.i.d.)
+
+Si tratáramos a los encuestados como una muestra aleatoria simple, el error estándar del promedio sería $s/\sqrt{n}$:
+
+```{r}
+#| echo: true
+n <- nrow(ing)
+s <- sd(ing$yoprcor)             # sd() usa n - 1
+c(n = n, s = s, error_estandar = s / sqrt(n))
+```
+
+. . .
+
+Con más de 90 mil observaciones, el error estándar es de solo unos \$2.500. Pero esta cifra **supone muestreo i.i.d.**, y CASEN no lo es. Volveremos a esto al final.
+
+## CASEN como pseudo-población
+
+Para **ver** las propiedades de los estimadores necesitamos conocer el parámetro verdadero. El truco: tratemos a los ocupados de CASEN como si fueran **toda la población** y saquemos muchas muestras aleatorias de ella.
+
+```{r}
+#| echo: true
+pob   <- ing$yoprcor / 1000      # "población" (miles de $)
+mu    <- mean(pob)               # parámetro "verdadero"
+sigma <- sqrt(mean((pob - mu)^2))
+c(mu = mu, sigma = sigma)
+```
+
+. . .
+
+Al muestrear **con reposición**, cada observación es una extracción i.i.d. de esta población: estamos exactamente en el marco teórico de las clases 03 y 04.
+
+## Simulación: la distribución muestral de $\bar X_n$
+
+```{r}
+#| echo: true
+#| fig-width: 10
+#| fig-height: 3.2
+set.seed(2024)
+par(mfrow = c(1, 3))
+for (n in c(20, 100, 1000)) {
+  medias <- replicate(5000, mean(sample(pob, n, replace = TRUE)))
+  hist(medias, breaks = 50, freq = FALSE, xlim = c(400, 1300),
+       col = "#69000C2E", border = "white", ylab = "densidad",
+       main = paste("n =", n), xlab = "media muestral (miles de $)")
+  abline(v = mu, col = "#69000C", lwd = 2)
+}
+```
+
+. . .
+
+En los tres casos la distribución está centrada en $\mu$ (insesgamiento) y se concentra al crecer $n$ (consistencia). Con $n = 20$ todavía es claramente **asimétrica**: con ingresos de colas tan pesadas, el TCL necesita muestras grandes.
+
+## Simulación: el sesgo de $\hat\sigma^2$
+
+```{r}
+#| echo: true
+#| output-location: column
+#| fig-width: 5
+#| fig-height: 4
+set.seed(1)
+ns <- c(5, 10, 20, 50)
+razon <- sapply(ns, function(n) {
+  v <- replicate(50000, {
+    x <- sample(pob, n, replace = TRUE)
+    mean((x - mean(x))^2)        # sigma2 plug-in
+  })
+  mean(v) / sigma^2
+})
+plot(ns, razon, pch = 19, col = "#69000C",
+     ylim = c(0.7, 1.05), xlab = "n",
+     ylab = "E[sigma2 plug-in] / sigma2")
+curve(1 - 1/x, add = TRUE, col = "#19375A", lwd = 2)
+abline(h = 1, lty = 2, col = "#464646")
+```
+
+. . .
+
+Los puntos (simulación) siguen la curva teórica $1 - 1/n$. Con $n = 5$, $\hat\sigma^2$ subestima la varianza en torno a un 20%. Con colas tan pesadas, la simulación es ruidosa incluso con 50 mil repeticiones.
+
+## Simulación: el error estándar
+
+¿Se parece el error estándar $s/\sqrt{n}$ a la verdadera desviación estándar de $\bar X_n$?
+
+```{r}
+#| echo: true
+set.seed(7)
+t(sapply(c(20, 100, 1000), function(n) {
+  m <- matrix(sample(pob, 5000 * n, replace = TRUE), nrow = 5000)
+  c(n               = n,
+    sd_teorica      = sigma / sqrt(n),
+    sd_simulada     = sd(rowMeans(m)),
+    promedio_ee     = mean(apply(m, 1, sd) / sqrt(n)))
+}))
+```
+
+. . .
+
+La desviación estándar simulada de las medias coincide con $\sigma/\sqrt{n}$. El error estándar promedio queda **por debajo**, sobre todo con $n = 20$: es el sesgo hacia abajo que anticipaba Hansen, amplificado por las colas pesadas de los ingresos. Con $n$ grande la diferencia desaparece.
+
+## El error estándar con el diseño muestral (opcional)
+
+Con el paquete `survey` podemos calcular un error estándar que respeta los estratos (`varstrat`), los conglomerados (`varunit`) y los factores de expansión:
+
+```{r}
+#| echo: true
+library(survey)
+diseno <- svydesign(ids = ~varunit, strata = ~varstrat, weights = ~expr,
+                    data = ing, nest = TRUE)
+svymean(~yoprcor, diseno)
+```
+
+. . .
+
+El error estándar de diseño es **más del doble** que el que calculamos suponiendo i.i.d. Las personas de una misma UPM se parecen entre sí, así que cada observación adicional aporta menos información que una extracción independiente. Es el contraejemplo del **componente común** de la clase 03, ahora con datos reales.
+
+::: {.callout-note}
+Lo estrictamente correcto es definir el diseño con toda la muestra y luego restringirlo a los ocupados con `subset()`. Aquí usamos la base reducida por simplicidad.
+:::
+
+## Un puente hacia la regresión: la esperanza condicional
+
+En la clase 02 vimos que $m(x) = \mathbb{E}[Y \mid X = x]$ es el objeto central de la econometría. Se puede mostrar que es el **mejor predictor** de $Y$ dado $X$: entre todas las funciones $g(X)$, es la que minimiza el error cuadrático medio de predicción $\mathbb{E}[(Y - g(X))^2]$ [@hansen-econometrics].
+
+. . .
+
+Su estimador análogo más simple: el promedio de $Y$ **dentro de cada grupo** de $X$.
+
+```{r}
+#| echo: true
+ing$educ <- cut(ing$esc, breaks = c(-1, 8, 12, 16, 31),
+                labels = c("0-8", "9-12", "13-16", "17+"))
+round(sapply(split(ing, ing$educ),
+             function(g) weighted.mean(g$yoprcor, g$expr)) / 1000)
+```
+
+. . .
+
+El ingreso medio estimado sube con la escolaridad, con un salto grande en los niveles más altos. Cuando $X$ toma muchos valores, ya no podemos promediar dentro de cada uno: necesitamos un **modelo**. Ese es el punto de partida de la regresión.
+
+## Resumen de la clase
+
+::: {.columns}
+::: {.column width="50%"}
+
+**Conceptos clave:**
+
+- Sesgo e insesgamiento
+- Varianza del estimador
+- ECM = varianza + sesgo²
+- Dilema sesgo–varianza
+- MELI y mejor estimador insesgado
+- $\hat\sigma^2$ sesgado, $s^2$ insesgado
+- Error estándar
+- Modelo normal: $\chi^2$ y $t$ de Student
+- Insesgamiento $\neq$ consistencia
+- Muestra vs. población: factores de expansión
+
+:::
+::: {.column width="50%"}
+
+**Próxima clase:**
+
+- Máxima verosimilitud
+- Método de momentos
+- Cota de Cramér–Rao
+
+:::
+:::
+
+## Para revisar
+
+::: {.callout-tip}
+## Lecturas sugeridas
+- Hansen, *Probability and Statistics for Economists*, secciones 6.9–6.14 y 6.18–6.21.
+- Casella y Berger, *Statistical Inference*, secciones 7.3.1 y 7.3.2.
+- Hansen, *Econometrics*, Capítulo 2 (secciones 2.1–2.11), sobre la esperanza condicional como mejor predictor.
+- Cameron y Trivedi, *Microeconometrics*, sección A.2, sobre insesgamiento y consistencia.
+:::
+
+## Referencias
+
+::: {#refs}
+:::

@@ -35,7 +35,7 @@ El curso tiene 14 clases organizadas en cuatro unidades. El detalle de contenido
 | **I. Fundamentos de probabilidad** | 01 | [Fundamentos de probabilidad](weeks/week01/page.qmd) |
 | | 02 | [Variables aleatorias y distribuciones](weeks/week02/page.qmd) |
 | | 03 | [Muestreo y teoría asintótica](weeks/week03/page.qmd) |
-| **II. Estimación** | 04 | Estimación puntual y propiedades de los estimadores |
+| **II. Estimación** | 04 | [Estimación puntual y propiedades de los estimadores](weeks/week04/page.qmd) |
 | | 05 | Máxima verosimilitud y método de momentos |
 | | 06 | Mínimos cuadrados ordinarios como estimador |
 | **III. Regresión** | 07 | Teoría asintótica de mínimos cuadrados |

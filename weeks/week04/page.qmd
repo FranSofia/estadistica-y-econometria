@@ -1,0 +1,29 @@
+---
+title: "Clase 04: Estimación Puntual y Propiedades de los Estimadores"
+author: "Fran Sofía Núñez Rebolledo"
+---
+
+En esta clase pasamos de construir estimadores a evaluarlos. Definimos el sesgo, la varianza y el error cuadrático medio de un estimador, y vemos por qué estos criterios pueden entrar en conflicto. Mostramos que la media muestral es el mejor estimador lineal insesgado de la esperanza, que el estimador *plug-in* de la varianza está sesgado y cómo corregirlo, y qué es un error estándar. Revisamos también el modelo de muestreo normal, donde aparecen las distribuciones chi-cuadrado y $t$ de Student, y distinguimos entre insesgamiento y consistencia. La segunda parte trabaja por primera vez con datos reales: usando la Encuesta CASEN 2024 estimamos el ingreso medio de la ocupación principal, distinguimos entre describir la muestra y estimar un parámetro poblacional, y usamos la base como pseudo-población para ver en simulaciones las propiedades de los estimadores.
+
+## 👨‍🏫 Presentación
+
+Puedes navegar por las diapositivas directamente en el recuadro de abajo o hacer clic [aquí](slides.html) para ver la presentación en pantalla completa. Usa las flechas de tu teclado para avanzar.
+
+```{=html}
+<iframe class="slide-embed" src="slides.html" title="Slides Clase 04"></iframe>
+```
+
+## 📚 Lecturas recomendadas
+
+-   **Hansen, B. E.** (2022). *Probability and Statistics for Economists*. Princeton University Press. Secciones 6.9–6.14 y 6.18–6.21.
+-   **Casella, G. y Berger, R. L.** (2002). *Statistical Inference* (2.ª ed.). Duxbury. Secciones 7.3.1 y 7.3.2.
+-   **Hansen, B. E.** (2021). *Econometrics*. University of Wisconsin. Capítulo 2, secciones 2.1–2.11.
+-   **Cameron, A. C. y Trivedi, P. K.** (2005). *Microeconometrics: Methods and Applications*. Cambridge University Press. Sección A.2.
+
+## 🗃️ Datos
+
+La aplicación usa la Encuesta de Caracterización Socioeconómica Nacional (CASEN) 2024 del Ministerio de Desarrollo Social y Familia. El archivo `data/casen2024_ocupados.csv` del repositorio contiene solo a las personas ocupadas y un grupo de variables seleccionadas; se genera con el script `data/preparar_casen.R` a partir de la base original.
+
+## 📟 Dudas
+
+Si tienes preguntas sobre el material, no dudes en escribir a **fnunezre\@fen.uchile.cl**.
