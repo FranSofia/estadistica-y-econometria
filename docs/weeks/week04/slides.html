@@ -121,6 +121,22 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-da3246bd69c496231167c47c159c72a8.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -257,14 +273,14 @@
 </section>
 <section class="slide level2">
 <h2>Del “cómo construir” al “cómo evaluar”</h2>
-<p>En la clase pasada vimos cómo <strong>construir</strong> estimadores con el principio de analogía, y que todo estimador <span class="math inline">\(\hat\theta\)</span> es una variable aleatoria con su propia <strong>distribución muestral</strong>.</p>
+<p>En la clase pasada vimos cómo <strong>construir</strong> estimadores con el principio de analogía, y que todo estimador <span class="math inline">\hat\theta</span> es una variable aleatoria con su propia <strong>distribución muestral</strong>.</p>
 <div class="fragment">
-<p>Pero para un mismo parámetro suele haber muchos estimadores posibles. Para estimar <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> podríamos usar:</p>
+<p>Pero para un mismo parámetro suele haber muchos estimadores posibles. Para estimar <span class="math inline">\mu = \mathbb{E}[X]</span> podríamos usar:</p>
 <ul>
-<li>la media muestral <span class="math inline">\(\bar X_n\)</span>,</li>
+<li>la media muestral <span class="math inline">\bar X_n</span>,</li>
 <li>la mediana muestral,</li>
-<li>solo la primera observación, <span class="math inline">\(X_1\)</span>,</li>
-<li>un promedio ponderado <span class="math inline">\(\sum_i w_i X_i\)</span>.</li>
+<li>solo la primera observación, <span class="math inline">X_1</span>,</li>
+<li>un promedio ponderado <span class="math inline">\sum_i w_i X_i</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -274,7 +290,7 @@
 <section class="slide level2">
 <h2>La idea en una figura</h2>
 
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"><p>Cada curva es la distribución muestral de un estimador distinto; la línea roja marca el valor verdadero <span class="math inline">\(\theta\)</span>. Queremos distribuciones <strong>centradas</strong> en <span class="math inline">\(\theta\)</span> y <strong>concentradas</strong> a su alrededor.</p>
+<img data-src="slides_files/figure-html/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"><p>Cada curva es la distribución muestral de un estimador distinto; la línea roja marca el valor verdadero <span class="math inline">\theta</span>. Queremos distribuciones <strong>centradas</strong> en <span class="math inline">\theta</span> y <strong>concentradas</strong> a su alrededor.</p>
 </section></section>
 <section>
 <section id="sesgo" class="title-slide slide level1 center">
@@ -292,20 +308,20 @@
 <p><strong>Definición: Sesgo</strong></p>
 </div>
 <div class="callout-content">
-<p>El <strong>sesgo</strong> de un estimador <span class="math inline">\(\hat\theta\)</span> de un parámetro <span class="math inline">\(\theta\)</span> es <span class="math display">\[\text{sesgo}(\hat\theta) = \mathbb{E}[\hat\theta] - \theta\]</span> Un estimador es <strong>insesgado</strong> si su sesgo es cero <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>El <strong>sesgo</strong> de un estimador <span class="math inline">\hat\theta</span> de un parámetro <span class="math inline">\theta</span> es <span class="math display">\text{sesgo}(\hat\theta) = \mathbb{E}[\hat\theta] - \theta</span> Un estimador es <strong>insesgado</strong> si su sesgo es cero <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
 <ul>
 <li>El sesgo mide si la distribución muestral está <strong>bien centrada</strong>: si, “en promedio sobre muestras repetidas”, el estimador acierta.</li>
-<li>Un estimador puede ser insesgado para algunas distribuciones y sesgado para otras. Por eso Hansen define el insesgamiento respecto de una <strong>clase</strong> de distribuciones <span class="math inline">\(\mathcal{F}\)</span>: <span class="math inline">\(\hat\theta\)</span> es insesgado en <span class="math inline">\(\mathcal{F}\)</span> si el sesgo es cero para toda <span class="math inline">\(F \in \mathcal{F}\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
+<li>Un estimador puede ser insesgado para algunas distribuciones y sesgado para otras. Por eso Hansen define el insesgamiento respecto de una <strong>clase</strong> de distribuciones <span class="math inline">\mathcal{F}</span>: <span class="math inline">\hat\theta</span> es insesgado en <span class="math inline">\mathcal{F}</span> si el sesgo es cero para toda <span class="math inline">F \in \mathcal{F}</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
 </ul>
 </div>
 </section>
 <section class="slide level2">
 <h2>La media muestral es insesgada</h2>
-<p>Por linealidad de la esperanza, como vimos la clase pasada: <span class="math display">\[\mathbb{E}[\bar X_n] = \frac{1}{n}\sum_{i=1}^n \mathbb{E}[X_i] = \mu\]</span></p>
+<p>Por linealidad de la esperanza, como vimos la clase pasada: <span class="math display">\mathbb{E}[\bar X_n] = \frac{1}{n}\sum_{i=1}^n \mathbb{E}[X_i] = \mu</span></p>
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -315,33 +331,33 @@
 <p><strong>Teorema</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(\bar X_n\)</span> es insesgado para <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> si <span class="math inline">\(\mathbb{E}|X| &lt; \infty\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><span class="math inline">\bar X_n</span> es insesgado para <span class="math inline">\mu = \mathbb{E}[X]</span> si <span class="math inline">\mathbb{E}|X| &lt; \infty</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
 <p>Pero no es el único. También son insesgados <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <ul>
-<li>La <strong>primera observación</strong> <span class="math inline">\(X_1\)</span>, porque <span class="math inline">\(\mathbb{E}[X_1] = \mu\)</span>.</li>
-<li>Cualquier <strong>promedio ponderado</strong> <span class="math inline">\(\sum_i w_i X_i\)</span> con pesos <span class="math inline">\(w_i \geq 0\)</span> que suman uno.</li>
+<li>La <strong>primera observación</strong> <span class="math inline">X_1</span>, porque <span class="math inline">\mathbb{E}[X_1] = \mu</span>.</li>
+<li>Cualquier <strong>promedio ponderado</strong> <span class="math inline">\sum_i w_i X_i</span> con pesos <span class="math inline">w_i \geq 0</span> que suman uno.</li>
 </ul>
 </div>
 <div class="fragment">
-<p>En cambio, <span class="math inline">\(c\,\bar X_n\)</span> con <span class="math inline">\(c \neq 1\)</span> tiene esperanza <span class="math inline">\(c\mu\)</span>: es sesgado salvo que <span class="math inline">\(\mu = 0\)</span>.</p>
+<p>En cambio, <span class="math inline">c\,\bar X_n</span> con <span class="math inline">c \neq 1</span> tiene esperanza <span class="math inline">c\mu</span>: es sesgado salvo que <span class="math inline">\mu = 0</span>.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>Transformaciones y sesgo</h2>
-<p>Las transformaciones <strong>lineales</strong> preservan el insesgamiento: si <span class="math inline">\(\hat\theta\)</span> es insesgado para <span class="math inline">\(\theta\)</span>, entonces <span class="math inline">\(a\hat\theta + b\)</span> es insesgado para <span class="math inline">\(a\theta + b\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Las transformaciones <strong>lineales</strong> preservan el insesgamiento: si <span class="math inline">\hat\theta</span> es insesgado para <span class="math inline">\theta</span>, entonces <span class="math inline">a\hat\theta + b</span> es insesgado para <span class="math inline">a\theta + b</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 <div class="fragment">
-<p>Las <strong>no lineales</strong>, en general, no. Y la desigualdad de Jensen nos dice hacia dónde va el sesgo de <span class="math inline">\(\hat\beta = h(\hat\theta)\)</span> <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p>Las <strong>no lineales</strong>, en general, no. Y la desigualdad de Jensen nos dice hacia dónde va el sesgo de <span class="math inline">\hat\beta = h(\hat\theta)</span> <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <ul>
-<li>Si <span class="math inline">\(h\)</span> es <strong>cóncava</strong>: <span class="math inline">\(\mathbb{E}[h(\hat\theta)] \leq h(\mathbb{E}[\hat\theta]) = h(\theta)\)</span>. Sesgo <strong>hacia abajo</strong>.</li>
-<li>Si <span class="math inline">\(h\)</span> es <strong>convexa</strong>: <span class="math inline">\(\mathbb{E}[h(\hat\theta)] \geq h(\theta)\)</span>. Sesgo <strong>hacia arriba</strong>.</li>
+<li>Si <span class="math inline">h</span> es <strong>cóncava</strong>: <span class="math inline">\mathbb{E}[h(\hat\theta)] \leq h(\mathbb{E}[\hat\theta]) = h(\theta)</span>. Sesgo <strong>hacia abajo</strong>.</li>
+<li>Si <span class="math inline">h</span> es <strong>convexa</strong>: <span class="math inline">\mathbb{E}[h(\hat\theta)] \geq h(\theta)</span>. Sesgo <strong>hacia arriba</strong>.</li>
 </ul>
 </div>
 <div class="fragment">
-<p><strong>Ejemplo:</strong> aunque <span class="math inline">\(s^2\)</span> sea insesgado para <span class="math inline">\(\sigma^2\)</span>, la desviación estándar <span class="math inline">\(s = \sqrt{s^2}\)</span> está sesgada <strong>hacia abajo</strong> para <span class="math inline">\(\sigma\)</span>, porque la raíz es cóncava.</p>
+<p><strong>Ejemplo:</strong> aunque <span class="math inline">s^2</span> sea insesgado para <span class="math inline">\sigma^2</span>, la desviación estándar <span class="math inline">s = \sqrt{s^2}</span> está sesgada <strong>hacia abajo</strong> para <span class="math inline">\sigma</span>, porque la raíz es cóncava.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -366,15 +382,15 @@
 </section>
 <section class="slide level2">
 <h2>Varianza del estimador</h2>
-<p>La <strong>varianza muestral</strong> de un estimador, <span class="math inline">\(\text{var}(\hat\theta)\)</span>, mide la dispersión de su distribución muestral: cuánto cambiaría <span class="math inline">\(\hat\theta\)</span> de una muestra a otra <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>La <strong>varianza muestral</strong> de un estimador, <span class="math inline">\text{var}(\hat\theta)</span>, mide la dispersión de su distribución muestral: cuánto cambiaría <span class="math inline">\hat\theta</span> de una muestra a otra <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 <div class="fragment">
-<p>Para la media muestral ya la conocemos: <span class="math display">\[\text{var}(\bar X_n) = \frac{\sigma^2}{n}\]</span></p>
+<p>Para la media muestral ya la conocemos: <span class="math display">\text{var}(\bar X_n) = \frac{\sigma^2}{n}</span></p>
 </div>
 <div class="fragment">
-<p>Y para transformaciones lineales: <span class="math inline">\(\text{var}(a\hat\theta + b) = a^2\,\text{var}(\hat\theta)\)</span>. Para transformaciones no lineales <span class="math inline">\(h(\bar X_n)\)</span>, la varianza exacta en general no está disponible; ahí usamos el método delta de la clase pasada <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Y para transformaciones lineales: <span class="math inline">\text{var}(a\hat\theta + b) = a^2\,\text{var}(\hat\theta)</span>. Para transformaciones no lineales <span class="math inline">h(\bar X_n)</span>, la varianza exacta en general no está disponible; ahí usamos el método delta de la clase pasada <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 <div class="fragment">
-<p><strong>Comparación:</strong> <span class="math inline">\(X_1\)</span> es insesgado para <span class="math inline">\(\mu\)</span>, igual que <span class="math inline">\(\bar X_n\)</span>, pero <span class="math inline">\(\text{var}(X_1) = \sigma^2\)</span>, que es <span class="math inline">\(n\)</span> veces mayor. Ambos están centrados en <span class="math inline">\(\mu\)</span>; <span class="math inline">\(\bar X_n\)</span> está mucho más concentrado.</p>
+<p><strong>Comparación:</strong> <span class="math inline">X_1</span> es insesgado para <span class="math inline">\mu</span>, igual que <span class="math inline">\bar X_n</span>, pero <span class="math inline">\text{var}(X_1) = \sigma^2</span>, que es <span class="math inline">n</span> veces mayor. Ambos están centrados en <span class="math inline">\mu</span>; <span class="math inline">\bar X_n</span> está mucho más concentrado.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -389,7 +405,7 @@
 <p><strong>Definición: Error cuadrático medio (ECM)</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[\text{ECM}(\hat\theta) = \mathbb{E}\big[(\hat\theta - \theta)^2\big]\]</span> Es la distancia cuadrática promedio entre el estimador y el parámetro <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><span class="math display">\text{ECM}(\hat\theta) = \mathbb{E}\big[(\hat\theta - \theta)^2\big]</span> Es la distancia cuadrática promedio entre el estimador y el parámetro <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -403,7 +419,7 @@
 <p><strong>Teorema: Descomposición del ECM</strong></p>
 </div>
 <div class="callout-content">
-<p>Para cualquier estimador con varianza finita, <span class="math display">\[\text{ECM}(\hat\theta) = \text{var}(\hat\theta) + \big(\text{sesgo}(\hat\theta)\big)^2\]</span> <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+<p>Para cualquier estimador con varianza finita, <span class="math display">\text{ECM}(\hat\theta) = \text{var}(\hat\theta) + \big(\text{sesgo}(\hat\theta)\big)^2</span> <span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
 </div>
 </div>
@@ -411,15 +427,15 @@
 </section>
 <section class="slide level2">
 <h2>Demostración: descomposición del ECM</h2>
-<p>Sumamos y restamos <span class="math inline">\(\mathbb{E}[\hat\theta]\)</span> dentro del cuadrado: <span class="math display">\[\text{ECM}(\hat\theta) = \mathbb{E}\Big[\big(\underbrace{\hat\theta - \mathbb{E}[\hat\theta]}_{\text{aleatorio}} + \underbrace{\mathbb{E}[\hat\theta] - \theta}_{\text{constante}}\big)^2\Big]\]</span></p>
+<p>Sumamos y restamos <span class="math inline">\mathbb{E}[\hat\theta]</span> dentro del cuadrado: <span class="math display">\text{ECM}(\hat\theta) = \mathbb{E}\Big[\big(\underbrace{\hat\theta - \mathbb{E}[\hat\theta]}_{\text{aleatorio}} + \underbrace{\mathbb{E}[\hat\theta] - \theta}_{\text{constante}}\big)^2\Big]</span></p>
 <div class="fragment">
-<p>Expandiendo el cuadrado: <span class="math display">\[= \mathbb{E}\big[(\hat\theta - \mathbb{E}[\hat\theta])^2\big] + 2\big(\mathbb{E}[\hat\theta] - \theta\big)\,\underbrace{\mathbb{E}\big[\hat\theta - \mathbb{E}[\hat\theta]\big]}_{=\,0} + \big(\mathbb{E}[\hat\theta] - \theta\big)^2\]</span></p>
+<p>Expandiendo el cuadrado: <span class="math display">= \mathbb{E}\big[(\hat\theta - \mathbb{E}[\hat\theta])^2\big] + 2\big(\mathbb{E}[\hat\theta] - \theta\big)\,\underbrace{\mathbb{E}\big[\hat\theta - \mathbb{E}[\hat\theta]\big]}_{=\,0} + \big(\mathbb{E}[\hat\theta] - \theta\big)^2</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[= \text{var}(\hat\theta) + \text{sesgo}(\hat\theta)^2 \qquad \blacksquare\]</span></p>
+<p><span class="math display">= \text{var}(\hat\theta) + \text{sesgo}(\hat\theta)^2 \qquad \blacksquare</span></p>
 </div>
 <div class="fragment">
-<p>Para un estimador insesgado, el ECM es simplemente la varianza. Por ejemplo, <span class="math inline">\(\text{ECM}(\bar X_n) = \sigma^2/n\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Para un estimador insesgado, el ECM es simplemente la varianza. Por ejemplo, <span class="math inline">\text{ECM}(\bar X_n) = \sigma^2/n</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -429,8 +445,8 @@
 </blockquote>
 <div class="fragment">
 <ul>
-<li>El ECM no siempre elige un ganador claro: el ECM de dos estimadores puede depender del valor de <span class="math inline">\(\theta\)</span>, y cruzarse <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</li>
-<li>Un estimador absurdo como <span class="math inline">\(\hat\theta = 17\)</span> tiene ECM cero si justo <span class="math inline">\(\theta = 17\)</span>, y es pésimo en cualquier otro caso <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</li>
+<li>El ECM no siempre elige un ganador claro: el ECM de dos estimadores puede depender del valor de <span class="math inline">\theta</span>, y cruzarse <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</li>
+<li>Un estimador absurdo como <span class="math inline">\hat\theta = 17</span> tiene ECM cero si justo <span class="math inline">\theta = 17</span>, y es pésimo en cualquier otro caso <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -456,16 +472,16 @@
 </section>
 <section class="slide level2">
 <h2>La media es el mejor estimador lineal insesgado</h2>
-<p>Restrinjamos la búsqueda a estimadores <strong>lineales</strong> <span class="math inline">\(\tilde\mu = \sum_{i=1}^n w_i X_i\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p>Restrinjamos la búsqueda a estimadores <strong>lineales</strong> <span class="math inline">\tilde\mu = \sum_{i=1}^n w_i X_i</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <div class="fragment">
 <ul>
-<li><strong>Insesgamiento:</strong> <span class="math inline">\(\mathbb{E}[\tilde\mu] = \mu\sum_i w_i = \mu\)</span> si y solo si <span class="math inline">\(\sum_i w_i = 1\)</span>.</li>
-<li><strong>Varianza:</strong> por independencia, <span class="math inline">\(\text{var}(\tilde\mu) = \sigma^2\sum_i w_i^2\)</span>.</li>
+<li><strong>Insesgamiento:</strong> <span class="math inline">\mathbb{E}[\tilde\mu] = \mu\sum_i w_i = \mu</span> si y solo si <span class="math inline">\sum_i w_i = 1</span>.</li>
+<li><strong>Varianza:</strong> por independencia, <span class="math inline">\text{var}(\tilde\mu) = \sigma^2\sum_i w_i^2</span>.</li>
 </ul>
 </div>
 <div class="fragment">
-<p>Hay que minimizar <span class="math inline">\(\sum_i w_i^2\)</span> sujeto a <span class="math inline">\(\sum_i w_i = 1\)</span>. El lagrangiano es <span class="math display">\[\mathcal{L} = \sum_{i=1}^n w_i^2 - \lambda\left(\sum_{i=1}^n w_i - 1\right)\]</span></p>
-<p>y la condición de primer orden, <span class="math inline">\(2w_i - \lambda = 0\)</span>, implica que <strong>todos los pesos son iguales</strong>. Para que sumen uno, <span class="math inline">\(w_i = 1/n\)</span>. El óptimo es <span class="math inline">\(\bar X_n\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Hay que minimizar <span class="math inline">\sum_i w_i^2</span> sujeto a <span class="math inline">\sum_i w_i = 1</span>. El lagrangiano es <span class="math display">\mathcal{L} = \sum_{i=1}^n w_i^2 - \lambda\left(\sum_{i=1}^n w_i - 1\right)</span></p>
+<p>y la condición de primer orden, <span class="math inline">2w_i - \lambda = 0</span>, implica que <strong>todos los pesos son iguales</strong>. Para que sumen uno, <span class="math inline">w_i = 1/n</span>. El óptimo es <span class="math inline">\bar X_n</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -479,7 +495,7 @@
 <p><strong>Teorema: Mejor estimador lineal insesgado (MELI)</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(\sigma^2 &lt; \infty\)</span>, la media muestral <span class="math inline">\(\bar X_n\)</span> tiene la menor varianza entre todos los estimadores <strong>lineales</strong> insesgados de <span class="math inline">\(\mu\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Si <span class="math inline">\sigma^2 &lt; \infty</span>, la media muestral <span class="math inline">\bar X_n</span> tiene la menor varianza entre todos los estimadores <strong>lineales</strong> insesgados de <span class="math inline">\mu</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -497,7 +513,7 @@
 <p><strong>Teorema: Mejor estimador insesgado</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(\sigma^2 &lt; \infty\)</span>, <span class="math inline">\(\bar X_n\)</span> tiene la menor varianza entre <strong>todos</strong> los estimadores insesgados de <span class="math inline">\(\mu\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Si <span class="math inline">\sigma^2 &lt; \infty</span>, <span class="math inline">\bar X_n</span> tiene la menor varianza entre <strong>todos</strong> los estimadores insesgados de <span class="math inline">\mu</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -513,15 +529,15 @@
 </section>
 <section class="slide level2">
 <h2>El estimador <em>plug-in</em> de la varianza está sesgado</h2>
-<p>Recordemos el estimador <em>plug-in</em>: <span class="math inline">\(\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \bar X_n)^2\)</span>. ¿Es insesgado?</p>
+<p>Recordemos el estimador <em>plug-in</em>: <span class="math inline">\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \bar X_n)^2</span>. ¿Es insesgado?</p>
 <div class="fragment">
-<p><strong>Paso 1.</strong> Si conociéramos <span class="math inline">\(\mu\)</span>, usaríamos <span class="math inline">\(\tilde\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2\)</span>. Es un promedio de variables i.i.d. con esperanza <span class="math inline">\(\sigma^2\)</span>, así que <span class="math inline">\(\mathbb{E}[\tilde\sigma^2] = \sigma^2\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><strong>Paso 1.</strong> Si conociéramos <span class="math inline">\mu</span>, usaríamos <span class="math inline">\tilde\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \mu)^2</span>. Es un promedio de variables i.i.d. con esperanza <span class="math inline">\sigma^2</span>, así que <span class="math inline">\mathbb{E}[\tilde\sigma^2] = \sigma^2</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 <div class="fragment">
-<p><strong>Paso 2.</strong> Con un poco de álgebra se obtiene <span class="math display">\[\hat\sigma^2 = \tilde\sigma^2 - (\bar X_n - \mu)^2\]</span></p>
+<p><strong>Paso 2.</strong> Con un poco de álgebra se obtiene <span class="math display">\hat\sigma^2 = \tilde\sigma^2 - (\bar X_n - \mu)^2</span></p>
 </div>
 <div class="fragment">
-<p><strong>Paso 3.</strong> Como <span class="math inline">\(\mathbb{E}[(\bar X_n - \mu)^2] = \text{var}(\bar X_n) = \sigma^2/n\)</span>: <span class="math display">\[\mathbb{E}[\hat\sigma^2] = \sigma^2 - \frac{\sigma^2}{n} = \left(1 - \frac{1}{n}\right)\sigma^2 &lt; \sigma^2\]</span></p>
+<p><strong>Paso 3.</strong> Como <span class="math inline">\mathbb{E}[(\bar X_n - \mu)^2] = \text{var}(\bar X_n) = \sigma^2/n</span>: <span class="math display">\mathbb{E}[\hat\sigma^2] = \sigma^2 - \frac{\sigma^2}{n} = \left(1 - \frac{1}{n}\right)\sigma^2 &lt; \sigma^2</span></p>
 <p><span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
 </section>
@@ -536,26 +552,26 @@
 <p><strong>Teorema</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(\mathbb{E}[X^2] &lt; \infty\)</span>, entonces <span class="math inline">\(\mathbb{E}[\hat\sigma^2] = \left(1 - \frac{1}{n}\right)\sigma^2\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Si <span class="math inline">\mathbb{E}[X^2] &lt; \infty</span>, entonces <span class="math inline">\mathbb{E}[\hat\sigma^2] = \left(1 - \frac{1}{n}\right)\sigma^2</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>¿Por qué subestima?</strong> Porque centra las observaciones en <span class="math inline">\(\bar X_n\)</span>, no en <span class="math inline">\(\mu\)</span>. Y <span class="math inline">\(\bar X_n\)</span> es, por construcción, el valor que minimiza <span class="math inline">\(\sum_i (X_i - c)^2\)</span>: las desviaciones respecto de <span class="math inline">\(\bar X_n\)</span> son “artificialmente” pequeñas <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><strong>¿Por qué subestima?</strong> Porque centra las observaciones en <span class="math inline">\bar X_n</span>, no en <span class="math inline">\mu</span>. Y <span class="math inline">\bar X_n</span> es, por construcción, el valor que minimiza <span class="math inline">\sum_i (X_i - c)^2</span>: las desviaciones respecto de <span class="math inline">\bar X_n</span> son “artificialmente” pequeñas <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 <div class="fragment">
-<p>Como el sesgo es proporcional, se corrige reescalando: <span class="math display">\[s^2 = \frac{n}{n-1}\,\hat\sigma^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar X_n)^2, \qquad \mathbb{E}[s^2] = \sigma^2\]</span></p>
+<p>Como el sesgo es proporcional, se corrige reescalando: <span class="math display">s^2 = \frac{n}{n-1}\,\hat\sigma^2 = \frac{1}{n-1}\sum_{i=1}^n (X_i - \bar X_n)^2, \qquad \mathbb{E}[s^2] = \sigma^2</span></p>
 </div>
 <div class="fragment">
-<p>A <span class="math inline">\(s^2\)</span> se le llama estimador de la varianza <strong>corregido por sesgo</strong>. Es el que calcula <code>var()</code> en R. En muestras grandes la diferencia entre ambos es mínima <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>A <span class="math inline">s^2</span> se le llama estimador de la varianza <strong>corregido por sesgo</strong>. Es el que calcula <code>var()</code> en R. En muestras grandes la diferencia entre ambos es mínima <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>¿Siempre es mejor <span class="math inline">\(s^2\)</span>?</h2>
+<h2>¿Siempre es mejor <span class="math inline">s^2</span>?</h2>
 <p>No necesariamente. En el modelo normal se puede calcular el ECM de ambos estimadores <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>:</p>
-<p><span class="math display">\[\text{ECM}(s^2) = \frac{2\sigma^4}{n-1} \qquad\qquad \text{ECM}(\hat\sigma^2) = \frac{2n-1}{n^2}\,\sigma^4\]</span></p>
+<p><span class="math display">\text{ECM}(s^2) = \frac{2\sigma^4}{n-1} \qquad\qquad \text{ECM}(\hat\sigma^2) = \frac{2n-1}{n^2}\,\sigma^4</span></p>
 <div class="fragment">
-<p>Y resulta que <span class="math inline">\(\text{ECM}(\hat\sigma^2) &lt; \text{ECM}(s^2)\)</span>: el estimador sesgado está, en promedio, <strong>más cerca</strong> de <span class="math inline">\(\sigma^2\)</span>. Su sesgo hacia abajo se compensa con creces con una menor varianza <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</p>
+<p>Y resulta que <span class="math inline">\text{ECM}(\hat\sigma^2) &lt; \text{ECM}(s^2)</span>: el estimador sesgado está, en promedio, <strong>más cerca</strong> de <span class="math inline">\sigma^2</span>. Su sesgo hacia abajo se compensa con creces con una menor varianza <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -567,7 +583,7 @@
 <p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
-<p>Esto no significa que haya que abandonar <span class="math inline">\(s^2\)</span>. <span class="math inline">\(\hat\sigma^2\)</span> subestima <span class="math inline">\(\sigma^2\)</span> sistemáticamente, y el ECM castiga por igual sobreestimar y subestimar, lo que no es tan razonable para un parámetro que no puede ser negativo. No hay una respuesta absoluta: los criterios entregan información para elegir según el problema <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</p>
+<p>Esto no significa que haya que abandonar <span class="math inline">s^2</span>. <span class="math inline">\hat\sigma^2</span> subestima <span class="math inline">\sigma^2</span> sistemáticamente, y el ECM castiga por igual sobreestimar y subestimar, lo que no es tan razonable para un parámetro que no puede ser negativo. No hay una respuesta absoluta: los criterios entregan información para elegir según el problema <span class="citation" data-cites="casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -580,7 +596,7 @@
 </section>
 <section class="slide level2">
 <h2>Error estándar</h2>
-<p>Conocer la fórmula <span class="math inline">\(\text{var}(\bar X_n) = \sigma^2/n\)</span> no basta para medir la precisión, porque depende de <span class="math inline">\(\sigma^2\)</span>, que es desconocido. Hay que <strong>estimarla</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Conocer la fórmula <span class="math inline">\text{var}(\bar X_n) = \sigma^2/n</span> no basta para medir la precisión, porque depende de <span class="math inline">\sigma^2</span>, que es desconocido. Hay que <strong>estimarla</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 <div class="fragment">
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -591,21 +607,21 @@
 <p><strong>Definición: Error estándar</strong></p>
 </div>
 <div class="callout-content">
-<p>El <strong>error estándar</strong> <span class="math inline">\(s(\hat\theta) = \hat V^{1/2}\)</span> de un estimador <span class="math inline">\(\hat\theta\)</span> es la raíz cuadrada de un estimador <span class="math inline">\(\hat V\)</span> de su varianza <span class="math inline">\(V = \text{var}(\hat\theta)\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>El <strong>error estándar</strong> <span class="math inline">s(\hat\theta) = \hat V^{1/2}</span> de un estimador <span class="math inline">\hat\theta</span> es la raíz cuadrada de un estimador <span class="math inline">\hat V</span> de su varianza <span class="math inline">V = \text{var}(\hat\theta)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>Para la media muestral, usando <span class="math inline">\(s^2\)</span>: <span class="math display">\[s(\bar X_n) = \frac{s}{\sqrt{n}}\]</span></p>
+<p>Para la media muestral, usando <span class="math inline">s^2</span>: <span class="math display">s(\bar X_n) = \frac{s}{\sqrt{n}}</span></p>
 </div>
 <div class="fragment">
-<p>Hay <strong>dos estimaciones</strong> en juego: <span class="math inline">\(\hat\theta\)</span> estima <span class="math inline">\(\theta\)</span>, y <span class="math inline">\(\hat V\)</span> estima la precisión de <span class="math inline">\(\hat\theta\)</span>. Por eso las estimaciones se reportan siempre junto con su error estándar <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Hay <strong>dos estimaciones</strong> en juego: <span class="math inline">\hat\theta</span> estima <span class="math inline">\theta</span>, y <span class="math inline">\hat V</span> estima la precisión de <span class="math inline">\hat\theta</span>. Por eso las estimaciones se reportan siempre junto con su error estándar <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>El error estándar en la práctica</h2>
-<p><strong>Ejemplo: las 20 asalariadas de la CPS</strong> de la clase pasada. El salario promedio es $25.73, con <span class="math inline">\(s = 12.4\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>: <span class="math display">\[s(\bar X_n) = \frac{12.4}{\sqrt{20}} \approx 2.78\]</span></p>
+<p><strong>Ejemplo: las 20 asalariadas de la CPS</strong> de la clase pasada. El salario promedio es $25.73, con <span class="math inline">s = 12.4</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>: <span class="math display">s(\bar X_n) = \frac{12.4}{\sqrt{20}} \approx 2.78</span></p>
 <div class="fragment">
 <p>Con solo 20 observaciones, el promedio de $25.73 tiene una incertidumbre del orden de $3 hacia cada lado.</p>
 </div>
@@ -619,7 +635,7 @@
 <p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
-<p>Aunque <span class="math inline">\(s^2/n\)</span> sea insesgado para <span class="math inline">\(\text{var}(\bar X_n)\)</span>, el error estándar <span class="math inline">\(s/\sqrt{n}\)</span> está <strong>sesgado hacia abajo</strong> para <span class="math inline">\(\sigma/\sqrt{n}\)</span>, de nuevo por Jensen. En la práctica se ignora, porque no hay un método aceptado para corregirlo <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Lo veremos en la simulación con CASEN.</p>
+<p>Aunque <span class="math inline">s^2/n</span> sea insesgado para <span class="math inline">\text{var}(\bar X_n)</span>, el error estándar <span class="math inline">s/\sqrt{n}</span> está <strong>sesgado hacia abajo</strong> para <span class="math inline">\sigma/\sqrt{n}</span>, de nuevo por Jensen. En la práctica se ignora, porque no hay un método aceptado para corregirlo <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Lo veremos en la simulación con CASEN.</p>
 </div>
 </div>
 </div>
@@ -632,7 +648,7 @@
 </section>
 <section class="slide level2">
 <h2>El modelo de muestreo normal</h2>
-<p>Hasta ahora no supusimos nada sobre la forma de <span class="math inline">\(F\)</span>. Si suponemos que <span class="math inline">\(X_1, \ldots, X_n\)</span> son i.i.d. <span class="math inline">\(N(\mu, \sigma^2)\)</span>, se obtiene una teoría <strong>exacta</strong> para cualquier <span class="math inline">\(n\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p>Hasta ahora no supusimos nada sobre la forma de <span class="math inline">F</span>. Si suponemos que <span class="math inline">X_1, \ldots, X_n</span> son i.i.d. <span class="math inline">N(\mu, \sigma^2)</span>, se obtiene una teoría <strong>exacta</strong> para cualquier <span class="math inline">n</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -643,11 +659,11 @@
 <p><strong>Teorema</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(X_i\)</span> son i.i.d. <span class="math inline">\(N(\mu, \sigma^2)\)</span>, entonces</p>
+<p>Si <span class="math inline">X_i</span> son i.i.d. <span class="math inline">N(\mu, \sigma^2)</span>, entonces</p>
 <ol type="1">
-<li><span class="math inline">\(\bar X_n \sim N(\mu, \sigma^2/n)\)</span></li>
-<li><span class="math inline">\(\dfrac{(n-1)s^2}{\sigma^2} \sim \chi^2_{n-1}\)</span></li>
-<li><span class="math inline">\(\bar X_n\)</span> y <span class="math inline">\(s^2\)</span> son <strong>independientes</strong></li>
+<li><span class="math inline">\bar X_n \sim N(\mu, \sigma^2/n)</span></li>
+<li><span class="math inline">\dfrac{(n-1)s^2}{\sigma^2} \sim \chi^2_{n-1}</span></li>
+<li><span class="math inline">\bar X_n</span> y <span class="math inline">s^2</span> son <strong>independientes</strong></li>
 </ol>
 <p><span class="citation" data-cites="hansen-for-economist casella-berger">(<a href="#/references" role="doc-biblioref" onclick="">Casella &amp; Berger, 2002</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
@@ -655,17 +671,17 @@
 </div>
 </div>
 <div class="fragment">
-<p>La clave de la independencia: los residuos <span class="math inline">\(X_i - \bar X_n\)</span> no están correlacionados con <span class="math inline">\(\bar X_n\)</span>, y como todo es conjuntamente normal, no correlación implica independencia <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Esto <strong>solo</strong> vale bajo normalidad.</p>
+<p>La clave de la independencia: los residuos <span class="math inline">X_i - \bar X_n</span> no están correlacionados con <span class="math inline">\bar X_n</span>, y como todo es conjuntamente normal, no correlación implica independencia <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Esto <strong>solo</strong> vale bajo normalidad.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>El estadístico <span class="math inline">\(t\)</span> de Student</h2>
-<p>Combinando los tres resultados: <span class="math display">\[T = \frac{\sqrt{n}\,(\bar X_n - \mu)}{s} = \frac{\sqrt{n}\,(\bar X_n - \mu)/\sigma}{\sqrt{s^2/\sigma^2}} \sim \frac{N(0, 1)}{\sqrt{\chi^2_{n-1}/(n-1)}} = t_{n-1}\]</span></p>
+<h2>El estadístico <span class="math inline">t</span> de Student</h2>
+<p>Combinando los tres resultados: <span class="math display">T = \frac{\sqrt{n}\,(\bar X_n - \mu)}{s} = \frac{\sqrt{n}\,(\bar X_n - \mu)/\sigma}{\sqrt{s^2/\sigma^2}} \sim \frac{N(0, 1)}{\sqrt{\chi^2_{n-1}/(n-1)}} = t_{n-1}</span></p>
 <p><span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 <div class="fragment">
 <ul>
-<li>Es el mismo <span class="math inline">\(T\)</span> de la clase pasada. Allí vimos que, <strong>sin suponer normalidad</strong>, <span class="math inline">\(T \xrightarrow{d} N(0,1)\)</span>. Aquí, <strong>suponiendo normalidad</strong>, <span class="math inline">\(T\)</span> tiene distribución <span class="math inline">\(t_{n-1}\)</span> exacta para cualquier <span class="math inline">\(n\)</span>.</li>
-<li>Cuando <span class="math inline">\(n\)</span> crece, la <span class="math inline">\(t_{n-1}\)</span> se acerca a la <span class="math inline">\(N(0,1)\)</span>: ambas aproximaciones coinciden en muestras grandes.</li>
+<li>Es el mismo <span class="math inline">T</span> de la clase pasada. Allí vimos que, <strong>sin suponer normalidad</strong>, <span class="math inline">T \xrightarrow{d} N(0,1)</span>. Aquí, <strong>suponiendo normalidad</strong>, <span class="math inline">T</span> tiene distribución <span class="math inline">t_{n-1}</span> exacta para cualquier <span class="math inline">n</span>.</li>
+<li>Cuando <span class="math inline">n</span> crece, la <span class="math inline">t_{n-1}</span> se acerca a la <span class="math inline">N(0,1)</span>: ambas aproximaciones coinciden en muestras grandes.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -680,15 +696,15 @@
 <section class="slide level2">
 <h2>Dos propiedades distintas</h2>
 <ul>
-<li><strong>Insesgamiento:</strong> propiedad de <strong>muestra finita</strong>. Para un <span class="math inline">\(n\)</span> dado, <span class="math inline">\(\mathbb{E}[\hat\theta] = \theta\)</span>.</li>
-<li><strong>Consistencia:</strong> propiedad <strong>asintótica</strong>. <span class="math inline">\(\hat\theta \xrightarrow{p} \theta\)</span> cuando <span class="math inline">\(n \to \infty\)</span>.</li>
+<li><strong>Insesgamiento:</strong> propiedad de <strong>muestra finita</strong>. Para un <span class="math inline">n</span> dado, <span class="math inline">\mathbb{E}[\hat\theta] = \theta</span>.</li>
+<li><strong>Consistencia:</strong> propiedad <strong>asintótica</strong>. <span class="math inline">\hat\theta \xrightarrow{p} \theta</span> cuando <span class="math inline">n \to \infty</span>.</li>
 </ul>
 <div class="fragment">
 <p><strong>Ninguna implica la otra</strong> <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>:</p>
 <ul>
-<li><span class="math inline">\(X_1\)</span> es <strong>insesgado pero no consistente</strong>: su distribución no cambia con <span class="math inline">\(n\)</span>, así que no se concentra en <span class="math inline">\(\mu\)</span>.</li>
-<li><span class="math inline">\(\bar X_n + 1/n\)</span> es <strong>sesgado pero consistente</strong>: el sesgo <span class="math inline">\(1/n\)</span> desaparece cuando <span class="math inline">\(n\)</span> crece.</li>
-<li><span class="math inline">\(\hat\sigma^2\)</span> es sesgado, con sesgo <span class="math inline">\(-\sigma^2/n\)</span>, pero consistente.</li>
+<li><span class="math inline">X_1</span> es <strong>insesgado pero no consistente</strong>: su distribución no cambia con <span class="math inline">n</span>, así que no se concentra en <span class="math inline">\mu</span>.</li>
+<li><span class="math inline">\bar X_n + 1/n</span> es <strong>sesgado pero consistente</strong>: el sesgo <span class="math inline">1/n</span> desaparece cuando <span class="math inline">n</span> crece.</li>
+<li><span class="math inline">\hat\sigma^2</span> es sesgado, con sesgo <span class="math inline">-\sigma^2/n</span>, pero consistente.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -701,7 +717,7 @@
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>Un criterio suficiente que conecta ambas ideas: si <span class="math inline">\(\text{ECM}(\hat\theta) = \text{var}(\hat\theta) + \text{sesgo}^2 \to 0\)</span>, entonces <span class="math inline">\(\hat\theta\)</span> es consistente. Es la <strong>convergencia en media cuadrática</strong> de la clase pasada <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
+<p>Un criterio suficiente que conecta ambas ideas: si <span class="math inline">\text{ECM}(\hat\theta) = \text{var}(\hat\theta) + \text{sesgo}^2 \to 0</span>, entonces <span class="math inline">\hat\theta</span> es consistente. Es la <strong>convergencia en media cuadrática</strong> de la clase pasada <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -751,9 +767,9 @@
 <h2>Población, parámetro y estimador</h2>
 <ul>
 <li><strong>Población:</strong> las personas ocupadas que residen en viviendas particulares en Chile.</li>
-<li><strong>Parámetro:</strong> <span class="math inline">\(\mu\)</span>, el ingreso medio de la ocupación principal en esa población. Es un número fijo y desconocido.</li>
+<li><strong>Parámetro:</strong> <span class="math inline">\mu</span>, el ingreso medio de la ocupación principal en esa población. Es un número fijo y desconocido.</li>
 <li><strong>Muestra:</strong> las personas ocupadas encuestadas por CASEN.</li>
-<li><strong>Estimador:</strong> una función de la muestra que usamos para “adivinar” <span class="math inline">\(\mu\)</span>.</li>
+<li><strong>Estimador:</strong> una función de la muestra que usamos para “adivinar” <span class="math inline">\mu</span>.</li>
 </ul>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-hidden="true" tabindex="-1"></a>casen <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"../../data/casen2024_ocupados.csv"</span>)</span>
@@ -789,7 +805,7 @@
 </div>
 </div>
 <div class="fragment">
-<p>El promedio simple <strong>describe a los encuestados</strong>. Pero CASEN no es una muestra aleatoria simple: cada persona tiene un <strong>factor de expansión</strong> (<code>expr</code>) que indica a cuántas personas de la población representa <span class="citation" data-cites="casen2024">(<a href="#/references" role="doc-biblioref" onclick="">Ministerio de Desarrollo Social y Familia, 2025</a>)</span>. El estimador de <span class="math inline">\(\mu\)</span> es el promedio <strong>ponderado</strong>, y la diferencia no es menor: cerca de $100 mil.</p>
+<p>El promedio simple <strong>describe a los encuestados</strong>. Pero CASEN no es una muestra aleatoria simple: cada persona tiene un <strong>factor de expansión</strong> (<code>expr</code>) que indica a cuántas personas de la población representa <span class="citation" data-cites="casen2024">(<a href="#/references" role="doc-biblioref" onclick="">Ministerio de Desarrollo Social y Familia, 2025</a>)</span>. El estimador de <span class="math inline">\mu</span> es el promedio <strong>ponderado</strong>, y la diferencia no es menor: cerca de $100 mil.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -844,7 +860,7 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="slides_files/figure-html/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
@@ -855,7 +871,7 @@
 </section>
 <section class="slide level2">
 <h2>El error estándar (como si fuera i.i.d.)</h2>
-<p>Si tratáramos a los encuestados como una muestra aleatoria simple, el error estándar del promedio sería <span class="math inline">\(s/\sqrt{n}\)</span>:</p>
+<p>Si tratáramos a los encuestados como una muestra aleatoria simple, el error estándar del promedio sería <span class="math inline">s/\sqrt{n}</span>:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="fu">nrow</span>(ing)</span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a>s <span class="ot">&lt;-</span> <span class="fu">sd</span>(ing<span class="sc">$</span>yoprcor)             <span class="co"># sd() usa n - 1</span></span>
@@ -887,7 +903,7 @@
 </div>
 </section>
 <section class="slide level2">
-<h2>Simulación: la distribución muestral de <span class="math inline">\(\bar X_n\)</span></h2>
+<h2>Simulación: la distribución muestral de <span class="math inline">\bar X_n</span></h2>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2024</span>)</span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>), <span class="at">mar =</span> <span class="fu">c</span>(<span class="dv">4</span>, <span class="dv">5</span>, <span class="fl">1.5</span>, <span class="dv">1</span>))</span>
@@ -899,14 +915,22 @@
 <span id="cb20-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"n ="</span>, n), <span class="at">xlab =</span> <span class="st">"media muestral (miles de $)"</span>)</span>
 <span id="cb20-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> mu, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb20-10"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
-<p>En los tres casos la distribución está centrada en <span class="math inline">\(\mu\)</span> (insesgamiento) y se concentra al crecer <span class="math inline">\(n\)</span> (consistencia). Con <span class="math inline">\(n = 20\)</span> todavía es claramente <strong>asimétrica</strong>: con ingresos de colas tan pesadas, el TCL necesita muestras grandes.</p>
+
+<div class="fragment">
+<p>En los tres casos la distribución está centrada en <span class="math inline">\mu</span> (insesgamiento) y se concentra al crecer <span class="math inline">n</span> (consistencia). Con <span class="math inline">n = 20</span> todavía es claramente <strong>asimétrica</strong>: con ingresos de colas tan pesadas, el TCL necesita muestras grandes.</p>
 </div>
 </section>
-<section class="slide level2">
-<h2>Simulación: el sesgo de <span class="math inline">\(\hat\sigma^2\)</span></h2>
+<section id="" class="slide level2 output-location-slide"><h2>Simulación: la distribución muestral de <span class="math inline">\bar X_n</span></h2><div class="cell output-location-slide" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides_files/figure-html/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div></section><section class="slide level2">
+<h2>Simulación: el sesgo de <span class="math inline">\hat\sigma^2</span></h2>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
@@ -927,18 +951,18 @@
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
+<p><img data-src="slides_files/figure-html/unnamed-chunk-10-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
 </figure>
 </div>
 </div>
 </div></div>
 <div class="fragment">
-<p>Los puntos (simulación) siguen la curva teórica <span class="math inline">\(1 - 1/n\)</span>. Con <span class="math inline">\(n = 5\)</span>, <span class="math inline">\(\hat\sigma^2\)</span> subestima la varianza en torno a un 20%. Con colas tan pesadas, la simulación es ruidosa incluso con 50 mil repeticiones.</p>
+<p>Los puntos (simulación) siguen la curva teórica <span class="math inline">1 - 1/n</span>. Con <span class="math inline">n = 5</span>, <span class="math inline">\hat\sigma^2</span> subestima la varianza en torno a un 20%. Con colas tan pesadas, la simulación es ruidosa incluso con 50 mil repeticiones.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>Simulación: el error estándar</h2>
-<p>¿Se parece el error estándar <span class="math inline">\(s/\sqrt{n}\)</span> a la verdadera desviación estándar de <span class="math inline">\(\bar X_n\)</span>?</p>
+<p>¿Se parece el error estándar <span class="math inline">s/\sqrt{n}</span> a la verdadera desviación estándar de <span class="math inline">\bar X_n</span>?</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">7</span>)</span>
 <span id="cb22-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">sapply</span>(<span class="fu">c</span>(<span class="dv">20</span>, <span class="dv">100</span>, <span class="dv">1000</span>), <span class="cf">function</span>(n) {</span>
@@ -956,17 +980,38 @@
 </div>
 </div>
 <div class="fragment">
-<p>La desviación estándar simulada de las medias coincide con <span class="math inline">\(\sigma/\sqrt{n}\)</span>. El error estándar promedio queda <strong>por debajo</strong>, sobre todo con <span class="math inline">\(n = 20\)</span>: es el sesgo hacia abajo que anticipaba Hansen, amplificado por las colas pesadas de los ingresos. Con <span class="math inline">\(n\)</span> grande la diferencia desaparece.</p>
+<p>La desviación estándar simulada de las medias coincide con <span class="math inline">\sigma/\sqrt{n}</span>. El error estándar promedio queda <strong>por debajo</strong>, sobre todo con <span class="math inline">n = 20</span>: es el sesgo hacia abajo que anticipaba Hansen, amplificado por las colas pesadas de los ingresos. Con <span class="math inline">n</span> grande la diferencia desaparece.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>El error estándar con el diseño muestral (opcional)</h2>
 <p>Con el paquete <code>survey</code> podemos calcular un error estándar que respeta los estratos (<code>varstrat</code>), los conglomerados (<code>varunit</code>) y los factores de expansión:</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span>
-<span id="cb24-2"><a aria-hidden="true" tabindex="-1"></a>diseno <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span>varunit, <span class="at">strata =</span> <span class="sc">~</span>varstrat, <span class="at">weights =</span> <span class="sc">~</span>expr,</span>
-<span id="cb24-3"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> ing, <span class="at">nest =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb24-4"><a aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>yoprcor, diseno)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survey)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'survey' was built under R version 4.6.1</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: grid</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: Matrix</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Cargando paquete requerido: survival</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Adjuntando el paquete: 'survey'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:graphics':
+
+    dotchart</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-hidden="true" tabindex="-1"></a>diseno <span class="ot">&lt;-</span> <span class="fu">svydesign</span>(<span class="at">ids =</span> <span class="sc">~</span>varunit, <span class="at">strata =</span> <span class="sc">~</span>varstrat, <span class="at">weights =</span> <span class="sc">~</span>expr,</span>
+<span id="cb31-2"><a aria-hidden="true" tabindex="-1"></a>                    <span class="at">data =</span> ing, <span class="at">nest =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb31-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">svymean</span>(<span class="sc">~</span>yoprcor, diseno)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          mean     SE
 yoprcor 857333 6163.3</code></pre>
@@ -991,14 +1036,14 @@ yoprcor 857333 6163.3</code></pre>
 </section>
 <section class="slide level2">
 <h2>Un puente hacia la regresión: la esperanza condicional</h2>
-<p>En la clase 02 vimos que <span class="math inline">\(m(x) = \mathbb{E}[Y \mid X = x]\)</span> es el objeto central de la econometría. Se puede mostrar que es el <strong>mejor predictor</strong> de <span class="math inline">\(Y\)</span> dado <span class="math inline">\(X\)</span>: entre todas las funciones <span class="math inline">\(g(X)\)</span>, es la que minimiza el error cuadrático medio de predicción <span class="math inline">\(\mathbb{E}[(Y - g(X))^2]\)</span> <span class="citation" data-cites="hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>.</p>
+<p>En la clase 02 vimos que <span class="math inline">m(x) = \mathbb{E}[Y \mid X = x]</span> es el objeto central de la econometría. Se puede mostrar que es el <strong>mejor predictor</strong> de <span class="math inline">Y</span> dado <span class="math inline">X</span>: entre todas las funciones <span class="math inline">g(X)</span>, es la que minimiza el error cuadrático medio de predicción <span class="math inline">\mathbb{E}[(Y - g(X))^2]</span> <span class="citation" data-cites="hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>.</p>
 <div class="fragment">
-<p>Su estimador análogo más simple: el promedio de <span class="math inline">\(Y\)</span> <strong>dentro de cada grupo</strong> de <span class="math inline">\(X\)</span>.</p>
+<p>Su estimador análogo más simple: el promedio de <span class="math inline">Y</span> <strong>dentro de cada grupo</strong> de <span class="math inline">X</span>.</p>
 <div class="cell" data-layout-align="center">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-hidden="true" tabindex="-1"></a>ing<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">cut</span>(ing<span class="sc">$</span>esc, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">31</span>),</span>
-<span id="cb26-2"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0-8"</span>, <span class="st">"9-12"</span>, <span class="st">"13-16"</span>, <span class="st">"17+"</span>))</span>
-<span id="cb26-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sapply</span>(<span class="fu">split</span>(ing, ing<span class="sc">$</span>educ),</span>
-<span id="cb26-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="cf">function</span>(g) <span class="fu">weighted.mean</span>(g<span class="sc">$</span>yoprcor, g<span class="sc">$</span>expr)) <span class="sc">/</span> <span class="dv">1000</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-hidden="true" tabindex="-1"></a>ing<span class="sc">$</span>educ <span class="ot">&lt;-</span> <span class="fu">cut</span>(ing<span class="sc">$</span>esc, <span class="at">breaks =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>, <span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">16</span>, <span class="dv">31</span>),</span>
+<span id="cb33-2"><a aria-hidden="true" tabindex="-1"></a>                <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"0-8"</span>, <span class="st">"9-12"</span>, <span class="st">"13-16"</span>, <span class="st">"17+"</span>))</span>
+<span id="cb33-3"><a aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sapply</span>(<span class="fu">split</span>(ing, ing<span class="sc">$</span>educ),</span>
+<span id="cb33-4"><a aria-hidden="true" tabindex="-1"></a>             <span class="cf">function</span>(g) <span class="fu">weighted.mean</span>(g<span class="sc">$</span>yoprcor, g<span class="sc">$</span>expr)) <span class="sc">/</span> <span class="dv">1000</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0-8  9-12 13-16   17+ 
   434   556   828  1585 </code></pre>
@@ -1006,7 +1051,7 @@ yoprcor 857333 6163.3</code></pre>
 </div>
 </div>
 <div class="fragment">
-<p>El ingreso medio estimado sube con la escolaridad, con un salto grande en los niveles más altos. Cuando <span class="math inline">\(X\)</span> toma muchos valores, ya no podemos promediar dentro de cada uno: necesitamos un <strong>modelo</strong>. Ese es el punto de partida de la regresión.</p>
+<p>El ingreso medio estimado sube con la escolaridad, con un salto grande en los niveles más altos. Cuando <span class="math inline">X</span> toma muchos valores, ya no podemos promediar dentro de cada uno: necesitamos un <strong>modelo</strong>. Ese es el punto de partida de la regresión.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -1020,10 +1065,10 @@ yoprcor 857333 6163.3</code></pre>
 <li>ECM = varianza + sesgo²</li>
 <li>Dilema sesgo–varianza</li>
 <li>MELI y mejor estimador insesgado</li>
-<li><span class="math inline">\(\hat\sigma^2\)</span> sesgado, <span class="math inline">\(s^2\)</span> insesgado</li>
+<li><span class="math inline">\hat\sigma^2</span> sesgado, <span class="math inline">s^2</span> insesgado</li>
 <li>Error estándar</li>
-<li>Modelo normal: <span class="math inline">\(\chi^2\)</span> y <span class="math inline">\(t\)</span> de Student</li>
-<li>Insesgamiento <span class="math inline">\(\neq\)</span> consistencia</li>
+<li>Modelo normal: <span class="math inline">\chi^2</span> y <span class="math inline">t</span> de Student</li>
+<li>Insesgamiento <span class="math inline">\neq</span> consistencia</li>
 <li>Muestra vs.&nbsp;población: factores de expansión</li>
 </ul>
 </div><div class="column" style="width:50%;">
@@ -1100,7 +1145,6 @@ Ministerio de Desarrollo Social y Familia. (2025). <em>Encuesta de Caracterizaci
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1269,109 +1313,15 @@ Ministerio de Desarrollo Social y Familia. (2025). <em>Encuesta de Caracterizaci
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
         ]
       });
     </script>
-    
-
-    <script>
-
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-
-      // slide changes (different for each slide format).
-
-      (function () {
-
-        // dispatch for htmlwidgets
-
-        function fireSlideEnter() {
-
-          const event = window.document.createEvent("Event");
-
-          event.initEvent("slideenter", true, true);
-
-          window.document.dispatchEvent(event);
-
-        }
-
-    
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-
-          fireSlideEnter();
-
-    
-
-          // dispatch for shiny
-
-          if (window.jQuery) {
-
-            if (previousSlide) {
-
-              window.jQuery(previousSlide).trigger("hidden");
-
-            }
-
-            if (currentSlide) {
-
-              window.jQuery(currentSlide).trigger("shown");
-
-            }
-
-          }
-
-        }
-
-    
-
-        // hookup for slidy
-
-        if (window.w3c_slidy) {
-
-          window.w3c_slidy.add_observer(function (slide_num) {
-
-            // slide_num starts at position 1
-
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-
-          });
-
-        }
-
-    
-
-      })();
-
-    </script>
-
-    
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")

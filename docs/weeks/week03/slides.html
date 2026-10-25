@@ -121,6 +121,22 @@
       margin-left: 2em;
     }  </style>
   <link rel="stylesheet" href="../../site_libs/revealjs/dist/theme/quarto-da3246bd69c496231167c47c159c72a8.css">
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
   <link href="../../site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
   <link href="../../site_libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
@@ -278,15 +294,15 @@
 <p><strong>Definición: Muestra aleatoria</strong></p>
 </div>
 <div class="callout-content">
-<p>Una colección de variables (o vectores) aleatorios <span class="math inline">\(\{X_1, \ldots, X_n\}\)</span> es una <strong>muestra aleatoria</strong> de la población <span class="math inline">\(F\)</span> si las <span class="math inline">\(X_i\)</span> son <strong>independientes e idénticamente distribuidas</strong> (i.i.d.), todas con distribución <span class="math inline">\(F\)</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Una colección de variables (o vectores) aleatorios <span class="math inline">\{X_1, \ldots, X_n\}</span> es una <strong>muestra aleatoria</strong> de la población <span class="math inline">F</span> si las <span class="math inline">X_i</span> son <strong>independientes e idénticamente distribuidas</strong> (i.i.d.), todas con distribución <span class="math inline">F</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Independientes:</strong> <span class="math inline">\(X_i\)</span> es independiente de <span class="math inline">\(X_j\)</span> para <span class="math inline">\(i \neq j\)</span>.</li>
-<li><strong>Idénticamente distribuidas:</strong> todas las observaciones vienen de la misma distribución <span class="math inline">\(F\)</span>.</li>
-<li><span class="math inline">\(n\)</span> es el <strong>tamaño muestral</strong>. Una “observación” puede ser una persona, un hogar, una empresa, una comuna o un país.</li>
+<li><strong>Independientes:</strong> <span class="math inline">X_i</span> es independiente de <span class="math inline">X_j</span> para <span class="math inline">i \neq j</span>.</li>
+<li><strong>Idénticamente distribuidas:</strong> todas las observaciones vienen de la misma distribución <span class="math inline">F</span>.</li>
+<li><span class="math inline">n</span> es el <strong>tamaño muestral</strong>. Una “observación” puede ser una persona, un hogar, una empresa, una comuna o un país.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -299,7 +315,7 @@
 <p><strong>Notación</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(X\)</span> (sin subíndice) es una variable con distribución <span class="math inline">\(F\)</span>; <span class="math inline">\(X_i\)</span> es la <span class="math inline">\(i\)</span>-ésima observación aleatoria; <span class="math inline">\(x_i\)</span> es su valor observado.</p>
+<p><span class="math inline">X</span> (sin subíndice) es una variable con distribución <span class="math inline">F</span>; <span class="math inline">X_i</span> es la <span class="math inline">i</span>-ésima observación aleatoria; <span class="math inline">x_i</span> es su valor observado.</p>
 </div>
 </div>
 </div>
@@ -307,12 +323,12 @@
 </section>
 <section class="slide level2">
 <h2>Dos maneras de pensar la población</h2>
-<p><strong>1. Una población finita muy grande.</strong> Hay <span class="math inline">\(N\)</span> individuos, con <span class="math inline">\(N\)</span> mucho mayor que <span class="math inline">\(n\)</span>, y elegimos <span class="math inline">\(n\)</span> de ellos al azar con igual probabilidad. Es la lógica de las encuestas: la aleatoriedad la crea el <strong>diseño muestral</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><strong>1. Una población finita muy grande.</strong> Hay <span class="math inline">N</span> individuos, con <span class="math inline">N</span> mucho mayor que <span class="math inline">n</span>, y elegimos <span class="math inline">n</span> de ellos al azar con igual probabilidad. Es la lógica de las encuestas: la aleatoriedad la crea el <strong>diseño muestral</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 <div class="fragment">
-<p><strong>2. Un proceso generador de datos (PGD).</strong> Existe un mecanismo (un experimento, el funcionamiento de un mercado) que produce cada observación, y ese mecanismo se repite <span class="math inline">\(n\)</span> veces. La “población” es el modelo de probabilidad que genera los datos <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><strong>2. Un proceso generador de datos (PGD).</strong> Existe un mecanismo (un experimento, el funcionamiento de un mercado) que produce cada observación, y ese mecanismo se repite <span class="math inline">n</span> veces. La “población” es el modelo de probabilidad que genera los datos <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 <div class="fragment">
-<p>En ambos casos el objetivo de la <strong>inferencia</strong> es el mismo: usar la muestra para aprender sobre <span class="math inline">\(F\)</span> o sobre alguna de sus características.</p>
+<p>En ambos casos el objetivo de la <strong>inferencia</strong> es el mismo: usar la muestra para aprender sobre <span class="math inline">F</span> o sobre alguna de sus características.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -340,7 +356,7 @@
 </div>
 </div>
 <div class="fragment">
-<p>Un hecho útil: si <span class="math inline">\(\{X_i\}\)</span> son i.i.d. y <span class="math inline">\(Y_i = g(X_i)\)</span>, entonces <span class="math inline">\(\{Y_i\}\)</span> <strong>también son i.i.d.</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Un hecho útil: si <span class="math inline">\{X_i\}</span> son i.i.d. y <span class="math inline">Y_i = g(X_i)</span>, entonces <span class="math inline">\{Y_i\}</span> <strong>también son i.i.d.</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section></section>
 <section>
@@ -359,7 +375,7 @@
 <p><strong>Definición: Parámetro</strong></p>
 </div>
 <div class="callout-content">
-<p>Un <strong>parámetro</strong> <span class="math inline">\(\theta\)</span> es cualquier función de la población <span class="math inline">\(F\)</span>. Por ejemplo, la esperanza poblacional <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Un <strong>parámetro</strong> <span class="math inline">\theta</span> es cualquier función de la población <span class="math inline">F</span>. Por ejemplo, la esperanza poblacional <span class="math inline">\mu = \mathbb{E}[X]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -373,7 +389,7 @@
 <p><strong>Definición: Estadístico</strong></p>
 </div>
 <div class="callout-content">
-<p>Un <strong>estadístico</strong> es cualquier función de la muestra <span class="math inline">\(\{X_1, \ldots, X_n\}\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Un <strong>estadístico</strong> es cualquier función de la muestra <span class="math inline">\{X_1, \ldots, X_n\}</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -388,7 +404,7 @@
 <p><strong>Definición: Estimador</strong></p>
 </div>
 <div class="callout-content">
-<p>Un <strong>estimador</strong> <span class="math inline">\(\hat\theta\)</span> de un parámetro <span class="math inline">\(\theta\)</span> es un estadístico que se usa para “adivinar” el valor de <span class="math inline">\(\theta\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Un <strong>estimador</strong> <span class="math inline">\hat\theta</span> de un parámetro <span class="math inline">\theta</span> es un estadístico que se usa para “adivinar” el valor de <span class="math inline">\theta</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -396,15 +412,15 @@
 </section>
 <section class="slide level2">
 <h2>Estimador vs.&nbsp;estimación</h2>
-<p>La misma distinción entre <span class="math inline">\(X\)</span> y <span class="math inline">\(x\)</span> de la clase pasada aparece aquí <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p>La misma distinción entre <span class="math inline">X</span> y <span class="math inline">x</span> de la clase pasada aparece aquí <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <div class="fragment">
 <ul>
-<li><strong>Antes de ver los datos</strong>, <span class="math inline">\(\hat\theta\)</span> es una función de variables aleatorias. Es, por lo tanto, una <span class="alert">variable aleatoria</span>: lo llamamos <strong>estimador</strong>.</li>
-<li><strong>Después de ver los datos</strong>, <span class="math inline">\(\hat\theta\)</span> es un número concreto: lo llamamos <strong>estimación</strong>.</li>
+<li><strong>Antes de ver los datos</strong>, <span class="math inline">\hat\theta</span> es una función de variables aleatorias. Es, por lo tanto, una <span class="alert">variable aleatoria</span>: lo llamamos <strong>estimador</strong>.</li>
+<li><strong>Después de ver los datos</strong>, <span class="math inline">\hat\theta</span> es un número concreto: lo llamamos <strong>estimación</strong>.</li>
 </ul>
 </div>
 <div class="fragment">
-<p>La aleatoriedad de un estimador está en el proceso que generó los datos. Si repitiéramos el muestreo, obtendríamos otra muestra y otro valor de <span class="math inline">\(\hat\theta\)</span>.</p>
+<p>La aleatoriedad de un estimador está en el proceso que generó los datos. Si repitiéramos el muestreo, obtendríamos otra muestra y otro valor de <span class="math inline">\hat\theta</span>.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -436,19 +452,19 @@
 <p><strong>Definición: Media muestral</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math display">\[\bar X_n = \frac{1}{n}\sum_{i=1}^{n} X_i\]</span> Es el estimador estándar de <span class="math inline">\(\mu = \mathbb{E}[X]\)</span>. También se escribe <span class="math inline">\(\hat\mu\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><span class="math display">\bar X_n = \frac{1}{n}\sum_{i=1}^{n} X_i</span> Es el estimador estándar de <span class="math inline">\mu = \mathbb{E}[X]</span>. También se escribe <span class="math inline">\hat\mu</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>Lo mismo vale para la esperanza de cualquier transformación: el estimador análogo de <span class="math inline">\(\theta = \mathbb{E}[g(X)]\)</span> es <span class="math inline">\(\hat\theta = \frac{1}{n}\sum_{i=1}^n g(X_i)\)</span>. Por ejemplo, el de <span class="math inline">\(\mathbb{E}[X^2]\)</span> es <span class="math inline">\(\frac{1}{n}\sum_{i=1}^n X_i^2\)</span>.</p>
+<p>Lo mismo vale para la esperanza de cualquier transformación: el estimador análogo de <span class="math inline">\theta = \mathbb{E}[g(X)]</span> es <span class="math inline">\hat\theta = \frac{1}{n}\sum_{i=1}^n g(X_i)</span>. Por ejemplo, el de <span class="math inline">\mathbb{E}[X^2]</span> es <span class="math inline">\frac{1}{n}\sum_{i=1}^n X_i^2</span>.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>Estimadores <em>plug-in</em></h2>
-<p>Muchos parámetros son funciones de momentos: <span class="math inline">\(\beta = h\big(\mathbb{E}[g(X)]\big)\)</span>. El estimador <strong>plug-in</strong> “enchufa” el estimador análogo en la fórmula <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
-<p><span class="math display">\[\hat\beta = h(\hat\theta) = h\left(\frac{1}{n}\sum_{i=1}^n g(X_i)\right)\]</span></p>
+<p>Muchos parámetros son funciones de momentos: <span class="math inline">\beta = h\big(\mathbb{E}[g(X)]\big)</span>. El estimador <strong>plug-in</strong> “enchufa” el estimador análogo en la fórmula <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p><span class="math display">\hat\beta = h(\hat\theta) = h\left(\frac{1}{n}\sum_{i=1}^n g(X_i)\right)</span></p>
 <div class="fragment">
 <table class="caption-top">
 <colgroup>
@@ -466,18 +482,18 @@
 <tbody>
 <tr class="odd">
 <td>Varianza</td>
-<td><span class="math inline">\(\sigma^2 = \mathbb{E}[X^2] - (\mathbb{E}[X])^2\)</span></td>
-<td><span class="math inline">\(\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \bar X_n)^2\)</span></td>
+<td><span class="math inline">\sigma^2 = \mathbb{E}[X^2] - (\mathbb{E}[X])^2</span></td>
+<td><span class="math inline">\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n (X_i - \bar X_n)^2</span></td>
 </tr>
 <tr class="even">
 <td>Desv. estándar</td>
-<td><span class="math inline">\(\sigma = \sqrt{\sigma^2}\)</span></td>
-<td><span class="math inline">\(\hat\sigma = \sqrt{\hat\sigma^2}\)</span></td>
+<td><span class="math inline">\sigma = \sqrt{\sigma^2}</span></td>
+<td><span class="math inline">\hat\sigma = \sqrt{\hat\sigma^2}</span></td>
 </tr>
 <tr class="odd">
 <td>Media geométrica</td>
-<td><span class="math inline">\(\exp\big(\mathbb{E}[\log X]\big)\)</span></td>
-<td><span class="math inline">\(\exp\left(\frac{1}{n}\sum_{i=1}^n \log X_i\right)\)</span></td>
+<td><span class="math inline">\exp\big(\mathbb{E}[\log X]\big)</span></td>
+<td><span class="math inline">\exp\left(\frac{1}{n}\sum_{i=1}^n \log X_i\right)</span></td>
 </tr>
 </tbody>
 </table>
@@ -539,12 +555,12 @@
 </ul>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(\overline{\log(\text{salario})} = 3.13 &lt; \log(25.73) \approx 3.25\)</span>. Es la <strong>desigualdad de Jensen</strong> de la clase pasada, ahora con datos: el promedio del logaritmo no es el logaritmo del promedio.</li>
+<li><span class="math inline">\overline{\log(\text{salario})} = 3.13 &lt; \log(25.73) \approx 3.25</span>. Es la <strong>desigualdad de Jensen</strong> de la clase pasada, ahora con datos: el promedio del logaritmo no es el logaritmo del promedio.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>La media geométrica (<span class="math inline">\(\approx 22.9\)</span>) queda más cerca de la mediana (<span class="math inline">\(\approx 23.6\)</span>) que de la media aritmética. En distribuciones con sesgo a la derecha, como los salarios, la media geométrica suele aproximarse a la mediana, que es mejor medida del valor “típico” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
+<li>La media geométrica (<span class="math inline">\approx 22.9</span>) queda más cerca de la mediana (<span class="math inline">\approx 23.6</span>) que de la media aritmética. En distribuciones con sesgo a la derecha, como los salarios, la media geométrica suele aproximarse a la mediana, que es mejor medida del valor “típico” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -557,7 +573,7 @@
 <p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
-<p>Con solo 20 observaciones es difícil hacer inferencias precisas sobre la población. ¿Qué tan lejos podría estar <span class="math inline">\(25.73\)</span> de la verdadera <span class="math inline">\(\mu\)</span>? Para responder necesitamos la <strong>distribución muestral</strong> de <span class="math inline">\(\bar X_n\)</span>.</p>
+<p>Con solo 20 observaciones es difícil hacer inferencias precisas sobre la población. ¿Qué tan lejos podría estar <span class="math inline">25.73</span> de la verdadera <span class="math inline">\mu</span>? Para responder necesitamos la <strong>distribución muestral</strong> de <span class="math inline">\bar X_n</span>.</p>
 </div>
 </div>
 </div>
@@ -579,29 +595,29 @@
 <p><strong>Definición: Distribución muestral</strong></p>
 </div>
 <div class="callout-content">
-<p>Como un estadístico <span class="math inline">\(\hat\theta = \hat\theta(X_1, \ldots, X_n)\)</span> es una variable aleatoria, tiene su propia distribución. La llamamos <strong>distribución muestral</strong>: la distribución inducida por el muestreo <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Como un estadístico <span class="math inline">\hat\theta = \hat\theta(X_1, \ldots, X_n)</span> es una variable aleatoria, tiene su propia distribución. La llamamos <strong>distribución muestral</strong>: la distribución inducida por el muestreo <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>Depende de tres cosas: la distribución <span class="math inline">\(F\)</span> de las observaciones, el tamaño muestral <span class="math inline">\(n\)</span> y la forma del estadístico. Como <span class="math inline">\(F\)</span> es desconocida, la distribución muestral típicamente <strong>también lo es</strong>.</p>
+<p>Depende de tres cosas: la distribución <span class="math inline">F</span> de las observaciones, el tamaño muestral <span class="math inline">n</span> y la forma del estadístico. Como <span class="math inline">F</span> es desconocida, la distribución muestral típicamente <strong>también lo es</strong>.</p>
 </div>
 <div class="fragment">
-<p>Hansen distingue varias maneras de estudiar la distribución de <span class="math inline">\(\bar X_n\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p>Hansen distingue varias maneras de estudiar la distribución de <span class="math inline">\bar X_n</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <ol type="1">
 <li>Su esperanza y varianza exactas.</li>
 <li>Su distribución exacta, suponiendo que los datos son normales.</li>
-<li>Su distribución <strong>asintótica</strong>, cuando <span class="math inline">\(n \to \infty\)</span>. <span class="alert">← el foco de hoy</span></li>
+<li>Su distribución <strong>asintótica</strong>, cuando <span class="math inline">n \to \infty</span>. <span class="alert">← el foco de hoy</span></li>
 </ol>
 </div>
 </section>
 <section class="slide level2">
 <h2>Esperanza y varianza de la media muestral</h2>
-<p>Sea <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> y <span class="math inline">\(\sigma^2 = \text{var}(X)\)</span>. Por <strong>linealidad de la esperanza</strong>,</p>
-<p><span class="math display">\[\mathbb{E}[\bar X_n] = \frac{1}{n}\sum_{i=1}^n \mathbb{E}[X_i] = \frac{1}{n}\, n\mu = \mu\]</span></p>
+<p>Sea <span class="math inline">\mu = \mathbb{E}[X]</span> y <span class="math inline">\sigma^2 = \text{var}(X)</span>. Por <strong>linealidad de la esperanza</strong>,</p>
+<p><span class="math display">\mathbb{E}[\bar X_n] = \frac{1}{n}\sum_{i=1}^n \mathbb{E}[X_i] = \frac{1}{n}\, n\mu = \mu</span></p>
 <div class="fragment">
-<p>Por <strong>independencia</strong>, las <span class="math inline">\(X_i\)</span> no están correlacionadas y la varianza de la suma es la suma de las varianzas:</p>
-<p><span class="math display">\[\text{var}(\bar X_n) = \frac{1}{n^2}\,\text{var}\left(\sum_{i=1}^n X_i\right) = \frac{1}{n^2}\sum_{i=1}^n \text{var}(X_i) = \frac{1}{n^2}\, n\sigma^2 = \frac{\sigma^2}{n}\]</span></p>
+<p>Por <strong>independencia</strong>, las <span class="math inline">X_i</span> no están correlacionadas y la varianza de la suma es la suma de las varianzas:</p>
+<p><span class="math display">\text{var}(\bar X_n) = \frac{1}{n^2}\,\text{var}\left(\sum_{i=1}^n X_i\right) = \frac{1}{n^2}\sum_{i=1}^n \text{var}(X_i) = \frac{1}{n^2}\, n\sigma^2 = \frac{\sigma^2}{n}</span></p>
 </div>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -613,7 +629,7 @@
 <p><strong>Teorema</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(\mathbb{E}[X^2] &lt; \infty\)</span>, entonces <span class="math inline">\(\quad \mathbb{E}[\bar X_n] = \mu \quad\)</span> y <span class="math inline">\(\quad \text{var}(\bar X_n) = \dfrac{\sigma^2}{n}\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Si <span class="math inline">\mathbb{E}[X^2] &lt; \infty</span>, entonces <span class="math inline">\quad \mathbb{E}[\bar X_n] = \mu \quad</span> y <span class="math inline">\quad \text{var}(\bar X_n) = \dfrac{\sigma^2}{n}</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -622,25 +638,25 @@
 <section class="slide level2">
 <h2>Qué nos dicen estas dos fórmulas</h2>
 <ul>
-<li><span class="math inline">\(\mathbb{E}[\bar X_n] = \mu\)</span>: la distribución muestral está <strong>centrada</strong> en el parámetro. En la próxima clase llamaremos a esto <em>insesgamiento</em>.</li>
+<li><span class="math inline">\mathbb{E}[\bar X_n] = \mu</span>: la distribución muestral está <strong>centrada</strong> en el parámetro. En la próxima clase llamaremos a esto <em>insesgamiento</em>.</li>
 </ul>
 <div class="fragment">
 <ul>
-<li><span class="math inline">\(\text{var}(\bar X_n) = \sigma^2/n\)</span>: la dispersión de la distribución muestral <span class="alert">cae con el tamaño muestral</span>. La media de una muestra grande es un estimador más preciso que la de una muestra chica.</li>
+<li><span class="math inline">\text{var}(\bar X_n) = \sigma^2/n</span>: la dispersión de la distribución muestral <span class="alert">cae con el tamaño muestral</span>. La media de una muestra grande es un estimador más preciso que la de una muestra chica.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li>La desviación estándar de <span class="math inline">\(\bar X_n\)</span> es <span class="math inline">\(\sigma/\sqrt{n}\)</span>. Para reducirla a la mitad hay que <strong>cuadruplicar</strong> la muestra.</li>
+<li>La desviación estándar de <span class="math inline">\bar X_n</span> es <span class="math inline">\sigma/\sqrt{n}</span>. Para reducirla a la mitad hay que <strong>cuadruplicar</strong> la muestra.</li>
 </ul>
 </div>
 <div class="fragment">
-<p>Pero media y varianza no son toda la distribución. ¿Qué <strong>forma</strong> tiene la distribución de <span class="math inline">\(\bar X_n\)</span>? Sin suponer algo sobre <span class="math inline">\(F\)</span>, en muestras finitas en general no lo sabemos. Ahí entra la teoría asintótica.</p>
+<p>Pero media y varianza no son toda la distribución. ¿Qué <strong>forma</strong> tiene la distribución de <span class="math inline">\bar X_n</span>? Sin suponer algo sobre <span class="math inline">F</span>, en muestras finitas en general no lo sabemos. Ahí entra la teoría asintótica.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>En R: la distribución muestral, simulada</h2>
-<p>Tomamos 5000 muestras de una exponencial con media 1 (muy asimétrica) y calculamos <span class="math inline">\(\bar X_n\)</span> en cada una:</p>
+<p>Tomamos 5000 muestras de una exponencial con media 1 (muy asimétrica) y calculamos <span class="math inline">\bar X_n</span> en cada una:</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">2026</span>)</span>
 <span id="cb16-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
@@ -652,12 +668,20 @@
 <span id="cb16-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"n ="</span>, n), <span class="at">xlab =</span> <span class="st">"media muestral"</span>, <span class="at">ylab =</span> <span class="st">"densidad"</span>)</span>
 <span id="cb16-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">abline</span>(<span class="at">v =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
 <span id="cb16-10"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 
+<div class="fragment">
+<p>A medida que <span class="math inline">n</span> crece, la distribución se <strong>concentra</strong> en torno a <span class="math inline">\mu = 1</span> y se vuelve <strong>más simétrica</strong>. Lo primero es la ley de los grandes números y lo segundo, el teorema central del límite.</p>
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
-<p>A medida que <span class="math inline">\(n\)</span> crece, la distribución se <strong>concentra</strong> en torno a <span class="math inline">\(\mu = 1\)</span> y se vuelve <strong>más simétrica</strong>. Lo primero es la ley de los grandes números y lo segundo, el teorema central del límite.</p>
+</section><section id="" class="slide level2 output-location-slide"><h2>En R: la distribución muestral, simulada</h2><div class="cell output-location-slide" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
 </div>
-</section></section>
+</div>
+</div></section></section>
 <section>
 <section id="convergencia-probabilidad" class="title-slide slide level1 center">
 <h1>Convergencia en probabilidad</h1>
@@ -665,7 +689,7 @@
 </section>
 <section class="slide level2">
 <h2>¿Por qué teoría asintótica?</h2>
-<p>La distribución exacta de un estimador en muestras finitas casi nunca se conoce. La <strong>teoría asintótica</strong> la aproxima por su límite cuando <span class="math inline">\(n \to \infty\)</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</p>
+<p>La distribución exacta de un estimador en muestras finitas casi nunca se conoce. La <strong>teoría asintótica</strong> la aproxima por su límite cuando <span class="math inline">n \to \infty</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</p>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -676,7 +700,7 @@
 <p><strong>Importante</strong></p>
 </div>
 <div class="callout-content">
-<p>“<span class="math inline">\(n \to \infty\)</span>” no debe interpretarse literalmente: nadie tiene muestras infinitas. Es un <span class="alert">recurso de aproximación</span>. Nos dice cómo se comporta un estimador cuando la muestra es “grande” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>“<span class="math inline">n \to \infty</span>” no debe interpretarse literalmente: nadie tiene muestras infinitas. Es un <span class="alert">recurso de aproximación</span>. Nos dice cómo se comporta un estimador cuando la muestra es “grande” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -697,18 +721,18 @@
 <p><strong>Definición: Límite</strong></p>
 </div>
 <div class="callout-content">
-<p>La sucesión <span class="math inline">\(a_n\)</span> tiene <strong>límite</strong> <span class="math inline">\(a\)</span>, y escribimos <span class="math inline">\(a_n \to a\)</span> cuando <span class="math inline">\(n \to \infty\)</span>, si para todo <span class="math inline">\(\delta &gt; 0\)</span> existe un <span class="math inline">\(n_\delta &lt; \infty\)</span> tal que <span class="math inline">\(|a_n - a| \leq \delta\)</span> para todo <span class="math inline">\(n \geq n_\delta\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>La sucesión <span class="math inline">a_n</span> tiene <strong>límite</strong> <span class="math inline">a</span>, y escribimos <span class="math inline">a_n \to a</span> cuando <span class="math inline">n \to \infty</span>, si para todo <span class="math inline">\delta &gt; 0</span> existe un <span class="math inline">n_\delta &lt; \infty</span> tal que <span class="math inline">|a_n - a| \leq \delta</span> para todo <span class="math inline">n \geq n_\delta</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>En palabras: desde cierto punto en adelante, la sucesión queda tan cerca de <span class="math inline">\(a\)</span> como queramos.</p>
+<p>En palabras: desde cierto punto en adelante, la sucesión queda tan cerca de <span class="math inline">a</span> como queramos.</p>
 </div>
 <div class="fragment">
-<p><strong>Ejemplo:</strong> <span class="math inline">\(a_n = 1/n\)</span>. Dado <span class="math inline">\(\delta &gt; 0\)</span>, si <span class="math inline">\(n \geq 1/\delta\)</span> entonces <span class="math inline">\(|a_n| \leq \delta\)</span>. Por lo tanto, <span class="math inline">\(a_n \to 0\)</span>.</p>
+<p><strong>Ejemplo:</strong> <span class="math inline">a_n = 1/n</span>. Dado <span class="math inline">\delta &gt; 0</span>, si <span class="math inline">n \geq 1/\delta</span> entonces <span class="math inline">|a_n| \leq \delta</span>. Por lo tanto, <span class="math inline">a_n \to 0</span>.</p>
 </div>
 <div class="fragment">
-<p>Pero <span class="math inline">\(\bar X_n\)</span> es <strong>aleatoria</strong>: para un mismo <span class="math inline">\(n\)</span>, puede tomar muchos valores. ¿Qué significa que “se acerque” a <span class="math inline">\(\mu\)</span>?</p>
+<p>Pero <span class="math inline">\bar X_n</span> es <strong>aleatoria</strong>: para un mismo <span class="math inline">n</span>, puede tomar muchos valores. ¿Qué significa que “se acerque” a <span class="math inline">\mu</span>?</p>
 </div>
 </section>
 <section class="slide level2">
@@ -722,15 +746,15 @@
 <p><strong>Definición: Convergencia en probabilidad</strong></p>
 </div>
 <div class="callout-content">
-<p>Una sucesión de variables aleatorias <span class="math inline">\(Z_n\)</span> <strong>converge en probabilidad</strong> a una constante <span class="math inline">\(c\)</span>, y escribimos <span class="math inline">\(Z_n \xrightarrow{p} c\)</span> o <span class="math inline">\(\text{plim}_{n \to \infty} Z_n = c\)</span>, si para todo <span class="math inline">\(\delta &gt; 0\)</span> <span class="math display">\[\lim_{n \to \infty} \Pr\big(|Z_n - c| \leq \delta\big) = 1\]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>Una sucesión de variables aleatorias <span class="math inline">Z_n</span> <strong>converge en probabilidad</strong> a una constante <span class="math inline">c</span>, y escribimos <span class="math inline">Z_n \xrightarrow{p} c</span> o <span class="math inline">\text{plim}_{n \to \infty} Z_n = c</span>, si para todo <span class="math inline">\delta &gt; 0</span> <span class="math display">\lim_{n \to \infty} \Pr\big(|Z_n - c| \leq \delta\big) = 1</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </div>
 </div>
 </div>
 <div class="fragment">
 <ul>
-<li>El evento <span class="math inline">\(\{|Z_n - c| \leq \delta\}\)</span> ocurre cuando <span class="math inline">\(Z_n\)</span> cae a menos de <span class="math inline">\(\delta\)</span> de <span class="math inline">\(c\)</span>.</li>
-<li>La definición dice que la probabilidad de ese evento tiende a 1, para <strong>cualquier</strong> <span class="math inline">\(\delta\)</span>, por pequeño que sea.</li>
-<li>Es decir: la distribución de <span class="math inline">\(Z_n\)</span> se <span class="alert">concentra</span> en torno a <span class="math inline">\(c\)</span> a medida que <span class="math inline">\(n\)</span> crece.</li>
+<li>El evento <span class="math inline">\{|Z_n - c| \leq \delta\}</span> ocurre cuando <span class="math inline">Z_n</span> cae a menos de <span class="math inline">\delta</span> de <span class="math inline">c</span>.</li>
+<li>La definición dice que la probabilidad de ese evento tiende a 1, para <strong>cualquier</strong> <span class="math inline">\delta</span>, por pequeño que sea.</li>
+<li>Es decir: la distribución de <span class="math inline">Z_n</span> se <span class="alert">concentra</span> en torno a <span class="math inline">c</span> a medida que <span class="math inline">n</span> crece.</li>
 </ul>
 </div>
 </section>
@@ -746,15 +770,15 @@
 </div>
 <div class="callout-content">
 <ul>
-<li>El límite de la definición es un límite usual, pero aplicado a una sucesión de <strong>probabilidades</strong>, no a los valores de <span class="math inline">\(Z_n\)</span>.</li>
-<li>Escribe siempre la <span class="math inline">\(p\)</span> bajo la flecha: <span class="math inline">\(Z_n \xrightarrow{p} c\)</span> no es lo mismo que <span class="math inline">\(Z_n \to c\)</span>.</li>
-<li>Lo que está a la derecha de la flecha no puede depender de <span class="math inline">\(n\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
+<li>El límite de la definición es un límite usual, pero aplicado a una sucesión de <strong>probabilidades</strong>, no a los valores de <span class="math inline">Z_n</span>.</li>
+<li>Escribe siempre la <span class="math inline">p</span> bajo la flecha: <span class="math inline">Z_n \xrightarrow{p} c</span> no es lo mismo que <span class="math inline">Z_n \to c</span>.</li>
+<li>Lo que está a la derecha de la flecha no puede depender de <span class="math inline">n</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
 </ul>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Ejemplo:</strong> sea <span class="math inline">\(\Pr(Z_n = 0) = 1 - p_n\)</span> y <span class="math inline">\(\Pr(Z_n = a_n) = p_n\)</span>. Si <span class="math inline">\(p_n \to 0\)</span>, entonces <span class="math inline">\(\Pr(|Z_n| \leq \delta) \geq 1 - p_n \to 1\)</span>, así que <span class="math inline">\(Z_n \xrightarrow{p} 0\)</span>. Esto ocurre <strong>aunque</strong> <span class="math inline">\(a_n \to \infty\)</span>: lo que importa es que el valor lejano se vuelve cada vez menos probable <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><strong>Ejemplo:</strong> sea <span class="math inline">\Pr(Z_n = 0) = 1 - p_n</span> y <span class="math inline">\Pr(Z_n = a_n) = p_n</span>. Si <span class="math inline">p_n \to 0</span>, entonces <span class="math inline">\Pr(|Z_n| \leq \delta) \geq 1 - p_n \to 1</span>, así que <span class="math inline">Z_n \xrightarrow{p} 0</span>. Esto ocurre <strong>aunque</strong> <span class="math inline">a_n \to \infty</span>: lo que importa es que el valor lejano se vuelve cada vez menos probable <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section></section>
 <section>
@@ -775,7 +799,7 @@
 <p><strong>Teorema: Desigualdad de Chebyshev</strong></p>
 </div>
 <div class="callout-content">
-<p>Para cualquier variable aleatoria <span class="math inline">\(X\)</span> con varianza finita y cualquier <span class="math inline">\(\delta &gt; 0\)</span>, <span class="math display">\[\Pr\big(|X - \mathbb{E}[X]| \geq \delta\big) \leq \frac{\text{var}(X)}{\delta^2}\]</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+<p>Para cualquier variable aleatoria <span class="math inline">X</span> con varianza finita y cualquier <span class="math inline">\delta &gt; 0</span>, <span class="math display">\Pr\big(|X - \mathbb{E}[X]| \geq \delta\big) \leq \frac{\text{var}(X)}{\delta^2}</span> <span class="citation" data-cites="hansen-for-economist probability-statistics">(<a href="#/references" role="doc-biblioref" onclick="">DeGroot &amp; Schervish, 2012</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
 </div>
 </div>
@@ -786,15 +810,15 @@
 </section>
 <section class="slide level2">
 <h2>Demostración: Chebyshev (opcional)</h2>
-<p>Sea <span class="math inline">\(Z = X - \mathbb{E}[X]\)</span>, con densidad <span class="math inline">\(f\)</span>. Entonces <span class="math display">\[\Pr(|Z| \geq \delta) = \int_{\{|x| \geq \delta\}} f(x)\,dx\]</span></p>
+<p>Sea <span class="math inline">Z = X - \mathbb{E}[X]</span>, con densidad <span class="math inline">f</span>. Entonces <span class="math display">\Pr(|Z| \geq \delta) = \int_{\{|x| \geq \delta\}} f(x)\,dx</span></p>
 <div class="fragment">
-<p>En la región <span class="math inline">\(\{|x| \geq \delta\}\)</span> se cumple <span class="math inline">\(1 \leq x^2/\delta^2\)</span>. Por lo tanto, <span class="math display">\[\int_{\{|x| \geq \delta\}} f(x)\,dx \leq \int_{\{|x| \geq \delta\}} \frac{x^2}{\delta^2} f(x)\,dx \leq \int_{-\infty}^{\infty} \frac{x^2}{\delta^2} f(x)\,dx = \frac{\text{var}(Z)}{\delta^2}\]</span></p>
+<p>En la región <span class="math inline">\{|x| \geq \delta\}</span> se cumple <span class="math inline">1 \leq x^2/\delta^2</span>. Por lo tanto, <span class="math display">\int_{\{|x| \geq \delta\}} f(x)\,dx \leq \int_{\{|x| \geq \delta\}} \frac{x^2}{\delta^2} f(x)\,dx \leq \int_{-\infty}^{\infty} \frac{x^2}{\delta^2} f(x)\,dx = \frac{\text{var}(Z)}{\delta^2}</span></p>
 </div>
 <div class="fragment">
-<p>La última igualdad usa que <span class="math inline">\(Z\)</span> tiene media cero, así que <span class="math inline">\(\mathbb{E}[Z^2] = \text{var}(Z) = \text{var}(X)\)</span>. <span class="math inline">\(\blacksquare\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+<p>La última igualdad usa que <span class="math inline">Z</span> tiene media cero, así que <span class="math inline">\mathbb{E}[Z^2] = \text{var}(Z) = \text{var}(X)</span>. <span class="math inline">\blacksquare</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
 <div class="fragment">
-<p>Un corolario inmediato: si <span class="math inline">\(\text{var}(Z_n) \to 0\)</span>, entonces <span class="math inline">\(Z_n - \mathbb{E}[Z_n] \xrightarrow{p} 0\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Un corolario inmediato: si <span class="math inline">\text{var}(Z_n) \to 0</span>, entonces <span class="math inline">Z_n - \mathbb{E}[Z_n] \xrightarrow{p} 0</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -808,12 +832,12 @@
 <p><strong>Teorema: Ley débil de los grandes números (LGN)</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(X_1, \ldots, X_n\)</span> son i.i.d. y <span class="math inline">\(\mathbb{E}|X| &lt; \infty\)</span>, entonces, cuando <span class="math inline">\(n \to \infty\)</span>, <span class="math display">\[\bar X_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{p} \mathbb{E}[X]\]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>Si <span class="math inline">X_1, \ldots, X_n</span> son i.i.d. y <span class="math inline">\mathbb{E}|X| &lt; \infty</span>, entonces, cuando <span class="math inline">n \to \infty</span>, <span class="math display">\bar X_n = \frac{1}{n}\sum_{i=1}^n X_i \xrightarrow{p} \mathbb{E}[X]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Demostración (con varianza finita).</strong> Sabemos que <span class="math inline">\(\mathbb{E}[\bar X_n] = \mu\)</span> y <span class="math inline">\(\text{var}(\bar X_n) = \sigma^2/n\)</span>. Por Chebyshev, para cualquier <span class="math inline">\(\delta &gt; 0\)</span>: <span class="math display">\[\Pr\big(|\bar X_n - \mu| \geq \delta\big) \leq \frac{\sigma^2}{n\,\delta^2} \longrightarrow 0 \qquad \blacksquare\]</span></p>
+<p><strong>Demostración (con varianza finita).</strong> Sabemos que <span class="math inline">\mathbb{E}[\bar X_n] = \mu</span> y <span class="math inline">\text{var}(\bar X_n) = \sigma^2/n</span>. Por Chebyshev, para cualquier <span class="math inline">\delta &gt; 0</span>: <span class="math display">\Pr\big(|\bar X_n - \mu| \geq \delta\big) \leq \frac{\sigma^2}{n\,\delta^2} \longrightarrow 0 \qquad \blacksquare</span></p>
 </div>
 <div class="fragment">
 <p>Con una demostración más técnica, el resultado se obtiene suponiendo solo que la esperanza es finita <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
@@ -831,12 +855,12 @@
 <p><strong>Definición: Consistencia</strong></p>
 </div>
 <div class="callout-content">
-<p>Un estimador <span class="math inline">\(\hat\theta\)</span> de <span class="math inline">\(\theta\)</span> es <strong>consistente</strong> si <span class="math inline">\(\hat\theta \xrightarrow{p} \theta\)</span> cuando <span class="math inline">\(n \to \infty\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Un estimador <span class="math inline">\hat\theta</span> de <span class="math inline">\theta</span> es <strong>consistente</strong> si <span class="math inline">\hat\theta \xrightarrow{p} \theta</span> cuando <span class="math inline">n \to \infty</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>Por la LGN, si <span class="math inline">\(\mathbb{E}|X| &lt; \infty\)</span>, la media muestral <span class="math inline">\(\hat\mu = \bar X_n\)</span> es un estimador consistente de <span class="math inline">\(\mu\)</span>.</p>
+<p>Por la LGN, si <span class="math inline">\mathbb{E}|X| &lt; \infty</span>, la media muestral <span class="math inline">\hat\mu = \bar X_n</span> es un estimador consistente de <span class="math inline">\mu</span>.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-tip callout-titled callout-style-default">
@@ -848,7 +872,7 @@
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p>La consistencia es una propiedad <strong>mínima</strong>: con una muestra lo suficientemente grande, el estimador estará arbitrariamente cerca del valor verdadero con alta probabilidad. Pero no dice <strong>qué tan grande</strong> debe ser <span class="math inline">\(n\)</span>, así que por sí sola no orienta mucho la práctica empírica <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>La consistencia es una propiedad <strong>mínima</strong>: con una muestra lo suficientemente grande, el estimador estará arbitrariamente cerca del valor verdadero con alta probabilidad. Pero no dice <strong>qué tan grande</strong> debe ser <span class="math inline">n</span>, así que por sí sola no orienta mucho la práctica empírica <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -880,18 +904,18 @@
 </div>
 </div></div>
 <div class="fragment">
-<p>Cada línea es una secuencia distinta de lanzamientos. Al principio fluctúan mucho, pero todas terminan cerca de <span class="math inline">\(0.5\)</span>. Es la interpretación frecuentista de la clase 01, ahora como teorema.</p>
+<p>Cada línea es una secuencia distinta de lanzamientos. Al principio fluctúan mucho, pero todas terminan cerca de <span class="math inline">0.5</span>. Es la interpretación frecuentista de la clase 01, ahora como teorema.</p>
 </div>
 </section>
 <section class="slide level2">
-<h2>¿Qué tan grande debe ser <span class="math inline">\(n\)</span>? Chebyshev</h2>
-<p><strong>Ejemplo: salarios por hora en EE.UU.</strong>, con <span class="math inline">\(\sigma^2 \approx 430\)</span>. ¿Qué tamaño muestral garantiza que <span class="math inline">\(\bar X_n\)</span> esté a menos de $1 de <span class="math inline">\(\mu\)</span> con 99% de probabilidad? <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+<h2>¿Qué tan grande debe ser <span class="math inline">n</span>? Chebyshev</h2>
+<p><strong>Ejemplo: salarios por hora en EE.UU.</strong>, con <span class="math inline">\sigma^2 \approx 430</span>. ¿Qué tamaño muestral garantiza que <span class="math inline">\bar X_n</span> esté a menos de $1 de <span class="math inline">\mu</span> con 99% de probabilidad? <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 <div class="fragment">
-<p>Por Chebyshev, <span class="math inline">\(\Pr\big(|\bar X_n - \mu| \geq 1\big) \leq 430/n\)</span>:</p>
+<p>Por Chebyshev, <span class="math inline">\Pr\big(|\bar X_n - \mu| \geq 1\big) \leq 430/n</span>:</p>
 <table class="caption-top">
 <thead>
 <tr class="header">
-<th><span class="math inline">\(n\)</span></th>
+<th><span class="math inline">n</span></th>
 <th>430</th>
 <th>860</th>
 <th>1720</th>
@@ -917,10 +941,10 @@
 <h2>¿Cuándo falla la LGN?</h2>
 <p>Cada supuesto del teorema importa. Hansen da tres contraejemplos <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <div class="fragment">
-<p><strong>1. Sin independencia: un componente común.</strong> Si <span class="math inline">\(X_i = Z + U_i\)</span>, con <span class="math inline">\(U_i\)</span> i.i.d. de media cero, entonces <span class="math display">\[\bar X_n = Z + \bar U_n \xrightarrow{p} Z\]</span> El promedio converge, pero <strong>al componente común <span class="math inline">\(Z\)</span></strong>, no a <span class="math inline">\(\mathbb{E}[X]\)</span>. Pensemos en los ingresos de hogares de una misma región golpeada por un mismo <em>shock</em>: promediar más hogares de esa región no elimina el <em>shock</em>.</p>
+<p><strong>1. Sin independencia: un componente común.</strong> Si <span class="math inline">X_i = Z + U_i</span>, con <span class="math inline">U_i</span> i.i.d. de media cero, entonces <span class="math display">\bar X_n = Z + \bar U_n \xrightarrow{p} Z</span> El promedio converge, pero <strong>al componente común <span class="math inline">Z</span></strong>, no a <span class="math inline">\mathbb{E}[X]</span>. Pensemos en los ingresos de hogares de una misma región golpeada por un mismo <em>shock</em>: promediar más hogares de esa región no elimina el <em>shock</em>.</p>
 </div>
 <div class="fragment">
-<p><strong>2. Sin distribución idéntica: heterogeneidad extrema.</strong> Si la mitad de las observaciones tiene varianza 1 y la otra mitad varianza <span class="math inline">\(n\)</span>, entonces <span class="math inline">\(\text{var}(\bar X_n) \to 1/2\)</span>, que no tiende a cero.</p>
+<p><strong>2. Sin distribución idéntica: heterogeneidad extrema.</strong> Si la mitad de las observaciones tiene varianza 1 y la otra mitad varianza <span class="math inline">n</span>, entonces <span class="math inline">\text{var}(\bar X_n) \to 1/2</span>, que no tiende a cero.</p>
 </div>
 <div class="fragment">
 <p><strong>3. Sin esperanza finita.</strong> Es el caso de la distribución de Cauchy.</p>
@@ -928,7 +952,7 @@
 </section>
 <section class="slide level2">
 <h2>En R: la media de una Cauchy no converge</h2>
-<p>La Cauchy no tiene esperanza finita. Se puede mostrar que la media de <span class="math inline">\(n\)</span> observaciones Cauchy i.i.d. <strong>sigue siendo Cauchy</strong>, para cualquier <span class="math inline">\(n\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>La Cauchy no tiene esperanza finita. Se puede mostrar que la media de <span class="math inline">n</span> observaciones Cauchy i.i.d. <strong>sigue siendo Cauchy</strong>, para cualquier <span class="math inline">n</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">42</span>)</span>
 <span id="cb18-2"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
@@ -939,15 +963,23 @@
 <span id="cb18-7"><a aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="fu">cumsum</span>(<span class="fu">rcauchy</span>(n)) <span class="sc">/</span> (<span class="dv">1</span><span class="sc">:</span>n), <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">col =</span> <span class="st">"#19375A"</span>,</span>
 <span id="cb18-8"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">ylim =</span> <span class="fu">c</span>(<span class="sc">-</span><span class="dv">3</span>, <span class="dv">3</span>), <span class="at">main =</span> <span class="st">"Cauchy"</span>, <span class="at">xlab =</span> <span class="st">"n"</span>, <span class="at">ylab =</span> <span class="st">"media acumulada"</span>)</span>
 <span id="cb18-9"><a aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
+
+<div class="fragment">
 <p>Con la Cauchy, cada tanto aparece una observación enorme que vuelve a mover el promedio. Por más datos que agreguemos, el promedio no se estabiliza.</p>
 </div>
 </section>
-<section class="slide level2">
+<section id="" class="slide level2 output-location-slide"><h2>En R: la media de una Cauchy no converge</h2><div class="cell output-location-slide" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center" width="960"></p>
+</figure>
+</div>
+</div>
+</div></section><section class="slide level2">
 <h2>La ley fuerte (opcional)</h2>
-<p>Existe un modo de convergencia más exigente, la <strong>convergencia casi segura</strong>: <span class="math display">\[Z_n \xrightarrow{a.s.} c \quad \text{si} \quad \Pr\left(\lim_{n \to \infty} Z_n = c\right) = 1\]</span></p>
+<p>Existe un modo de convergencia más exigente, la <strong>convergencia casi segura</strong>: <span class="math display">Z_n \xrightarrow{a.s.} c \quad \text{si} \quad \Pr\left(\lim_{n \to \infty} Z_n = c\right) = 1</span></p>
 <div class="fragment">
 <p>Calcula la probabilidad de un límite, en vez del límite de una probabilidad. La convergencia casi segura implica la convergencia en probabilidad, pero no al revés <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
@@ -961,7 +993,7 @@
 <p><strong>Teorema: Ley fuerte de los grandes números</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(X_i\)</span> son i.i.d. y <span class="math inline">\(\mathbb{E}|X| &lt; \infty\)</span>, entonces <span class="math inline">\(\bar X_n \xrightarrow{a.s.} \mathbb{E}[X]\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Si <span class="math inline">X_i</span> son i.i.d. y <span class="math inline">\mathbb{E}|X| &lt; \infty</span>, entonces <span class="math inline">\bar X_n \xrightarrow{a.s.} \mathbb{E}[X]</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </div>
 </div>
@@ -988,34 +1020,34 @@
 <p><strong>Teorema de la aplicación continua (CMT)</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(Z_n \xrightarrow{p} c\)</span> cuando <span class="math inline">\(n \to \infty\)</span> y <span class="math inline">\(h(\cdot)\)</span> es continua en <span class="math inline">\(c\)</span>, entonces <span class="math display">\[h(Z_n) \xrightarrow{p} h(c)\]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>Si <span class="math inline">Z_n \xrightarrow{p} c</span> cuando <span class="math inline">n \to \infty</span> y <span class="math inline">h(\cdot)</span> es continua en <span class="math inline">c</span>, entonces <span class="math display">h(Z_n) \xrightarrow{p} h(c)</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p>La idea: si <span class="math inline">\(h\)</span> es continua, cambios pequeños en el argumento producen cambios pequeños en el resultado. Si <span class="math inline">\(Z_n\)</span> queda cerca de <span class="math inline">\(c\)</span>, <span class="math inline">\(h(Z_n)\)</span> queda cerca de <span class="math inline">\(h(c)\)</span>.</p>
+<p>La idea: si <span class="math inline">h</span> es continua, cambios pequeños en el argumento producen cambios pequeños en el resultado. Si <span class="math inline">Z_n</span> queda cerca de <span class="math inline">c</span>, <span class="math inline">h(Z_n)</span> queda cerca de <span class="math inline">h(c)</span>.</p>
 </div>
 <div class="fragment">
-<p><strong>Ejemplos:</strong> <span class="math inline">\(Z_n + a \xrightarrow{p} c + a\)</span>, <span class="math inline">\(\; aZ_n \xrightarrow{p} ac\)</span>, <span class="math inline">\(\; Z_n^2 \xrightarrow{p} c^2\)</span>. También <span class="math inline">\(a/Z_n \xrightarrow{p} a/c\)</span>, pero <strong>solo si <span class="math inline">\(c \neq 0\)</span></strong>, porque <span class="math inline">\(a/u\)</span> no es continua en <span class="math inline">\(u = 0\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><strong>Ejemplos:</strong> <span class="math inline">Z_n + a \xrightarrow{p} c + a</span>, <span class="math inline">\; aZ_n \xrightarrow{p} ac</span>, <span class="math inline">\; Z_n^2 \xrightarrow{p} c^2</span>. También <span class="math inline">a/Z_n \xrightarrow{p} a/c</span>, pero <strong>solo si <span class="math inline">c \neq 0</span></strong>, porque <span class="math inline">a/u</span> no es continua en <span class="math inline">u = 0</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>Consistencia de los estimadores <em>plug-in</em></h2>
-<p>Combinando la LGN con el CMT obtenemos la consistencia de todo estimador <em>plug-in</em> <span class="math inline">\(\hat\beta = h(\hat\theta)\)</span> con <span class="math inline">\(h\)</span> continua <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p>Combinando la LGN con el CMT obtenemos la consistencia de todo estimador <em>plug-in</em> <span class="math inline">\hat\beta = h(\hat\theta)</span> con <span class="math inline">h</span> continua <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <div class="fragment">
 <ul>
-<li><strong>Varianza:</strong> si <span class="math inline">\(\mathbb{E}[X^2] &lt; \infty\)</span>, <span class="math display">\[\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n X_i^2 - \bar X_n^2 \xrightarrow{p} \mathbb{E}[X^2] - \mu^2 = \sigma^2\]</span></li>
+<li><strong>Varianza:</strong> si <span class="math inline">\mathbb{E}[X^2] &lt; \infty</span>, <span class="math display">\hat\sigma^2 = \frac{1}{n}\sum_{i=1}^n X_i^2 - \bar X_n^2 \xrightarrow{p} \mathbb{E}[X^2] - \mu^2 = \sigma^2</span></li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Desviación estándar:</strong> <span class="math inline">\(\hat\sigma = \sqrt{\hat\sigma^2} \xrightarrow{p} \sigma\)</span>.</li>
+<li><strong>Desviación estándar:</strong> <span class="math inline">\hat\sigma = \sqrt{\hat\sigma^2} \xrightarrow{p} \sigma</span>.</li>
 </ul>
 </div>
 <div class="fragment">
 <ul>
-<li><strong>Cociente de medias:</strong> si <span class="math inline">\(\mathbb{E}[Y] \neq 0\)</span>, entonces <span class="math inline">\(\bar X_n / \bar Y_n \xrightarrow{p} \mathbb{E}[X]/\mathbb{E}[Y]\)</span>.</li>
+<li><strong>Cociente de medias:</strong> si <span class="math inline">\mathbb{E}[Y] \neq 0</span>, entonces <span class="math inline">\bar X_n / \bar Y_n \xrightarrow{p} \mathbb{E}[X]/\mathbb{E}[Y]</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -1038,10 +1070,10 @@
 <h2>Por qué la econometría trabaja con límites</h2>
 <p>El CMT explica buena parte de por qué la econometría prefiere los resultados asintóticos a los de muestra finita <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
 <div class="fragment">
-<p>Con límites en probabilidad, los productos y cocientes “se separan”: <span class="math display">\[\text{plim}\,(\hat a\,\hat b) = \text{plim}\,\hat a \cdot \text{plim}\,\hat b\]</span></p>
+<p>Con límites en probabilidad, los productos y cocientes “se separan”: <span class="math display">\text{plim}\,(\hat a\,\hat b) = \text{plim}\,\hat a \cdot \text{plim}\,\hat b</span></p>
 </div>
 <div class="fragment">
-<p>Con esperanzas, en general <strong>no</strong>: <span class="math inline">\(\mathbb{E}[\hat a\,\hat b] \neq \mathbb{E}[\hat a]\,\mathbb{E}[\hat b]\)</span>, y tampoco <span class="math inline">\(\mathbb{E}[\hat a/\hat b] = \mathbb{E}[\hat a]/\mathbb{E}[\hat b]\)</span>.</p>
+<p>Con esperanzas, en general <strong>no</strong>: <span class="math inline">\mathbb{E}[\hat a\,\hat b] \neq \mathbb{E}[\hat a]\,\mathbb{E}[\hat b]</span>, y tampoco <span class="math inline">\mathbb{E}[\hat a/\hat b] = \mathbb{E}[\hat a]/\mathbb{E}[\hat b]</span>.</p>
 </div>
 <div class="fragment">
 <p>La mayoría de los estimadores econométricos son funciones no lineales de promedios, por ejemplo un cociente entre una covarianza y una varianza muestrales. Calcular su esperanza exacta suele ser imposible, pero obtener su límite en probabilidad es directo con la LGN y el CMT.</p>
@@ -1054,13 +1086,13 @@
 </section>
 <section class="slide level2">
 <h2>La LGN no basta</h2>
-<p>La LGN dice que <span class="math inline">\(\bar X_n \xrightarrow{p} \mu\)</span>: en el límite, la distribución de <span class="math inline">\(\bar X_n\)</span> colapsa en un punto. Eso no sirve para medir la <strong>incertidumbre</strong> del estimador.</p>
+<p>La LGN dice que <span class="math inline">\bar X_n \xrightarrow{p} \mu</span>: en el límite, la distribución de <span class="math inline">\bar X_n</span> colapsa en un punto. Eso no sirve para medir la <strong>incertidumbre</strong> del estimador.</p>
 <div class="fragment">
-<p>Como <span class="math inline">\(\text{var}(\bar X_n - \mu) = \sigma^2/n\)</span>, si multiplicamos por <span class="math inline">\(\sqrt{n}\)</span> estabilizamos la varianza <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
-<p><span class="math display">\[Z_n = \sqrt{n}\,(\bar X_n - \mu), \qquad \mathbb{E}[Z_n] = 0, \qquad \text{var}(Z_n) = \sigma^2\]</span></p>
+<p>Como <span class="math inline">\text{var}(\bar X_n - \mu) = \sigma^2/n</span>, si multiplicamos por <span class="math inline">\sqrt{n}</span> estabilizamos la varianza <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p><span class="math display">Z_n = \sqrt{n}\,(\bar X_n - \mu), \qquad \mathbb{E}[Z_n] = 0, \qquad \text{var}(Z_n) = \sigma^2</span></p>
 </div>
 <div class="fragment">
-<p>La media y la varianza de <span class="math inline">\(Z_n\)</span> ya no dependen de <span class="math inline">\(n\)</span>. La pregunta ahora es por la <strong>forma</strong> de la distribución de <span class="math inline">\(Z_n\)</span> cuando <span class="math inline">\(n\)</span> es grande.</p>
+<p>La media y la varianza de <span class="math inline">Z_n</span> ya no dependen de <span class="math inline">n</span>. La pregunta ahora es por la <strong>forma</strong> de la distribución de <span class="math inline">Z_n</span> cuando <span class="math inline">n</span> es grande.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -1074,27 +1106,27 @@
 <p><strong>Definición: Convergencia en distribución</strong></p>
 </div>
 <div class="callout-content">
-<p>Sea <span class="math inline">\(Z_n\)</span> una sucesión de variables aleatorias con distribución <span class="math inline">\(G_n(u) = \Pr(Z_n \leq u)\)</span>. Decimos que <span class="math inline">\(Z_n\)</span> <strong>converge en distribución</strong> a <span class="math inline">\(Z\)</span>, y escribimos <span class="math inline">\(Z_n \xrightarrow{d} Z\)</span>, si <span class="math display">\[G_n(u) \to G(u) = \Pr(Z \leq u) \qquad \text{cuando } n \to \infty\]</span> en todo punto <span class="math inline">\(u\)</span> donde <span class="math inline">\(G\)</span> es continua <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</p>
+<p>Sea <span class="math inline">Z_n</span> una sucesión de variables aleatorias con distribución <span class="math inline">G_n(u) = \Pr(Z_n \leq u)</span>. Decimos que <span class="math inline">Z_n</span> <strong>converge en distribución</strong> a <span class="math inline">Z</span>, y escribimos <span class="math inline">Z_n \xrightarrow{d} Z</span>, si <span class="math display">G_n(u) \to G(u) = \Pr(Z \leq u) \qquad \text{cuando } n \to \infty</span> en todo punto <span class="math inline">u</span> donde <span class="math inline">G</span> es continua <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
 <ul>
-<li>A <span class="math inline">\(G\)</span> se le llama <strong>distribución asintótica</strong> o <strong>distribución límite</strong> de <span class="math inline">\(Z_n\)</span>.</li>
-<li>La condición “donde <span class="math inline">\(G\)</span> es continua” es un detalle técnico; en los casos que veremos, <span class="math inline">\(G\)</span> es continua en todas partes.</li>
+<li>A <span class="math inline">G</span> se le llama <strong>distribución asintótica</strong> o <strong>distribución límite</strong> de <span class="math inline">Z_n</span>.</li>
+<li>La condición “donde <span class="math inline">G</span> es continua” es un detalle técnico; en los casos que veremos, <span class="math inline">G</span> es continua en todas partes.</li>
 <li>Si el límite es una constante, convergencia en distribución y en probabilidad son equivalentes <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
 </ul>
 </div>
 </section>
 <section class="slide level2">
 <h2>Relación entre los modos de convergencia</h2>
-<p><span class="math display">\[Z_n \xrightarrow{a.s.} Z \quad \Longrightarrow \quad Z_n \xrightarrow{p} Z \quad \Longrightarrow \quad Z_n \xrightarrow{d} Z\]</span></p>
+<p><span class="math display">Z_n \xrightarrow{a.s.} Z \quad \Longrightarrow \quad Z_n \xrightarrow{p} Z \quad \Longrightarrow \quad Z_n \xrightarrow{d} Z</span></p>
 <p><span class="citation" data-cites="microeconometrics hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 <div class="fragment">
-<p>Las implicancias inversas <strong>no</strong> se cumplen en general. <strong>Ejemplo:</strong> si cada <span class="math inline">\(Z_n\)</span> es una extracción independiente de <span class="math inline">\(N(\mu, \sigma^2)\)</span>, entonces trivialmente <span class="math inline">\(Z_n \xrightarrow{d} N(\mu, \sigma^2)\)</span>. Pero <span class="math inline">\(Z_n\)</span> no se acerca a ningún valor en particular: <span class="math inline">\(Z_n - Z\)</span> tiene una varianza que no desaparece. Converge en distribución, no en probabilidad <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
+<p>Las implicancias inversas <strong>no</strong> se cumplen en general. <strong>Ejemplo:</strong> si cada <span class="math inline">Z_n</span> es una extracción independiente de <span class="math inline">N(\mu, \sigma^2)</span>, entonces trivialmente <span class="math inline">Z_n \xrightarrow{d} N(\mu, \sigma^2)</span>. Pero <span class="math inline">Z_n</span> no se acerca a ningún valor en particular: <span class="math inline">Z_n - Z</span> tiene una varianza que no desaparece. Converge en distribución, no en probabilidad <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>.</p>
 </div>
 <div class="fragment">
-<p><strong>Convergencia en media cuadrática (opcional).</strong> <span class="math inline">\(Z_n \xrightarrow{m} c\)</span> si <span class="math inline">\(\mathbb{E}[(Z_n - c)^2] \to 0\)</span>. Implica convergencia en probabilidad y suele ser fácil de verificar: basta que el sesgo y la varianza tiendan a cero <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>. Volveremos a esta idea la próxima clase con el error cuadrático medio.</p>
+<p><strong>Convergencia en media cuadrática (opcional).</strong> <span class="math inline">Z_n \xrightarrow{m} c</span> si <span class="math inline">\mathbb{E}[(Z_n - c)^2] \to 0</span>. Implica convergencia en probabilidad y suele ser fácil de verificar: basta que el sesgo y la varianza tiendan a cero <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span>. Volveremos a esta idea la próxima clase con el error cuadrático medio.</p>
 </div>
 </section></section>
 <section>
@@ -1113,14 +1145,14 @@
 <p><strong>Teorema central del límite (Lindeberg-Lévy)</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(X_1, \ldots, X_n\)</span> son i.i.d. y <span class="math inline">\(\mathbb{E}[X^2] &lt; \infty\)</span>, entonces, cuando <span class="math inline">\(n \to \infty\)</span>, <span class="math display">\[\sqrt{n}\,(\bar X_n - \mu) \xrightarrow{d} N(0, \sigma^2)\]</span> donde <span class="math inline">\(\mu = \mathbb{E}[X]\)</span> y <span class="math inline">\(\sigma^2 = \mathbb{E}[(X - \mu)^2]\)</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</p>
+<p>Si <span class="math inline">X_1, \ldots, X_n</span> son i.i.d. y <span class="math inline">\mathbb{E}[X^2] &lt; \infty</span>, entonces, cuando <span class="math inline">n \to \infty</span>, <span class="math display">\sqrt{n}\,(\bar X_n - \mu) \xrightarrow{d} N(0, \sigma^2)</span> donde <span class="math inline">\mu = \mathbb{E}[X]</span> y <span class="math inline">\sigma^2 = \mathbb{E}[(X - \mu)^2]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>.</p>
 </div>
 </div>
 </div>
 <div class="fragment">
 <ul>
-<li>En muestras finitas ya sabíamos que <span class="math inline">\(Z_n\)</span> tiene media 0 y varianza <span class="math inline">\(\sigma^2\)</span>. Lo que agrega el TCL es que <span class="math inline">\(Z_n\)</span> es <strong>aproximadamente normal</strong>, y que la aproximación mejora al crecer <span class="math inline">\(n\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
-<li>El único supuesto, además del muestreo i.i.d., es que la <span class="alert">varianza sea finita</span>. No importa la forma de <span class="math inline">\(F\)</span>: puede ser asimétrica, discreta o bimodal.</li>
+<li>En muestras finitas ya sabíamos que <span class="math inline">Z_n</span> tiene media 0 y varianza <span class="math inline">\sigma^2</span>. Lo que agrega el TCL es que <span class="math inline">Z_n</span> es <strong>aproximadamente normal</strong>, y que la aproximación mejora al crecer <span class="math inline">n</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</li>
+<li>El único supuesto, además del muestreo i.i.d., es que la <span class="alert">varianza sea finita</span>. No importa la forma de <span class="math inline">F</span>: puede ser asimétrica, discreta o bimodal.</li>
 </ul>
 </div>
 </section>
@@ -1141,20 +1173,20 @@
 </section>
 <section class="slide level2">
 <h2>Idea de la demostración (opcional)</h2>
-<p>Se usa la <strong>función generadora de momentos</strong> <span class="math inline">\(M(t) = \mathbb{E}[e^{tX}]\)</span>, que caracteriza la distribución. Supongamos <span class="math inline">\(\mu = 0\)</span> y sea <span class="math inline">\(K(t) = \log M(t)\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p>Se usa la <strong>función generadora de momentos</strong> <span class="math inline">M(t) = \mathbb{E}[e^{tX}]</span>, que caracteriza la distribución. Supongamos <span class="math inline">\mu = 0</span> y sea <span class="math inline">K(t) = \log M(t)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 <div class="fragment">
-<p>Como <span class="math inline">\(Z_n = \sum_{i=1}^n X_i/\sqrt{n}\)</span> es una suma de variables independientes, su FGM es el producto de las FGM: <span class="math display">\[K_n(t) = \log \mathbb{E}[e^{tZ_n}] = n\,K\!\left(\frac{t}{\sqrt{n}}\right)\]</span></p>
+<p>Como <span class="math inline">Z_n = \sum_{i=1}^n X_i/\sqrt{n}</span> es una suma de variables independientes, su FGM es el producto de las FGM: <span class="math display">K_n(t) = \log \mathbb{E}[e^{tZ_n}] = n\,K\!\left(\frac{t}{\sqrt{n}}\right)</span></p>
 </div>
 <div class="fragment">
-<p>Expandiendo <span class="math inline">\(K\)</span> en serie de potencias, con <span class="math inline">\(K(0) = K'(0) = 0\)</span> y <span class="math inline">\(K''(0) = \sigma^2\)</span>: <span class="math display">\[K_n(t) = n\left(\frac{t^2}{2n}\sigma^2 + \frac{t^3}{6\,n^{3/2}}\kappa_3 + \cdots\right) = \frac{t^2\sigma^2}{2} + \frac{t^3\kappa_3}{6\sqrt{n}} + \cdots \longrightarrow \frac{t^2\sigma^2}{2}\]</span></p>
+<p>Expandiendo <span class="math inline">K</span> en serie de potencias, con <span class="math inline">K(0) = K'(0) = 0</span> y <span class="math inline">K''(0) = \sigma^2</span>: <span class="math display">K_n(t) = n\left(\frac{t^2}{2n}\sigma^2 + \frac{t^3}{6\,n^{3/2}}\kappa_3 + \cdots\right) = \frac{t^2\sigma^2}{2} + \frac{t^3\kappa_3}{6\sqrt{n}} + \cdots \longrightarrow \frac{t^2\sigma^2}{2}</span></p>
 </div>
 <div class="fragment">
-<p><span class="math inline">\(e^{t^2\sigma^2/2}\)</span> es la FGM de una <span class="math inline">\(N(0, \sigma^2)\)</span>. Por el teorema de continuidad de Lévy, <span class="math inline">\(Z_n \xrightarrow{d} N(0, \sigma^2)\)</span>. La demostración rigurosa usa la función característica, que existe para toda distribución <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><span class="math inline">e^{t^2\sigma^2/2}</span> es la FGM de una <span class="math inline">N(0, \sigma^2)</span>. Por el teorema de continuidad de Lévy, <span class="math inline">Z_n \xrightarrow{d} N(0, \sigma^2)</span>. La demostración rigurosa usa la función característica, que existe para toda distribución <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>En R: el TCL con datos chi-cuadrado</h2>
-<p>Si <span class="math inline">\(X \sim \chi^2_1\)</span> (media 1, varianza 2), la distribución <strong>exacta</strong> de <span class="math inline">\(Z_n = \sqrt{n}(\bar X_n - 1)\)</span> se puede calcular. Comparémosla con su límite <span class="math inline">\(N(0, 2)\)</span>, como en la figura 8.1 de <span class="citation" data-cites="hansen-for-economist">Hansen (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>:</p>
+<p>Si <span class="math inline">X \sim \chi^2_1</span> (media 1, varianza 2), la distribución <strong>exacta</strong> de <span class="math inline">Z_n = \sqrt{n}(\bar X_n - 1)</span> se puede calcular. Comparémosla con su límite <span class="math inline">N(0, 2)</span>, como en la figura 8.1 de <span class="citation" data-cites="hansen-for-economist">Hansen (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>:</p>
 <div class="cell columns column-output-location" data-layout-align="center">
 <div class="column">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-hidden="true" tabindex="-1"></a><span class="co"># densidad exacta de Z_n: sum(X_i) ~ chi^2_n</span></span>
@@ -1183,16 +1215,16 @@
 </div>
 </div></div>
 <div class="fragment">
-<p>Con <span class="math inline">\(n = 3\)</span> la distribución es muy asimétrica; con <span class="math inline">\(n = 100\)</span> ya es casi indistinguible de la normal.</p>
+<p>Con <span class="math inline">n = 3</span> la distribución es muy asimétrica; con <span class="math inline">n = 100</span> ya es casi indistinguible de la normal.</p>
 </div>
 </section>
 <section class="slide level2">
 <h2>Aplicando el TCL</h2>
-<p>En la práctica, el TCL se usa para aproximar la distribución de <span class="math inline">\(\bar X_n\)</span> misma <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
-<p><span class="math display">\[\bar X_n \overset{a}{\sim} N\left(\mu, \frac{\sigma^2}{n}\right)\]</span></p>
-<p>La “<span class="math inline">\(a\)</span>” indica que es una aproximación: técnicamente significa lo mismo que el enunciado del TCL.</p>
+<p>En la práctica, el TCL se usa para aproximar la distribución de <span class="math inline">\bar X_n</span> misma <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
+<p><span class="math display">\bar X_n \overset{a}{\sim} N\left(\mu, \frac{\sigma^2}{n}\right)</span></p>
+<p>La “<span class="math inline">a</span>” indica que es una aproximación: técnicamente significa lo mismo que el enunciado del TCL.</p>
 <div class="fragment">
-<p><strong>Ejemplo:</strong> si <span class="math inline">\(X \sim\)</span> Exponencial con media <span class="math inline">\(\lambda = 5\)</span> y <span class="math inline">\(n = 100\)</span>, entonces <span class="math inline">\(\bar X_n \overset{a}{\sim} N(5, 1/4)\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<p><strong>Ejemplo:</strong> si <span class="math inline">X \sim</span> Exponencial con media <span class="math inline">\lambda = 5</span> y <span class="math inline">n = 100</span>, entonces <span class="math inline">\bar X_n \overset{a}{\sim} N(5, 1/4)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-warning callout-titled callout-style-default">
@@ -1204,7 +1236,7 @@
 <p><strong>Advertencia</strong></p>
 </div>
 <div class="callout-content">
-<p>El TCL es un resultado <strong>asintótico</strong>. No dice desde qué <span class="math inline">\(n\)</span> la aproximación es buena: eso depende de <span class="math inline">\(F\)</span>. Con distribuciones muy asimétricas o con colas pesadas, como la de los ingresos, puede hacer falta una muestra bastante grande.</p>
+<p>El TCL es un resultado <strong>asintótico</strong>. No dice desde qué <span class="math inline">n</span> la aproximación es buena: eso depende de <span class="math inline">F</span>. Con distribuciones muy asimétricas o con colas pesadas, como la de los ingresos, puede hacer falta una muestra bastante grande.</p>
 </div>
 </div>
 </div>
@@ -1212,9 +1244,9 @@
 </section>
 <section class="slide level2">
 <h2>De vuelta a los salarios: TCL vs.&nbsp;Chebyshev</h2>
-<p>Con <span class="math inline">\(\mu \approx 24\)</span> y <span class="math inline">\(\sigma^2 \approx 430\)</span>, ¿qué <span class="math inline">\(n\)</span> basta para que <span class="math inline">\(\Pr\big(|\bar X_n - \mu| \geq 1\big) \approx 0.01\)</span>? <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
+<p>Con <span class="math inline">\mu \approx 24</span> y <span class="math inline">\sigma^2 \approx 430</span>, ¿qué <span class="math inline">n</span> basta para que <span class="math inline">\Pr\big(|\bar X_n - \mu| \geq 1\big) \approx 0.01</span>? <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 <div class="fragment">
-<p>Por el TCL, <span class="math inline">\(\Pr\big(|\bar X_n - \mu| \geq 1\big) \approx \Pr\left(|N(0,1)| \geq \frac{1}{\sqrt{430/n}}\right)\)</span>, y <span class="math inline">\(\Pr(|N(0,1)| \geq 2.58) \approx 0.01\)</span>.</p>
+<p>Por el TCL, <span class="math inline">\Pr\big(|\bar X_n - \mu| \geq 1\big) \approx \Pr\left(|N(0,1)| \geq \frac{1}{\sqrt{430/n}}\right)</span>, y <span class="math inline">\Pr(|N(0,1)| \geq 2.58) \approx 0.01</span>.</p>
 <div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">2862</span></span>
 <span id="cb20-2"><a aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">430</span> <span class="sc">/</span> n)                        <span class="co"># desviaciones estándar de distancia</span></span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
@@ -1238,7 +1270,7 @@
 </thead>
 <tbody>
 <tr class="odd">
-<td><span class="math inline">\(n\)</span> necesario</td>
+<td><span class="math inline">n</span> necesario</td>
 <td>43 000</td>
 <td><strong>2 862</strong></td>
 </tr>
@@ -1249,12 +1281,12 @@
 </section>
 <section class="slide level2">
 <h2>El TCL multivariado</h2>
-<p>El TCL se extiende a vectores. Si <span class="math inline">\(X_i \in \mathbb{R}^k\)</span> son i.i.d. y <span class="math inline">\(\mathbb{E}\|X\|^2 &lt; \infty\)</span>, entonces <span class="math display">\[\sqrt{n}\,(\bar X_n - \mu) \xrightarrow{d} N(0, \Sigma), \qquad \Sigma = \mathbb{E}\big[(X - \mu)(X - \mu)'\big]\]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>El TCL se extiende a vectores. Si <span class="math inline">X_i \in \mathbb{R}^k</span> son i.i.d. y <span class="math inline">\mathbb{E}\|X\|^2 &lt; \infty</span>, entonces <span class="math display">\sqrt{n}\,(\bar X_n - \mu) \xrightarrow{d} N(0, \Sigma), \qquad \Sigma = \mathbb{E}\big[(X - \mu)(X - \mu)'\big]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 <div class="fragment">
-<p>Lo mismo ocurre con la LGN: si <span class="math inline">\(\mathbb{E}\|X\| &lt; \infty\)</span>, entonces <span class="math inline">\(\bar X_n \xrightarrow{p} \mathbb{E}[X]\)</span> elemento por elemento.</p>
+<p>Lo mismo ocurre con la LGN: si <span class="math inline">\mathbb{E}\|X\| &lt; \infty</span>, entonces <span class="math inline">\bar X_n \xrightarrow{p} \mathbb{E}[X]</span> elemento por elemento.</p>
 </div>
 <div class="fragment">
-<p>La versión vectorial es la que necesitaremos en regresión, donde el estimador de mínimos cuadrados es un <strong>vector</strong> de coeficientes que depende de promedios muestrales como <span class="math inline">\(\frac{1}{n}\sum X_i X_i'\)</span> y <span class="math inline">\(\frac{1}{n}\sum X_i Y_i\)</span> <span class="citation" data-cites="hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>.</p>
+<p>La versión vectorial es la que necesitaremos en regresión, donde el estimador de mínimos cuadrados es un <strong>vector</strong> de coeficientes que depende de promedios muestrales como <span class="math inline">\frac{1}{n}\sum X_i X_i'</span> y <span class="math inline">\frac{1}{n}\sum X_i Y_i</span> <span class="citation" data-cites="hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -1262,7 +1294,7 @@
 <p>La LGN y el TCL que vimos suponen observaciones i.i.d. Existen versiones para observaciones <strong>independientes pero no idénticamente distribuidas</strong> <span class="citation" data-cites="microeconometrics hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>)</span>:</p>
 <div class="fragment">
 <ul>
-<li><strong>LGN de Markov:</strong> permite que cada <span class="math inline">\(X_i\)</span> tenga su propia media y varianza, siempre que las varianzas no crezcan demasiado rápido. Con <span class="math inline">\(\sigma_i^2 = \sigma^2\)</span> la condición se cumple; con <span class="math inline">\(\sigma_i^2 = i\,\sigma^2\)</span>, no.</li>
+<li><strong>LGN de Markov:</strong> permite que cada <span class="math inline">X_i</span> tenga su propia media y varianza, siempre que las varianzas no crezcan demasiado rápido. Con <span class="math inline">\sigma_i^2 = \sigma^2</span> la condición se cumple; con <span class="math inline">\sigma_i^2 = i\,\sigma^2</span>, no.</li>
 <li><strong>TCL de Liapounov:</strong> permite distribuciones distintas, a cambio de exigir un momento finito de orden mayor que dos.</li>
 </ul>
 </div>
@@ -1277,7 +1309,7 @@
 </section>
 <section class="slide level2">
 <h2>Teorema de Slutsky</h2>
-<p>El CMT también vale para convergencia en distribución: si <span class="math inline">\(Z_n \xrightarrow{d} Z\)</span> y <span class="math inline">\(h\)</span> es continua, entonces <span class="math inline">\(h(Z_n) \xrightarrow{d} h(Z)\)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Un caso particular muy usado es el siguiente.</p>
+<p>El CMT también vale para convergencia en distribución: si <span class="math inline">Z_n \xrightarrow{d} Z</span> y <span class="math inline">h</span> es continua, entonces <span class="math inline">h(Z_n) \xrightarrow{d} h(Z)</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Un caso particular muy usado es el siguiente.</p>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -1288,11 +1320,11 @@
 <p><strong>Teorema de Slutsky</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(Z_n \xrightarrow{d} Z\)</span> y <span class="math inline">\(c_n \xrightarrow{p} c\)</span> cuando <span class="math inline">\(n \to \infty\)</span>, entonces</p>
+<p>Si <span class="math inline">Z_n \xrightarrow{d} Z</span> y <span class="math inline">c_n \xrightarrow{p} c</span> cuando <span class="math inline">n \to \infty</span>, entonces</p>
 <ol type="1">
-<li><span class="math inline">\(Z_n + c_n \xrightarrow{d} Z + c\)</span></li>
-<li><span class="math inline">\(Z_n\, c_n \xrightarrow{d} Z\, c\)</span></li>
-<li><span class="math inline">\(Z_n / c_n \xrightarrow{d} Z / c \quad\)</span> si <span class="math inline">\(c \neq 0\)</span></li>
+<li><span class="math inline">Z_n + c_n \xrightarrow{d} Z + c</span></li>
+<li><span class="math inline">Z_n\, c_n \xrightarrow{d} Z\, c</span></li>
+<li><span class="math inline">Z_n / c_n \xrightarrow{d} Z / c \quad</span> si <span class="math inline">c \neq 0</span></li>
 </ol>
 <p><span class="citation" data-cites="hansen-for-economist microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>; <a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
@@ -1319,11 +1351,11 @@
 </div>
 </section>
 <section class="slide level2">
-<h2>El estadístico <span class="math inline">\(t\)</span></h2>
-<p>Slutsky resuelve un problema práctico: el TCL depende de <span class="math inline">\(\sigma\)</span>, que no conocemos.</p>
+<h2>El estadístico <span class="math inline">t</span></h2>
+<p>Slutsky resuelve un problema práctico: el TCL depende de <span class="math inline">\sigma</span>, que no conocemos.</p>
 <div class="fragment">
-<p>Por el TCL, <span class="math inline">\(\sqrt{n}(\bar X_n - \mu) \xrightarrow{d} N(0, \sigma^2)\)</span>. Por la LGN y el CMT, <span class="math inline">\(\hat\sigma \xrightarrow{p} \sigma\)</span>. Por Slutsky:</p>
-<p><span class="math display">\[T = \frac{\sqrt{n}\,(\bar X_n - \mu)}{\hat\sigma} \xrightarrow{d} \frac{N(0, \sigma^2)}{\sigma} = N(0, 1)\]</span></p>
+<p>Por el TCL, <span class="math inline">\sqrt{n}(\bar X_n - \mu) \xrightarrow{d} N(0, \sigma^2)</span>. Por la LGN y el CMT, <span class="math inline">\hat\sigma \xrightarrow{p} \sigma</span>. Por Slutsky:</p>
+<p><span class="math display">T = \frac{\sqrt{n}\,(\bar X_n - \mu)}{\hat\sigma} \xrightarrow{d} \frac{N(0, \sigma^2)}{\sigma} = N(0, 1)</span></p>
 <p><span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span></p>
 </div>
 <div class="fragment">
@@ -1336,7 +1368,7 @@
 <p><strong>Tip</strong></p>
 </div>
 <div class="callout-content">
-<p><span class="math inline">\(T\)</span> solo depende de los datos y de <span class="math inline">\(\mu\)</span>. Esto significa que podemos usar la normal estándar para construir intervalos de confianza y pruebas de hipótesis sobre <span class="math inline">\(\mu\)</span>, <strong>sin conocer</strong> <span class="math inline">\(\sigma\)</span> ni la distribución <span class="math inline">\(F\)</span>. Esa es la lógica de la inferencia que desarrollaremos en la clase 10.</p>
+<p><span class="math inline">T</span> solo depende de los datos y de <span class="math inline">\mu</span>. Esto significa que podemos usar la normal estándar para construir intervalos de confianza y pruebas de hipótesis sobre <span class="math inline">\mu</span>, <strong>sin conocer</strong> <span class="math inline">\sigma</span> ni la distribución <span class="math inline">F</span>. Esa es la lógica de la inferencia que desarrollaremos en la clase 10.</p>
 </div>
 </div>
 </div>
@@ -1344,7 +1376,7 @@
 </section>
 <section class="slide level2">
 <h2>El método delta (opcional)</h2>
-<p>¿Qué distribución asintótica tiene un estimador <em>plug-in</em> <span class="math inline">\(h(\hat\theta)\)</span>, por ejemplo <span class="math inline">\(\log(\bar X_n)\)</span>? La respuesta usa una expansión de Taylor de primer orden.</p>
+<p>¿Qué distribución asintótica tiene un estimador <em>plug-in</em> <span class="math inline">h(\hat\theta)</span>, por ejemplo <span class="math inline">\log(\bar X_n)</span>? La respuesta usa una expansión de Taylor de primer orden.</p>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
 <div class="callout-body">
@@ -1355,30 +1387,30 @@
 <p><strong>Teorema: Método delta</strong></p>
 </div>
 <div class="callout-content">
-<p>Si <span class="math inline">\(\sqrt{n}(\hat\theta - \theta) \xrightarrow{d} N(0, V)\)</span> y <span class="math inline">\(h\)</span> es continuamente diferenciable cerca de <span class="math inline">\(\theta\)</span>, entonces <span class="math display">\[\sqrt{n}\,\big(h(\hat\theta) - h(\theta)\big) \xrightarrow{d} N\big(0,\; h'(\theta)^2\, V\big)\]</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
+<p>Si <span class="math inline">\sqrt{n}(\hat\theta - \theta) \xrightarrow{d} N(0, V)</span> y <span class="math inline">h</span> es continuamente diferenciable cerca de <span class="math inline">\theta</span>, entonces <span class="math display">\sqrt{n}\,\big(h(\hat\theta) - h(\theta)\big) \xrightarrow{d} N\big(0,\; h'(\theta)^2\, V\big)</span> <span class="citation" data-cites="hansen-for-economist hansen-econometrics">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2021</a>, <a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span></p>
 </div>
 </div>
 </div>
 </div>
 <div class="fragment">
-<p><strong>Intuición:</strong> cerca de <span class="math inline">\(\theta\)</span>, <span class="math inline">\(h(\hat\theta) \approx h(\theta) + h'(\theta)(\hat\theta - \theta)\)</span>. Una función suave se comporta localmente como una recta, y una transformación lineal de una normal sigue siendo normal.</p>
+<p><strong>Intuición:</strong> cerca de <span class="math inline">\theta</span>, <span class="math inline">h(\hat\theta) \approx h(\theta) + h'(\theta)(\hat\theta - \theta)</span>. Una función suave se comporta localmente como una recta, y una transformación lineal de una normal sigue siendo normal.</p>
 </div>
 <div class="fragment">
 <p><strong>Ejemplos</strong> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <ul>
-<li><span class="math inline">\(\sqrt{n}\,(\bar X_n^2 - \mu^2) \xrightarrow{d} N(0,\, 4\mu^2\sigma^2)\)</span></li>
-<li>Si <span class="math inline">\(X &gt; 0\)</span>: <span class="math inline">\(\sqrt{n}\,(\log \bar X_n - \log \mu) \xrightarrow{d} N(0,\, \sigma^2/\mu^2)\)</span></li>
+<li><span class="math inline">\sqrt{n}\,(\bar X_n^2 - \mu^2) \xrightarrow{d} N(0,\, 4\mu^2\sigma^2)</span></li>
+<li>Si <span class="math inline">X &gt; 0</span>: <span class="math inline">\sqrt{n}\,(\log \bar X_n - \log \mu) \xrightarrow{d} N(0,\, \sigma^2/\mu^2)</span></li>
 </ul>
 </div>
 </section>
 <section class="slide level2">
 <h2>Adelanto: cómo se usará todo esto en regresión</h2>
-<p>En regresión con un solo regresor y sin constante, el estimador de mínimos cuadrados se puede escribir como <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span> <span class="math display">\[\sqrt{n}\,(\hat\beta - \beta) = \left(\frac{1}{n}\sum_{i=1}^n x_i^2\right)^{-1} \left(\frac{1}{\sqrt{n}}\sum_{i=1}^n x_i u_i\right)\]</span></p>
+<p>En regresión con un solo regresor y sin constante, el estimador de mínimos cuadrados se puede escribir como <span class="citation" data-cites="microeconometrics">(<a href="#/references" role="doc-biblioref" onclick="">Cameron &amp; Trivedi, 2005</a>)</span> <span class="math display">\sqrt{n}\,(\hat\beta - \beta) = \left(\frac{1}{n}\sum_{i=1}^n x_i^2\right)^{-1} \left(\frac{1}{\sqrt{n}}\sum_{i=1}^n x_i u_i\right)</span></p>
 <div class="fragment">
 <ul>
-<li>Al primer factor le aplicamos la <strong>LGN</strong> y el <strong>CMT</strong>: <span class="math inline">\(\frac{1}{n}\sum x_i^2 \xrightarrow{p} \mathbb{E}[x^2]\)</span>.</li>
-<li>Al segundo le aplicamos el <strong>TCL</strong>: <span class="math inline">\(\frac{1}{\sqrt{n}}\sum x_i u_i \xrightarrow{d} N\big(0, \mathbb{E}[x^2u^2]\big)\)</span>, si <span class="math inline">\(\mathbb{E}[xu] = 0\)</span>.</li>
-<li><strong>Slutsky</strong> combina ambos resultados y entrega la distribución asintótica de <span class="math inline">\(\hat\beta\)</span>.</li>
+<li>Al primer factor le aplicamos la <strong>LGN</strong> y el <strong>CMT</strong>: <span class="math inline">\frac{1}{n}\sum x_i^2 \xrightarrow{p} \mathbb{E}[x^2]</span>.</li>
+<li>Al segundo le aplicamos el <strong>TCL</strong>: <span class="math inline">\frac{1}{\sqrt{n}}\sum x_i u_i \xrightarrow{d} N\big(0, \mathbb{E}[x^2u^2]\big)</span>, si <span class="math inline">\mathbb{E}[xu] = 0</span>.</li>
+<li><strong>Slutsky</strong> combina ambos resultados y entrega la distribución asintótica de <span class="math inline">\hat\beta</span>.</li>
 </ul>
 </div>
 <div class="fragment">
@@ -1394,12 +1426,12 @@
 <li>Muestra aleatoria (i.i.d.) y población</li>
 <li>Parámetro, estadístico, estimador</li>
 <li>Principio de analogía y <em>plug-in</em></li>
-<li>Distribución muestral: <span class="math inline">\(\text{var}(\bar X_n) = \sigma^2/n\)</span></li>
+<li>Distribución muestral: <span class="math inline">\text{var}(\bar X_n) = \sigma^2/n</span></li>
 <li>Convergencia en probabilidad y consistencia</li>
 <li>Chebyshev y ley de los grandes números</li>
 <li>Teorema de la aplicación continua</li>
 <li>Convergencia en distribución y TCL</li>
-<li>Slutsky, estadístico <span class="math inline">\(t\)</span> y método delta</li>
+<li>Slutsky, estadístico <span class="math inline">t</span> y método delta</li>
 </ul>
 </div><div class="column" style="width:50%;">
 <p><strong>Próxima clase:</strong></p>
@@ -1472,7 +1504,6 @@ Hansen, B. E. (2022). <em>Probability and Statistics for Economist</em>. Princet
   <script src="../../site_libs/revealjs/plugin/notes/notes.js"></script>
   <script src="../../site_libs/revealjs/plugin/search/search.js"></script>
   <script src="../../site_libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="../../site_libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -1641,27 +1672,9 @@ Hansen, B. E. (2022). <em>Probability and Statistics for Economist</em>. Princet
         // Factor of the display size that should remain empty around the content
         margin: 0.1,
 
-        math: {
-          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
-          config: 'TeX-AMS_HTML-full',
-          tex2jax: {
-            inlineMath: [['\\(','\\)']],
-            displayMath: [['\\[','\\]']],
-            balanceBraces: true,
-            processEscapes: false,
-            processRefs: true,
-            processEnvironments: true,
-            preview: 'TeX',
-            skipTags: ['script','noscript','style','textarea','pre','code'],
-            ignoreClass: 'tex2jax_ignore',
-            processClass: 'tex2jax_process'
-          },
-        },
-
         // reveal.js plugins
         plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
 
-          RevealMath,
           RevealNotes,
           RevealSearch,
           RevealZoom
