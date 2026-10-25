@@ -338,7 +338,7 @@ $$\Pr(a \leq X \leq b) = \int_a^b f(x)\,dx$$
 
 ## Intuición: densidad como "probabilidad por unidad"
 
-Pensemos en la **densidad poblacional** de una comuna, medida en habitantes por km². Si una comuna tuviera 10.000 habitantes por km², eso no significa que tenga 10.000 habitantes: para saber cuántas personas viven en una zona hay que multiplicar la densidad por la **superficie**.
+Pensemos en la **densidad poblacional** de una comuna, medida en habitantes por km². Si una comuna tuviera 10.000 habitantes por km², eso no significa que tenga 10.000 habitantes; sino que para saber cuántas personas viven en una zona hay que multiplicar la densidad por la **superficie**.
 
 . . .
 

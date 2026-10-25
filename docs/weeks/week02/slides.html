@@ -323,7 +323,7 @@
 </section>
 <section class="slide level2">
 <h2>Una variable aleatoria es una función</h2>
-<p>Para reforzar la idea, <span class="citation" data-cites="hansen-for-economist">Hansen (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> define una variable aleatoria como “un resultado de valor real; una función del espacio muestral <span class="math inline">S</span> a la <strong>recta real</strong> <span class="math inline">\mathbb{R}</span>” (p.&nbsp;22). Tomando su reprentación, sería algo así:</p>
+<p>Para reforzar la idea, <span class="citation" data-cites="hansen-for-economist">Hansen (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> define una variable aleatoria como “un resultado de valor real; una función del espacio muestral <span class="math inline">S</span> a la <strong>recta real</strong> <span class="math inline">\mathbb{R}</span>” (p.&nbsp;22). Tomando su representación, sería algo así:</p>
 
 <img data-src="slides_files/figure-revealjs/unnamed-chunk-2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="672"><p>Cada resultado de <span class="math inline">\Omega</span> se envía a un punto de la recta real. La probabilidad “viaja” con la función: <span class="math inline">\Pr(X = 1) = \Pr(\{H\})</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
 </section></section>
@@ -429,6 +429,58 @@
 <div class="fragment">
 <p>La CDF tiene una gran ventaja: está definida para <strong>cualquier</strong> variable aleatoria, sea discreta, continua o mixta. Por eso es la forma más general de describir una distribución.</p>
 </div>
+</section>
+<section class="slide level2">
+<h2>Intuición: la CDF acumula probabilidad</h2>
+<p>La CDF responde una pregunta simple: <span class="alert">¿qué proporción de la distribución queda en <span class="math inline">x</span> o por debajo de <span class="math inline">x</span>?</span> Es la versión teórica de la <strong>frecuencia relativa acumulada</strong> de una tabla de frecuencias.</p>
+<div class="fragment">
+<p><strong>Ejemplo: el dado.</strong> Vamos sumando las probabilidades de izquierda a derecha:</p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th><span class="math inline">x</span></th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\Pr(X = x)</span></td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+<td>1/6</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">F(x) = \Pr(X \leq x)</span></td>
+<td>1/6</td>
+<td>2/6</td>
+<td>3/6</td>
+<td>4/6</td>
+<td>5/6</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="fragment">
+<p><span class="math inline">F</span> está definida para <strong>todo</strong> número real, no solo para los valores que el dado puede tomar. Por ejemplo, <span class="math inline">F(3.5) = \Pr(X \leq 3.5) = \Pr(X \in \{1, 2, 3\}) = 1/2</span>, y <span class="math inline">F(-2) = 0</span> porque el dado nunca muestra un número negativo.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Intuición: cómo se ve una CDF</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-4-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"><ul>
+<li>Ambas parten en 0 y terminan en 1, y nunca bajan: acumular probabilidad solo puede sumar.</li>
+<li>La discreta avanza a <strong>saltos</strong>: cada salto es la probabilidad de un valor. La continua sube <strong>suavemente</strong>.</li>
+<li>Donde la CDF sube rápido hay mucha probabilidad concentrada. Esta idea nos llevará a la densidad.</li>
+</ul>
 </section>
 <section class="slide level2">
 <h2>Propiedades de una CDF</h2>
@@ -560,6 +612,25 @@
 </div>
 </section>
 <section class="slide level2">
+<h2>Intuición: densidad como “probabilidad por unidad”</h2>
+<p>Pensemos en la <strong>densidad poblacional</strong> de una comuna, medida en habitantes por km². Si una comuna tuviera 10.000 habitantes por km², eso no significa que tenga 10.000 habitantes; sino que para saber cuántas personas viven en una zona hay que multiplicar la densidad por la <strong>superficie</strong>.</p>
+<div class="fragment">
+<p>La densidad de probabilidad funciona igual: <span class="math inline">f(x)</span> es probabilidad <strong>por unidad de <span class="math inline">x</span></strong>. Para obtener una probabilidad hay que multiplicar por el largo del intervalo. Para un intervalo pequeño de largo <span class="math inline">h</span>: <span class="math display">\Pr(x \leq X \leq x + h) \approx f(x)\cdot h</span></p>
+</div>
+<div class="fragment">
+<p>Esto explica dos cosas:</p>
+<ul>
+<li>Por qué <span class="math inline">f(x)</span> puede ser mayor que 1: es una tasa, no una probabilidad.</li>
+<li>Por qué <span class="math inline">f</span> es la derivada de <span class="math inline">F</span>: la densidad mide <strong>qué tan rápido se acumula</strong> probabilidad en torno a <span class="math inline">x</span>. Donde la CDF sube con fuerza, la densidad es alta.</li>
+</ul>
+</div>
+</section>
+<section class="slide level2">
+<h2>Intuición: de histogramas a densidades</h2>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><p>En un histograma de densidad, el <strong>área</strong> de cada barra es la proporción de observaciones en ese tramo. Con más datos y barras más angostas, la silueta del histograma se acerca a la curva (en rojo). La densidad es algo así como el <span class="alert">histograma de la población</span>.</p>
+</section>
+<section class="slide level2">
 <h2>Cómo leer una densidad</h2>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -652,6 +723,30 @@
 </div>
 </section>
 <section class="slide level2">
+<h2>¿Qué es una transformación monótona?</h2>
+<p>Una función <span class="math inline">g</span> es <strong>estrictamente creciente</strong> si respeta el orden: si <span class="math inline">x_1 &lt; x_2</span>, entonces <span class="math inline">g(x_1) &lt; g(x_2)</span>. Es <strong>estrictamente decreciente</strong> si lo invierte. En ambos casos decimos que es <strong>monótona</strong>.</p>
+<div class="fragment">
+<ul>
+<li><strong>Monótonas:</strong> <span class="math inline">\log x</span>, <span class="math inline">\sqrt{x}</span> (para <span class="math inline">x &gt; 0</span>), pasar de pesos a miles de pesos, <span class="math inline">-x</span>.</li>
+<li><strong>No monótona:</strong> <span class="math inline">x^2</span> cuando <span class="math inline">x</span> puede ser negativo, porque <span class="math inline">-2</span> y <span class="math inline">2</span> van al mismo valor.</li>
+</ul>
+</div>
+<div class="fragment">
+<p>Una imagen útil: si ordenamos a las personas en una fila según su ingreso <span class="math inline">X</span> y luego calculamos <span class="math inline">\log X</span>, <span class="alert">nadie cambia de lugar en la fila</span>. La persona del medio sigue en el medio y el 10% más rico sigue siendo el 10% más rico.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>¿Para qué sirve que sea monótona?</h2>
+<p>Como el orden se preserva, si <span class="math inline">g</span> es creciente: <span class="math display">F_Y(y) = \Pr(g(X) \leq y) = \Pr\big(X \leq g^{-1}(y)\big) = F_X\big(g^{-1}(y)\big)</span></p>
+<p>La distribución de <span class="math inline">Y</span> se obtiene directamente de la de <span class="math inline">X</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>.</p>
+<div class="fragment">
+<p><strong>Consecuencia práctica: los cuantiles se trasladan.</strong> La mediana del logaritmo del ingreso es el logaritmo de la mediana del ingreso, y lo mismo vale para cualquier percentil. Con la <strong>media</strong> esto no ocurre, como veremos con la desigualdad de Jensen.</p>
+</div>
+<div class="fragment">
+<p><strong>¿Y la densidad?</strong> Al derivar <span class="math inline">F_Y</span> aparece un factor de corrección. Si la transformación <strong>estira</strong> un tramo de la recta, la misma probabilidad se reparte en más espacio y la densidad baja; si lo <strong>comprime</strong>, la densidad sube. Eso es lo que hace el jacobiano del teorema siguiente.</p>
+</div>
+</section>
+<section class="slide level2">
 <h2>Transformaciones monótonas de variables continuas</h2>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
@@ -675,29 +770,22 @@
 </section>
 <section class="slide level2">
 <h2>En R: de uniforme a exponencial</h2>
-<p>Un resultado útil: si <span class="math inline">U \sim U[0,1]</span>, entonces <span class="math inline">Y = -\log U</span> tiene distribución exponencial <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Comprobémoslo simulando:</p>
-<div class="cell columns column-output-location" data-layout-align="center">
-<div class="column">
+<p>Un resultado útil: si <span class="math inline">U \sim U[0,1]</span>, entonces <span class="math inline">Y = -\log U</span> tiene distribución exponencial <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Comprobémoslo simulando con pocos y con muchos casos:</p>
+<div class="cell" data-layout-align="center">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a>u <span class="ot">&lt;-</span> <span class="fu">runif</span>(<span class="dv">10000</span>)</span>
-<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">log</span>(u)</span>
-<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(y, <span class="at">breaks =</span> <span class="dv">50</span>, <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"#69000C2E"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
-<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">""</span>, <span class="at">xlab =</span> <span class="st">"y"</span>)</span>
-<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a><span class="fu">curve</span>(<span class="fu">dexp</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a>      <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
-</div><div class="column">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure>
-<p><img data-src="slides_files/figure-revealjs/unnamed-chunk-5-1.png" class="quarto-figure quarto-figure-center" width="480"></p>
-</figure>
+<span id="cb3-2"><a aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">3</span>))</span>
+<span id="cb3-3"><a aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (n <span class="cf">in</span> <span class="fu">c</span>(<span class="dv">50</span>, <span class="dv">500</span>, <span class="dv">10000</span>)) {</span>
+<span id="cb3-4"><a aria-hidden="true" tabindex="-1"></a>  u <span class="ot">&lt;-</span> <span class="fu">runif</span>(n)</span>
+<span id="cb3-5"><a aria-hidden="true" tabindex="-1"></a>  y <span class="ot">&lt;-</span> <span class="sc">-</span><span class="fu">log</span>(u)                       <span class="co"># transformación monótona</span></span>
+<span id="cb3-6"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">hist</span>(y, <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="fu">max</span>(y) <span class="sc">+</span> <span class="fl">0.25</span>, <span class="at">by =</span> <span class="fl">0.25</span>), <span class="at">freq =</span> <span class="cn">FALSE</span>,</span>
+<span id="cb3-7"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">1.2</span>), <span class="at">col =</span> <span class="st">"#69000C2E"</span>, <span class="at">border =</span> <span class="st">"white"</span>,</span>
+<span id="cb3-8"><a aria-hidden="true" tabindex="-1"></a>       <span class="at">main =</span> <span class="fu">paste</span>(<span class="st">"n ="</span>, n), <span class="at">xlab =</span> <span class="st">"y"</span>, <span class="at">ylab =</span> <span class="st">"densidad"</span>)</span>
+<span id="cb3-9"><a aria-hidden="true" tabindex="-1"></a>  <span class="fu">curve</span>(<span class="fu">dexp</span>(x), <span class="at">add =</span> <span class="cn">TRUE</span>, <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb3-10"><a aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
+
 </div>
-</div>
-</div></div>
-<div class="fragment">
-<p>El histograma de los valores simulados coincide con la densidad exponencial teórica (línea roja).</p>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-7-1.png" class="quarto-figure quarto-figure-center r-stretch" width="960"><div class="fragment">
+<p>Con 50 casos el histograma es irregular; con 10.000 coincide con la densidad exponencial teórica (línea roja). Cuanto más grande la muestra, más se parece la distribución de los datos a la distribución de la población. Esta idea, la <strong>ley de los grandes números</strong>, es el tema de la clase 03.</p>
 </div>
 </section></section>
 <section>
@@ -721,7 +809,7 @@
 </div>
 </div>
 <div class="fragment">
-<p>Es un <strong>promedio ponderado</strong>, en tanto que es “el valor promedio [<em>average value</em>] obtenido mediante un promedio ponderado por probabilidad [<em>probability-weighted averaging</em>] <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022, p. 25</a>)</span>.</p>
+<p>Es un <strong>promedio ponderado</strong>, en tanto que es “el valor promedio [<em>average value</em>] obtenido mediante un promedio ponderado por probabilidad [<em>probability-weighted averaging</em>]” <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022, p. 25</a>)</span>.</p>
 </div>
 <div class="fragment">
 <div class="callout callout-important callout-titled callout-style-default">
@@ -738,7 +826,7 @@
 </div>
 </div>
 </div>
-<aside><ol class="aside-footnotes"><li id="fn1"><p>Una definición de convergencia de <span class="citation" data-cites="hansen-for-economist">Hansen (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span> puede encontrarse en el apéndice A.1. Pero esto lo trataremos más adelante con algo más de detalle</p></li></ol></aside></section>
+<aside><ol class="aside-footnotes"><li id="fn1"><p>Las definiciones de límite y de convergencia de una serie pueden encontrarse en <span class="citation" data-cites="hansen-for-economist">Hansen (<a href="#/references" role="doc-biblioref" onclick="">2022</a>)</span>, apéndice A (secciones A.1 y A.2). Pero esto lo trataremos más adelante con algo más de detalle</p></li></ol></aside></section>
 <section class="slide level2">
 <h2>Ejemplos</h2>
 <p><strong>Bernoulli.</strong> <span class="math inline">\mathbb{E}[X] = 1 \cdot p + 0 \cdot (1-p) = p</span></p>
@@ -792,6 +880,22 @@
 </div>
 </section>
 <section class="slide level2">
+<h2>¿Qué significa que algo sea lineal?</h2>
+<p>Una transformación <strong>lineal</strong> (en rigor, <em>afín</em>) tiene la forma <span class="math display">y = a + b\,x</span> Solo hace dos cosas: <strong>sumar una constante</strong> (<span class="math inline">a</span>) y <strong>multiplicar por una constante</strong> (<span class="math inline">b</span>). Su gráfico es una línea recta.</p>
+<div class="fragment">
+<p><strong>Ejemplos cotidianos:</strong></p>
+<ul>
+<li>Pasar el ingreso de pesos a miles de pesos: <span class="math inline">y = x/1000</span>.</li>
+<li>Dar un bono fijo de $50.000 a todas las personas: <span class="math inline">y = 50.000 + x</span>.</li>
+<li>Reajustar todos los sueldos en 10%: <span class="math inline">y = 1.1\,x</span>.</li>
+<li>Pasar de grados Celsius a Fahrenheit: <span class="math inline">F = 32 + 1.8\,C</span>.</li>
+</ul>
+</div>
+<div class="fragment">
+<p><strong>Lo que la distingue:</strong> un aumento de una unidad en <span class="math inline">x</span> cambia <span class="math inline">y</span> siempre en <span class="math inline">b</span> unidades, sin importar dónde partamos. En una función <strong>no lineal</strong>, como <span class="math inline">x^2</span>, el efecto depende del punto de partida: pasar de 1 a 2 suma 3, pero pasar de 10 a 11 suma 21.</p>
+</div>
+</section>
+<section class="slide level2">
 <h2>Esperanza de transformaciones y linealidad</h2>
 <p>La esperanza de una función <span class="math inline">g(X)</span> se calcula con la distribución de <span class="math inline">X</span> <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>:</p>
 <p><span class="math display">\mathbb{E}[g(X)] = \sum_j g(\tau_j)\,\pi_j \qquad \text{o} \qquad \mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x)\,f(x)\,dx</span></p>
@@ -815,6 +919,21 @@
 </div>
 </div>
 </div>
+</div>
+</section>
+<section class="slide level2">
+<h2>La linealidad en palabras</h2>
+<p>El teorema dice algo muy intuitivo: <span class="alert">las operaciones lineales “pasan a través” del promedio</span>.</p>
+<div class="fragment">
+<p><strong>Ejemplo.</strong> Tres personas ganan 300, 500 y 1.000 (en miles de pesos). El promedio es 600.</p>
+<ul>
+<li>Si a todas les damos un bono de 50, ganan 350, 550 y 1.050. El nuevo promedio es 650: <strong>subió exactamente el bono</strong>.</li>
+<li>Si a todas les reajustamos el sueldo en 10%, ganan 330, 550 y 1.100. El nuevo promedio es 660: <strong>subió exactamente 10%</strong>.</li>
+</ul>
+<p>No necesitamos recalcular nada: basta aplicar la transformación al promedio.</p>
+</div>
+<div class="fragment">
+<p><strong>Con una transformación no lineal esto falla.</strong> Si dos personas tienen los valores 1 y 9, su promedio es 5. Las raíces cuadradas son 1 y 3, con promedio 2. Pero <span class="math inline">\sqrt{5} \approx 2.24 \neq 2</span>: el promedio de las raíces <strong>no</strong> es la raíz del promedio.</p>
 </div>
 </section>
 <section class="slide level2">
@@ -968,6 +1087,24 @@
 <section id="parametricas" class="title-slide slide level1 center">
 <h1>Distribuciones paramétricas</h1>
 
+</section>
+<section class="slide level2">
+<h2>La idea: una forma con “perillas”</h2>
+<p>Imaginemos un molde con una forma fija, por ejemplo una campana, que tiene unas pocas <strong>perillas</strong>: una la mueve de izquierda a derecha y otra la hace más ancha o más angosta.</p>
+
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-8-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><div class="fragment">
+<p>Eso es una <strong>familia paramétrica</strong>: una forma conocida más unos pocos números, los <strong>parámetros</strong>, que la ajustan. Si sabemos la familia y el valor de los parámetros, conocemos <span class="alert">toda la distribución</span>.</p>
+</div>
+</section>
+<section class="slide level2">
+<h2>Paramétrico vs.&nbsp;no paramétrico</h2>
+<p><strong>La ventaja:</strong> el problema se simplifica muchísimo. En vez de aprender de los datos una curva completa, basta con aprender unos pocos números.</p>
+<div class="fragment">
+<p><strong>El costo:</strong> si la forma que supusimos es incorrecta, las conclusiones pueden ser engañosas, por muy bien que estimemos los parámetros.</p>
+</div>
+<div class="fragment">
+<p><strong>El contraste.</strong> Una distribución es <strong>no paramétrica</strong> si no puede describirse con una lista finita de parámetros <span class="citation" data-cites="hansen-for-economist">(<a href="#/references" role="doc-biblioref" onclick="">Hansen, 2022</a>)</span>. Los métodos no paramétricos evitan suponer una forma y dejan que los datos la determinen. Los veremos más adelante; por ahora basta con tener presente que suponer una familia paramétrica es una <strong>decisión de modelación</strong>, no un hecho.</p>
+</div>
 </section>
 <section class="slide level2">
 <h2>Familias de distribuciones</h2>
@@ -1145,7 +1282,7 @@ Normal <span class="math inline">N(\mu, \sigma^2)</span>
 <span id="cb4-5"><a aria-hidden="true" tabindex="-1"></a>        <span class="at">col =</span> <span class="st">"#69000C"</span>, <span class="at">main =</span> <span class="st">"Poisson(3)"</span>)</span></code></pre></div><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
-<img data-src="slides_files/figure-revealjs/unnamed-chunk-6-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"></section>
+<img data-src="slides_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="864"></section>
 <section class="slide level2">
 <h2>La distribución normal</h2>
 <p>Una variable aleatoria con distribución normal, que se suele denotar por <span class="math inline">X \sim \mathcal{N}(\mu, \sigma^2)</span>, tiene una densidad <span class="math display">
