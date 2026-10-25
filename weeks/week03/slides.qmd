@@ -6,6 +6,7 @@ institute: "UCH / INE"
 date: today
 format:
   revealjs:
+    html-math-method: katex
     theme: [default, ../../styles/slides-theme.scss]
     slide-number: true
     show-slide-number: all
@@ -292,6 +293,7 @@ Tomamos 5000 muestras de una exponencial con media 1 (muy asimétrica) y calcula
 
 ```{r}
 #| echo: true
+#| output-location: slide
 #| fig-width: 10
 #| fig-height: 3.2
 set.seed(2026)
@@ -515,6 +517,7 @@ La Cauchy no tiene esperanza finita. Se puede mostrar que la media de $n$ observ
 
 ```{r}
 #| echo: true
+#| output-location: slide
 #| fig-width: 10
 #| fig-height: 3.2
 set.seed(42)

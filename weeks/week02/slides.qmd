@@ -205,11 +205,11 @@ La CDF tiene una gran ventaja: está definida para **cualquier** variable aleato
 
 ## Intuición: la CDF acumula probabilidad
 
-La CDF responde una pregunta simple: [¿qué proporción de la distribución queda en $x$ o por debajo de $x$?]{.alert} Es la versión teórica de la **frecuencia relativa acumulada** de una tabla de frecuencias.
+La CDF responde una pregunta simple, [¿qué proporción de la distribución queda en $x$ o por debajo de $x$?]{.alert} En ese sentido, es la versión teórica de la **frecuencia relativa acumulada** que conocemos de las tablas de frecuencias.
 
 . . .
 
-**Ejemplo: el dado.** Vamos sumando las probabilidades de izquierda a derecha:
+En el caso del dado, basta ir sumando las probabilidades de izquierda a derecha.
 
 | $x$ | 1 | 2 | 3 | 4 | 5 | 6 |
 |---|---|---|---|---|---|---|
@@ -234,9 +234,7 @@ curve(pexp(x), from = -0.5, to = 5, lwd = 2, col = "#19375A",
       main = "Exponencial (continua)", xlab = "x", ylab = "F(x)")
 ```
 
-- Ambas parten en 0 y terminan en 1, y nunca bajan: acumular probabilidad solo puede sumar.
-- La discreta avanza a **saltos**: cada salto es la probabilidad de un valor. La continua sube **suavemente**.
-- Donde la CDF sube rápido hay mucha probabilidad concentrada. Esta idea nos llevará a la densidad.
+Ambas curvas parten en 0, terminan en 1 y nunca bajan, porque acumular probabilidad solo puede sumar. La CDF discreta avanza a **saltos**, y cada salto corresponde a la probabilidad de un valor, mientras que la continua sube **suavemente**. Donde la curva sube rápido hay mucha probabilidad concentrada, una idea que nos llevará directamente a la densidad.
 
 ## Propiedades de una CDF
 
@@ -342,15 +340,12 @@ Pensemos en la **densidad poblacional** de una comuna, medida en habitantes por 
 
 . . .
 
-La densidad de probabilidad funciona igual: $f(x)$ es probabilidad **por unidad de $x$**. Para obtener una probabilidad hay que multiplicar por el largo del intervalo. Para un intervalo pequeño de largo $h$:
+La densidad de probabilidad funciona de la misma manera. $f(x)$ es probabilidad **por unidad de $x$**, de modo que para obtener una probabilidad hay que multiplicarla por el largo del intervalo. Si el intervalo es pequeño, de largo $h$,
 $$\Pr(x \leq X \leq x + h) \approx f(x)\cdot h$$
 
 . . .
 
-Esto explica dos cosas:
-
-- Por qué $f(x)$ puede ser mayor que 1: es una tasa, no una probabilidad.
-- Por qué $f$ es la derivada de $F$: la densidad mide **qué tan rápido se acumula** probabilidad en torno a $x$. Donde la CDF sube con fuerza, la densidad es alta.
+Esto explica por qué $f(x)$ puede ser mayor que 1, ya que se trata de una tasa y no de una probabilidad. También explica por qué $f$ es la derivada de $F$. La densidad mide **qué tan rápido se acumula** probabilidad en torno a $x$, así que donde la CDF sube con fuerza la densidad es alta.
 
 ## Intuición: de histogramas a densidades
 
@@ -460,31 +455,30 @@ Esto importa en ciencias sociales porque trabajamos todo el tiempo con transform
 
 ## ¿Qué es una transformación monótona?
 
-Una función $g$ es **estrictamente creciente** si respeta el orden: si $x_1 < x_2$, entonces $g(x_1) < g(x_2)$. Es **estrictamente decreciente** si lo invierte. En ambos casos decimos que es **monótona**.
+Una función $g$ es **estrictamente creciente** si respeta el orden, es decir, si $x_1 < x_2$ implica $g(x_1) < g(x_2)$. Es **estrictamente decreciente** si lo invierte. En ambos casos decimos que es **monótona**.
 
 . . .
 
-- **Monótonas:** $\log x$, $\sqrt{x}$ (para $x > 0$), pasar de pesos a miles de pesos, $-x$.
-- **No monótona:** $x^2$ cuando $x$ puede ser negativo, porque $-2$ y $2$ van al mismo valor.
+Son monótonas, por ejemplo, $\log x$ y $\sqrt{x}$ para $x > 0$, o pasar un ingreso de pesos a miles de pesos. En cambio, $x^2$ no es monótona cuando $x$ puede tomar valores negativos, porque $-2$ y $2$ van a parar al mismo valor.
 
 . . .
 
-Una imagen útil: si ordenamos a las personas en una fila según su ingreso $X$ y luego calculamos $\log X$, [nadie cambia de lugar en la fila]{.alert}. La persona del medio sigue en el medio y el 10% más rico sigue siendo el 10% más rico.
+Una imagen útil es la de una fila. Si ordenamos a las personas según su ingreso $X$ y luego calculamos $\log X$, [nadie cambia de lugar en la fila]{.alert}. La persona del medio sigue en el medio y el 10% de mayores ingresos sigue siendo el 10% de mayores ingresos.
 
 ## ¿Para qué sirve que sea monótona?
 
-Como el orden se preserva, si $g$ es creciente:
+Como el orden se preserva, si $g$ es creciente se tiene que
 $$F_Y(y) = \Pr(g(X) \leq y) = \Pr\big(X \leq g^{-1}(y)\big) = F_X\big(g^{-1}(y)\big)$$
 
-La distribución de $Y$ se obtiene directamente de la de $X$ [@hansen-for-economist].
+y la distribución de $Y$ se obtiene directamente de la de $X$ [@hansen-for-economist].
 
 . . .
 
-**Consecuencia práctica: los cuantiles se trasladan.** La mediana del logaritmo del ingreso es el logaritmo de la mediana del ingreso, y lo mismo vale para cualquier percentil. Con la **media** esto no ocurre, como veremos con la desigualdad de Jensen.
+Una consecuencia práctica es que los **cuantiles se trasladan** con la transformación. La mediana del logaritmo del ingreso es el logaritmo de la mediana del ingreso, y lo mismo vale para cualquier percentil. Con la **media** esto no ocurre, como veremos con la desigualdad de Jensen.
 
 . . .
 
-**¿Y la densidad?** Al derivar $F_Y$ aparece un factor de corrección. Si la transformación **estira** un tramo de la recta, la misma probabilidad se reparte en más espacio y la densidad baja; si lo **comprime**, la densidad sube. Eso es lo que hace el jacobiano del teorema siguiente.
+En el caso de la densidad, al derivar $F_Y$ aparece un factor de corrección. Si la transformación **estira** un tramo de la recta, la misma probabilidad se reparte en más espacio y la densidad baja, y si lo **comprime**, la densidad sube. Ese es el papel del jacobiano en el teorema siguiente.
 
 ## Transformaciones monótonas de variables continuas
 
@@ -505,10 +499,11 @@ El término $\left|\frac{d}{dy} g^{-1}(y)\right|$ es el **jacobiano**: corrige p
 
 ## En R: de uniforme a exponencial
 
-Un resultado útil: si $U \sim U[0,1]$, entonces $Y = -\log U$ tiene distribución exponencial [@hansen-for-economist]. Comprobémoslo simulando con pocos y con muchos casos:
+Un resultado útil: si $U \sim U[0,1]$, entonces $Y = -\log U$ tiene distribución exponencial [@hansen-for-economist]. Comprobémoslo simulando con pocos y con muchos casos. El gráfico aparece en la slide siguiente.
 
 ```{r}
 #| echo: true
+#| output-location: slide
 #| fig-width: 10
 #| fig-height: 3.2
 set.seed(123)
@@ -592,20 +587,15 @@ En distribuciones con sesgo a la derecha, como los ingresos, la media queda **po
 
 Una transformación **lineal** (en rigor, *afín*) tiene la forma
 $$y = a + b\,x$$
-Solo hace dos cosas: **sumar una constante** ($a$) y **multiplicar por una constante** ($b$). Su gráfico es una línea recta.
+Una transformación así solo puede **sumar una constante** ($a$) y **multiplicar por una constante** ($b$), y su gráfico es una línea recta.
 
 . . .
 
-**Ejemplos cotidianos:**
-
-- Pasar el ingreso de pesos a miles de pesos: $y = x/1000$.
-- Dar un bono fijo de \$50.000 a todas las personas: $y = 50.000 + x$.
-- Reajustar todos los sueldos en 10%: $y = 1.1\,x$.
-- Pasar de grados Celsius a Fahrenheit: $F = 32 + 1.8\,C$.
+Hay muchos ejemplos cotidianos. Pasar el ingreso de pesos a miles de pesos ($y = x/1000$), entregar un bono fijo de \$50.000 a todas las personas ($y = 50.000 + x$), reajustar todos los sueldos en 10% ($y = 1.1\,x$) o pasar de grados Celsius a Fahrenheit ($F = 32 + 1.8\,C$) son transformaciones lineales.
 
 . . .
 
-**Lo que la distingue:** un aumento de una unidad en $x$ cambia $y$ siempre en $b$ unidades, sin importar dónde partamos. En una función **no lineal**, como $x^2$, el efecto depende del punto de partida: pasar de 1 a 2 suma 3, pero pasar de 10 a 11 suma 21.
+Lo que las distingue es que un aumento de una unidad en $x$ cambia $y$ siempre en $b$ unidades, sin importar dónde partamos. En una función **no lineal**, como $x^2$, el efecto depende del punto de partida. Pasar de 1 a 2 suma 3, pero pasar de 10 a 11 suma 21.
 
 ## Esperanza de transformaciones y linealidad
 
@@ -632,20 +622,15 @@ Así, ya que $\sum^\infty_{j=1} \pi_j = 1$ y $\sum^\infty_{j=1} \pi_j \tau_j = \
 
 ## La linealidad en palabras
 
-El teorema dice algo muy intuitivo: [las operaciones lineales "pasan a través" del promedio]{.alert}.
+El teorema dice algo muy intuitivo, que [las operaciones lineales "pasan a través" del promedio]{.alert}.
 
 . . .
 
-**Ejemplo.** Tres personas ganan 300, 500 y 1.000 (en miles de pesos). El promedio es 600.
-
-- Si a todas les damos un bono de 50, ganan 350, 550 y 1.050. El nuevo promedio es 650: **subió exactamente el bono**.
-- Si a todas les reajustamos el sueldo en 10%, ganan 330, 550 y 1.100. El nuevo promedio es 660: **subió exactamente 10%**.
-
-No necesitamos recalcular nada: basta aplicar la transformación al promedio.
+Supongamos que tres personas ganan 300, 500 y 1.000 mil pesos, con un promedio de 600. Si a todas les damos un bono de 50, pasan a ganar 350, 550 y 1.050, y el nuevo promedio es 650. El promedio **subió exactamente lo que subió cada sueldo**. Si en cambio reajustamos todos los sueldos en 10%, ganan 330, 550 y 1.100, y el promedio pasa a 660, es decir, **sube también un 10%**. No hace falta recalcular nada, basta con aplicar la transformación al promedio.
 
 . . .
 
-**Con una transformación no lineal esto falla.** Si dos personas tienen los valores 1 y 9, su promedio es 5. Las raíces cuadradas son 1 y 3, con promedio 2. Pero $\sqrt{5} \approx 2.24 \neq 2$: el promedio de las raíces **no** es la raíz del promedio.
+Con una transformación no lineal esto deja de funcionar. Si dos personas tienen los valores 1 y 9, su promedio es 5. Sus raíces cuadradas son 1 y 3, con promedio 2, pero $\sqrt{5} \approx 2.24$. El promedio de las raíces **no** es la raíz del promedio.
 
 ## Esperanza de transformaciones y linealidad (Ejemplo)
 
@@ -756,7 +741,7 @@ La varianza es máxima cuando $p = 1/2$: el caso más incierto.
 
 ## La idea: una forma con "perillas"
 
-Imaginemos un molde con una forma fija, por ejemplo una campana, que tiene unas pocas **perillas**: una la mueve de izquierda a derecha y otra la hace más ancha o más angosta.
+Imaginemos un molde con una forma fija, por ejemplo una campana, que tiene unas pocas **perillas**. Una de ellas la mueve de izquierda a derecha y otra la hace más ancha o más angosta.
 
 ```{r}
 #| echo: false
@@ -773,19 +758,19 @@ legend("topright", bty = "n", lwd = 2, lty = 1:3,
 
 . . .
 
-Eso es una **familia paramétrica**: una forma conocida más unos pocos números, los **parámetros**, que la ajustan. Si sabemos la familia y el valor de los parámetros, conocemos [toda la distribución]{.alert}.
+Una **familia paramétrica** es justamente eso, una forma conocida más unos pocos números, los **parámetros**, que la ajustan. Si sabemos la familia y el valor de los parámetros, conocemos [toda la distribución]{.alert}.
 
 ## Paramétrico vs. no paramétrico
 
-**La ventaja:** el problema se simplifica muchísimo. En vez de aprender de los datos una curva completa, basta con aprender unos pocos números.
+La ventaja de trabajar con familias paramétricas es que el problema se simplifica muchísimo. En vez de aprender de los datos una curva completa, basta con aprender unos pocos números.
 
 . . .
 
-**El costo:** si la forma que supusimos es incorrecta, las conclusiones pueden ser engañosas, por muy bien que estimemos los parámetros.
+El costo es que, si la forma que supusimos es incorrecta, las conclusiones pueden ser engañosas, por muy bien que estimemos los parámetros.
 
 . . .
 
-**El contraste.** Una distribución es **no paramétrica** si no puede describirse con una lista finita de parámetros [@hansen-for-economist]. Los métodos no paramétricos evitan suponer una forma y dejan que los datos la determinen. Los veremos más adelante; por ahora basta con tener presente que suponer una familia paramétrica es una **decisión de modelación**, no un hecho.
+Por contraste, una distribución es **no paramétrica** si no puede describirse con una lista finita de parámetros [@hansen-for-economist]. Los métodos no paramétricos evitan suponer una forma y dejan que los datos la determinen. Los veremos más adelante. Por ahora basta con tener presente que suponer una familia paramétrica es una **decisión de modelación** y no un hecho.
 
 ## Familias de distribuciones
 
@@ -883,7 +868,7 @@ Una variable aleatoria con distribución normal, que se suele denotar por $X \si
 $$
 f(x \mid \mu, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{(x-\mu)^2}{2\sigma^2} \right), \qquad x \in \mathbb{R}
 $$
-y con $\mu \in \mathbb{R}$ y $\sigma^2>0$. 
+y con $\mu \in \mathbb{R}$ y $\sigma^2>0$. En los textos se usan indistintamente las notaciones $\mathcal{N}(\mu, \sigma^2)$ y $N(\mu, \sigma^2)$, y ambas son válidas.
 
 . . .
 

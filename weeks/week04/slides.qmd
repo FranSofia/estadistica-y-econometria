@@ -6,6 +6,7 @@ institute: "UCH / INE"
 date: today
 format:
   revealjs:
+    html-math-method: katex
     theme: [default, ../../styles/slides-theme.scss]
     slide-number: true
     show-slide-number: all
@@ -535,6 +536,7 @@ Al muestrear **con reposición**, cada observación es una extracción i.i.d. de
 
 ```{r}
 #| echo: true
+#| output-location: slide
 #| fig-width: 10
 #| fig-height: 3.2
 set.seed(2024)
