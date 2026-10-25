@@ -6,6 +6,7 @@ institute: "UCH / INE"
 date: today
 format:
   revealjs:
+    html-math-method: katex 
     theme: [default, ../../styles/slides-theme.scss]
     slide-number: true
     show-slide-number: all
@@ -44,7 +45,7 @@ source("../../R/estilo.R")
 
 ## De resultados a números
 
-En la clase anterior trabajamos con **eventos**: subconjuntos del espacio muestral $\Omega$. En la práctica, casi siempre conviene representar los resultados aleatorios con [números]{.alert} [@hansen-for-economist].
+En la clase anterior trabajamos con **eventos**, i. e.,  subconjuntos del espacio muestral $\Omega$ (o $S$). En la práctica, casi siempre conviene representar los resultados aleatorios con [números]{.alert} [@hansen-for-economist].
 
 . . .
 
@@ -56,7 +57,7 @@ $X$ es aleatoria porque su valor depende del resultado del lanzamiento.
 
 . . .
 
-Lo mismo hacemos con datos económicos: el ingreso de un hogar, los años de educación de una persona o si una persona está desempleada ($1$) o no ($0$) son variables aleatorias antes de observarlas.
+Lo mismo hacemos con datos económicos y sociales: el ingreso de un hogar, los años de educación de una persona o si una persona está desempleada ($1$) o no ($0$) son variables aleatorias antes de observarlas.
 
 ## Definición
 
@@ -83,20 +84,45 @@ Así, $\Pr(X = x)$ se lee "la probabilidad de que la variable $X$ tome el valor 
 
 ## Una variable aleatoria es una función
 
+Para reforzar la idea, @hansen-for-economist define una variable aleatoria como "un resultado de valor real; una función del espacio muestral $S$ a la **recta real** $\mathbb{R}$" (p. 22). Tomando su reprentación, sería algo así:
+
 ```{r}
 #| echo: false
 #| fig-width: 7
-#| fig-height: 3.2
-par(mar = c(0.5, 0.5, 0.5, 0.5))
-plot(NULL, xlim = c(0, 10), ylim = c(0, 4), axes = FALSE, xlab = "", ylab = "")
-symbols(2.2, 2, circles = 1.5, inches = FALSE, add = TRUE, lwd = 2, fg = "#69000C")
-text(2.2, 3.8, expression(Omega), cex = 1.6)
-text(1.7, 2.5, "H", cex = 1.6); text(2.7, 1.5, "T", cex = 1.6)
-segments(6, 2, 9.5, 2, lwd = 2); text(9.7, 2, expression(R), cex = 1.4)
-points(c(7, 8.5), c(2, 2), pch = 19, cex = 1.3)
-text(c(7, 8.5), c(1.6, 1.6), c("0", "1"), cex = 1.4)
-arrows(1.9, 2.5, 8.4, 2.15, length = 0.12, col = "#69000C", lwd = 1.5)
-arrows(3.0, 1.5, 6.9, 1.9, length = 0.12, col = "#69000C", lwd = 1.5)
+#| fig-height: 3
+#| fig-align: center
+col_curso <- "#69000C"
+
+# Flecha curva: Bézier cuadrática + punta en el último tramo
+flecha_curva <- function(x0, y0, x1, y1, h, ...) {
+  t  <- seq(0, 1, length.out = 100)
+  cx <- (x0 + x1) / 2
+  cy <- max(y0, y1) + h
+  x  <- (1 - t)^2 * x0 + 2 * (1 - t) * t * cx + t^2 * x1
+  y  <- (1 - t)^2 * y0 + 2 * (1 - t) * t * cy + t^2 * y1
+  lines(x, y, ...)
+  arrows(x[98], y[98], x[100], y[100], length = 0.1, ...)
+}
+
+par(mar = c(0, 0, 0, 0))
+plot(NULL, xlim = c(0, 10), ylim = c(0.1, 3.8), asp = 1,
+     axes = FALSE, xlab = "", ylab = "")
+
+# Espacio muestral
+symbols(2, 1.5, circles = 1.3, inches = FALSE, add = TRUE,
+        lwd = 2, fg = col_curso)
+text(0.75, 2.85, expression(Omega), cex = 1.5)
+text(c(1.5, 2.5), c(1.5, 1.5), c("H", "T"), cex = 1.4)
+
+# Recta real
+arrows(4.6, 1.5, 9.6, 1.5, code = 3, length = 0.08, lwd = 1.5)
+text(9.5, 1.85, expression(italic(R)), cex = 1.4)
+points(c(6, 8), c(1.5, 1.5), pch = 19, cex = 1.2)
+text(c(6, 8), c(1.15, 1.15), c("0", "1"), cex = 1.3)
+
+# X(H) = 1, X(T) = 0
+flecha_curva(1.5, 1.75, 8, 1.68, h = 3.3, col = col_curso, lwd = 1.5)
+flecha_curva(2.5, 1.75, 6, 1.68, h = 1.8, col = col_curso, lwd = 1.5)
 ```
 
 Cada resultado de $\Omega$ se envía a un punto de la recta real. La probabilidad "viaja" con la función: $\Pr(X = 1) = \Pr(\{H\})$ [@hansen-for-economist].
@@ -141,6 +167,7 @@ Es una función de masa válida porque $\sum_{k=0}^{\infty} 1/k! = e$. Es un cas
 
 ```{r}
 #| echo: true
+#| collapse: true
 #| output-location: column
 #| fig-width: 5
 #| fig-height: 4
@@ -330,6 +357,7 @@ R usa el mismo prefijo para cada distribución: `d` (densidad o masa), `p` (CDF)
 
 ```{r}
 #| echo: true
+#| collapse: true
 dexp(1)                  # densidad f(1) = e^(-1)
 pexp(2) - pexp(1)        # Pr(1 <= X <= 2)
 qexp(c(0.5, 0.9))        # mediana y cuantil 0.9
@@ -354,7 +382,7 @@ $$\Pr(Y = 0) = \Pr(X = 0), \qquad \Pr(Y = 1) = \Pr(X = -1) + \Pr(X = 1)$$
 
 . . .
 
-Esto importa en economía porque trabajamos todo el tiempo con transformaciones: logaritmo del ingreso, ingreso al cuadrado, indicadores de pobreza, etc.
+Esto importa en ciencias sociales porque trabajamos todo el tiempo con transformaciones: logaritmo del ingreso, ingreso al cuadrado, indicadores de pobreza, etc.
 
 ## Transformaciones monótonas de variables continuas
 
@@ -395,7 +423,7 @@ curve(dexp(x), add = TRUE,
 
 . . .
 
-El histograma de los valores simulados coincide con la densidad exponencial teórica (línea roja).
+El histograma de los valores simulados coincide con la densidad exponencial teórica (línea roja). 
 
 # Esperanza {#esperanza}
 
@@ -405,17 +433,17 @@ El histograma de los valores simulados coincide con la densidad exponencial teó
 ## Definición: Esperanza
 Para una variable discreta con soporte $\{\tau_j\}$ y masas $\pi_j$, la **esperanza** (o valor esperado) de $X$ es
 $$\mathbb{E}[X] = \sum_{j} \tau_j \, \pi_j$$
-si la serie converge [@hansen-for-economist].
+si la serie converge [@hansen-for-economist]^[Una definición de convergencia de @hansen-for-economist puede encontrarse en el apéndice A.1. Pero esto lo trataremos más adelante con algo más de detalle]. 
 :::
 
 . . .
 
-Es un **promedio ponderado** de los valores posibles, donde las ponderaciones son las probabilidades.
+Es un **promedio ponderado**, en tanto que es "el valor promedio [*average value*] obtenido mediante un promedio ponderado por probabilidad [*probability-weighted averaging*] [@hansen-for-economist, p. 25].
 
 . . .
 
 ::: {.callout-important}
-Aunque $X$ es aleatoria, $\mathbb{E}[X]$ **no lo es**: es un número fijo, una característica de la distribución [@hansen-for-economist].
+Aunque $X$ es aleatoria, $\mathbb{E}[X]$ **no lo es**. Es un número fijo ---en muchos contextos de nuestro interés, un parámetro---, una característica de la distribución [@hansen-for-economist].
 :::
 
 ## Ejemplos
@@ -434,7 +462,7 @@ Nótese que 3.5 no es un valor que el dado pueda tomar: la esperanza no tiene po
 
 . . .
 
-**Interpretación física:** la esperanza es el [centro de masa]{.alert} de la distribución. Si pusiéramos las probabilidades como pesos sobre una tabla, la tabla quedaría en equilibrio al apoyarla en $\mathbb{E}[X]$ [@hansen-for-economist].
+**Interpretación "física":** la esperanza es el [centro de masa]{.alert} de la distribución. Si pusiéramos las probabilidades como pesos sobre una tabla, la tabla quedaría en equilibrio al apoyarla en $\mathbb{E}[X]$ [@hansen-for-economist].
 
 ## Esperanza de una variable continua
 
@@ -468,14 +496,24 @@ $$\mathbb{E}[g(X)] = \sum_j g(\tau_j)\,\pi_j \qquad \text{o} \qquad \mathbb{E}[g
 
 ::: {.callout-important}
 ## Teorema: Linealidad de la esperanza
-Para constantes $a$ y $b$:
+Para cualquier constante $a$ y $b$:
 $$\mathbb{E}[a + bX] = a + b\,\mathbb{E}[X]$$
-[@hansen-for-economist]
+La [demostración]{.smallcaps} es simple usando la definición de esperanza (ver en @hansen-for-economist): 
+$$
+\begin{aligned}
+  \mathbb{E}[a + bX] &= \sum^\infty_{j=1} (a+b\tau_j) \pi_j \\
+  &= a \sum^\infty_{j=1} \pi_j + b \sum^\infty_{j=1} \tau_j \pi_j \\
+  &=a + b\mathbb{E}[X]
+\end{aligned}
+$$
+Así, ya que $\sum^\infty_{j=1} \pi_j = 1$ y $\sum^\infty_{j=1} \pi_j \tau_j = \mathbb{E}[X]$, QED. 
 :::
 
-. . .
+## Esperanza de transformaciones y linealidad (Ejemplo)
 
-**Ejemplo:** si $X \sim U[0,1]$, entonces $\mathbb{E}[X^2] = \int_0^1 x^2\,dx = 1/3$. Observe que $\mathbb{E}[X^2] = 1/3 \neq (\mathbb{E}[X])^2 = 1/4$: la linealidad **no** se extiende a funciones no lineales.
+**Ejemplo:** si $X \sim U[0,1]$, entonces $$\mathbb{E}[X^2] = \int_0^1 x^2\,dx = 1/3$$ 
+Observemos, además, que $$\mathbb{E}[X^2] = 1/3 \neq (\mathbb{E}[X])^2 = 1/4$$ 
+Por lo tanto, la linealidad **no** se extiende a funciones no lineales.
 
 ## Desigualdad de Jensen
 
@@ -587,11 +625,11 @@ Una **distribución paramétrica** $F(x \mid \theta)$ es una familia de distribu
 
 . . .
 
-Los economistas las usan para construir **modelos teóricos**; los econometristas, para **modelos estadísticos**: suponemos que los datos vienen de una familia, pero no conocemos $\theta$ y lo estimamos a partir de los datos [@hansen-for-economist].
+Los economistas las usan para construir **modelos teóricos**; los econometristas, para **modelos estadísticos**. Los parámetros de la distribución no están especificados, ergo deben estimarse [@hansen-for-economist]. Por ejemplo, suponemos que los datos vienen de una familia, pero no conocemos $\theta$ y lo estimamos a partir de los datos.
 
 . . .
 
-Esta es la idea que organizará toda la unidad de estimación. Por ahora basta conocer algunas familias y entender cómo cambian con sus parámetros. No es necesario memorizarlas: se consultan cuando se necesitan [@hansen-for-economist].
+Esta es la idea que organizará toda la unidad de estimación. Por ahora basta conocer algunas familias y entender cómo cambian con sus parámetros. No es necesario memorizarlas, pues en general se consultan cuando se necesitan [@hansen-for-economist].
 
 ## Distribuciones discretas
 
@@ -670,6 +708,14 @@ barplot(dpois(0:10, lambda = 3), names.arg = 0:10, border = NA,
 
 ## La distribución normal
 
+Una variable aleatoria con distribución normal, que se suele denotar por $X \sim \mathcal{N}(\mu, \sigma^2)$, tiene una densidad
+$$
+f(x \mid \mu, \sigma^2) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp \left(- \frac{(x-\mu)^2}{2\sigma^2} \right), \qquad x \in \mathbb{R}
+$$
+y con $\mu \in \mathbb{R}$ y $\sigma^2>0$. 
+
+. . .
+
 Cuando $\mu = 0$ y $\sigma^2 = 1$ hablamos de la **normal estándar**. Su densidad se denota $\phi(x)$ y su CDF $\Phi(x)$ [@hansen-for-economist].
 
 . . .
@@ -679,7 +725,7 @@ $$Z = \frac{X - \mu}{\sigma} \sim N(0, 1)$$
 
 $\mu$ es un parámetro de **ubicación** y $\sigma$ de **escala**: cambiar $\mu$ desplaza la campana y cambiar $\sigma$ la ensancha o la angosta.
 
-. . .
+## La distribución normal (continuación)
 
 **Una relación que usaremos más adelante:** si $Z \sim N(0,1)$, entonces $Z^2$ tiene distribución **chi-cuadrado con 1 grado de libertad**, $\chi^2_1$. Se obtiene aplicando la regla de transformaciones a $g(x) = x^2$ [@hansen-for-economist]. Junto con la $t$ y la $F$, la retomaremos al hacer inferencia.
 
@@ -687,6 +733,7 @@ $\mu$ es un parámetro de **ubicación** y $\sigma$ de **escala**: cambiar $\mu$
 
 ```{r}
 #| echo: true
+#| collapse: true
 pnorm(1) - pnorm(-1)     # Pr(-1 < Z < 1)
 pnorm(2) - pnorm(-2)     # Pr(-2 < Z < 2)
 pnorm(3) - pnorm(-3)     # Pr(-3 < Z < 3)
@@ -895,6 +942,7 @@ $$\text{var}(Y) = \underbrace{\mathbb{E}\big[\text{var}(Y \mid X)\big]}_{\text{d
 
 ```{r}
 #| echo: true
+
 p <- matrix(c(0.4, 0.1,
               0.2, 0.3), nrow = 2, byrow = TRUE,
             dimnames = list(X = c("1", "2"), Y = c("1", "2")))

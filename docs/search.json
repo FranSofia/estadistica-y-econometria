@@ -179,7 +179,7 @@
     "href": "weeks/week02/page.html",
     "title": "Clase 02: Variables Aleatorias y Distribuciones",
     "section": "",
-    "text": "En esta clase damos el paso de los eventos a las variables aleatorias: funciones que asignan un número a cada resultado de un experimento. Con ellas podemos describir una distribución de probabilidad mediante su función de masa, su densidad o su función de distribución, y resumirla con cuantiles, esperanza y varianza. Revisamos algunas familias paramétricas de uso frecuente (Bernoulli, binomial, Poisson, uniforme, exponencial y normal) y terminamos con dos variables a la vez: distribución conjunta, marginal y condicional, covarianza, independencia y esperanza condicional. Esta última es la pieza que más adelante dará sentido a la regresión."
+    "text": "En esta clase, damos el paso de los eventos a las variables aleatorias. Es decir, a funciones que asignan un número a cada resultado de un experimento. Con ellas, podemos describir una distribución de probabilidad mediante su función de masa, su densidad o su función de distribución, y resumirla con cuantiles, esperanza y varianza. Revisamos algunas familias paramétricas de uso frecuente (Bernoulli, binomial, Poisson, uniforme, exponencial y normal) y terminamos con dos variables a la vez: distribución conjunta, marginal y condicional, covarianza, independencia y esperanza condicional. Esta última es la pieza que más adelante dará sentido a la regresión."
   },
   {
     "objectID": "weeks/week02/page.html#presentación",
