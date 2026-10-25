@@ -53,7 +53,29 @@ En las dos clases anteriores conocíamos la distribución y nos preguntábamos p
 
 . . .
 
-Para eso necesitamos un modelo de **cómo** se obtuvieron los datos. El más simple, y el punto de partida de toda la teoría que veremos, es el muestreo aleatorio.
+Para eso necesitamos un modelo de **cómo** se obtuvieron los datos. El más simple, y el punto de partida de toda la teoría que veremos, es el muestreo aleatorio. 
+
+## Independencia
+
+Antes de ver muestreo aleatorio, una pequeña definición de independencia solo para retomar.
+
+::: {.callout-note}
+## Definición: independencia
+El conjunto de vectores aleatorios $\{X_1, \ldots, X_n\}$ se dice que son **independientes e idénticamente distribuidos** (i.i.d.) si son mutuamente independientes y tienen distribuciones marginales idénticas $F$ [@hansen-for-economist, p. 128].
+:::
+
+Así, por «independientes» entenderemos aquí que $X_i$ es independiente de $X_j$ cuando $i\neq j$, i. e., que la unidad de observación $i$ es diferente de $j$. En cambio, por «distribuciones idénticas» se entiende que los vectores $X_i$ y $X_j$ tienen la misma distribución ---conjunta--- $F$ [@hansen-for-economist]. 
+
+## Independencia (conjuntos de datos)
+
+Esto es relevante porque un *dataset* es una colección de números, normalmente organizada por observación. 
+
+Por ejemplo, un conjunto de datos de salarios a nivel individual podría consistir en información sobre personas, cada una descrita como una *observación*, con mediciones sobre los ingresos o salarios, la edad, la educación y otras características de cada persona. Un conjunto de datos como este suele denominarse *muestra*. 
+
+La razón de esta denominación es que, para el análisis estadístico, es habitual considerar las observaciones como realizaciones de variables aleatorias obtenidas mediante muestreo aleatorio [@hansen-for-economist, p. 128]. Veamos cómo esto se aplica en la teoría de muestreo. 
+
+
+
 
 ## Muestra aleatoria
 
