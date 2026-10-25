@@ -84,7 +84,7 @@ Así, $\Pr(X = x)$ se lee "la probabilidad de que la variable $X$ tome el valor 
 
 ## Una variable aleatoria es una función
 
-Para reforzar la idea, @hansen-for-economist define una variable aleatoria como "un resultado de valor real; una función del espacio muestral $S$ a la **recta real** $\mathbb{R}$" (p. 22). Tomando su reprentación, sería algo así:
+Para reforzar la idea, @hansen-for-economist define una variable aleatoria como "un resultado de valor real; una función del espacio muestral $S$ a la **recta real** $\mathbb{R}$" (p. 22). Tomando su representación, sería algo así:
 
 ```{r}
 #| echo: false
@@ -203,6 +203,41 @@ Escribimos $X \sim F$ para decir que "$X$ tiene distribución $F$". Cuando hay v
 
 La CDF tiene una gran ventaja: está definida para **cualquier** variable aleatoria, sea discreta, continua o mixta. Por eso es la forma más general de describir una distribución.
 
+## Intuición: la CDF acumula probabilidad
+
+La CDF responde una pregunta simple: [¿qué proporción de la distribución queda en $x$ o por debajo de $x$?]{.alert} Es la versión teórica de la **frecuencia relativa acumulada** de una tabla de frecuencias.
+
+. . .
+
+**Ejemplo: el dado.** Vamos sumando las probabilidades de izquierda a derecha:
+
+| $x$ | 1 | 2 | 3 | 4 | 5 | 6 |
+|---|---|---|---|---|---|---|
+| $\Pr(X = x)$ | 1/6 | 1/6 | 1/6 | 1/6 | 1/6 | 1/6 |
+| $F(x) = \Pr(X \leq x)$ | 1/6 | 2/6 | 3/6 | 4/6 | 5/6 | 1 |
+
+. . .
+
+$F$ está definida para **todo** número real, no solo para los valores que el dado puede tomar. Por ejemplo, $F(3.5) = \Pr(X \leq 3.5) = \Pr(X \in \{1, 2, 3\}) = 1/2$, y $F(-2) = 0$ porque el dado nunca muestra un número negativo.
+
+## Intuición: cómo se ve una CDF
+
+```{r}
+#| echo: false
+#| fig-width: 9
+#| fig-height: 3.4
+par(mfrow = c(1, 2))
+plot(stepfun(1:6, c(0, (1:6) / 6)), verticals = FALSE, pch = 19,
+     col = "#69000C", xlim = c(0, 7), main = "Dado (discreta)",
+     xlab = "x", ylab = "F(x)")
+curve(pexp(x), from = -0.5, to = 5, lwd = 2, col = "#19375A",
+      main = "Exponencial (continua)", xlab = "x", ylab = "F(x)")
+```
+
+- Ambas parten en 0 y terminan en 1, y nunca bajan: acumular probabilidad solo puede sumar.
+- La discreta avanza a **saltos**: cada salto es la probabilidad de un valor. La continua sube **suavemente**.
+- Donde la CDF sube rápido hay mucha probabilidad concentrada. Esta idea nos llevará a la densidad.
+
 ## Propiedades de una CDF
 
 ::: {.callout-important}
@@ -301,6 +336,45 @@ $$\Pr(a \leq X \leq b) = \int_a^b f(x)\,dx$$
 
 [Las áreas bajo la densidad son probabilidades]{.alert}.
 
+## Intuición: densidad como "probabilidad por unidad"
+
+Pensemos en la **densidad poblacional** de una comuna, medida en habitantes por km². Si una comuna tuviera 10.000 habitantes por km², eso no significa que tenga 10.000 habitantes: para saber cuántas personas viven en una zona hay que multiplicar la densidad por la **superficie**.
+
+. . .
+
+La densidad de probabilidad funciona igual: $f(x)$ es probabilidad **por unidad de $x$**. Para obtener una probabilidad hay que multiplicar por el largo del intervalo. Para un intervalo pequeño de largo $h$:
+$$\Pr(x \leq X \leq x + h) \approx f(x)\cdot h$$
+
+. . .
+
+Esto explica dos cosas:
+
+- Por qué $f(x)$ puede ser mayor que 1: es una tasa, no una probabilidad.
+- Por qué $f$ es la derivada de $F$: la densidad mide **qué tan rápido se acumula** probabilidad en torno a $x$. Donde la CDF sube con fuerza, la densidad es alta.
+
+## Intuición: de histogramas a densidades
+
+```{r}
+#| echo: false
+#| fig-width: 10
+#| fig-height: 3.2
+set.seed(10)
+par(mfrow = c(1, 3))
+ns     <- c(100, 1000, 100000)
+anchos <- c(0.5, 0.25, 0.05)
+titulos <- c("n = 100, ancho = 0.5", "n = 1.000, ancho = 0.25",
+             "n = 100.000, ancho = 0.05")
+for (k in 1:3) {
+  x <- rexp(ns[k])
+  hist(x, breaks = seq(0, max(x) + anchos[k], by = anchos[k]), freq = FALSE,
+       xlim = c(0, 5), ylim = c(0, 1.1), col = "#69000C2E", border = "white",
+       main = titulos[k], xlab = "x", ylab = "densidad")
+  curve(dexp(x), add = TRUE, col = "#69000C", lwd = 2)
+}
+```
+
+En un histograma de densidad, el **área** de cada barra es la proporción de observaciones en ese tramo. Con más datos y barras más angostas, la silueta del histograma se acerca a la curva (en rojo). La densidad es algo así como el [histograma de la población]{.alert}.
+
 ## Cómo leer una densidad
 
 ::: {.callout-warning}
@@ -384,6 +458,34 @@ $$\Pr(Y = 0) = \Pr(X = 0), \qquad \Pr(Y = 1) = \Pr(X = -1) + \Pr(X = 1)$$
 
 Esto importa en ciencias sociales porque trabajamos todo el tiempo con transformaciones: logaritmo del ingreso, ingreso al cuadrado, indicadores de pobreza, etc.
 
+## ¿Qué es una transformación monótona?
+
+Una función $g$ es **estrictamente creciente** si respeta el orden: si $x_1 < x_2$, entonces $g(x_1) < g(x_2)$. Es **estrictamente decreciente** si lo invierte. En ambos casos decimos que es **monótona**.
+
+. . .
+
+- **Monótonas:** $\log x$, $\sqrt{x}$ (para $x > 0$), pasar de pesos a miles de pesos, $-x$.
+- **No monótona:** $x^2$ cuando $x$ puede ser negativo, porque $-2$ y $2$ van al mismo valor.
+
+. . .
+
+Una imagen útil: si ordenamos a las personas en una fila según su ingreso $X$ y luego calculamos $\log X$, [nadie cambia de lugar en la fila]{.alert}. La persona del medio sigue en el medio y el 10% más rico sigue siendo el 10% más rico.
+
+## ¿Para qué sirve que sea monótona?
+
+Como el orden se preserva, si $g$ es creciente:
+$$F_Y(y) = \Pr(g(X) \leq y) = \Pr\big(X \leq g^{-1}(y)\big) = F_X\big(g^{-1}(y)\big)$$
+
+La distribución de $Y$ se obtiene directamente de la de $X$ [@hansen-for-economist].
+
+. . .
+
+**Consecuencia práctica: los cuantiles se trasladan.** La mediana del logaritmo del ingreso es el logaritmo de la mediana del ingreso, y lo mismo vale para cualquier percentil. Con la **media** esto no ocurre, como veremos con la desigualdad de Jensen.
+
+. . .
+
+**¿Y la densidad?** Al derivar $F_Y$ aparece un factor de corrección. Si la transformación **estira** un tramo de la recta, la misma probabilidad se reparte en más espacio y la densidad baja; si lo **comprime**, la densidad sube. Eso es lo que hace el jacobiano del teorema siguiente.
+
 ## Transformaciones monótonas de variables continuas
 
 ::: {.callout-note}
@@ -403,27 +505,27 @@ El término $\left|\frac{d}{dy} g^{-1}(y)\right|$ es el **jacobiano**: corrige p
 
 ## En R: de uniforme a exponencial
 
-Un resultado útil: si $U \sim U[0,1]$, entonces $Y = -\log U$ tiene distribución exponencial [@hansen-for-economist]. Comprobémoslo simulando:
+Un resultado útil: si $U \sim U[0,1]$, entonces $Y = -\log U$ tiene distribución exponencial [@hansen-for-economist]. Comprobémoslo simulando con pocos y con muchos casos:
 
 ```{r}
 #| echo: true
-#| output-location: column
-#| fig-width: 5
-#| fig-height: 4
+#| fig-width: 10
+#| fig-height: 3.2
 set.seed(123)
-u <- runif(10000)
-y <- -log(u)
-
-hist(y, breaks = 50, freq = FALSE,
-     col = "#69000C2E", border = "white",
-     main = "", xlab = "y")
-curve(dexp(x), add = TRUE,
-      col = "#69000C", lwd = 2)
+par(mfrow = c(1, 3))
+for (n in c(50, 500, 10000)) {
+  u <- runif(n)
+  y <- -log(u)                       # transformación monótona
+  hist(y, breaks = seq(0, max(y) + 0.25, by = 0.25), freq = FALSE,
+       xlim = c(0, 6), ylim = c(0, 1.2), col = "#69000C2E", border = "white",
+       main = paste("n =", n), xlab = "y", ylab = "densidad")
+  curve(dexp(x), add = TRUE, col = "#69000C", lwd = 2)
+}
 ```
 
 . . .
 
-El histograma de los valores simulados coincide con la densidad exponencial teórica (línea roja). 
+Con 50 casos el histograma es irregular; con 10.000 coincide con la densidad exponencial teórica (línea roja). Cuanto más grande la muestra, más se parece la distribución de los datos a la distribución de la población. Esta idea, la **ley de los grandes números**, es el tema de la clase 03.
 
 # Esperanza {#esperanza}
 
@@ -433,12 +535,12 @@ El histograma de los valores simulados coincide con la densidad exponencial teó
 ## Definición: Esperanza
 Para una variable discreta con soporte $\{\tau_j\}$ y masas $\pi_j$, la **esperanza** (o valor esperado) de $X$ es
 $$\mathbb{E}[X] = \sum_{j} \tau_j \, \pi_j$$
-si la serie converge [@hansen-for-economist]^[Una definición de convergencia de @hansen-for-economist puede encontrarse en el apéndice A.1. Pero esto lo trataremos más adelante con algo más de detalle]. 
+si la serie converge [@hansen-for-economist]^[Las definiciones de límite y de convergencia de una serie pueden encontrarse en @hansen-for-economist, apéndice A (secciones A.1 y A.2). Pero esto lo trataremos más adelante con algo más de detalle]. 
 :::
 
 . . .
 
-Es un **promedio ponderado**, en tanto que es "el valor promedio [*average value*] obtenido mediante un promedio ponderado por probabilidad [*probability-weighted averaging*] [@hansen-for-economist, p. 25].
+Es un **promedio ponderado**, en tanto que es "el valor promedio [*average value*] obtenido mediante un promedio ponderado por probabilidad [*probability-weighted averaging*]" [@hansen-for-economist, p. 25].
 
 . . .
 
@@ -486,6 +588,25 @@ cuando la integral converge [@hansen-for-economist].
 En distribuciones con sesgo a la derecha, como los ingresos, la media queda **por encima** de la mediana: los salarios muy altos "tiran" el promedio hacia arriba. Por eso muchas estadísticas oficiales de ingresos reportan la mediana.
 :::
 
+## ¿Qué significa que algo sea lineal?
+
+Una transformación **lineal** (en rigor, *afín*) tiene la forma
+$$y = a + b\,x$$
+Solo hace dos cosas: **sumar una constante** ($a$) y **multiplicar por una constante** ($b$). Su gráfico es una línea recta.
+
+. . .
+
+**Ejemplos cotidianos:**
+
+- Pasar el ingreso de pesos a miles de pesos: $y = x/1000$.
+- Dar un bono fijo de \$50.000 a todas las personas: $y = 50.000 + x$.
+- Reajustar todos los sueldos en 10%: $y = 1.1\,x$.
+- Pasar de grados Celsius a Fahrenheit: $F = 32 + 1.8\,C$.
+
+. . .
+
+**Lo que la distingue:** un aumento de una unidad en $x$ cambia $y$ siempre en $b$ unidades, sin importar dónde partamos. En una función **no lineal**, como $x^2$, el efecto depende del punto de partida: pasar de 1 a 2 suma 3, pero pasar de 10 a 11 suma 21.
+
 ## Esperanza de transformaciones y linealidad
 
 La esperanza de una función $g(X)$ se calcula con la distribución de $X$ [@hansen-for-economist]:
@@ -508,6 +629,23 @@ $$
 $$
 Así, ya que $\sum^\infty_{j=1} \pi_j = 1$ y $\sum^\infty_{j=1} \pi_j \tau_j = \mathbb{E}[X]$, QED. 
 :::
+
+## La linealidad en palabras
+
+El teorema dice algo muy intuitivo: [las operaciones lineales "pasan a través" del promedio]{.alert}.
+
+. . .
+
+**Ejemplo.** Tres personas ganan 300, 500 y 1.000 (en miles de pesos). El promedio es 600.
+
+- Si a todas les damos un bono de 50, ganan 350, 550 y 1.050. El nuevo promedio es 650: **subió exactamente el bono**.
+- Si a todas les reajustamos el sueldo en 10%, ganan 330, 550 y 1.100. El nuevo promedio es 660: **subió exactamente 10%**.
+
+No necesitamos recalcular nada: basta aplicar la transformación al promedio.
+
+. . .
+
+**Con una transformación no lineal esto falla.** Si dos personas tienen los valores 1 y 9, su promedio es 5. Las raíces cuadradas son 1 y 3, con promedio 2. Pero $\sqrt{5} \approx 2.24 \neq 2$: el promedio de las raíces **no** es la raíz del promedio.
 
 ## Esperanza de transformaciones y linealidad (Ejemplo)
 
@@ -615,6 +753,39 @@ La varianza es máxima cuando $p = 1/2$: el caso más incierto.
 - Los momentos serán la base del **método de momentos** en la clase 5: estimaremos parámetros igualando momentos poblacionales con sus análogos muestrales.
 
 # Distribuciones paramétricas {#parametricas}
+
+## La idea: una forma con "perillas"
+
+Imaginemos un molde con una forma fija, por ejemplo una campana, que tiene unas pocas **perillas**: una la mueve de izquierda a derecha y otra la hace más ancha o más angosta.
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 2.8
+curve(dnorm(x, 0, 1), -6, 8, lwd = 2, col = "#69000C",
+      xlab = "x", ylab = "densidad", ylim = c(0, 0.42))
+curve(dnorm(x, 3, 1), add = TRUE, lwd = 2, col = "#19375A", lty = 2)
+curve(dnorm(x, 0, 2), add = TRUE, lwd = 2, col = "#466F9D", lty = 3)
+legend("topright", bty = "n", lwd = 2, lty = 1:3,
+       col = c("#69000C", "#19375A", "#466F9D"),
+       legend = c("centro 0, ancho 1", "centro 3, ancho 1", "centro 0, ancho 2"))
+```
+
+. . .
+
+Eso es una **familia paramétrica**: una forma conocida más unos pocos números, los **parámetros**, que la ajustan. Si sabemos la familia y el valor de los parámetros, conocemos [toda la distribución]{.alert}.
+
+## Paramétrico vs. no paramétrico
+
+**La ventaja:** el problema se simplifica muchísimo. En vez de aprender de los datos una curva completa, basta con aprender unos pocos números.
+
+. . .
+
+**El costo:** si la forma que supusimos es incorrecta, las conclusiones pueden ser engañosas, por muy bien que estimemos los parámetros.
+
+. . .
+
+**El contraste.** Una distribución es **no paramétrica** si no puede describirse con una lista finita de parámetros [@hansen-for-economist]. Los métodos no paramétricos evitan suponer una forma y dejan que los datos la determinen. Los veremos más adelante; por ahora basta con tener presente que suponer una familia paramétrica es una **decisión de modelación**, no un hecho.
 
 ## Familias de distribuciones
 
